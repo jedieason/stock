@@ -243,6 +243,84 @@ html[data-theme="light"] .tm-modal-backdrop {
   border-color: var(--accent);
 }
 
+
+/* Topbar right actions (Time, Theme Toggle, Refresh - without emoji) */
+.dashboard-tabs-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  max-width: 1740px !important;
+  margin: 0 auto !important;
+  padding: 0 28px !important;
+}
+
+.dashboard-tabs-inner {
+  padding: 0 !important;
+  margin: 0 !important;
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+}
+
+.tm-topbar-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  flex: 0 0 auto !important;
+  margin-left: auto !important;
+}
+
+.tm-topbar-time {
+  color: var(--secondary) !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  letter-spacing: 0.5px !important;
+}
+
+.tm-topbar-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 28px !important;
+  padding: 0 10px !important;
+  background: transparent !important;
+  border: 1px solid var(--border-strong) !important;
+  border-radius: 5px !important;
+  color: var(--text) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+  white-space: nowrap !important;
+}
+
+.tm-topbar-btn:hover {
+  background: var(--surface-raised) !important;
+  border-color: var(--accent) !important;
+}
+
+.tm-topbar-btn:disabled {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+}
+
+html[data-theme="light"] .tm-topbar-btn {
+  background: #ffffff !important;
+  border-color: #cbd5e1 !important;
+}
+
+html[data-theme="light"] .tm-topbar-btn:hover {
+  background: #f1f5f9 !important;
+  border-color: #0284c7 !important;
+}
+
+.tm-page {
+  padding-top: 18px !important;
+}
+
 </style>
 </head>
 <body>
@@ -282,6 +360,7 @@ const __dataAuthoredModule = {exports:Object.create(null)};
 var jsxRuntime = require('react/jsx-runtime');
 var react = require('react');
 var dataApp = require('@openai/data-app');
+var reactDOM = require('react-dom');
 
 const fmt=(v,d=2)=>v==null||!Number.isFinite(Number(v))?'—':Number(v).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});
 const pct=(v)=>v==null?'—':`${v>=0?'+':''}${fmt(v*100)}%`;
@@ -380,9 +459,37 @@ function Global({data,f,sources}){const vv=last(data.vvix),tr=last(data.treasury
 function Fundamentals({data}){const [search,setSearch]=react.useState(''),[sort,setSort]=react.useState('yoy');const rev=(data.revenue||[]).filter(r=>!search||[r.ticker,r.name,r.industry].some(v=>String(v).includes(search))).sort((a,b)=>(b[sort]??-Infinity)-(a[sort]??-Infinity));const valuations=new Map((data.valuations||[]).map(r=>[r.ticker,r]));const news=(data.news||[]).filter(r=>!search||[r.ticker,r.name,r.title].some(v=>String(v).includes(search)));return jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [jsxRuntime.jsxs('div', { className: "tm-sectionline", children: [jsxRuntime.jsxs('div', { children: [jsxRuntime.jsx('h2', { children: "從公司公告核對價格敘事"}), jsxRuntime.jsx('p', { children: "公司原始營收、估值與重大訊息；需求與供給仍需交叉驗證。"})]}), jsxRuntime.jsxs('label', { className: "tm-search", children: [jsxRuntime.jsx(Glyph, { type: "search",}), jsxRuntime.jsx('input', { 'aria-label': "搜尋代碼、公司或主旨", placeholder: "搜尋代碼、公司或主旨", value: search, onChange: e=>setSearch(e.target.value),})]})]}), jsxRuntime.jsxs(Panel, { id: "revenue-valuations", query: "fundamentals", title: "上市公司月營收與估值", rows: rev.map(r=>({...r,valuation:valuations.get(r.ticker)||null})), controls: jsxRuntime.jsxs('select', { 'aria-label': "營收排序", value: sort, onChange: e=>setSort(e.target.value), children: [jsxRuntime.jsx('option', { value: "yoy", children: "營收 YoY ↓"  }), jsxRuntime.jsx('option', { value: "mom", children: "營收 MoM ↓"  }), jsxRuntime.jsx('option', { value: "revenue", children: "營收規模 ↓" })]}), children: [jsxRuntime.jsx('div', { className: "tm-table-scroll", children: jsxRuntime.jsxs('table', { children: [jsxRuntime.jsx('thead', { children: jsxRuntime.jsxs('tr', { children: [jsxRuntime.jsx('th', { children: "公司"}), jsxRuntime.jsx('th', { children: "營收月份"}), jsxRuntime.jsx('th', { children: "當月營收（仟元）"}), jsxRuntime.jsx('th', { children: "MoM"}), jsxRuntime.jsx('th', { children: "YoY"}), jsxRuntime.jsx('th', { children: "本益比"}), jsxRuntime.jsx('th', { children: "股價淨值比"}), jsxRuntime.jsx('th', { children: "殖利率"})]})}), jsxRuntime.jsx('tbody', { children: rev.slice(0,80).map(r=>{const v=valuations.get(r.ticker)||{};return jsxRuntime.jsxs('tr', { children: [jsxRuntime.jsxs('td', { children: [jsxRuntime.jsx('b', { children: r.ticker}), " " , r.name, jsxRuntime.jsx('small', { children: r.industry})]}), jsxRuntime.jsx('td', { children: monthLabel(r.period)}), jsxRuntime.jsx('td', { children: fmt(r.revenue,0)}), jsxRuntime.jsxs('td', { className: tone(r.mom), children: [fmt(r.mom), "%"]}), jsxRuntime.jsxs('td', { className: tone(r.yoy), children: [fmt(r.yoy), "%"]}), jsxRuntime.jsx('td', { children: fmt(v.pe)}), jsxRuntime.jsx('td', { children: fmt(v.pb)}), jsxRuntime.jsx('td', { children: v.yield==null?'—':fmt(v.yield)+'%'})]}, r.ticker);})})]})}), !rev.length&&jsxRuntime.jsx(Empty, { text: "沒有符合的公司或尚無營收資料",}), jsxRuntime.jsxs('div', { className: "tm-footnote", children: ["共 " , rev.length, " 筆，顯示前80筆。營收與估值日期分開：營收出表 "  , last(data.revenue).date||'未知', "；估值 " , last(data.valuations).date||'來源未提供日期', "。缺少本益比保留空值，並非0。"]})]}), jsxRuntime.jsxs('div', { className: "tm-grid two" , children: [jsxRuntime.jsxs(Panel, { id: "corporate-events", query: "fundamentals", title: "最新重大訊息", rows: news, children: [jsxRuntime.jsxs('div', { className: "tm-events", children: [news.slice(0,30).map((r,i)=>jsxRuntime.jsxs('details', { children: [jsxRuntime.jsxs('summary', { children: [jsxRuntime.jsxs('time', { children: [r.date||'未提供日期', " " , timeLabel(r.time)]}), jsxRuntime.jsxs('span', { children: [jsxRuntime.jsxs('b', { children: [r.ticker, " " , r.name]}), r.title]}), jsxRuntime.jsx('i', { children: "＋"})]}), jsxRuntime.jsx('p', { children: r.detail}), jsxRuntime.jsxs('small', { children: ["事實發生日：", r.event_date, "；可知時間應採發言日期與時間。"]})]}, i)), !news.length&&jsxRuntime.jsx(Empty, { text: "沒有符合的公告",})]}), jsxRuntime.jsx('a', { className: "tm-textlink", href: "https://mops.twse.com.tw/", target: "_blank", rel: "noreferrer", children: "前往公開資訊觀測站 ↗" })]}), jsxRuntime.jsx(Sectors, { rows: data.market?.sectors||[], expanded: true,})]})]})}
 function Factors({factors=[],sources=[],initialSearch=''}){const [search,setSearch]=react.useState(initialSearch),[group,setGroup]=react.useState('全部'),[status,setStatus]=react.useState('全部'),[selected,setSelected]=react.useState(null);const rows=factors.filter(r=>(group==='全部'||r.group===group)&&(status==='全部'||r.status===status)&&(!search||`${r.id} ${r.name} ${r.value||''} ${r.method}`.toLowerCase().includes(search.toLowerCase())));const groups=['全部','價格與廣度','槓桿與籌碼','波動與敘事','產業與總體'];return jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [jsxRuntime.jsxs('div', { className: "tm-sectionline", children: [jsxRuntime.jsxs('div', { children: [jsxRuntime.jsx('h2', { children: "68 項研究因子" }), jsxRuntime.jsx('p', { children: "可觀測、代理與缺漏分開；相關因子不重複當成獨立訊號。"})]}), jsxRuntime.jsxs('label', { className: "tm-search", children: [jsxRuntime.jsx(Glyph, { type: "search",}), jsxRuntime.jsx('input', { 'aria-label': "搜尋因子、代碼或資料需求", placeholder: "搜尋因子、代碼或資料需求", value: search, onChange: e=>setSearch(e.target.value),})]})]}), jsxRuntime.jsxs('div', { className: "tm-factor-controls", children: [jsxRuntime.jsx('div', { className: "tm-segment", children: groups.map(g=>jsxRuntime.jsx('button', { className: group===g?'active':'', onClick: ()=>setGroup(g), children: g}, g))}), jsxRuntime.jsx('select', { 'aria-label': "因子觀測狀態", value: status, onChange: e=>setStatus(e.target.value), children: ['全部','可觀測','部分','代理','缺漏'].map(s=>jsxRuntime.jsx('option', { children: s}, s))}), jsxRuntime.jsxs('span', { children: [rows.length, " / "  , factors.length, " 項" ]})]}), jsxRuntime.jsxs(Panel, { id: "factor-catalog", query: "catalog", title: "因子觀測與連線範圍", rows: rows, children: [jsxRuntime.jsx('div', { className: "tm-table-scroll", children: jsxRuntime.jsxs('table', { className: "tm-factor-table", children: [jsxRuntime.jsx('thead', { children: jsxRuntime.jsxs('tr', { children: [jsxRuntime.jsx('th', { children: "因子"}), jsxRuntime.jsx('th', { children: "觀測狀態"}), jsxRuntime.jsx('th', { children: "最新可用資訊"}), jsxRuntime.jsx('th', { children: "觀測日期"}), jsxRuntime.jsx('th', { children: "來源"})]})}), jsxRuntime.jsx('tbody', { children: rows.map(r=>jsxRuntime.jsxs('tr', { onClick: ()=>setSelected(r), tabIndex: "0", onKeyDown: e=>{if(e.key==='Enter')setSelected(r);}, 'aria-label': `查看${r.id}${r.name}詳情`, children: [jsxRuntime.jsxs('td', { children: [jsxRuntime.jsx('code', { children: r.id}), jsxRuntime.jsx('b', { children: r.name})]}), jsxRuntime.jsx('td', { children: jsxRuntime.jsx('span', { className: 'tm-badge '+(r.status==='可觀測'?'green':r.status==='缺漏'?'gray':'amber'), children: r.status})}), jsxRuntime.jsx('td', { children: r.value||r.missing_reason}), jsxRuntime.jsx('td', { children: r.observed_at||'—'}), jsxRuntime.jsxs('td', { children: [r.sources.length?r.sources.map(s=>s.title).join('、'):'未接通', " " , jsxRuntime.jsx('span', { className: "tm-detail-arrow", children: "↗"})]})]}, r.id))})]})}), !rows.length&&jsxRuntime.jsx(Empty, { text: "沒有符合的因子；清除搜尋或改選全部。",})]}), selected&&jsxRuntime.jsx('div', { className: "tm-modal-backdrop", onClick: ()=>setSelected(null), children: jsxRuntime.jsxs('section', { className: "tm-factor-detail", role: "dialog", 'aria-modal': "true", 'aria-label': "因子詳情", onKeyDown: e=>{if(e.key==='Tab'){const nodes=e.currentTarget.querySelectorAll('button,a[href],input,select,[tabindex="0"]');const first=nodes[0],end=nodes[nodes.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();end?.focus();}else if(!e.shiftKey&&document.activeElement===end){e.preventDefault();first?.focus();}}}, onClick: e=>e.stopPropagation(), children: [jsxRuntime.jsx('button', { className: "tm-close", onClick: ()=>setSelected(null), autoFocus: true, 'aria-label': "關閉因子詳情", children: "×"}), jsxRuntime.jsxs('span', { className: "tm-kicker", children: [selected.group, " / "  , selected.id]}), jsxRuntime.jsx('h2', { children: selected.name}), jsxRuntime.jsx('span', { className: "tm-badge gray" , children: selected.status}), jsxRuntime.jsx('dl', { children: [['目前觀測',selected.value||'未知'],['觀測日期',selected.observed_at||'未取得'],['已知發布時間',selected.published_at||'來源未提供；不由抓取時間推算'],['單位',selected.unit||'未取得'],['更新頻率',selected.frequency||'未知'],['取得與計算',selected.method],['判讀限制',selected.caveat],['覆蓋缺口',selected.missing_reason||'見判讀限制'],['框架歸屬',selected.basis]].map(([a,b])=>jsxRuntime.jsxs('div', { children: [jsxRuntime.jsx('dt', { children: a}), jsxRuntime.jsx('dd', { children: b})]}, a))}), selected.sources.map(s=>jsxRuntime.jsxs('a', { href: s.url, target: "_blank", rel: "noreferrer", className: "tm-source-link", children: [jsxRuntime.jsx(Glyph, { type: "link",}), jsxRuntime.jsxs('span', { children: [s.title, jsxRuntime.jsxs('small', { children: ["觀測 " , s.observed_at||'未知', " · 抓取 "   , s.retrieved_at||'未成功']})]}), "↗"]}, s.id)), jsxRuntime.jsx('div', { className: "tm-footnote", children: "A 為研究來源曾提及；B 為工程量化補強，不宣稱為股癌本人固定算法。"  })]})})]})}
 function Sources({sources=[],packet}){const [filter,setFilter]=react.useState('全部');const rows=sources.filter(s=>filter==='全部'||(filter==='異常'?s.status!=='ok':s.status==='ok'));return jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [jsxRuntime.jsxs('div', { className: "tm-sectionline", children: [jsxRuntime.jsxs('div', { children: [jsxRuntime.jsx('h2', { children: "公開來源連線與資料時間"}), jsxRuntime.jsx('p', { children: "抓取成功不代表即時。逐項對照觀測時間、發布頻率與來源。"})]}), jsxRuntime.jsx('select', { 'aria-label': "來源連線狀態", value: filter, onChange: e=>setFilter(e.target.value), children: ['全部','正常','異常'].map(x=>jsxRuntime.jsx('option', { children: x}, x))})]}), jsxRuntime.jsx(Panel, { id: "connection-status", query: "sources", title: "來源狀態", rows: rows, children: jsxRuntime.jsx('div', { className: "tm-table-scroll", children: jsxRuntime.jsxs('table', { children: [jsxRuntime.jsx('thead', { children: jsxRuntime.jsxs('tr', { children: [jsxRuntime.jsx('th', { children: "資料來源"}), jsxRuntime.jsx('th', { children: "狀態"}), jsxRuntime.jsx('th', { children: "最後觀測日"}), jsxRuntime.jsx('th', { children: "最近成功抓取（台北）"}), jsxRuntime.jsx('th', { children: "發布頻率"}), jsxRuntime.jsx('th', { children: "更新間隔"}), jsxRuntime.jsx('th', { children: "詳情"})]})}), jsxRuntime.jsx('tbody', { children: rows.map(s=>jsxRuntime.jsxs('tr', { children: [jsxRuntime.jsx('td', { children: jsxRuntime.jsxs('a', { href: s.url, target: "_blank", rel: "noreferrer", children: [s.title, " ↗" ]})}), jsxRuntime.jsx('td', { children: jsxRuntime.jsx('span', { className: 'tm-badge '+(s.status==='ok'?'green':'amber'), children: s.status==='ok'?'已連線':s.status==='stale'?'保留前值':'失敗'})}), jsxRuntime.jsx('td', { children: s.observed_at||'來源未提供'}), jsxRuntime.jsx('td', { children: s.retrieved_at?new Date(s.retrieved_at).toLocaleString('zh-TW',{timeZone:'Asia/Taipei',hour12:false}):'尚未成功'}), jsxRuntime.jsx('td', { children: s.frequency}), jsxRuntime.jsx('td', { children: s.ttl_seconds<60?s.ttl_seconds+'秒':Math.round(s.ttl_seconds/60)+'分鐘'}), jsxRuntime.jsx('td', { className: "tm-source-error", children: s.error||'—'})]}, s.id))})]})})}), jsxRuntime.jsxs('div', { className: "tm-grid two" , children: [jsxRuntime.jsx(Panel, { id: "source-method", query: "sources", title: "更新方式", rows: [], children: jsxRuntime.jsxs('div', { className: "tm-gap-list", children: [jsxRuntime.jsxs('div', { children: [jsxRuntime.jsx('b', { children: "盤中價格"}), jsxRuntime.jsx('span', { children: "網頁每60秒檢查；MIS來源以回傳日期／時間為準。休市仍顯示最後報價，不以抓取時間冒充行情時間。"})]}), jsxRuntime.jsxs('div', { children: [jsxRuntime.jsx('b', { children: "日頻與月頻"}), jsxRuntime.jsx('span', { children: "日線、融資、法人、期權與營收依發布頻率更新。歷史資料由網路重取，僅使用程序記憶體快取。"})]}), jsxRuntime.jsxs('div', { children: [jsxRuntime.jsx('b', { children: "失敗與過期"}), jsxRuntime.jsx('span', { children: "保留前值會明確標示；從未成功的資料顯示未知。日期差異不補零，也不當作同一交易日。"})]})]})}), jsxRuntime.jsx(Panel, { id: "source-coverage", query: "catalog", title: "研究範圍", rows: [], children: jsxRuntime.jsxs('div', { className: "tm-gap-list", children: [jsxRuntime.jsxs('div', { children: [jsxRuntime.jsx('b', { children: "價格與盤後資訊"}), jsxRuntime.jsx('span', { children: "TWSE、TPEx、TAIFEX、Cboe、FinMind與美國財政部。部分免費資料存在延遲與流量限制。"})]}), jsxRuntime.jsxs('div', { children: [jsxRuntime.jsx('b', { children: "無法由免費公開API完整取得"}), jsxRuntime.jsx('span', { children: "整戶維持率、私人質押、盤中完整委託簿、分點、共識EPS、產業訂單、付費報價及業內查證。"})]}), jsxRuntime.jsxs('div', { children: [jsxRuntime.jsx('b', { children: "六階段框架"}), jsxRuntime.jsx('span', { children: "對公開觀察的研究歸納，並非股癌本人公布的固定六階段理論。"})]})]})})]})]})}
-function DashboardContent(){const live=useLive();const {packet,busy,error,refresh,theme,setTheme}=live;const {activeTabId}=dataApp.useDashboardTabs(tabs);const tab=activeTabId||'overview';const data=packet?.data||{},f=packet?.features||{},sources=packet?.sources||[],factors=packet?.factors||[];const sm=Object.fromEntries(sources.map(s=>[s.id,s]));const [symbol,setSymbol]=react.useState('taiex');const b=data.market?.breadth;const q=(data.quote||[]).find(q=>q.symbol==='t00');const quote=q?.close!=null?q:last(data.taiex);const delta=q?.close!=null?change(q.close,q.previous):roi(data.taiex,1);const available=factors.filter(x=>x.status!=='缺漏').length;const errors=sources.filter(s=>s.status!=='ok');const percent=factors.length?available/factors.length*100:0;
+function DashboardContent(){const live=useLive();const {packet,busy,error,refresh,theme,setTheme}=live;
+const [topbarHost,setTopbarHost]=react.useState(null);
+react.useEffect(()=>{
+let cancelled=false;
+const attach=()=>{
+if(cancelled)return;
+let host=document.getElementById('tm-topbar-actions-host');
+if(!host){
+const parent=document.querySelector('.dashboard-tabs-row')||document.querySelector('.dashboard-topbar');
+if(parent){
+host=document.createElement('div');
+host.id='tm-topbar-actions-host';
+host.className='tm-topbar-actions';
+parent.appendChild(host);
+}
+}
+if(host)setTopbarHost(host);
+else setTimeout(attach,50);
+};
+attach();
+return ()=>{cancelled=true;};
+},[]);const {activeTabId}=dataApp.useDashboardTabs(tabs);const tab=activeTabId||'overview';const data=packet?.data||{},f=packet?.features||{},sources=packet?.sources||[],factors=packet?.factors||[];const sm=Object.fromEntries(sources.map(s=>[s.id,s]));const [symbol,setSymbol]=react.useState('taiex');const b=data.market?.breadth;const q=(data.quote||[]).find(q=>q.symbol==='t00');const quote=q?.close!=null?q:last(data.taiex);const delta=q?.close!=null?change(q.close,q.previous):roi(data.taiex,1);const available=factors.filter(x=>x.status!=='缺漏').length;const errors=sources.filter(s=>s.status!=='ok');const percent=factors.length?available/factors.length*100:0;
 react.useEffect(()=>{const close=e=>{if(e.key==='Escape')document.querySelector('.tm-close')?.click();};window.addEventListener('keydown',close);return ()=>window.removeEventListener('keydown',close);},[]);
-return jsxRuntime.jsxs('article', { className: "tm-page", 'data-dashboard-layout': "full-width", children: [jsxRuntime.jsxs('div', { className: "tm-live-toolbar", children: [jsxRuntime.jsxs('div', { className: "tm-live-status", children: [jsxRuntime.jsx('span', { className: 'tm-live-dot '+(error?'bad':busy?'loading':''),}), jsxRuntime.jsx('span', { className: "tm-muted", children: busy?'更新中…':error?'連線異常':(packet?new Date(packet.asof).toLocaleTimeString('zh-TW',{timeZone:'Asia/Taipei',hour12:false}):'')})]}), jsxRuntime.jsxs('div', { className: "tm-live-actions", children: [jsxRuntime.jsx('button', { className: "tm-btn theme-toggle", onClick: ()=>setTheme(t=>t==='dark'?'light':'dark'), title: "切換淺色 / 深色模式", children: theme==='dark'?'☀️ 淺色模式':'🌙 深色模式'}), jsxRuntime.jsxs('button', { className: "tm-btn refresh", disabled: busy, onClick: refresh, children: [jsxRuntime.jsx(Glyph, { type: "refresh",}), busy?'更新中':'重新整理']})]})]})
+return jsxRuntime.jsxs('article', { className: "tm-page", 'data-dashboard-layout': "full-width", children: [topbarHost&&reactDOM.createPortal(jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
+jsxRuntime.jsxs('div', { className: "tm-topbar-time", children: [
+jsxRuntime.jsx('span', { className: 'tm-live-dot '+(error?'bad':busy?'loading':''),}),
+packet?new Date(packet.asof).toLocaleTimeString('zh-TW',{timeZone:'Asia/Taipei',hour12:false}):(busy?'更新中':'')
+]}),
+jsxRuntime.jsx('button', { className: "tm-topbar-btn", onClick: ()=>setTheme(t=>t==='dark'?'light':'dark'), title: "切換主題", children: theme==='dark'?'淺色模式':'深色模式'}),
+jsxRuntime.jsx('button', { className: "tm-topbar-btn refresh", disabled: busy, onClick: refresh, children: busy?'更新中':'重新整理'})
+]}), topbarHost)
 , error&&jsxRuntime.jsxs('div', { className: "tm-alert", children: [error, " " , packet?'畫面保留上次資料，請留意觀測日期。':'未載入任何本地行情或示意數值。']})
 , !packet&&busy?jsxRuntime.jsxs('div', { className: "tm-loading-screen", children: [jsxRuntime.jsx('div', { className: "tm-loader",}), jsxRuntime.jsx('h2', { children: "正在連接公開市場"}), jsxRuntime.jsx('p', { children: "取得價格序列、籌碼、波動與公司公告…"}), jsxRuntime.jsx('small', { children: "首次讀取較久；無本地行情備援。"})]}):jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
 f.calendar_age_days>4&&jsxRuntime.jsxs('div', { className: "tm-alert", children: ["最新完整日線距今 " , f.calendar_age_days, " 個日曆日，階段候選已停用；日曆天數不等於交易日。" ]}), data.market?.date&&f.date&&data.market.date!==f.date&&jsxRuntime.jsxs('div', { className: "tm-alert", children: ["盤後廣度／法人觀測日 " , data.market.date, " 與價格日線 "  , f.date, " 不一致，請分別判讀。" ]}), errors.length>0&&jsxRuntime.jsxs('div', { className: "tm-alert subtle" , children: [errors.length, " 個來源更新異常；受影響資訊已標示。詳見「資料連線」。" ]})
