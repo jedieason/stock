@@ -373,7 +373,7 @@ def factor_rows(data, sources, f):
     def attach(id, keys, value, status='可觀測', note=None):
         row = next(r for r in out if r['id'] == id)
         ss = [by[k] for k in keys if k in by]
-        available = [s for s in ss if s.get('data')]
+        available = [s for s in ss if data.get(s['id']) is not None or s.get('data') is not None]
         row.update(
             status=status if available else '缺漏',
             value=value if available else None,
