@@ -209,17 +209,27 @@ def marginofficial(b):
     x = j(b)
     if x.get('stat') != 'OK':
         raise ValueError(x.get('stat', '未發布'))
+    res = {'date': day(x['date'])}
     for t in x.get('tables', []):
         for r in t.get('data', []):
             if r[0] == '融資金額(仟元)':
-                return {
-                    'date': day(x['date']),
+                res.update({
                     'buy': number(r[1]) / 1e5,
                     'sell': number(r[2]) / 1e5,
                     'repay': number(r[3]) / 1e5,
                     'previous': number(r[4]) / 1e5,
                     'value': number(r[5]) / 1e5
-                }
+                })
+            elif r[0] == '融券(交易單位)':
+                res.update({
+                    'short_buy': number(r[1]),
+                    'short_sell': number(r[2]),
+                    'short_repay': number(r[3]),
+                    'short_previous': number(r[4]),
+                    'short_balance': number(r[5])
+                })
+    if 'value' in res:
+        return res
     raise ValueError('找不到融資金額欄位')
 
 def institutions(b):
@@ -232,8 +242,8 @@ def daytrade(b):
     x = j(b)
     if x.get('stat') != 'OK':
         raise ValueError(x.get('stat', '未發布'))
-    t = next((t for t in x.get('tables', []) if '當日沖銷交易統計資訊' in t.get('title', '')), None)
-    if not t:
+    t = next((t for t in x.get('tables', []) if t.get('title') and '當日沖銷交易統計資訊' in t.get('title', '')), None)
+    if not t or not t.get('data'):
         raise ValueError('無當沖統計表')
     r = t['data'][0]
     return {
@@ -346,7 +356,34 @@ def features(data):
         logs = [math.log(p[i]['close'] / p[i - 1]['close']) for i in range(max(1, len(p) - 20), len(p))]
         f['rv20'] = statistics.stdev(logs) * math.sqrt(252) if len(logs) == 20 else None
 
+        # P10: 波段低點守住、第二隻腳
+        recent20 = p[-20:]
+        min_low = min(r['low'] for r in recent20 if r.get('low') is not None)
+        low_idx = next(i for i in range(len(p) - 1, -1, -1) if p[i]['low'] == min_low)
+        f['low20'] = min_low
+        f['low20_date'] = p[low_idx]['date']
+        f['low20_days_ago'] = len(p) - 1 - low_idx
+        f['low20_dist'] = c / min_low - 1
+        f['low20_held'] = c >= min_low
+
+        # P22: 成交/資金集中與輪動 (六大科技權值佔比)
+        mkt_vol = p[-1].get('volume')
+        if mkt_vol and mkt_vol > 0:
+            tsmc_v = (data.get('2330') or [{}])[-1].get('volume')
+            f['tsmc_vol_share'] = tsmc_v / mkt_vol if tsmc_v else None
+            top6_v = sum((data.get(k) or [{}])[-1].get('volume') or 0 for k in ['2330', '2317', '2454', '2382', '2308', '3231'])
+            f['top6_vol_share'] = top6_v / mkt_vol if top6_v else None
+
+    # F15: 股/債/黃金共跌與資產變現 (SPY 與 10Y 美債殖利率)
+    spy = data.get('SPY') or []
+    tr = data.get('treasury') or []
+    if spy and tr:
+        f['spy_r5'] = ret(spy, 5)
+        tr10_valid = [r for r in tr if r.get('y10') is not None]
+        f['tr10_chg5'] = (tr10_valid[-1]['y10'] - tr10_valid[-6]['y10']) if len(tr10_valid) >= 6 else None
+
     m = data.get('margin') or []
+    mo = data.get('margin_official')
     if m:
         f.update(
             margin=m[-1]['value'],
@@ -354,6 +391,13 @@ def features(data):
             margin20=ret(m, 20, 'value'),
             margin_dd=m[-1]['value'] / max(r['value'] for r in m[-20:]) - 1 if len(m) >= 20 else None
         )
+    if mo and isinstance(mo, dict):
+        if mo.get('repay') is not None:
+            f['margin_repay'] = mo['repay']
+        if mo.get('short_balance') is not None:
+            f['short_balance'] = mo['short_balance']
+            f['short_buy'] = mo.get('short_buy')
+
     v = data.get('vix') or []
     v3 = data.get('vix3m') or []
     if v:
@@ -392,20 +436,64 @@ def factor_rows(data, sources, f):
     for id, key, label in [('P04', 'ma60', 'MA60 '), ('P05', 'slope60', 'MA60 5日斜率 '), ('P06', 'dev20', 'MA20乖離 '), ('P07', 'atr14', 'ATR14 '), ('P08', 'dd60', '60日回撤 '), ('P09', 'location', '收盤區間位置 '), ('P20', 'volratio', '成交值/前20日均值 '), ('V06', 'rv20', '20日年化實現波動 ')]:
         value = f.get(key)
         attach(id, ['taiex'], label + (pc(value) if id in ['P05', 'P06', 'P08', 'V06'] else n(value * 100) + '%' if id == 'P09' and value is not None else n(value)), '部分' if id in ['P05', 'P06', 'P09'] else '可觀測', '僅量化代理；反彈失敗、分位與後續承接需另外確認。' if id in ['P05', 'P06', 'P09'] else None)
+
+    # P10
+    p10_val = None
+    if f.get('low20') is not None:
+        held_txt = '守住未破' if f.get('low20_held') else '破底'
+        p10_val = f"20日低點 {n(f['low20'], 0)}（{f.get('low20_date')}，{f.get('low20_days_ago')}日前），現距低點 {pc(f.get('low20_dist'))} {held_txt}"
+    attach('P10', ['taiex'], p10_val, '可觀測', '以加權指數近20日低點防守與第二隻腳回測判定。')
+
     attach('P11', ['taiex'], '5日 ' + pc(f.get('r5')) + ' / 20日 ' + pc(f.get('r20')), '部分', '報酬代理，回測修復品質需完整情境。')
     attach('P12', ['2330', '2317', '2454', '2382', '2308', '3231'], '六檔科技觀察股', '代理', '觀察樣本不是完整產業等權指數。')
     attach('P13', ['taiex', 'tpex'], '加權／櫃買相對變化', '部分', '未取得歷史成分等權指數。')
     b = (data.get('market') or {}).get('breadth')
     attach('P14', ['market'], f"上漲 {b['up']} / 下跌 {b['down']} / 持平 {b['flat']}" if b else None, '部分', '僅最新盤後廣度，未建連續AD。')
     attach('P17', ['market'], f"跌停 {b['limit_down']} 家" if b else None, '可觀測', '收盤跌停不代表全天鎖死。')
+
+    # P21
     dtv = data.get('daytrade')
-    attach('P21', ['daytrade'], f"股數占比 {n(dtv.get('volume_share'))}%" if dtv else None)
+    p21_val = f"股數占比 {n(dtv.get('volume_share'))}% / 買進占比 {n(dtv.get('buy_share'))}%" if dtv else None
+    attach('P21', ['daytrade'], p21_val, '可觀測', '證交所全市場當日沖銷交易統計。')
+
+    # P22
+    p22_val = None
+    if f.get('tsmc_vol_share') is not None and f.get('top6_vol_share') is not None:
+        p22_val = f"台積電佔大盤 {f['tsmc_vol_share']*100:.2f}% / 六大科技權值佔 {f['top6_vol_share']*100:.2f}%"
+    attach('P22', ['2330', '2317', '2454', '2382', '2308', '3231', 'taiex'], p22_val, '部分', '權值股資金集中度代理；前6大科技權值成交佔比。')
+
     attach('L01', ['margin_official', 'margin'], n(f.get('margin')) + ' 億元')
     attach('L02', ['margin'], '5日 ' + pc(f.get('margin5')) + ' / 20日 ' + pc(f.get('margin20')))
+
+    # L06
+    mo = data.get('margin_official') or {}
+    l06_val = f"現金償還 {n(mo.get('repay'))} 億元" if mo.get('repay') is not None else None
+    attach('L06', ['margin_official'], l06_val, '可觀測', '證交所信用交易每日融資現金償還本金。')
+
+    # L07
+    l07_val = f"融券餘額 {n(mo.get('short_balance'), 0)} 張（單日回補 {n(mo.get('short_buy'), 0)} 張）" if mo.get('short_balance') is not None else None
+    attach('L07', ['margin_official'], l07_val, '可觀測', '證交所信用交易每日融券餘額與回補張數。')
+
     attach('L09', ['institutions'], '外資／投信／自營現貨淨買賣超')
     attach('L10', ['futures'], '分契約法人淨OI', '部分', '截至來源實際日期，規模不同不得加總。')
     p = data.get('putcall') or []
     attach('L12', ['putcall'], f"成交 {n(p[-1]['volume'])}% / OI {n(p[-1]['oi'])}%" if p else None)
+
+    # L14
+    d_now = now().date()
+    days_to_wed = (2 - d_now.weekday()) % 7
+    f_day = dt.date(d_now.year, d_now.month, 1)
+    w_offset = (2 - f_day.weekday()) % 7
+    tw = f_day + dt.timedelta(days=w_offset + 14)
+    if d_now > tw:
+        ny, nm = (d_now.year + 1, 1) if d_now.month == 12 else (d_now.year, d_now.month + 1)
+        f_day = dt.date(ny, nm, 1)
+        w_offset = (2 - f_day.weekday()) % 7
+        tw = f_day + dt.timedelta(days=w_offset + 14)
+    days_to_month = (tw - d_now).days
+    l14_val = f"距月結算（{tw.strftime('%m/%d')}）倒數 {days_to_month} 天 / 週結算倒數 {days_to_wed} 天"
+    attach('L14', ['futures'], l14_val, '可觀測', '台指期每月第三個星期三月結算，每週三週選擇權結算倒數。')
+
     attach('L15', ['fx'], 'USD/JPY 參考匯率', '代理', '匯率不能證明carry unwind；無CFTC部位與私人槓桿。')
     for id, key, value in [('V01', 'vix', n(f.get('vix'))), ('V02', 'vix', '252日分位 ' + (n(f.get('vix_pct') * 100) + '%' if f.get('vix_pct') is not None else '—')), ('V03', 'vix3m', 'VIX/VIX3M ' + n(f.get('vixratio'))), ('V04', 'vvix', 'VVIX ' + n((data.get('vvix') or [{}])[-1].get('value')))]:
         attach(id, [key], value, '部分' if id == 'V04' else '可觀測', 'VVIX已接通，VIX9D未接通。' if id == 'V04' else None)
@@ -416,6 +504,13 @@ def factor_rows(data, sources, f):
     attach('F10', ['news'], '重大訊息與政策相關公告', '部分', '尚無全球政府政策完整事件庫。')
     attach('F12', ['treasury'], '美債2 / 10 / 30年殖利率', '部分', '未接Fed政策利率與修訂版本。')
     attach('F14', ['fx'], 'USD/TWD / USD/JPY 參考匯率')
+
+    # F15
+    f15_val = None
+    if f.get('spy_r5') is not None and f.get('tr10_chg5') is not None:
+        co_txt = '未見共跌變現潮' if f['spy_r5'] < 0 and f['tr10_chg5'] <= 0 else '股債同跌' if f['spy_r5'] < 0 and f['tr10_chg5'] > 0 else '跨資產流動性平穩'
+        f15_val = f"SPY 5日 {pc(f['spy_r5'])} / 10Y殖利率 {f['tr10_chg5']*100:+.0f} bps（{co_txt}）"
+    attach('F15', ['SPY', 'treasury'], f15_val, '代理', '以美股SPY與10年期美債殖利率同向變化判定跨資產變現與流動性壓力。')
     return out
 
 def collect(mode='full'):
@@ -485,14 +580,27 @@ def collect(mode='full'):
         latest = max((r['date'] for k in ['fmt', 'taiex'] for r in (merged_data.get(k) or [])), default=None)
         if latest:
             ds = latest.replace('-', '')
+            def fetch_twse(key, title, url_pattern, parse, existing=None, interval='交易日 15:30 盤後'):
+                d = dt.date(int(ds[:4]), int(ds[4:6]), int(ds[6:8]))
+                best = None
+                for offset in range(5):
+                    cur_ds = (d - dt.timedelta(days=offset)).strftime('%Y%m%d')
+                    url = url_pattern.format(cur_ds)
+                    entry = fetch(key, title, url, parse, '盤後日頻', existing, interval)
+                    if entry.get('status') == 'ok':
+                        return entry
+                    if best is None:
+                        best = entry
+                return best
+
             more = [
-                ('market', '證交所股票廣度與產業', f'https://www.twse.com.tw/exchangeReport/MI_INDEX?response=json&date={ds}&type=ALLBUT0999', market, '盤後日頻'),
-                ('margin_official', '證交所融資本金', f'https://www.twse.com.tw/exchangeReport/MI_MARGN?response=json&date={ds}&selectType=ALL', marginofficial, '盤後日頻'),
-                ('institutions', '證交所三大法人', f'https://www.twse.com.tw/fund/BFI82U?response=json&dayDate={ds}&type=day', institutions, '盤後日頻'),
-                ('daytrade', '證交所當沖統計', f'https://www.twse.com.tw/exchangeReport/TWTB4U?response=json&date={ds}&selectType=All', daytrade, '盤後日頻')
+                ('market', '證交所股票廣度與產業', 'https://www.twse.com.tw/exchangeReport/MI_INDEX?response=json&date={}&type=ALLBUT0999', market),
+                ('margin_official', '證交所融資本金', 'https://www.twse.com.tw/exchangeReport/MI_MARGN?response=json&date={}&selectType=ALL', marginofficial),
+                ('institutions', '證交所三大法人', 'https://www.twse.com.tw/fund/BFI82U?response=json&dayDate={}&type=day', institutions),
+                ('daytrade', '證交所當沖統計', 'https://www.twse.com.tw/exchangeReport/TWTB4U?response=json&date={}&selectType=All', daytrade)
             ]
             with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
-                extra = list(pool.map(lambda t: fetch(t[0], t[1], t[2], t[3], t[4], existing_sources_dict.get(t[0]), t[5] if len(t) > 5 else '交易日 15:30 盤後'), more))
+                extra = list(pool.map(lambda t: fetch_twse(t[0], t[1], t[2], t[3], existing_sources_dict.get(t[0])), more))
             for s in extra:
                 merged_sources_map[s['id']] = s
                 if s['data'] is not None:
