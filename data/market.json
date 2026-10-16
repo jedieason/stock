@@ -57087,7 +57087,8 @@
       "attempted_at": "2026-10-16T16:17:45+08:00",
       "status": "ok",
       "error": null,
-      "frequency": "盤中報價（來源時間為準）"
+      "frequency": "盤中報價（來源時間為準）",
+      "interval": "交易日 09:00–13:30 每 10 分鐘"
     },
     {
       "id": "fmt",
@@ -57098,7 +57099,8 @@
       "attempted_at": "2026-10-16T16:16:24+08:00",
       "status": "ok",
       "error": null,
-      "frequency": "盤後日頻"
+      "frequency": "盤後日頻",
+      "interval": "交易日 15:30 盤後"
     },
     {
       "id": "taiex",
@@ -57109,7 +57111,8 @@
       "attempted_at": "2026-10-16T16:16:24+08:00",
       "status": "ok",
       "error": null,
-      "frequency": "盤後日頻"
+      "frequency": "盤後日頻",
+      "interval": "交易日 15:30 盤後"
     },
     {
       "id": "margin",
@@ -57120,7 +57123,8 @@
       "attempted_at": "2026-10-16T16:16:24+08:00",
       "status": "ok",
       "error": null,
-      "frequency": "盤後日頻"
+      "frequency": "盤後日頻",
+      "interval": "交易日 15:30 盤後"
     },
     {
       "id": "tpex",
@@ -57131,7 +57135,8 @@
       "attempted_at": "2026-10-16T16:16:24+08:00",
       "status": "ok",
       "error": null,
-      "frequency": "盤後日頻"
+      "frequency": "盤後日頻",
+      "interval": "交易日 15:30 盤後"
     },
     {
       "id": "putcall",
@@ -57142,7 +57147,8 @@
       "attempted_at": "2026-10-16T16:16:24+08:00",
       "status": "ok",
       "error": null,
-      "frequency": "盤後日頻"
+      "frequency": "盤後日頻",
+      "interval": "交易日 15:30 盤後"
     },
     {
       "id": "fx",
@@ -57153,7 +57159,8 @@
       "attempted_at": "2026-10-16T16:16:24+08:00",
       "status": "ok",
       "error": null,
-      "frequency": "日參考匯率"
+      "frequency": "日參考匯率",
+      "interval": "交易日 15:30 盤後"
     },
     {
       "id": "futures",
@@ -57164,7 +57171,8 @@
       "attempted_at": "2026-10-16T16:16:24+08:00",
       "status": "ok",
       "error": null,
-      "frequency": "盤後日頻"
+      "frequency": "盤後日頻",
+      "interval": "交易日 15:30 盤後"
     },
     {
       "id": "valuations",
@@ -57175,7 +57183,8 @@
       "attempted_at": "2026-10-16T16:16:25+08:00",
       "status": "ok",
       "error": null,
-      "frequency": "盤後日頻"
+      "frequency": "盤後日頻",
+      "interval": "交易日 15:30 盤後"
     },
     {
       "id": "revenue",
@@ -57186,7 +57195,8 @@
       "attempted_at": "2026-10-16T16:16:41+08:00",
       "status": "ok",
       "error": null,
-      "frequency": "每月發布"
+      "frequency": "每月發布",
+      "interval": "交易日 15:30 盤後"
     },
     {
       "id": "news",
@@ -57197,7 +57207,8 @@
       "attempted_at": "2026-10-16T16:16:34+08:00",
       "status": "ok",
       "error": null,
-      "frequency": "公告發布時更新"
+      "frequency": "公告發布時更新",
+      "interval": "交易日 15:30 盤後"
     },
     {
       "id": "2330",
@@ -57208,7 +57219,8 @@
       "attempted_at": "2026-10-16T16:16:24+08:00",
       "status": "ok",
       "error": null,
-      "frequency": "盤後日頻"
+      "frequency": "盤後日頻",
+      "interval": "交易日 15:30 盤後"
     },
     {
       "id": "2317",
@@ -57219,7 +57231,8 @@
       "attempted_at": "2026-10-16T16:16:26+08:00",
       "status": "ok",
       "error": null,
-      "frequency": "盤後日頻"
+      "frequency": "盤後日頻",
+      "interval": "交易日 15:30 盤後"
     },
     {
       "id": "2454",
@@ -57230,7 +57243,8 @@
       "attempted_at": "2026-10-16T16:16:24+08:00",
       "status": "ok",
       "error": null,
-      "frequency": "盤後日頻"
+      "frequency": "盤後日頻",
+      "interval": "交易日 15:30 盤後"
     },
     {
       "id": "2382",
@@ -57241,7 +57255,8 @@
       "attempted_at": "2026-10-16T16:16:26+08:00",
       "status": "ok",
       "error": null,
-      "frequency": "盤後日頻"
+      "frequency": "盤後日頻",
+      "interval": "交易日 15:30 盤後"
     },
     {
       "id": "2308",
@@ -57252,7 +57267,8 @@
       "attempted_at": "2026-10-16T16:16:24+08:00",
       "status": "ok",
       "error": null,
-      "frequency": "盤後日頻"
+      "frequency": "盤後日頻",
+      "interval": "交易日 15:30 盤後"
     },
     {
       "id": "3231",
@@ -57263,7 +57279,8 @@
       "attempted_at": "2026-10-16T16:16:25+08:00",
       "status": "ok",
       "error": null,
-      "frequency": "盤後日頻"
+      "frequency": "盤後日頻",
+      "interval": "交易日 15:30 盤後"
     },
     {
       "id": "vix",
@@ -57274,7 +57291,8 @@
       "attempted_at": "2026-10-16T16:16:25+08:00",
       "status": "ok",
       "error": null,
-      "frequency": "美國盤後日頻"
+      "frequency": "美國盤後日頻",
+      "interval": "美股收盤後 06:00"
     },
     {
       "id": "vix3m",
@@ -57285,7 +57303,8 @@
       "attempted_at": "2026-10-16T16:16:25+08:00",
       "status": "ok",
       "error": null,
-      "frequency": "美國盤後日頻"
+      "frequency": "美國盤後日頻",
+      "interval": "美股收盤後 06:00"
     },
     {
       "id": "vvix",
@@ -57296,7 +57315,8 @@
       "attempted_at": "2026-10-16T16:16:25+08:00",
       "status": "ok",
       "error": null,
-      "frequency": "美國盤後日頻"
+      "frequency": "美國盤後日頻",
+      "interval": "美股收盤後 06:00"
     },
     {
       "id": "SPY",
@@ -57307,7 +57327,8 @@
       "attempted_at": "2026-10-16T16:16:25+08:00",
       "status": "ok",
       "error": null,
-      "frequency": "美國盤後日頻"
+      "frequency": "美國盤後日頻",
+      "interval": "美股收盤後 06:00"
     },
     {
       "id": "QQQ",
@@ -57318,7 +57339,8 @@
       "attempted_at": "2026-10-16T16:16:26+08:00",
       "status": "ok",
       "error": null,
-      "frequency": "美國盤後日頻"
+      "frequency": "美國盤後日頻",
+      "interval": "美股收盤後 06:00"
     },
     {
       "id": "SOXX",
@@ -57329,7 +57351,8 @@
       "attempted_at": "2026-10-16T16:16:26+08:00",
       "status": "ok",
       "error": null,
-      "frequency": "美國盤後日頻"
+      "frequency": "美國盤後日頻",
+      "interval": "美股收盤後 06:00"
     },
     {
       "id": "treasury",
@@ -57340,7 +57363,8 @@
       "attempted_at": "2026-10-16T16:16:26+08:00",
       "status": "ok",
       "error": null,
-      "frequency": "美國盤後日頻"
+      "frequency": "美國盤後日頻",
+      "interval": "美股收盤後 06:00"
     },
     {
       "id": "market",
@@ -57351,7 +57375,8 @@
       "attempted_at": "2026-10-16T16:16:41+08:00",
       "status": "ok",
       "error": null,
-      "frequency": "盤後日頻"
+      "frequency": "盤後日頻",
+      "interval": "交易日 15:30 盤後"
     },
     {
       "id": "margin_official",
@@ -57362,7 +57387,8 @@
       "attempted_at": "2026-10-16T16:16:41+08:00",
       "status": "error",
       "error": "ValueError: 很抱歉，沒有符合條件的資料",
-      "frequency": "盤後日頻"
+      "frequency": "盤後日頻",
+      "interval": "交易日 15:30 盤後"
     },
     {
       "id": "institutions",
@@ -57373,7 +57399,8 @@
       "attempted_at": "2026-10-16T16:16:41+08:00",
       "status": "ok",
       "error": null,
-      "frequency": "盤後日頻"
+      "frequency": "盤後日頻",
+      "interval": "交易日 15:30 盤後"
     },
     {
       "id": "daytrade",
@@ -57384,7 +57411,8 @@
       "attempted_at": "2026-10-16T16:16:41+08:00",
       "status": "error",
       "error": "ValueError: 無當沖統計表",
-      "frequency": "盤後日頻"
+      "frequency": "盤後日頻",
+      "interval": "交易日 15:30 盤後"
     }
   ],
   "refresh_seconds": 60

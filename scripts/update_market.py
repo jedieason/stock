@@ -59,7 +59,7 @@ def fm(dataset, symbol=None, days=800):
         q['data_id'] = symbol
     return 'https://api.finmindtrade.com/api/v4/data?' + urllib.parse.urlencode(q)
 
-def fetch(key, title, url, parse, frequency='盤後日頻', existing_entry=None):
+def fetch(key, title, url, parse, frequency='盤後日頻', existing_entry=None, interval='交易日 15:30 盤後'):
     t = time.time()
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 (TW-Market-Dashboard)',
@@ -87,7 +87,8 @@ def fetch(key, title, url, parse, frequency='盤後日頻', existing_entry=None)
             'attempted_at': iso(),
             'status': 'ok',
             'error': None,
-            'frequency': frequency
+            'frequency': frequency,
+            'interval': interval
         }
     except Exception as ex:
         prev = existing_entry or {}
@@ -102,7 +103,8 @@ def fetch(key, title, url, parse, frequency='盤後日頻', existing_entry=None)
             'attempted_at': iso(),
             'status': 'stale' if prev.get('data') is not None else 'error',
             'error': f'{type(ex).__name__}: {str(ex)[:160]}',
-            'frequency': frequency
+            'frequency': frequency,
+            'interval': interval
         }
     return entry
 
@@ -437,7 +439,7 @@ def collect(mode='full'):
 
     # 1. 盤中價格（即時行情）
     if mode in ['intraday', 'full']:
-        tasks.append(('quote', '台股盤中指數', 'https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_t00.tw%7Cotc_o00.tw&json=1&delay=0', quotes, '盤中報價（來源時間為準）'))
+        tasks.append(('quote', '台股盤中指數', 'https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_t00.tw%7Cotc_o00.tw&json=1&delay=0', quotes, '盤中報價（來源時間為準）', '交易日 09:00–13:30 每 10 分鐘'))
 
     # 2. 台股日頻與盤後資料
     if mode in ['daily_close', 'full']:
@@ -459,14 +461,14 @@ def collect(mode='full'):
     # 3. 美股、VIX、美債
     if mode in ['us_close', 'full']:
         for k in ['vix', 'vix3m', 'vvix']:
-            tasks.append((k, 'Cboe ' + k.upper(), f'https://cdn-api.cboe.com/api/global/us_indices/daily_prices/{k.upper()}_History.csv', cboe, '美國盤後日頻'))
+            tasks.append((k, 'Cboe ' + k.upper(), f'https://cdn-api.cboe.com/api/global/us_indices/daily_prices/{k.upper()}_History.csv', cboe, '美國盤後日頻', '美股收盤後 06:00'))
         for k in ['SPY', 'QQQ', 'SOXX']:
-            tasks.append((k, k + ' ETF歷史', fm('USStockPrice', k, 500), lambda b: fin_prices(b, True), '美國盤後日頻'))
-        tasks.append(('treasury', '美國財政部殖利率', f'https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?data=daily_treasury_yield_curve&field_tdr_date_value={year}', treasury, '美國盤後日頻'))
+            tasks.append((k, k + ' ETF歷史', fm('USStockPrice', k, 500), lambda b: fin_prices(b, True), '美國盤後日頻', '美股收盤後 06:00'))
+        tasks.append(('treasury', '美國財政部殖利率', f'https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?data=daily_treasury_yield_curve&field_tdr_date_value={year}', treasury, '美國盤後日頻', '美股收盤後 06:00'))
 
     print(f"[{now().isoformat()}] Running mode '{mode}', fetching {len(tasks)} sources...")
     with concurrent.futures.ThreadPoolExecutor(max_workers=8) as pool:
-        fetched_sources = list(pool.map(lambda t: fetch(t[0], t[1], t[2], t[3], t[4], existing_sources_dict.get(t[0])), tasks))
+        fetched_sources = list(pool.map(lambda t: fetch(t[0], t[1], t[2], t[3], t[4], existing_sources_dict.get(t[0]), t[5] if len(t) > 5 else '交易日 15:30 盤後'), tasks))
 
     # Merge fetched sources with existing sources
     merged_sources_map = dict(existing_sources_dict)
@@ -490,7 +492,7 @@ def collect(mode='full'):
                 ('daytrade', '證交所當沖統計', f'https://www.twse.com.tw/exchangeReport/TWTB4U?response=json&date={ds}&selectType=All', daytrade, '盤後日頻')
             ]
             with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
-                extra = list(pool.map(lambda t: fetch(t[0], t[1], t[2], t[3], t[4], existing_sources_dict.get(t[0])), more))
+                extra = list(pool.map(lambda t: fetch(t[0], t[1], t[2], t[3], t[4], existing_sources_dict.get(t[0]), t[5] if len(t) > 5 else '交易日 15:30 盤後'), more))
             for s in extra:
                 merged_sources_map[s['id']] = s
                 if s['data'] is not None:
