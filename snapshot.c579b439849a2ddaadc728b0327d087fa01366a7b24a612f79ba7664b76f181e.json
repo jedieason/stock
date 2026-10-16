@@ -1,0 +1,219 @@
+{
+  "title": "台股市場監測",
+  "surface": "dashboard",
+  "status": "live",
+  "generatedAt": null,
+  "buildStatus": "complete",
+  "filters": [],
+  "queries": {
+    "prices": {
+      "rows": [],
+      "source": {
+        "title": "價格與趨勢",
+        "provider": "公開市場 API 即時彙整",
+        "description": "目前圖表的觀測值來自同源行情API；回應中的sources保留各上游請求URL、觀測日、成功抓取時間與錯誤。",
+        "url": "http://127.0.0.1:8765/api/market",
+        "caveats": [
+          "不同資料有不同發布頻率；實際觀測時間請見畫面與來源頁。"
+        ],
+        "evidenceFlow": [
+          {
+            "title": "瀏覽器檢查",
+            "detail": "頁面每60秒GET /api/market，cache: no-store；前端不載入市場觀測值檔案。"
+          },
+          {
+            "title": "公開來源",
+            "detail": "server/app.py依當前Asia/Taipei日期建立請求，並以各資料來源最後完成交易日定位盤後報表。實際URL與時間請見資料連線頁或API sources欄位。"
+          },
+          {
+            "title": "計算與缺漏",
+            "detail": "從完整窗口計算MA、報酬、ATR、融資變化；無資料保留null，失敗前值只存在程序記憶體並標為stale。"
+          }
+        ]
+      }
+    },
+    "leverage": {
+      "rows": [],
+      "source": {
+        "title": "融資與法人",
+        "provider": "公開市場 API 即時彙整",
+        "description": "目前圖表的觀測值來自同源行情API；回應中的sources保留各上游請求URL、觀測日、成功抓取時間與錯誤。",
+        "url": "http://127.0.0.1:8765/api/market",
+        "caveats": [
+          "不同資料有不同發布頻率；實際觀測時間請見畫面與來源頁。"
+        ],
+        "evidenceFlow": [
+          {
+            "title": "瀏覽器檢查",
+            "detail": "頁面每60秒GET /api/market，cache: no-store；前端不載入市場觀測值檔案。"
+          },
+          {
+            "title": "公開來源",
+            "detail": "server/app.py依當前Asia/Taipei日期建立請求，並以各資料來源最後完成交易日定位盤後報表。實際URL與時間請見資料連線頁或API sources欄位。"
+          },
+          {
+            "title": "計算與缺漏",
+            "detail": "從完整窗口計算MA、報酬、ATR、融資變化；無資料保留null，失敗前值只存在程序記憶體並標為stale。"
+          }
+        ]
+      }
+    },
+    "volatility": {
+      "rows": [],
+      "source": {
+        "title": "波動與全球",
+        "provider": "公開市場 API 即時彙整",
+        "description": "目前圖表的觀測值來自同源行情API；回應中的sources保留各上游請求URL、觀測日、成功抓取時間與錯誤。",
+        "url": "http://127.0.0.1:8765/api/market",
+        "caveats": [
+          "不同資料有不同發布頻率；實際觀測時間請見畫面與來源頁。"
+        ],
+        "evidenceFlow": [
+          {
+            "title": "瀏覽器檢查",
+            "detail": "頁面每60秒GET /api/market，cache: no-store；前端不載入市場觀測值檔案。"
+          },
+          {
+            "title": "公開來源",
+            "detail": "server/app.py依當前Asia/Taipei日期建立請求，並以各資料來源最後完成交易日定位盤後報表。實際URL與時間請見資料連線頁或API sources欄位。"
+          },
+          {
+            "title": "計算與缺漏",
+            "detail": "從完整窗口計算MA、報酬、ATR、融資變化；無資料保留null，失敗前值只存在程序記憶體並標為stale。"
+          }
+        ]
+      }
+    },
+    "breadth": {
+      "rows": [],
+      "source": {
+        "title": "股票廣度",
+        "provider": "公開市場 API 即時彙整",
+        "description": "目前圖表的觀測值來自同源行情API；回應中的sources保留各上游請求URL、觀測日、成功抓取時間與錯誤。",
+        "url": "http://127.0.0.1:8765/api/market",
+        "caveats": [
+          "不同資料有不同發布頻率；實際觀測時間請見畫面與來源頁。"
+        ],
+        "evidenceFlow": [
+          {
+            "title": "瀏覽器檢查",
+            "detail": "頁面每60秒GET /api/market，cache: no-store；前端不載入市場觀測值檔案。"
+          },
+          {
+            "title": "公開來源",
+            "detail": "server/app.py依當前Asia/Taipei日期建立請求，並以各資料來源最後完成交易日定位盤後報表。實際URL與時間請見資料連線頁或API sources欄位。"
+          },
+          {
+            "title": "計算與缺漏",
+            "detail": "從完整窗口計算MA、報酬、ATR、融資變化；無資料保留null，失敗前值只存在程序記憶體並標為stale。"
+          }
+        ]
+      }
+    },
+    "sectors": {
+      "rows": [],
+      "source": {
+        "title": "產業指數",
+        "provider": "公開市場 API 即時彙整",
+        "description": "目前圖表的觀測值來自同源行情API；回應中的sources保留各上游請求URL、觀測日、成功抓取時間與錯誤。",
+        "url": "http://127.0.0.1:8765/api/market",
+        "caveats": [
+          "不同資料有不同發布頻率；實際觀測時間請見畫面與來源頁。"
+        ],
+        "evidenceFlow": [
+          {
+            "title": "瀏覽器檢查",
+            "detail": "頁面每60秒GET /api/market，cache: no-store；前端不載入市場觀測值檔案。"
+          },
+          {
+            "title": "公開來源",
+            "detail": "server/app.py依當前Asia/Taipei日期建立請求，並以各資料來源最後完成交易日定位盤後報表。實際URL與時間請見資料連線頁或API sources欄位。"
+          },
+          {
+            "title": "計算與缺漏",
+            "detail": "從完整窗口計算MA、報酬、ATR、融資變化；無資料保留null，失敗前值只存在程序記憶體並標為stale。"
+          }
+        ]
+      }
+    },
+    "fundamentals": {
+      "rows": [],
+      "source": {
+        "title": "營收與公告",
+        "provider": "公開市場 API 即時彙整",
+        "description": "目前圖表的觀測值來自同源行情API；回應中的sources保留各上游請求URL、觀測日、成功抓取時間與錯誤。",
+        "url": "http://127.0.0.1:8765/api/market",
+        "caveats": [
+          "不同資料有不同發布頻率；實際觀測時間請見畫面與來源頁。"
+        ],
+        "evidenceFlow": [
+          {
+            "title": "瀏覽器檢查",
+            "detail": "頁面每60秒GET /api/market，cache: no-store；前端不載入市場觀測值檔案。"
+          },
+          {
+            "title": "公開來源",
+            "detail": "server/app.py依當前Asia/Taipei日期建立請求，並以各資料來源最後完成交易日定位盤後報表。實際URL與時間請見資料連線頁或API sources欄位。"
+          },
+          {
+            "title": "計算與缺漏",
+            "detail": "從完整窗口計算MA、報酬、ATR、融資變化；無資料保留null，失敗前值只存在程序記憶體並標為stale。"
+          }
+        ]
+      }
+    },
+    "catalog": {
+      "rows": [],
+      "source": {
+        "title": "68項因子規格",
+        "provider": "公開市場 API 即時彙整",
+        "description": "目前圖表的觀測值來自同源行情API；回應中的sources保留各上游請求URL、觀測日、成功抓取時間與錯誤。",
+        "url": "http://127.0.0.1:8765/api/market",
+        "caveats": [
+          "不同資料有不同發布頻率；實際觀測時間請見畫面與來源頁。"
+        ],
+        "evidenceFlow": [
+          {
+            "title": "瀏覽器檢查",
+            "detail": "頁面每60秒GET /api/market，cache: no-store；前端不載入市場觀測值檔案。"
+          },
+          {
+            "title": "公開來源",
+            "detail": "server/app.py依當前Asia/Taipei日期建立請求，並以各資料來源最後完成交易日定位盤後報表。實際URL與時間請見資料連線頁或API sources欄位。"
+          },
+          {
+            "title": "計算與缺漏",
+            "detail": "從完整窗口計算MA、報酬、ATR、融資變化；無資料保留null，失敗前值只存在程序記憶體並標為stale。"
+          }
+        ]
+      }
+    },
+    "sources": {
+      "rows": [],
+      "source": {
+        "title": "即時來源狀態",
+        "provider": "公開市場 API 即時彙整",
+        "description": "目前圖表的觀測值來自同源行情API；回應中的sources保留各上游請求URL、觀測日、成功抓取時間與錯誤。",
+        "url": "http://127.0.0.1:8765/api/market",
+        "caveats": [
+          "不同資料有不同發布頻率；實際觀測時間請見畫面與來源頁。"
+        ],
+        "evidenceFlow": [
+          {
+            "title": "瀏覽器檢查",
+            "detail": "頁面每60秒GET /api/market，cache: no-store；前端不載入市場觀測值檔案。"
+          },
+          {
+            "title": "公開來源",
+            "detail": "server/app.py依當前Asia/Taipei日期建立請求，並以各資料來源最後完成交易日定位盤後報表。實際URL與時間請見資料連線頁或API sources欄位。"
+          },
+          {
+            "title": "計算與缺漏",
+            "detail": "從完整窗口計算MA、報酬、ATR、融資變化；無資料保留null，失敗前值只存在程序記憶體並標為stale。"
+          }
+        ]
+      }
+    }
+  },
+  "id": "dashboard:de492521-b6c4-411c-bb72-87dc52e8be5e"
+}
