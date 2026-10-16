@@ -1,11 +1,43 @@
-<div align="center">
+# 📊 台股市場儀表板（靜態託管 + GitHub Actions 自動更新）
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+本專案使用 **純靜態架構（GitHub Pages）** 託管台股市場監測儀表板，並透過 **GitHub Actions** 定期抓取各類市場資料，產生資料快照（`data/market.json`），免除任何伺服器架設與維護成本。
 
-  <h1>Built with AI Studio</h2>
+---
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+## 🕒 資料抓取頻率與排程
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+根據不同市場資料的發布節奏與特性，排程採取分層抓取策略：
 
-</div>
+| 資料類型 | 涵蓋內容 | 更新頻率 | 排程時段（台北時間） |
+| :--- | :--- | :--- | :--- |
+| **台股盤中價格與成交量** | 加權指數、櫃買指數即時價格、即時漲跌幅 | **每 10 分鐘** | 交易日 **09:00 – 13:30** |
+| **技術與廣度指標** | 均線乖離、季線斜率、市場漲跌家數、類股強弱 | **每日盤後** | 交易日 **15:30** |
+| **籌碼與槓桿指標** | 融資餘額拆解、三大法人現貨買賣超、期貨淨OI、Put/Call Ratio、當沖統計 | **每日盤後** | 交易日 **15:30** |
+| **美股、VIX、美債** | Cboe VIX、VIX3M、VVIX、美債 2Y/10Y/30Y 殖利率、SPY/QQQ/SOXX | **每日美股收盤後** | 交易日 **06:00** |
+| **基本面與公司事件** | 上市櫃月營收、本益比/股價淨值比/殖利率、重大訊息公告 | **每日盤後** | 交易日 **15:30** |
+| **AI 市場階段判斷** | 初升／主升／末升／初跌／主跌／末跌 候選判斷 | **收盤後生成，盤中即時對照** | 每日盤後隨日線更新，盤中配合指數連動 |
+
+> 💡 其餘非交易時段（如夜間、週末）不執行台股盤中爬蟲，避免浪費 GitHub Actions 配額與觸發 API 流量限制。
+
+---
+
+## 🚀 手動觸發更新
+
+您可以在 GitHub Repository 的 **Actions** 頁籤中：
+1. 點選 **Market Data & AI Regime Pipeline** 工作流程。
+2. 點擊 **Run workflow**。
+3. 選擇更新模式：
+   - `full`：全量抓取所有來源（包含日線、美股、營收與公告）。
+   - `intraday`：僅抓取台股盤中即時報價。
+   - `daily_close`：抓取台股盤後與籌碼資料。
+   - `us_close`：抓取美股收盤、VIX 與美債。
+
+---
+
+## 🛠️ 本地開發與測試
+
+若需在本地手動測試資料抓取：
+```bash
+python3 scripts/update_market.py --mode full
+```
+抓取完成後會產出 `data/market.json`，可直接使用任何靜態伺服器（例如 `python3 -m http.server 8000`）瀏覽 `index.html`。

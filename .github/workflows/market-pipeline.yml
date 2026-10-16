@@ -1,0 +1,89 @@
+name: Market Data & AI Regime Pipeline
+
+on:
+  schedule:
+    # 交易日 09:00 - 13:30 每 10 分鐘抓取台股盤中即時行情 (UTC 01:00 - 05:30)
+    - cron: '*/10 1-5 * * 1-5'
+    # 每日台股收盤後 15:30 抓取完整盤後、融資、三大法人、當沖、營收、公告與市場階段更新 (UTC 07:30)
+    - cron: '30 7 * * 1-5'
+    # 每日美股收盤後 06:00 抓取美股收盤、VIX、VVIX、美債 (UTC 22:00)
+    - cron: '0 22 * * 1-5'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Update mode'
+        required: true
+        default: 'full'
+        type: choice
+        options:
+          - full
+          - intraday
+          - daily_close
+          - us_close
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  update-market:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Determine Update Mode
+        id: determine_mode
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "mode=${{ github.event.inputs.mode }}" >> $GITHUB_OUTPUT
+          else
+            # Check current hour in UTC
+            HOUR=$(date -u +%H)
+            MINUTE=$(date -u +%M)
+            echo "Current UTC time: ${HOUR}:${MINUTE}"
+            if [ "$HOUR" -ge 1 ] && [ "$HOUR" -le 5 ]; then
+              echo "mode=intraday" >> $GITHUB_OUTPUT
+            elif [ "$HOUR" -eq 7 ] || [ "$HOUR" -eq 8 ]; then
+              echo "mode=daily_close" >> $GITHUB_OUTPUT
+            elif [ "$HOUR" -eq 22 ] || [ "$HOUR" -eq 23 ]; then
+              echo "mode=us_close" >> $GITHUB_OUTPUT
+            else
+              echo "mode=intraday" >> $GITHUB_OUTPUT
+            fi
+          fi
+
+      - name: Run Market Collector
+        run: |
+          echo "Executing update_market.py with mode: ${{ steps.determine_mode.outputs.mode }}"
+          python3 scripts/update_market.py --mode ${{ steps.determine_mode.outputs.mode }}
+
+      - name: Commit and Push Updated Market Snapshot
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/market.json
+          if git diff --staged --quiet; then
+            echo "No data changes to commit."
+          else
+            git commit -m "Auto-update market data snapshot [skip ci]"
+            git push
+          fi
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
