@@ -263,113 +263,117 @@ function useChecklist(f, b) {
   return { checklist, updateChecklistItem, resetChecklist, stageStats, candidate };
 }
 
-function ChecklistTable({ items = [], onUpdate, showStage = false, showAspect = false, maxHeight = '450px' }) {
-  return jsxRuntime.jsx('div', {
-    className: "tm-chk-table-wrap",
-    style: { maxHeight: maxHeight },
-    children: jsxRuntime.jsxs('table', {
-      className: "tm-chk-table",
-      children: [
-        jsxRuntime.jsx('thead', {
-          children: jsxRuntime.jsxs('tr', {
+function ChecklistItem({ it, onUpdate, showStage = false, showAspect = false }) {
+  const isMet = it.status === '符合';
+  const isUnmet = it.status === '不符合';
+  const isPending = it.status === '未確認' || !it.status;
+  const statusClass = isMet ? 'is-met' : isUnmet ? 'is-unmet' : 'is-pending';
+
+  return jsxRuntime.jsxs('div', {
+    className: 'tm-chk-item ' + statusClass,
+    children: [
+      jsxRuntime.jsxs('div', {
+        className: 'tm-chk-item-header',
+        children: [
+          jsxRuntime.jsxs('div', {
+            className: 'tm-chk-item-meta',
             children: [
-              jsxRuntime.jsx('th', { style: { width: '45px' }, children: "ID" }),
-              showStage && jsxRuntime.jsx('th', { style: { width: '65px' }, children: "行情階段" }),
-              showAspect && jsxRuntime.jsx('th', { style: { width: '75px' }, children: "面向" }),
-              jsxRuntime.jsx('th', { style: { width: '55px' }, children: "重要性" }),
-              jsxRuntime.jsx('th', { children: "可檢核指標與判讀條件" }),
-              jsxRuntime.jsx('th', { style: { width: '80px' }, children: "來源" }),
-              jsxRuntime.jsx('th', { style: { width: '180px' }, children: "評估狀態（可編輯）" }),
-              jsxRuntime.jsx('th', { style: { minWidth: '160px' }, children: "觀察數據／連結／理由（可編輯）" }),
-              jsxRuntime.jsx('th', { style: { width: '95px' }, children: "觀察日期" }),
-              jsxRuntime.jsx('th', { style: { width: '60px' }, children: "PDF" })
+              jsxRuntime.jsx('span', { className: 'tm-chk-item-id', children: '#' + it.id }),
+              showStage && jsxRuntime.jsx('span', { className: 'tm-badge gray', children: it.stage }),
+              showAspect && jsxRuntime.jsx('span', { className: 'tm-badge gray', children: it.aspect }),
+              jsxRuntime.jsx('span', {
+                className: 'tm-imp-badge ' + (it.importance === '核心' ? 'core' : 'aux'),
+                children: it.importance
+              }),
+              it.source && jsxRuntime.jsxs('span', {
+                className: 'tm-chk-item-source',
+                children: [it.source, it.page ? ' · ' + it.page : '']
+              })
             ].filter(Boolean)
+          }),
+          jsxRuntime.jsxs('div', {
+            className: 'tm-chk-toggle-group',
+            role: 'group',
+            'aria-label': '評估狀態',
+            children: [
+              jsxRuntime.jsx('button', {
+                type: 'button',
+                className: 'tm-chk-toggle-btn ' + (isMet ? 'active met' : ''),
+                onClick: () => onUpdate(it.id, { status: '符合' }),
+                title: '設為符合',
+                children: '符合'
+              }),
+              jsxRuntime.jsx('button', {
+                type: 'button',
+                className: 'tm-chk-toggle-btn ' + (isUnmet ? 'active unmet' : ''),
+                onClick: () => onUpdate(it.id, { status: '不符合' }),
+                title: '設為不符合',
+                children: '不符合'
+              }),
+              jsxRuntime.jsx('button', {
+                type: 'button',
+                className: 'tm-chk-toggle-btn ' + (isPending ? 'active pending' : ''),
+                onClick: () => onUpdate(it.id, { status: '未確認' }),
+                title: '設為未確認',
+                children: '未確認'
+              })
+            ]
           })
-        }),
-        jsxRuntime.jsx('tbody', {
-          children: items.map(it => {
-            const rowClass = it.status === '符合' ? 'is-met' : it.status === '不符合' ? 'is-unmet' : '';
-            return jsxRuntime.jsxs('tr', {
-              className: rowClass,
-              children: [
-                jsxRuntime.jsx('td', { children: jsxRuntime.jsx('code', { children: it.id }) }),
-                showStage && jsxRuntime.jsx('td', { children: jsxRuntime.jsx('span', { className: "tm-badge gray", children: it.stage }) }),
-                showAspect && jsxRuntime.jsx('td', { children: jsxRuntime.jsx('span', { className: "tm-badge gray", children: it.aspect }) }),
-                jsxRuntime.jsx('td', {
-                  children: jsxRuntime.jsx('span', {
-                    className: 'tm-imp-badge ' + (it.importance === '核心' ? 'core' : 'aux'),
-                    children: it.importance
-                  })
-                }),
-                jsxRuntime.jsxs('td', {
-                  children: [
-                    jsxRuntime.jsx('b', { style: { display: 'block', marginBottom: '2px', color: 'var(--text)' }, children: it.indicator }),
-                    jsxRuntime.jsx('span', { style: { fontSize: '10px', color: 'var(--secondary)' }, children: it.logic })
-                  ]
-                }),
-                jsxRuntime.jsx('td', { children: jsxRuntime.jsx('small', { style: { color: 'var(--secondary)' }, children: it.source }) }),
-                jsxRuntime.jsx('td', {
-                  children: jsxRuntime.jsxs('div', {
-                    style: { display: 'flex', alignItems: 'center', gap: '6px' },
-                    children: [
-                      jsxRuntime.jsx('span', {
-                        className: 'tm-chk-tag ' + (it.status === '符合' ? 'met' : it.status === '不符合' ? 'unmet' : 'pending'),
-                        children: it.status
-                      }),
-                      jsxRuntime.jsxs('div', {
-                        className: "tm-chk-btn-group",
-                        children: [
-                          jsxRuntime.jsx('button', {
-                            type: "button",
-                            className: 'tm-chk-btn ' + (it.status === '符合' ? 'active met' : ''),
-                            onClick: () => onUpdate(it.id, { status: '符合' }),
-                            title: "設為符合",
-                            children: "符合"
-                          }),
-                          jsxRuntime.jsx('button', {
-                            type: "button",
-                            className: 'tm-chk-btn ' + (it.status === '不符合' ? 'active unmet' : ''),
-                            onClick: () => onUpdate(it.id, { status: '不符合' }),
-                            title: "設為不符合",
-                            children: "不符合"
-                          }),
-                          jsxRuntime.jsx('button', {
-                            type: "button",
-                            className: 'tm-chk-btn ' + (it.status === '未確認' ? 'active pending' : ''),
-                            onClick: () => onUpdate(it.id, { status: '未確認' }),
-                            title: "設為未確認",
-                            children: "未確認"
-                          })
-                        ]
-                      })
-                    ]
-                  })
-                }),
-                jsxRuntime.jsx('td', {
-                  children: jsxRuntime.jsx('input', {
-                    type: "text",
-                    className: "tm-chk-input",
-                    placeholder: "輸入觀察數據或理由...",
-                    value: it.note || '',
-                    onChange: e => onUpdate(it.id, { note: e.target.value })
-                  })
-                }),
-                jsxRuntime.jsx('td', {
-                  children: jsxRuntime.jsx('input', {
-                    type: "text",
-                    className: "tm-chk-date",
-                    placeholder: "YYYY-MM-DD",
-                    value: it.date || '',
-                    onChange: e => onUpdate(it.id, { date: e.target.value })
-                  })
-                }),
-                jsxRuntime.jsx('td', { children: jsxRuntime.jsx('small', { style: { color: 'var(--secondary)' }, children: it.page }) })
-              ].filter(Boolean)
-            }, it.id);
-          })
+        ]
+      }),
+      jsxRuntime.jsx('div', {
+        className: 'tm-chk-item-title',
+        children: it.indicator
+      }),
+      it.logic && jsxRuntime.jsxs('div', {
+        className: 'tm-chk-item-logic',
+        children: [
+          jsxRuntime.jsx('span', { className: 'tm-chk-logic-label', children: '判讀邏輯：' }),
+          it.logic
+        ]
+      }),
+      jsxRuntime.jsx('div', {
+        className: 'tm-chk-item-footer',
+        children: jsxRuntime.jsxs('div', {
+          className: 'tm-chk-item-inputs',
+          children: [
+            jsxRuntime.jsx('input', {
+              type: 'text',
+              className: 'tm-chk-item-note',
+              placeholder: '觀察數據／連結／理由（可直接編輯）...',
+              value: it.note || '',
+              onChange: e => onUpdate(it.id, { note: e.target.value })
+            }),
+            jsxRuntime.jsx('input', {
+              type: 'text',
+              className: 'tm-chk-item-date',
+              placeholder: 'YYYY-MM-DD',
+              value: it.date || '',
+              onChange: e => onUpdate(it.id, { date: e.target.value }),
+              title: '觀察日期'
+            })
+          ]
         })
-      ]
-    })
+      })
+    ]
+  });
+}
+
+function ChecklistCardList({ items = [], onUpdate, showStage = false, showAspect = false, emptyText = '目前暫無符合條件之檢核項目' }) {
+  if (!items || items.length === 0) {
+    return jsxRuntime.jsx('div', {
+      className: 'tm-chk-empty',
+      children: emptyText
+    });
+  }
+  return jsxRuntime.jsx('div', {
+    className: 'tm-chk-card-list',
+    children: items.map(it => jsxRuntime.jsx(ChecklistItem, {
+      it: it,
+      onUpdate: onUpdate,
+      showStage: showStage,
+      showAspect: showAspect
+    }, it.id))
   });
 }
 
@@ -401,50 +405,48 @@ function ChecklistPanel({ id, title, items = [], onUpdate, defaultAspect = '全�
     id: id,
     title: title,
     rows: items,
-    desc: desc || "依據 109 項檢核表指標逐項判定；可直接編輯評估狀態、觀察數據與日期（禁止使用 emoji）。",
+    desc: desc || '依據 109 項檢核表指標逐項判定；可直接編輯評估狀態、觀察數據與日期（禁止使用 emoji）。',
     children: [
       jsxRuntime.jsxs('div', {
-        className: "tm-chk-stat-bar",
+        className: 'tm-chk-stat-bar',
         children: [
-          jsxRuntime.jsxs('span', { children: ["項目總計：", jsxRuntime.jsx('strong', { children: items.length })] }),
-          jsxRuntime.jsxs('span', { className: "tm-chk-stat-item met", children: ["符合：", metCount, " 項"] }),
-          jsxRuntime.jsxs('span', { className: "tm-chk-stat-item unmet", children: ["不符合：", unmetCount, " 項"] }),
-          jsxRuntime.jsxs('span', { className: "tm-chk-stat-item pending", children: ["未確認：", pendingCount, " 項"] })
+          jsxRuntime.jsxs('span', { children: ['項目總計：', jsxRuntime.jsx('strong', { children: items.length })] }),
+          jsxRuntime.jsxs('span', { className: 'tm-chk-stat-item met', children: ['符合：', metCount, ' 項'] }),
+          jsxRuntime.jsxs('span', { className: 'tm-chk-stat-item unmet', children: ['不符合：', unmetCount, ' 項'] }),
+          jsxRuntime.jsxs('span', { className: 'tm-chk-stat-item pending', children: ['未確認：', pendingCount, ' 項'] })
         ]
       }),
       jsxRuntime.jsxs('div', {
-        className: "tm-chk-controls",
+        className: 'tm-chk-controls',
         children: [
           jsxRuntime.jsxs('div', {
-            className: "tm-chk-filters",
+            className: 'tm-chk-filters',
             children: [
-              jsxRuntime.jsx('span', { style: { color: 'var(--secondary)', fontSize: '11px', marginRight: '4px' }, children: "階段：" }),
+              jsxRuntime.jsx('span', { style: { color: 'var(--secondary)', fontSize: '11px', marginRight: '4px' }, children: '階段：' }),
               ['全部', '初升', '主升', '末升', '初跌', '主跌', '末跌', '翻多'].map(st => {
                 const count = st === '全部' ? items.length : items.filter(x => x.stage === st).length;
                 return jsxRuntime.jsxs('button', {
-                  type: "button",
+                  type: 'button',
                   className: 'tm-chk-pill ' + (stageFilter === st ? 'active' : ''),
                   onClick: () => setStageFilter(st),
-                  children: [st, " (", count, ")"]
+                  children: [st, ' (', count, ')']
                 }, st);
               })
             ]
           }),
           jsxRuntime.jsxs('div', {
-            className: "tm-chk-filters",
+            className: 'tm-chk-filters',
             children: [
-              jsxRuntime.jsx('span', { style: { color: 'var(--secondary)', fontSize: '11px', marginRight: '4px' }, children: "狀態：" }),
               ['全部', '符合', '不符合', '未確認'].map(st => jsxRuntime.jsx('button', {
-                type: "button",
+                type: 'button',
                 className: 'tm-chk-pill ' + (statusFilter === st ? 'active' : ''),
                 onClick: () => setStatusFilter(st),
                 children: st
               }, st)),
               jsxRuntime.jsx('input', {
-                type: "text",
-                className: "tm-chk-input",
-                style: { width: '130px', minWidth: '100px', marginLeft: '6px' },
-                placeholder: "搜尋指標...",
+                type: 'text',
+                className: 'tm-chk-search-input',
+                placeholder: '搜尋指標...',
                 value: search,
                 onChange: e => setSearch(e.target.value)
               })
@@ -452,7 +454,7 @@ function ChecklistPanel({ id, title, items = [], onUpdate, defaultAspect = '全�
           })
         ]
       }),
-      jsxRuntime.jsx(ChecklistTable, {
+      jsxRuntime.jsx(ChecklistCardList, {
         items: filtered,
         onUpdate: onUpdate,
         showStage: true,
@@ -475,112 +477,112 @@ function Regime({ f, b, factors = [], checklist = [], onUpdate, stageStats = {},
     if (statusFilter !== '全部' && it.status !== statusFilter) return false;
     if (search) {
       const q = search.toLowerCase();
-      if (!it.id.includes(q) && !it.indicator.toLowerCase().includes(q) && !it.logic.toLowerCase().includes(q)) return false;
+      if (!it.id.includes(q) && !it.indicator.toLowerCase().includes(q) && !it.logic.toLowerCase().includes(q) && !(it.note && it.note.toLowerCase().includes(q))) return false;
     }
     return true;
   });
 
   return jsxRuntime.jsxs(Panel, {
-    id: "regime-signal",
-    query: "catalog",
-    title: "行情階段訊號（109項檢核）",
+    id: 'regime-signal',
+    query: 'catalog',
+    title: '行情階段訊號（109項檢核）',
     rows: factors.filter(r => ['P01', 'P04', 'P05', 'L02'].includes(r.id)),
     children: [
       jsxRuntime.jsxs('div', {
-        className: "tm-regime-head",
+        className: 'tm-regime-head',
         children: [
           jsxRuntime.jsxs('div', {
             children: [
-              jsxRuntime.jsx('span', { className: "tm-kicker", children: "量化候選 · 檢核判定" }),
+              jsxRuntime.jsx('span', { className: 'tm-kicker', children: '量化候選 · 檢核判定' }),
               jsxRuntime.jsxs('div', {
-                className: "tm-stage",
+                className: 'tm-stage',
                 children: [
                   candidate.stage || '尚待確認',
                   jsxRuntime.jsxs('span', {
                     className: 'tm-badge ' + (candidate.confidence === '高' ? 'green' : 'amber'),
-                    children: ["信心：", candidate.confidence || '低']
+                    children: ['信心：', candidate.confidence || '低']
                   }),
                   currStats.total > 0 && jsxRuntime.jsxs('span', {
-                    className: "tm-badge gray",
-                    children: ["目前符合：", currStats.met, " / ", currStats.total, " 項"]
+                    className: 'tm-badge gray',
+                    children: ['當前階段符合：', currStats.met, ' / ', currStats.total, ' 項']
                   })
                 ]
               })
             ]
           }),
-          jsxRuntime.jsx('div', { className: "tm-orbit", children: jsxRuntime.jsx(Glyph, { size: 34 }) })
+          jsxRuntime.jsx('div', { className: 'tm-orbit', children: jsxRuntime.jsx(Glyph, { size: 34 }) })
         ]
       }),
       jsxRuntime.jsx('div', {
-        className: "tm-phase-strip",
+        className: 'tm-phase-strip',
         children: stages.map(([s], i) => {
           const st = stageStats[s] || { met: 0, total: 0 };
           const isCandidate = candidate.stage === s;
           const isChosen = activeStage === s;
           return jsxRuntime.jsxs('button', {
-            className: (isCandidate ? 'current candidate-stage ' : '') + (isChosen ? 'chosen ' : ''),
+            type: 'button',
+            className: (isCandidate ? 'is-candidate ' : '') + (isChosen ? 'chosen ' : ''),
             onClick: () => setSelected(s),
             'aria-pressed': isChosen,
-            title: s + '：符合 ' + st.met + '/' + st.total + ' 項',
+            title: s + '：符合 ' + st.met + ' / ' + st.total + ' 項',
             children: [
-              jsxRuntime.jsxs('span', { children: ["0", i + 1] }),
-              s,
-              jsxRuntime.jsxs('small', { children: [" (", st.met, "符合)"] })
+              jsxRuntime.jsx('span', { className: 'tm-stage-num', children: '0' + (i + 1) }),
+              jsxRuntime.jsx('span', { className: 'tm-stage-name', children: s }),
+              jsxRuntime.jsxs('span', { className: 'tm-stage-count', children: [st.met, ' 符合'] })
             ]
           }, s);
         })
       }),
       jsxRuntime.jsx('p', {
-        className: "tm-explanation",
+        className: 'tm-explanation',
         children: selected ? stages.find(x => x[0] === selected)?.[1] : candidate.summary
       }),
       jsxRuntime.jsxs('div', {
-        className: "tm-chk-stat-bar",
+        className: 'tm-chk-stat-bar',
         children: [
-          jsxRuntime.jsxs('span', { children: ["【", activeStage, "檢核表】總計 ", jsxRuntime.jsx('strong', { children: currStats.total }), " 項："] }),
-          jsxRuntime.jsxs('span', { className: "tm-chk-stat-item met", children: ["符合 ", currStats.met, " 項（核心 ", currStats.coreMet, "/", currStats.coreTotal, "）"] }),
-          jsxRuntime.jsxs('span', { className: "tm-chk-stat-item unmet", children: ["不符合 ", currStats.unmet, " 項"] }),
-          jsxRuntime.jsxs('span', { className: "tm-chk-stat-item pending", children: ["未確認 ", currStats.pending, " 項"] }),
-          jsxRuntime.jsxs('span', { style: { marginLeft: 'auto', fontWeight: '600' }, children: ["符合率：", currStats.pct.toFixed(1), "%"] })
+          jsxRuntime.jsxs('span', { children: ['【', activeStage, '檢核表】總計 ', jsxRuntime.jsx('strong', { children: currStats.total }), ' 項：'] }),
+          jsxRuntime.jsxs('span', { className: 'tm-chk-stat-item met', children: ['符合 ', currStats.met, ' 項（核心 ', currStats.coreMet, '/', currStats.coreTotal, '）'] }),
+          jsxRuntime.jsxs('span', { className: 'tm-chk-stat-item unmet', children: ['不符合 ', currStats.unmet, ' 項'] }),
+          jsxRuntime.jsxs('span', { className: 'tm-chk-stat-item pending', children: ['未確認 ', currStats.pending, ' 項'] }),
+          jsxRuntime.jsxs('span', { style: { marginLeft: 'auto', fontWeight: '600' }, children: ['符合率：', currStats.pct.toFixed(1), '%'] })
         ]
       }),
       jsxRuntime.jsxs('div', {
-        className: "tm-chk-controls",
+        className: 'tm-chk-controls',
         children: [
           jsxRuntime.jsxs('div', {
-            className: "tm-chk-filters",
+            className: 'tm-chk-filters',
             children: [
               ['全部', '符合', '不符合', '未確認'].map(st => {
                 const count = st === '全部' ? stageItems.length : stageItems.filter(x => x.status === st).length;
                 return jsxRuntime.jsxs('button', {
-                  type: "button",
+                  type: 'button',
                   className: 'tm-chk-pill ' + (statusFilter === st ? 'active' : ''),
                   onClick: () => setStatusFilter(st),
-                  children: [st, " (", count, ")"]
+                  children: [st, ' (', count, ')']
                 }, st);
               })
             ]
           }),
           jsxRuntime.jsx('input', {
-            type: "text",
-            className: "tm-chk-input",
-            style: { width: '130px', minWidth: '90px' },
-            placeholder: "搜尋本階段指標...",
+            type: 'text',
+            className: 'tm-chk-search-input',
+            placeholder: '搜尋本階段指標...',
             value: search,
             onChange: e => setSearch(e.target.value)
           })
         ]
       }),
-      jsxRuntime.jsx(ChecklistTable, {
+      jsxRuntime.jsx(ChecklistCardList, {
         items: filteredItems,
         onUpdate: onUpdate,
         showStage: false,
         showAspect: true,
-        maxHeight: "360px"
+        emptyText: '本階段無符合篩選條件之檢核項目'
       }),
       candidate.reasons && candidate.reasons.length > 0 && jsxRuntime.jsx('div', {
-        className: "tm-signal-list",
-        style: { marginTop: '12px' },
+        className: 'tm-signal-list',
+        style: { marginTop: '14px' },
         children: candidate.reasons.map(([k, v, t]) => jsxRuntime.jsxs('div', {
           children: [
             jsxRuntime.jsx('span', { children: k }),
@@ -589,8 +591,8 @@ function Regime({ f, b, factors = [], checklist = [], onUpdate, stageStats = {},
         }, k))
       }),
       jsxRuntime.jsx('div', {
-        className: "tm-footnote",
-        children: "依 109 項檢核表指標動態統計。各指標可自由切換符合／不符合／未確認（禁止使用 emoji）。結果自動儲存於瀏覽器。"
+        className: 'tm-footnote',
+        children: '依 109 項檢核表指標動態統計。各指標可自由切換符合／不符合／未確認（禁止使用 emoji）。結果自動儲存於瀏覽器。'
       })
     ]
   });
@@ -624,33 +626,33 @@ function ChecklistFullView({ checklist = [], onUpdate, onReset, stageStats = {},
   return jsxRuntime.jsxs(jsxRuntime.Fragment, {
     children: [
       jsxRuntime.jsxs('div', {
-        className: "tm-sectionline",
+        className: 'tm-sectionline',
         children: [
           jsxRuntime.jsxs('div', {
             children: [
-              jsxRuntime.jsx('h2', { children: "109 項行情階段檢核表 (Checklist)" }),
+              jsxRuntime.jsx('h2', { children: '109 項行情階段檢核表 (Checklist)' }),
               jsxRuntime.jsxs('p', {
                 children: [
-                  "依 7 大階段分別判斷各訊號符合項數，動態判定目前最有可能符合之行情（目前最符合：",
+                  '依 7 大階段分別判斷各訊號符合項數，動態判定目前最有可能符合之行情（目前最符合：',
                   jsxRuntime.jsx('b', { style: { color: 'var(--accent)' }, children: candidate.stage || '尚待確認' }),
-                  "）。點選狀態即可編輯切換，禁止使用 emoji。"
+                  '）。點選狀態即可即時編輯切換，禁止使用 emoji。'
                 ]
               })
             ]
           }),
           jsxRuntime.jsx('button', {
-            type: "button",
-            className: "tm-topbar-btn",
+            type: 'button',
+            className: 'tm-topbar-btn',
             onClick: () => {
-              if (window.confirm("確定要重置為量化預設判讀狀態嗎？手動修改將被清除。")) onReset();
+              if (window.confirm('確定要重置為量化預設判讀狀態嗎？手動修改將被清除。')) onReset();
             },
-            title: "重置為量化預設判讀",
-            children: "重置為量化預設"
+            title: '重置為量化預設判讀',
+            children: '重置為量化預設'
           })
         ]
       }),
       jsxRuntime.jsx('div', {
-        className: "tm-stage-cards",
+        className: 'tm-stage-cards',
         children: stages.map(([st]) => {
           const stat = stageStats[st] || { met: 0, total: 0, coreMet: 0, coreTotal: 0, pct: 0 };
           const isCandidate = candidate.stage === st;
@@ -660,22 +662,22 @@ function ChecklistFullView({ checklist = [], onUpdate, onReset, stageStats = {},
             onClick: () => setSelectedStage(selectedStage === st ? '全部' : st),
             children: [
               jsxRuntime.jsxs('div', {
-                className: "tm-stage-card-head",
+                className: 'tm-stage-card-head',
                 children: [
-                  jsxRuntime.jsx('span', { className: "tm-stage-card-title", children: st }),
-                  isCandidate && jsxRuntime.jsx('span', { className: "tm-badge green", children: "最有可能" })
+                  jsxRuntime.jsx('span', { className: 'tm-stage-card-title', children: st }),
+                  isCandidate && jsxRuntime.jsx('span', { className: 'tm-badge green', children: '最有可能' })
                 ]
               }),
               jsxRuntime.jsxs('div', {
-                className: "tm-stage-card-body",
+                className: 'tm-stage-card-body',
                 children: [
-                  jsxRuntime.jsxs('span', { children: ["符合：", jsxRuntime.jsx('b', { style: { color: stat.met > 0 ? '#10b981' : 'inherit' }, children: stat.met }), " / ", stat.total, " 項"] }),
+                  jsxRuntime.jsxs('span', { children: ['符合：', jsxRuntime.jsx('b', { style: { color: stat.met > 0 ? '#10b981' : 'inherit' }, children: stat.met }), ' / ', stat.total, ' 項'] }),
                   jsxRuntime.jsx('br', {}),
-                  jsxRuntime.jsxs('span', { children: ["核心：", stat.coreMet, " / ", stat.coreTotal, " 項"] })
+                  jsxRuntime.jsxs('span', { children: ['核心：', stat.coreMet, ' / ', stat.coreTotal, ' 項'] })
                 ]
               }),
               jsxRuntime.jsx('div', {
-                className: "tm-stage-card-progress",
+                className: 'tm-stage-card-progress',
                 children: jsxRuntime.jsx('div', {
                   style: {
                     width: stat.pct + '%',
@@ -688,28 +690,28 @@ function ChecklistFullView({ checklist = [], onUpdate, onReset, stageStats = {},
         })
       }),
       jsxRuntime.jsxs(Panel, {
-        id: "checklist-full-table",
-        title: "檢核清單明細（顯示 " + filtered.length + " / " + checklist.length + " 項）",
+        id: 'checklist-full-table',
+        title: '檢核清單明細（顯示 ' + filtered.length + ' / ' + checklist.length + ' 項）',
         rows: filtered,
         children: [
           jsxRuntime.jsxs('div', {
-            className: "tm-chk-stat-bar",
+            className: 'tm-chk-stat-bar',
             children: [
-              jsxRuntime.jsxs('span', { children: ["全市場總計：", jsxRuntime.jsx('strong', { children: checklist.length }), " 項"] }),
-              jsxRuntime.jsxs('span', { className: "tm-chk-stat-item met", children: ["符合：", totalMet, " 項"] }),
-              jsxRuntime.jsxs('span', { className: "tm-chk-stat-item unmet", children: ["不符合：", totalUnmet, " 項"] }),
-              jsxRuntime.jsxs('span', { className: "tm-chk-stat-item pending", children: ["未確認：", totalPending, " 項"] })
+              jsxRuntime.jsxs('span', { children: ['全市場總計：', jsxRuntime.jsx('strong', { children: checklist.length }), ' 項'] }),
+              jsxRuntime.jsxs('span', { className: 'tm-chk-stat-item met', children: ['符合：', totalMet, ' 項'] }),
+              jsxRuntime.jsxs('span', { className: 'tm-chk-stat-item unmet', children: ['不符合：', totalUnmet, ' 項'] }),
+              jsxRuntime.jsxs('span', { className: 'tm-chk-stat-item pending', children: ['未確認：', totalPending, ' 項'] })
             ]
           }),
           jsxRuntime.jsxs('div', {
-            className: "tm-chk-controls",
+            className: 'tm-chk-controls',
             children: [
               jsxRuntime.jsxs('div', {
-                className: "tm-chk-filters",
+                className: 'tm-chk-filters',
                 children: [
-                  jsxRuntime.jsx('span', { style: { color: 'var(--secondary)', fontSize: '11px', marginRight: '4px' }, children: "階段：" }),
+                  jsxRuntime.jsx('span', { style: { color: 'var(--secondary)', fontSize: '11px', marginRight: '4px' }, children: '階段：' }),
                   ['全部', ...stages.map(x => x[0])].map(st => jsxRuntime.jsx('button', {
-                    type: "button",
+                    type: 'button',
                     className: 'tm-chk-pill ' + (selectedStage === st ? 'active' : ''),
                     onClick: () => setSelectedStage(st),
                     children: st
@@ -717,34 +719,30 @@ function ChecklistFullView({ checklist = [], onUpdate, onReset, stageStats = {},
                 ]
               }),
               jsxRuntime.jsxs('div', {
-                className: "tm-chk-filters",
+                className: 'tm-chk-filters',
                 children: [
                   jsxRuntime.jsx('select', {
-                    className: "tm-chk-input",
-                    style: { width: '110px', minWidth: '90px' },
+                    className: 'tm-chk-select',
                     value: selectedAspect,
                     onChange: e => setSelectedAspect(e.target.value),
                     children: aspects.map(a => jsxRuntime.jsx('option', { value: a, children: a }, a))
                   }),
                   jsxRuntime.jsx('select', {
-                    className: "tm-chk-input",
-                    style: { width: '90px', minWidth: '70px' },
+                    className: 'tm-chk-select',
                     value: selectedImportance,
                     onChange: e => setSelectedImportance(e.target.value),
                     children: ['全部', '核心', '輔助'].map(im => jsxRuntime.jsx('option', { value: im, children: im }, im))
                   }),
                   jsxRuntime.jsx('select', {
-                    className: "tm-chk-input",
-                    style: { width: '90px', minWidth: '70px' },
+                    className: 'tm-chk-select',
                     value: selectedStatus,
                     onChange: e => setSelectedStatus(e.target.value),
                     children: ['全部', '符合', '不符合', '未確認'].map(st => jsxRuntime.jsx('option', { value: st, children: st }, st))
                   }),
                   jsxRuntime.jsx('input', {
-                    type: "text",
-                    className: "tm-chk-input",
-                    style: { width: '140px', minWidth: '100px' },
-                    placeholder: "關鍵字搜尋...",
+                    type: 'text',
+                    className: 'tm-chk-search-input',
+                    placeholder: '關鍵字搜尋...',
                     value: search,
                     onChange: e => setSearch(e.target.value)
                   })
@@ -752,12 +750,12 @@ function ChecklistFullView({ checklist = [], onUpdate, onReset, stageStats = {},
               })
             ]
           }),
-          jsxRuntime.jsx(ChecklistTable, {
+          jsxRuntime.jsx(ChecklistCardList, {
             items: filtered,
             onUpdate: onUpdate,
             showStage: true,
             showAspect: true,
-            maxHeight: "600px"
+            emptyText: '無符合篩選條件之檢核項目'
           })
         ]
       })
