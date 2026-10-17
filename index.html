@@ -453,7 +453,151 @@ function Sectors({rows=[],expanded=false}){const r=rows.filter(r=>r.name.endsWit
 function Risk({f,b,stocks=[]}){const long=f.close==null?'未知':f.dev20<0&&f.r5<0?'偏高':'需觀察';const short=f.close==null?'未知':f.dev60<0&&f.dev20<-.08?'偏高':f.dev60>0?'中高':'需觀察';return jsxRuntime.jsxs(Panel, { id: "exposure-risk", query: "catalog", title: "持倉與成交風險", rows: [{long,short,limit_down:b?.limit_down,asof:f.date}], children: [jsxRuntime.jsxs('div', { className: "tm-risk-row", children: [jsxRuntime.jsxs('span', { children: [jsxRuntime.jsx('i', { className: "tm-dot down" ,}), "持多壓力"]}), jsxRuntime.jsx('b', { className: long==='偏高'?'down':'amber-text', children: long})]}), jsxRuntime.jsxs('div', { className: "tm-risk-row", children: [jsxRuntime.jsxs('span', { children: [jsxRuntime.jsx('i', { className: "tm-dot amber-text" ,}), "新增追空"]}), jsxRuntime.jsx('b', { className: "amber-text", children: short})]}), jsxRuntime.jsxs('div', { className: "tm-risk-row", children: [jsxRuntime.jsxs('span', { children: [jsxRuntime.jsx('i', { className: "tm-dot neutral" ,}), "流動性"]}), jsxRuntime.jsx('b', { children: "盤中未知"})]}), jsxRuntime.jsx('div', { className: "tm-footnote", children: "持多／追空為價格規則參考；沒有維持率、逐筆委託與追繳戶數，無法確認斷頭壓力。"})]})}
 function Watch({data,onSelect,selected}){const keys=['taiex','tpex','2330','2317','2454','2382','2308','3231'];return jsxRuntime.jsx('div', { className: "tm-watch", children: keys.map(k=>{const r=data[k]||[],v=last(r),delta=roi(r,1);return jsxRuntime.jsxs('button', { onClick: ()=>onSelect(k), className: selected===k?'selected':'', children: [jsxRuntime.jsxs('span', { children: [jsxRuntime.jsx('b', { children: names[k]}), jsxRuntime.jsx('small', { children: k==='taiex'?'TAIEX':k==='tpex'?'TPEX':k})]}), jsxRuntime.jsx(Spark, { rows: r.slice(-24), color: delta>=0?'var(--positive)':'var(--negative)',}), jsxRuntime.jsxs('span', { className: "tm-watch-value", children: [jsxRuntime.jsx('b', { children: fmt(v.close)}), jsxRuntime.jsx('small', { className: tone(delta), children: pct(delta)})]})]}, k);})})}
 function Levels({f,rows}){const rr=[['MA20',f.ma20,'短線趨勢'],['MA60',f.ma60,'中期趨勢'],['MA120',f.ma120,'半年線'],['MA240',f.ma240,'長期背景']];return jsxRuntime.jsxs(Panel, { id: "trend-levels", title: "均線與觀察位置", rows: rr.map(([name,value])=>({name,value,date:f.date})), children: [jsxRuntime.jsx('div', { className: "tm-levels", children: rr.map(([name,v,label])=>jsxRuntime.jsxs('div', { children: [jsxRuntime.jsxs('span', { children: [jsxRuntime.jsx('b', { children: name}), jsxRuntime.jsx('small', { children: label})]}), jsxRuntime.jsx('strong', { children: fmt(v)}), jsxRuntime.jsx('span', { className: tone(change(f.close,v)), children: pct(change(f.close,v))})]}, name))}), jsxRuntime.jsx('div', { className: "tm-footnote", children: "乖離＝收盤／均線−1。均線每日移動，並非固定買賣點。"})]})}
-function LiveLine({id,title,query='volatility',rows=[],fields=['value'],labels={},height=250,desc}){return rows.length?jsxRuntime.jsx(dataApp.EvidenceChart, { id: id, queryId: query, title: title, spec: {type:'line',x:'date',y:fields[0],fields,stackable:false,startAtZero:false,valueDecimals:2,legend:{labels},colors:Object.fromEntries(fields.map((field,i)=>[field,['#53c9cb','#a58be8','#e8b668'][i%3]]))}, rows: rows, sourceRows: rows, variant: "card", height: height, description: desc,}):jsxRuntime.jsx(Panel, { id: id, query: query, title: title, children: jsxRuntime.jsx(Empty, {})})}
+function LiveLine({id,title,query='volatility',rows=[],fields=['value'],labels={},height=250,desc}){
+if(!rows.length)return jsxRuntime.jsx(Panel, { id: id, query: query, title: title, children: jsxRuntime.jsx(Empty, {})});
+const [hover,setHover]=react.useState(null);
+const [drag,setDrag]=react.useState(null);
+const rangeOptions={'1M':22,'3M':66,'6M':132,'全部':9999};
+const [range,setRange]=react.useState('全部');
+const plotted=rows.slice(-rangeOptions[range]);
+const palette=['#53c9cb','#a58be8','#e8b668','#f87171','#34d399'];
+const getLabel=f=>labels[f]||(f==='value'?(id&&id.includes('margin')?'融資本金':'數值'):f);
+const w=640,h=230,left=10,right=65,top=20,bottom=24;
+const pw=w-left-right,ph=h-top-bottom;
+const allVals=plotted.flatMap(r=>fields.map(f=>r[f])).filter(v=>v!=null&&Number.isFinite(Number(v))).map(Number);
+const lo=allVals.length?Math.min(...allVals):0;
+const hi=allVals.length?Math.max(...allVals):100;
+const pad=(hi-lo)*0.1||(Math.abs(hi)*0.05)||5;
+const min=lo-pad,max=hi+pad;
+const y=v=>v==null?null:top+(max-v)/(max-min)*ph;
+const step=pw/Math.max(1,plotted.length-1||1);
+const x=i=>left+i*step;
+const active=hover==null?last(plotted):plotted[hover]||last(plotted);
+const isMeasuring=drag&&drag.start!=null&&drag.end!=null&&drag.start!==drag.end;
+const selStart=isMeasuring?Math.min(drag.start,drag.end):null;
+const selEnd=isMeasuring?Math.max(drag.start,drag.end):null;
+const pStart=isMeasuring?plotted[selStart]:null;
+const pEnd=isMeasuring?plotted[selEnd]:null;
+const days=isMeasuring?selEnd-selStart+1:0;
+const controls=rows.length>30?jsxRuntime.jsx('div', { className: "tm-segment compact", children: Object.keys(rangeOptions).map(k=>jsxRuntime.jsx('button', { key: k, disabled: k!=='全部'&&rows.length<rangeOptions[k], title: k!=='全部'&&rows.length<rangeOptions[k]?'歷史長度不足':undefined, onClick: ()=>{setRange(k);setDrag(null);setHover(null);}, className: range===k?'active':'', children: k}, k)) }):null;
+return jsxRuntime.jsxs(Panel, { id: id, query: query, title: title, rows: plotted, controls: controls, desc: desc||"按住滑鼠拖曳可量測區間變化與百分比。", children: [
+jsxRuntime.jsxs('div', { className: "tm-ohlc", children: [
+isMeasuring?jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
+jsxRuntime.jsx('span', { style: {color:'var(--accent)',fontWeight:600}, children: `【區間量測 ${days}日】` }),
+jsxRuntime.jsxs('span', { children: [`起點 ${pStart?.date} `] }),
+jsxRuntime.jsxs('span', { children: [`終點 ${pEnd?.date} `] }),
+fields.map((f,i)=>{
+const sVal=pStart?.[f];
+const eVal=pEnd?.[f];
+if(sVal==null||eVal==null)return null;
+const d=eVal-sVal;
+const pd=sVal!==0?(d/Math.abs(sVal))*100:0;
+const up=d>=0;
+const sign=up?'+':'';
+const toneCol=up?'var(--positive)':'var(--negative)';
+const arrow=up?'▲':'▼';
+return jsxRuntime.jsxs('span', { key: f, style: {display:'inline-flex',alignItems:'center',gap:'3px'}, children: [
+jsxRuntime.jsx('i', { style: {display:'inline-block',width:6,height:6,borderRadius:'50%',background:palette[i%palette.length]} }),
+jsxRuntime.jsx('span', { children: getLabel(f)+' ' }),
+jsxRuntime.jsx('b', { children: fmt(eVal) }),
+jsxRuntime.jsxs('span', { style: {color:toneCol,fontWeight:700}, children: [`(${sign}${fmt(d,2)}, ${sign}${fmt(pd,2)}% ${arrow})`] })
+]});
+}),
+jsxRuntime.jsx('span', { style: {color:'var(--secondary)',cursor:'pointer',marginLeft:'auto'}, onClick: ()=>setDrag(null), children: "✕ 清除量測" })
+]}):jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
+jsxRuntime.jsx('span', { children: active?.date||'—' }),
+fields.map((f,i)=>jsxRuntime.jsxs('span', { key: f, children: [
+jsxRuntime.jsx('i', { style: {display:'inline-block',width:6,height:6,borderRadius:'50%',background:palette[i%palette.length],marginRight:4} }),
+getLabel(f)," ",
+jsxRuntime.jsx('b', { children: fmt(active?.[f]) })
+]})),
+jsxRuntime.jsx('span', { style: {color:'var(--secondary)',fontSize:'11px',marginLeft:'auto'}, children: "按住拖曳量測區間" })
+]})
+]}),
+jsxRuntime.jsxs('svg', { className: "tm-candle", viewBox: `0 0 ${w} ${h}`, tabIndex: "0", role: "img", 'aria-label': `${title}趨勢圖，共${plotted.length}交易日。按住拖曳可量測區間變化與百分比。`, style: {userSelect:'none',cursor:'crosshair',touchAction:'none'}, onKeyDown: e=>{if(e.key==='Escape'){setDrag(null);return;}if(['ArrowLeft','ArrowRight'].includes(e.key)){e.preventDefault();setHover(i=>Math.max(0,Math.min(plotted.length-1,(i??plotted.length-1)+(e.key==='ArrowLeft'?-1:1))));}}, onPointerDown: e=>{try{e.currentTarget.setPointerCapture(e.pointerId);}catch(_e){}const rect=e.currentTarget.getBoundingClientRect();const idx=Math.max(0,Math.min(plotted.length-1,Math.round(((e.clientX-rect.left)/rect.width*w-left)/step)));setDrag({start:idx,end:idx,active:true});}, onPointerMove: e=>{const rect=e.currentTarget.getBoundingClientRect();const idx=Math.max(0,Math.min(plotted.length-1,Math.round(((e.clientX-rect.left)/rect.width*w-left)/step)));setHover(idx);setDrag(d=>{if(!d||!d.active)return d;return {...d,end:idx};});}, onPointerUp: e=>{try{e.currentTarget.releasePointerCapture(e.pointerId);}catch(_e){}setDrag(d=>{if(!d||!d.active)return d;if(d.start===d.end)return null;return {...d,active:false};});}, onPointerLeave: ()=>{setHover(null);setDrag(d=>{if(!d||!d.active)return d;if(d.start===d.end)return null;return {...d,active:false};});}, children: [
+Array.from({length:4},(_,i)=>{
+const v=min+(max-min)*i/3;
+return jsxRuntime.jsxs('g', { key: i, children: [
+jsxRuntime.jsx('line', { x1: left, x2: w-right, y1: y(v), y2: y(v), className: "tm-gridline" }),
+jsxRuntime.jsx('text', { x: w-right+8, y: y(v)+4, className: "tm-axis", children: fmt(v,v>=1000?0:2) })
+]});
+}),
+Array.from({length:5},(_,i)=>{
+const idx=Math.round((plotted.length-1)*i/4);
+return jsxRuntime.jsxs('g', { key: i, children: [
+jsxRuntime.jsx('line', { x1: x(idx), x2: x(idx), y1: top, y2: h-bottom, className: "tm-gridline vertical" }),
+jsxRuntime.jsx('text', { x: x(idx), y: h-6, textAnchor: i===0?'start':i===4?'end':'middle', className: "tm-axis", children: plotted[idx]?.date?.slice(5)||'' })
+]});
+}),
+fields.map((fld,fi)=>{
+const pts=plotted.map((r,i)=>r[fld]!=null?`${x(i)},${y(r[fld])}`:null).filter(Boolean).join(' ');
+return jsxRuntime.jsx('polyline', { key: fld, fill: "none", stroke: palette[fi%palette.length], strokeWidth: "2", strokeLinejoin: "round", strokeLinecap: "round", points: pts });
+}),
+fields.map((fld,fi)=>{
+const lastVal=last(plotted)[fld];
+if(lastVal==null)return null;
+const yPos=y(lastVal);
+return jsxRuntime.jsxs('g', { key: 'last-'+fld, children: [
+jsxRuntime.jsx('line', { x1: left, x2: w-right, y1: yPos, y2: yPos, stroke: palette[fi%palette.length], strokeDasharray: "2 4", opacity: "0.5" }),
+jsxRuntime.jsx('rect', { x: w-right+2, y: yPos-8, width: "58", height: "16", rx: "3", fill: palette[fi%palette.length] }),
+jsxRuntime.jsx('text', { x: w-right+31, y: yPos+4, textAnchor: "middle", className: "tm-lastlabel", style: {fontSize:"9px",fontWeight:"600"}, children: fmt(lastVal,lastVal>=1000?0:1) })
+]});
+}),
+hover!=null&&!isMeasuring&&jsxRuntime.jsxs('g', { children: [
+jsxRuntime.jsx('line', { x1: x(hover), x2: x(hover), y1: top, y2: h-bottom, stroke: "var(--secondary)", strokeDasharray: "3 4" }),
+fields.map((fld,fi)=>plotted[hover]?.[fld]!=null?jsxRuntime.jsx('circle', { key: fld, cx: x(hover), cy: y(plotted[hover][fld]), r: "4", fill: palette[fi%palette.length], stroke: "var(--surface)", strokeWidth: "2" }):null),
+jsxRuntime.jsx('rect', { x: Math.max(left,Math.min(w-right-76,x(hover)-38)), y: h-bottom+2, width: "76", height: "18", rx: "3", fill: "var(--surface-raised)" }),
+jsxRuntime.jsx('text', { x: Math.max(left+38,Math.min(w-right-38,x(hover))), y: h-bottom+15, textAnchor: "middle", className: "tm-axis", children: plotted[hover]?.date })
+]}),
+isMeasuring&&jsxRuntime.jsxs('g', { className: "tm-drag-layer", children: [
+jsxRuntime.jsx('rect', { x: Math.min(x(selStart),x(selEnd)), y: top, width: Math.max(2,Math.abs(x(selEnd)-x(selStart))), height: ph, fill: "var(--accent)", fillOpacity: "0.14", rx: "3" }),
+jsxRuntime.jsx('line', { x1: x(selStart), x2: x(selStart), y1: top, y2: h-bottom, stroke: "var(--accent)", strokeDasharray: "3 3", strokeWidth: "1.5", opacity: "0.85" }),
+jsxRuntime.jsx('line', { x1: x(selEnd), x2: x(selEnd), y1: top, y2: h-bottom, stroke: "var(--accent)", strokeDasharray: "3 3", strokeWidth: "1.5", opacity: "0.85" }),
+fields.map((fld,fi)=>{
+const col=palette[fi%palette.length];
+return jsxRuntime.jsxs('g', { key: fld, children: [
+pStart?.[fld]!=null&&jsxRuntime.jsx('circle', { cx: x(selStart), cy: y(pStart[fld]), r: "4.5", fill: col, stroke: "var(--surface)", strokeWidth: "2" }),
+pEnd?.[fld]!=null&&jsxRuntime.jsx('circle', { cx: x(selEnd), cy: y(pEnd[fld]), r: "4.5", fill: col, stroke: "var(--surface)", strokeWidth: "2" })
+]});
+}),
+(()=>{
+const midX=(x(selStart)+x(selEnd))/2;
+const badgeW=fields.length>1?340:260;
+const badgeH=28;
+const bx=Math.max(left+6,Math.min(w-right-badgeW-6,midX-badgeW/2));
+const by=top+ph-24;
+return jsxRuntime.jsxs('g', { className: "tm-drag-badge", children: [
+jsxRuntime.jsx('rect', { x: bx, y: by, width: badgeW, height: badgeH, rx: "6", fill: "var(--surface-raised)", stroke: "var(--accent)", strokeWidth: "1.2", filter: "drop-shadow(0 3px 8px rgba(0,0,0,0.25))" }),
+jsxRuntime.jsxs('text', { x: bx+badgeW/2, y: by+18, textAnchor: "middle", style: {fontSize:"11px",fontFamily:"ui-monospace, monospace",userSelect:"none"}, children: [
+fields.map((f,i)=>{
+const sVal=pStart?.[f];
+const eVal=pEnd?.[f];
+if(sVal==null||eVal==null)return null;
+const d=eVal-sVal;
+const pd=sVal!==0?(d/Math.abs(sVal))*100:0;
+const up=d>=0;
+const sign=up?'+':'';
+const toneCol=up?'var(--positive)':'var(--negative)';
+const arrow=up?'▲':'▼';
+return jsxRuntime.jsxs(jsxRuntime.Fragment, { key: f, children: [
+i>0&&jsxRuntime.jsx('tspan', { fill: "var(--secondary)", children: " | " }),
+fields.length>1&&jsxRuntime.jsx('tspan', { fill: palette[i%palette.length], children: `${getLabel(f)} ` }),
+jsxRuntime.jsx('tspan', { fill: toneCol, fontWeight: "700", children: `${sign}${fmt(d,2)} (${sign}${fmt(pd,2)}%) ${arrow}` })
+]});
+}),
+jsxRuntime.jsx('tspan', { fill: "var(--secondary)", children: " · " }),
+jsxRuntime.jsx('tspan', { fill: "var(--text)", children: `${pStart?.date?.slice(5)}→${pEnd?.date?.slice(5)} (${days}日)` })
+]})
+]});
+})()
+]})
+]}),
+jsxRuntime.jsxs('div', { className: "tm-chart-bottom", children: [
+jsxRuntime.jsxs('span', { children: [plotted.length, " 個交易日 · ", plotted[0]?.date, " — ", last(plotted)?.date] }),
+jsxRuntime.jsx('span', { children: isMeasuring?"已選取區間（按 Escape 或右上清除）":"按住滑鼠拖曳量測區間" })
+]})
+]});
+}
 function Leverage({data,f}){const m=data.margin_official,ins=(data.institutions||[]).filter(r=>r.name!=='合計'&&r.name!=='外資自營商'),total=(data.institutions||[]).find(r=>r.name==='合計');const p=last(data.putcall);const ff=(data.futures||[]).filter(r=>r.contract==='臺股期貨');return jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [jsxRuntime.jsxs('div', { className: "tm-kpis four" , children: [jsxRuntime.jsx(MiniMetric, { neutral: true, label: "上市融資本金", value: `${fmt(m?.value??f.margin)} 億`, delta: m?change(m.value,m.previous):null, sub: m?.date||last(data.margin).date, rows: data.margin, field: "value",}), jsxRuntime.jsx(MiniMetric, { label: "融資近20日變化", value: pct(f.margin20), sub: "本金變化，非市值變化",}), jsxRuntime.jsx(MiniMetric, { label: "三大法人現貨合計", value: `${fmt(total?.value)} 億`, sub: total?.date||'尚未取得',}), jsxRuntime.jsx(MiniMetric, { label: "Put/Call 未平倉比" , value: `${fmt(p.oi)}%`, sub: p.date||'尚未取得',})]}), jsxRuntime.jsxs('div', { className: "tm-grid two" , children: [jsxRuntime.jsx(LiveLine, { id: "margin-history", query: "leverage", title: "融資本金趨勢（億元）", rows: (data.margin||[]).slice(-132), desc: "上市融資金額本金；只用MarginPurchaseMoney，不與交易單位混加。",}), jsxRuntime.jsxs(Panel, { id: "institutional-flow", query: "leverage", title: "三大法人現貨買賣超", rows: ins, children: [jsxRuntime.jsx(Bars, { rows: ins, unit: " 億" ,}), jsxRuntime.jsxs('div', { className: "tm-footnote", children: [total?.date, " · 自營避險不直接視為方向性看空；現貨與期貨部位不相加。"  ]})]}), jsxRuntime.jsx(LiveLine, { id: "pc-history", query: "leverage", title: "Put/Call：成交量比與未平倉比（%）", rows: data.putcall||[], fields: ['volume','oi'], labels: {volume:'成交量比',oi:'未平倉比'}, desc: "103%表示約1.03倍；兩種分母不同，不機械推斷多空。",}), jsxRuntime.jsxs(Panel, { id: "futures-oi", query: "leverage", title: "臺股期貨法人淨未平倉（口）", rows: ff, children: [jsxRuntime.jsx(Bars, { rows: ff, unit: " 口" ,}), jsxRuntime.jsxs('div', { className: "tm-footnote", children: [ff[0]?.date, " · 僅臺股期貨契約，正值為淨多口數；含方向與避險需求。"  ]})]})]}), jsxRuntime.jsxs('div', { className: "tm-grid two" , children: [jsxRuntime.jsx(Panel, { id: "margin-reconciliation", query: "leverage", title: "當日融資變動拆解（億元）", rows: m?[m]:[], children: m?jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [jsxRuntime.jsx('div', { className: "tm-reconcile", children: [['前日餘額',m.previous],['＋ 買進',m.buy],['− 賣出',m.sell],['− 現金償還',m.repay],['＝ 今日餘額',m.value]].map(([l,v])=>jsxRuntime.jsxs('div', { children: [jsxRuntime.jsx('span', { children: l}), jsxRuntime.jsx('strong', { children: fmt(v)})]}, l))}), jsxRuntime.jsxs('div', { className: "tm-footnote", children: [m.date, " · 同張官方報表對帳。現償可為轉現股，不等於斷頭。"  ]})]}):jsxRuntime.jsx(Empty, {})}), jsxRuntime.jsx(Panel, { id: "leverage-gaps", query: "catalog", title: "尚不可觀測的槓桿壓力", rows: [], children: jsxRuntime.jsx('div', { className: "tm-gap-list", children: [['融資維持率','需會員／授權資料，無法從餘額還原。'],['追繳與強迫平倉','沒有券商追繳戶數與斷頭成交量。'],['私人質押與全球carry','私人資產負債表與總槓桿不可見。']].map(([a,b])=>jsxRuntime.jsxs('div', { children: [jsxRuntime.jsx('b', { children: a}), jsxRuntime.jsx('span', { children: b})]}, a))})})]})]})}
 function Global({data,f,sources}){const vv=last(data.vvix),tr=last(data.treasury),fx=last(data.fx);const compare=Object.keys(names).filter(k=>['SPY','QQQ','SOXX'].includes(k)).map(k=>({name:k+' '+names[k],value:roi(data[k],5)==null?null:roi(data[k],5)*100})).filter(r=>r.value!=null&&Number.isFinite(r.value));const vr=(data.vix||[]).map(r=>({date:r.date,vix:r.value,vix3m:(data.vix3m||[]).find(x=>x.date===r.date)?.value??null})).slice(-66);return jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [jsxRuntime.jsxs('div', { className: "tm-kpis four" , children: [jsxRuntime.jsx(MiniMetric, { risk: true, label: "Cboe VIX" , value: fmt(f.vix), delta: f.vix5, sub: `${f.vix_date||'未知'} · 變化為近5日`, rows: data.vix, field: "value",}), jsxRuntime.jsx(MiniMetric, { label: "VIX / VIX3M"  , value: fmt(f.vixratio), sub: "SPX現貨波動期限比；非期貨曲線",}), jsxRuntime.jsx(MiniMetric, { label: "美國10年公債殖利率", value: tr.y10==null?'—':fmt(tr.y10)+'%', sub: tr.date||'尚未取得',}), jsxRuntime.jsx(MiniMetric, { label: "美元／新台幣", value: fmt(fx.twd,3), sub: `${fx.date||'未知'} · 參考匯率`,})]}), jsxRuntime.jsxs('div', { className: "tm-grid two" , children: [jsxRuntime.jsx(LiveLine, { id: "volatility-term", title: "VIX 與 VIX3M 期限比較"   , rows: vr, fields: ['vix','vix3m'], labels: {vix:'VIX · 30日',vix3m:'VIX3M · 3個月'},}), jsxRuntime.jsxs(Panel, { id: "us-returns", query: "volatility", title: "美股市場代理 · 近5交易日"  , rows: compare, children: [jsxRuntime.jsx(Bars, { rows: compare,}), jsxRuntime.jsx('div', { className: "tm-us-cards", children: ['SPY','QQQ','SOXX'].map(k=>jsxRuntime.jsxs('div', { children: [jsxRuntime.jsx('b', { children: k}), jsxRuntime.jsx('strong', { className: tone(roi(data[k],1)), children: pct(roi(data[k],1))}), jsxRuntime.jsxs('small', { children: [last(data[k]).date||'無資料', " 單日" ]}), jsxRuntime.jsx(Spark, { rows: (data[k]||[]).slice(-35),})]}, k))})]}), jsxRuntime.jsx(LiveLine, { id: "treasury-curve", title: "美國公債殖利率（%）", rows: (data.treasury||[]).slice(-66), fields: ['y2','y10','y30'], labels: {y2:'2年',y10:'10年',y30:'30年'},}), jsxRuntime.jsx(LiveLine, { id: "fx-jpy", title: "美元／日圓參考匯率", rows: data.fx||[], fields: ['jpy'], labels: {jpy:'USD / JPY'}, desc: "數值下跌代表日圓升值；不能直接推斷carry unwind。" ,}), jsxRuntime.jsx(LiveLine, { id: "vvix-history", title: "VVIX · 波動之波動"  , rows: (data.vvix||[]).slice(-66), desc: "與VIX屬同一風險群，不當作獨立投票。",}), jsxRuntime.jsx(Panel, { id: "global-evidence-gap", query: "catalog", title: "全球風險尚需補強", rows: [], children: jsxRuntime.jsx('div', { className: "tm-gap-list", children: [['信用利差／美元資金','尚未接通FRED API；不把缺值當作信用正常。'],['商品／黃金／資產變現','尚未接通授權價格；殖利率不能替代債券報酬。'],['Fed／總體／政策','需對齊公告時間與修訂版本，保留人工研究。']].map(([a,b])=>jsxRuntime.jsxs('div', { children: [jsxRuntime.jsx('b', { children: a}), jsxRuntime.jsx('span', { children: b})]}, a))})})]})]})}
 function Fundamentals({data}){const [search,setSearch]=react.useState(''),[sort,setSort]=react.useState('yoy');const rev=(data.revenue||[]).filter(r=>!search||[r.ticker,r.name,r.industry].some(v=>String(v).includes(search))).sort((a,b)=>(b[sort]??-Infinity)-(a[sort]??-Infinity));const valuations=new Map((data.valuations||[]).map(r=>[r.ticker,r]));const news=(data.news||[]).filter(r=>!search||[r.ticker,r.name,r.title].some(v=>String(v).includes(search)));return jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [jsxRuntime.jsxs('div', { className: "tm-sectionline", children: [jsxRuntime.jsxs('div', { children: [jsxRuntime.jsx('h2', { children: "從公司公告核對價格敘事"}), jsxRuntime.jsx('p', { children: "公司原始營收、估值與重大訊息；需求與供給仍需交叉驗證。"})]}), jsxRuntime.jsxs('label', { className: "tm-search", children: [jsxRuntime.jsx(Glyph, { type: "search",}), jsxRuntime.jsx('input', { 'aria-label': "搜尋代碼、公司或主旨", placeholder: "搜尋代碼、公司或主旨", value: search, onChange: e=>setSearch(e.target.value),})]})]}), jsxRuntime.jsxs(Panel, { id: "revenue-valuations", query: "fundamentals", title: "上市公司月營收與估值", rows: rev.map(r=>({...r,valuation:valuations.get(r.ticker)||null})), controls: jsxRuntime.jsxs('select', { 'aria-label': "營收排序", value: sort, onChange: e=>setSort(e.target.value), children: [jsxRuntime.jsx('option', { value: "yoy", children: "營收 YoY ↓"  }), jsxRuntime.jsx('option', { value: "mom", children: "營收 MoM ↓"  }), jsxRuntime.jsx('option', { value: "revenue", children: "營收規模 ↓" })]}), children: [jsxRuntime.jsx('div', { className: "tm-table-scroll", children: jsxRuntime.jsxs('table', { children: [jsxRuntime.jsx('thead', { children: jsxRuntime.jsxs('tr', { children: [jsxRuntime.jsx('th', { children: "公司"}), jsxRuntime.jsx('th', { children: "營收月份"}), jsxRuntime.jsx('th', { children: "當月營收（仟元）"}), jsxRuntime.jsx('th', { children: "MoM"}), jsxRuntime.jsx('th', { children: "YoY"}), jsxRuntime.jsx('th', { children: "本益比"}), jsxRuntime.jsx('th', { children: "股價淨值比"}), jsxRuntime.jsx('th', { children: "殖利率"})]})}), jsxRuntime.jsx('tbody', { children: rev.slice(0,80).map(r=>{const v=valuations.get(r.ticker)||{};return jsxRuntime.jsxs('tr', { children: [jsxRuntime.jsxs('td', { children: [jsxRuntime.jsx('b', { children: r.ticker}), " " , r.name, jsxRuntime.jsx('small', { children: r.industry})]}), jsxRuntime.jsx('td', { children: monthLabel(r.period)}), jsxRuntime.jsx('td', { children: fmt(r.revenue,0)}), jsxRuntime.jsxs('td', { className: tone(r.mom), children: [fmt(r.mom), "%"]}), jsxRuntime.jsxs('td', { className: tone(r.yoy), children: [fmt(r.yoy), "%"]}), jsxRuntime.jsx('td', { children: fmt(v.pe)}), jsxRuntime.jsx('td', { children: fmt(v.pb)}), jsxRuntime.jsx('td', { children: v.yield==null?'—':fmt(v.yield)+'%'})]}, r.ticker);})})]})}), !rev.length&&jsxRuntime.jsx(Empty, { text: "沒有符合的公司或尚無營收資料",}), jsxRuntime.jsxs('div', { className: "tm-footnote", children: ["共 " , rev.length, " 筆，顯示前80筆。營收與估值日期分開：營收出表 "  , last(data.revenue).date||'未知', "；估值 " , last(data.valuations).date||'來源未提供日期', "。缺少本益比保留空值，並非0。"]})]}), jsxRuntime.jsxs('div', { className: "tm-grid two" , children: [jsxRuntime.jsxs(Panel, { id: "corporate-events", query: "fundamentals", title: "最新重大訊息", rows: news, children: [jsxRuntime.jsxs('div', { className: "tm-events", children: [news.slice(0,30).map((r,i)=>jsxRuntime.jsxs('details', { children: [jsxRuntime.jsxs('summary', { children: [jsxRuntime.jsxs('time', { children: [r.date||'未提供日期', " " , timeLabel(r.time)]}), jsxRuntime.jsxs('span', { children: [jsxRuntime.jsxs('b', { children: [r.ticker, " " , r.name]}), r.title]}), jsxRuntime.jsx('i', { children: "＋"})]}), jsxRuntime.jsx('p', { children: r.detail}), jsxRuntime.jsxs('small', { children: ["事實發生日：", r.event_date, "；可知時間應採發言日期與時間。"]})]}, i)), !news.length&&jsxRuntime.jsx(Empty, { text: "沒有符合的公告",})]}), jsxRuntime.jsx('a', { className: "tm-textlink", href: "https://mops.twse.com.tw/", target: "_blank", rel: "noreferrer", children: "前往公開資訊觀測站 ↗" })]}), jsxRuntime.jsx(Sectors, { rows: data.market?.sectors||[], expanded: true,})]})]})}
