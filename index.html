@@ -437,7 +437,15 @@ jsxRuntime.jsx('line', { x1: x(selStart), x2: x(selStart), y1: top, y2: h-25, st
 jsxRuntime.jsx('line', { x1: x(selEnd), x2: x(selEnd), y1: top, y2: h-25, stroke: dragTone, strokeDasharray: "3 3", strokeWidth: "1.5", opacity: "0.85" }),
 jsxRuntime.jsx('circle', { cx: x(selStart), cy: y(pStart?.close), r: "4.5", fill: dragTone, stroke: "var(--surface)", strokeWidth: "2" }),
 jsxRuntime.jsx('circle', { cx: x(selEnd), cy: y(pEnd?.close), r: "4.5", fill: dragTone, stroke: "var(--surface)", strokeWidth: "2" }),
-(()=>{const midX=(x(selStart)+x(selEnd))/2;const badgeW=320;const badgeH=28;const bx=Math.max(left+10,Math.min(w-right-badgeW-10,midX-badgeW/2));const by=top+ph-24;return jsxRuntime.jsxs('g', { className: "tm-drag-badge", children: [
+(()=>{
+const textLen=s=>Array.from(String(s||'')).reduce((w,c)=>w+(c.charCodeAt(0)>255?11.5:6.8),0);
+const midX=(x(selStart)+x(selEnd))/2;
+const badgeTxt=`${sign}${fmt(diff,2)} (${sign}${fmt(pctDiff,2)}%) ${dragArrow} · ${pStart?.date.slice(5)} → ${pEnd?.date.slice(5)} (${days}日)`;
+const badgeW=Math.min(w-right-left-12,Math.max(280,Math.round(textLen(badgeTxt)+32)));
+const badgeH=28;
+const bx=Math.max(left+10,Math.min(w-right-badgeW-10,midX-badgeW/2));
+const by=top+ph-24;
+return jsxRuntime.jsxs('g', { className: "tm-drag-badge", children: [
 jsxRuntime.jsx('rect', { x: bx, y: by, width: badgeW, height: badgeH, rx: "6", fill: "var(--surface-raised)", stroke: dragTone, strokeWidth: "1.2", filter: "drop-shadow(0 3px 8px rgba(0,0,0,0.25))" }),
 jsxRuntime.jsxs('text', { x: bx+badgeW/2, y: by+18, textAnchor: "middle", style: {fontSize:"11px",fontFamily:"ui-monospace, monospace",userSelect:"none"}, children: [
 jsxRuntime.jsx('tspan', { fill: dragTone, fontWeight: "700", children: `${sign}${fmt(diff,2)} (${sign}${fmt(pctDiff,2)}%) ${dragArrow} ` }),
@@ -561,15 +569,9 @@ pEnd?.[fld]!=null&&jsxRuntime.jsx('circle', { cx: x(selEnd), cy: y(pEnd[fld]), r
 ]});
 }),
 (()=>{
-const midX=(x(selStart)+x(selEnd))/2;
-const badgeW=fields.length>1?340:260;
-const badgeH=28;
-const bx=Math.max(left+6,Math.min(w-right-badgeW-6,midX-badgeW/2));
-const by=top+ph-24;
-return jsxRuntime.jsxs('g', { className: "tm-drag-badge", children: [
-jsxRuntime.jsx('rect', { x: bx, y: by, width: badgeW, height: badgeH, rx: "6", fill: "var(--surface-raised)", stroke: "var(--accent)", strokeWidth: "1.2", filter: "drop-shadow(0 3px 8px rgba(0,0,0,0.25))" }),
-jsxRuntime.jsxs('text', { x: bx+badgeW/2, y: by+18, textAnchor: "middle", style: {fontSize:"11px",fontFamily:"ui-monospace, monospace",userSelect:"none"}, children: [
-fields.map((f,i)=>{
+const textLen=s=>Array.from(String(s||'')).reduce((w,c)=>w+(c.charCodeAt(0)>255?11.5:6.8),0);
+const shortLabel=f=>(labels[f]?labels[f].split('·')[0].trim():(f==='value'?(id&&id.includes('margin')?'融資本金':'數值'):f));
+const fieldDiffs=fields.map((f,i)=>{
 const sVal=pStart?.[f];
 const eVal=pEnd?.[f];
 if(sVal==null||eVal==null)return null;
@@ -579,14 +581,35 @@ const up=d>=0;
 const sign=up?'+':'';
 const toneCol=up?'var(--positive)':'var(--negative)';
 const arrow=up?'▲':'▼';
-return jsxRuntime.jsxs(jsxRuntime.Fragment, { key: f, children: [
-i>0&&jsxRuntime.jsx('tspan', { fill: "var(--secondary)", children: " | " }),
-fields.length>1&&jsxRuntime.jsx('tspan', { fill: palette[i%palette.length], children: `${getLabel(f)} ` }),
-jsxRuntime.jsx('tspan', { fill: toneCol, fontWeight: "700", children: `${sign}${fmt(d,2)} (${sign}${fmt(pd,2)}%) ${arrow}` })
-]});
-}),
+const sLbl=fields.length>1?shortLabel(f)+' ':'';
+const txt=`${sLbl}${sign}${fmt(d,2)} (${sign}${fmt(pd,2)}%) ${arrow}`;
+return {f,i,sVal,eVal,d,pd,up,sign,toneCol,arrow,sLbl,txt};
+}).filter(Boolean);
+const isMulti=fields.length>1;
+const line1Str=isMulti?fieldDiffs.map(fd=>fd.txt).join(' | '):(fieldDiffs[0]?.txt||'');
+const line2Str=`${pStart?.date?.slice(5)} → ${pEnd?.date?.slice(5)} (${days}日)`;
+const singleStr=isMulti?'':`${line1Str} · ${line2Str}`;
+const neededW=isMulti?Math.max(textLen(line1Str),textLen(line2Str)):textLen(singleStr);
+const badgeW=Math.min(w-right-left-12,Math.max(260,Math.round(neededW+32)));
+const badgeH=isMulti?42:28;
+const midX=(x(selStart)+x(selEnd))/2;
+const bx=Math.max(left+6,Math.min(w-right-badgeW-6,midX-badgeW/2));
+const by=top+ph-badgeH-4;
+return jsxRuntime.jsxs('g', { className: "tm-drag-badge", children: [
+jsxRuntime.jsx('rect', { x: bx, y: by, width: badgeW, height: badgeH, rx: "6", fill: "var(--surface-raised)", stroke: "var(--accent)", strokeWidth: "1.2", filter: "drop-shadow(0 3px 8px rgba(0,0,0,0.3))" }),
+jsxRuntime.jsxs('text', { x: bx+badgeW/2, y: by+16, textAnchor: "middle", style: {fontSize:"11px",fontFamily:"ui-monospace, monospace",userSelect:"none"}, children: [
+isMulti?jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
+jsxRuntime.jsx('tspan', { x: bx+badgeW/2, dy: 0, children: fieldDiffs.map((fd,idx)=>jsxRuntime.jsxs(jsxRuntime.Fragment, { key: fd.f, children: [
+idx>0&&jsxRuntime.jsx('tspan', { fill: "var(--secondary)", children: " | " }),
+jsxRuntime.jsx('tspan', { fill: palette[fd.i%palette.length], children: fd.sLbl }),
+jsxRuntime.jsx('tspan', { fill: fd.toneCol, fontWeight: "700", children: `${fd.sign}${fmt(fd.d,2)} (${fd.sign}${fmt(fd.pd,2)}%) ${fd.arrow}` })
+]})) }),
+jsxRuntime.jsx('tspan', { x: bx+badgeW/2, dy: 16, fill: "var(--secondary)", fontSize: "10px", children: line2Str })
+]}):jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
+jsxRuntime.jsx('tspan', { fill: fieldDiffs[0]?.toneCol||'var(--text)', fontWeight: "700", children: `${fieldDiffs[0]?.sign||''}${fmt(fieldDiffs[0]?.d,2)} (${fieldDiffs[0]?.sign||''}${fmt(fieldDiffs[0]?.pd,2)}%) ${fieldDiffs[0]?.arrow||''}` }),
 jsxRuntime.jsx('tspan', { fill: "var(--secondary)", children: " · " }),
-jsxRuntime.jsx('tspan', { fill: "var(--text)", children: `${pStart?.date?.slice(5)}→${pEnd?.date?.slice(5)} (${days}日)` })
+jsxRuntime.jsx('tspan', { fill: "var(--text)", children: line2Str })
+]})
 ]})
 ]});
 })()
