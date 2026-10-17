@@ -321,6 +321,338 @@ html[data-theme="light"] .tm-topbar-btn:hover {
   padding-top: 18px !important;
 }
 
+
+/* === 行情階段 109 項檢核表樣式 (嚴禁任何 emoji) === */
+.tm-chk-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+}
+.tm-chk-tag.met {
+  color: #10b981 !important;
+  background: rgba(16, 185, 129, 0.12) !important;
+  border: 1px solid rgba(16, 185, 129, 0.35) !important;
+}
+.tm-chk-tag.unmet {
+  color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.12) !important;
+  border: 1px solid rgba(239, 68, 68, 0.35) !important;
+}
+.tm-chk-tag.pending {
+  color: var(--secondary) !important;
+  background: rgba(132, 147, 170, 0.1) !important;
+  border: 1px solid rgba(132, 147, 170, 0.25) !important;
+}
+html[data-theme="light"] .tm-chk-tag.met {
+  background: #ecfdf5 !important;
+  color: #059669 !important;
+  border-color: #a7f3d0 !important;
+}
+html[data-theme="light"] .tm-chk-tag.unmet {
+  background: #fef2f2 !important;
+  color: #dc2626 !important;
+  border-color: #fecaca !important;
+}
+html[data-theme="light"] .tm-chk-tag.pending {
+  background: #f1f5f9 !important;
+  color: #64748b !important;
+  border-color: #cbd5e1 !important;
+}
+
+.tm-chk-btn-group {
+  display: inline-flex;
+  align-items: center;
+  background: var(--control);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 2px;
+  gap: 2px;
+}
+.tm-chk-btn {
+  padding: 3px 7px;
+  font-size: 11px;
+  border-radius: 3px;
+  border: none;
+  background: transparent;
+  color: var(--secondary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-weight: 500;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+.tm-chk-btn:hover {
+  color: var(--text);
+  background: var(--control-hover);
+}
+.tm-chk-btn.active.met {
+  background: rgba(16, 185, 129, 0.22) !important;
+  color: #10b981 !important;
+  font-weight: 700 !important;
+}
+.tm-chk-btn.active.unmet {
+  background: rgba(239, 68, 68, 0.22) !important;
+  color: #ef4444 !important;
+  font-weight: 700 !important;
+}
+.tm-chk-btn.active.pending {
+  background: rgba(132, 147, 170, 0.22) !important;
+  color: var(--text) !important;
+  font-weight: 700 !important;
+}
+html[data-theme="light"] .tm-chk-btn-group {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+html[data-theme="light"] .tm-chk-btn:hover {
+  background: #f1f5f9;
+}
+html[data-theme="light"] .tm-chk-btn.active.met {
+  background: #d1fae5 !important;
+  color: #065f46 !important;
+}
+html[data-theme="light"] .tm-chk-btn.active.unmet {
+  background: #fee2e2 !important;
+  color: #991b1b !important;
+}
+html[data-theme="light"] .tm-chk-btn.active.pending {
+  background: #e2e8f0 !important;
+  color: #1e293b !important;
+}
+
+.tm-chk-input {
+  width: 100%;
+  min-width: 140px;
+  padding: 4px 8px;
+  font-size: 11px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: var(--background);
+  color: var(--text);
+  box-sizing: border-box;
+  font-family: inherit;
+  transition: border-color 0.15s ease;
+}
+.tm-chk-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+.tm-chk-date {
+  width: 90px;
+  padding: 4px 6px;
+  font-size: 11px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: var(--background);
+  color: var(--text);
+  box-sizing: border-box;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+}
+.tm-chk-date:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+html[data-theme="light"] .tm-chk-input, html[data-theme="light"] .tm-chk-date {
+  background: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+.tm-imp-badge {
+  font-size: 10px;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-weight: 600;
+  display: inline-block;
+  white-space: nowrap;
+}
+.tm-imp-badge.core {
+  background: rgba(234, 179, 8, 0.15);
+  color: #eab308;
+  border: 1px solid rgba(234, 179, 8, 0.35);
+}
+.tm-imp-badge.aux {
+  background: rgba(132, 147, 170, 0.1);
+  color: var(--secondary);
+  border: 1px solid var(--border);
+}
+html[data-theme="light"] .tm-imp-badge.core {
+  background: #fef9c3;
+  color: #854d0e;
+  border-color: #fde047;
+}
+
+.tm-chk-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  max-height: 480px;
+}
+.tm-chk-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+  line-height: 1.5;
+}
+.tm-chk-table th {
+  text-align: left;
+  padding: 8px 10px;
+  font-weight: 600;
+  color: var(--secondary);
+  border-bottom: 1px solid var(--border-strong);
+  background: var(--surface);
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+.tm-chk-table td {
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+.tm-chk-table tr:last-child td {
+  border-bottom: none;
+}
+.tm-chk-table tr:hover {
+  background: var(--control-hover);
+}
+.tm-chk-table tr.is-met {
+  background: rgba(16, 185, 129, 0.04);
+}
+.tm-chk-table tr.is-unmet {
+  background: rgba(239, 68, 68, 0.04);
+}
+
+.tm-chk-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-bottom: 8px;
+}
+.tm-chk-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+}
+.tm-chk-pill {
+  padding: 3px 8px;
+  font-size: 11px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--secondary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.tm-chk-pill:hover {
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+.tm-chk-pill.active {
+  background: var(--surface-raised);
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+}
+html[data-theme="light"] .tm-chk-pill.active {
+  background: #f0fdf4;
+  border-color: #0284c7;
+  color: #0284c7;
+}
+
+.tm-chk-stat-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 12px;
+  background: var(--control);
+  border-radius: 6px;
+  font-size: 11px;
+  color: var(--secondary);
+  margin-top: 8px;
+}
+.tm-chk-stat-bar strong {
+  color: var(--text);
+  font-size: 12px;
+}
+.tm-chk-stat-item.met { color: #10b981; font-weight: 600; }
+.tm-chk-stat-item.unmet { color: #ef4444; font-weight: 600; }
+.tm-chk-stat-item.pending { color: var(--secondary); }
+
+.tm-stage-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.tm-stage-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  position: relative;
+}
+.tm-stage-card:hover {
+  border-color: var(--border-strong);
+  background: var(--surface-raised);
+}
+.tm-stage-card.chosen {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+.tm-stage-card.candidate {
+  border-left: 3px solid #10b981;
+}
+.tm-stage-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+.tm-stage-card-title {
+  font-size: 13px;
+  font-weight: 600;
+}
+.tm-stage-card-body {
+  font-size: 11px;
+  color: var(--secondary);
+}
+.tm-stage-card-progress {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--muted);
+  overflow: hidden;
+  margin-top: 6px;
+  display: flex;
+}
+.tm-stage-card-progress > div {
+  height: 100%;
+}
+.tm-phase-strip button.candidate-stage {
+  border-bottom: 2px solid #10b981;
+}
+.tm-phase-strip button small {
+  display: block;
+  font-size: 9px;
+  opacity: 0.85;
+}
+
 </style>
 </head>
 <body>
@@ -371,7 +703,7 @@ const monthLabel=v=>v&&String(v).length===5?`${Number(String(v).slice(0,3))+1911
 const timeLabel=v=>v&&/^\d{5,6}$/.test(String(v))?String(v).padStart(6,'0').replace(/^(..)(..)(..)$/,'$1:$2:$3'):v||'';
 const tone=v=>v==null?'neutral':v>=0?'up':'down';
 const names={'taiex':'加權指數','tpex':'櫃買指數','2330':'台積電','2317':'鴻海','2454':'聯發科','2382':'廣達','2308':'台達電','3231':'緯創','SPY':'美國大盤','QQQ':'美國科技','SOXX':'半導體'};
-const tabs=[{id:'overview',label:'市場總覽'},{id:'technical',label:'價格・廣度'},{id:'leverage',label:'籌碼・槓桿'},{id:'global',label:'全球・波動'},{id:'fundamentals',label:'產業・事件'},{id:'factors',label:'68 因子研究庫'},{id:'sources',label:'資料連線'}];
+const tabs=[{id:'overview',label:'市場總覽'},{id:'checklist',label:'109項檢核表'},{id:'technical',label:'價格・廣度'},{id:'leverage',label:'籌碼・槓桿'},{id:'global',label:'全球・波動'},{id:'fundamentals',label:'產業・事件'},{id:'factors',label:'68 因子研究庫'},{id:'sources',label:'資料連線'}];
 const ndate=s=>s||'尚未取得';
 function Glyph({type='pulse',size=18}){return jsxRuntime.jsx('svg', { width: size, height: size, viewBox: "0 0 24 24"   , fill: "none", stroke: "currentColor", strokeWidth: "1.6", strokeLinecap: "round", strokeLinejoin: "round", 'aria-hidden': "true", children: type==='refresh'?jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [jsxRuntime.jsx('path', { d: "M20 7v5h-5M4 17v-5h5"  ,}), jsxRuntime.jsx('path', { d: "M6 7a7 7 0 0 1 12 0l2 5M4 12l2 5a7 7 0 0 0 12 0"                ,})]}):type==='search'?jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [jsxRuntime.jsx('circle', { cx: "10.5", cy: "10.5", r: "6.5",}), jsxRuntime.jsx('path', { d: "m16 16 5 5"   ,})]}):type==='arrow'?jsxRuntime.jsx('path', { d: "m5 16 6-6 4 4 5-9M15 5h5v5"      ,}):type==='link'?jsxRuntime.jsx(jsxRuntime.Fragment, { children: jsxRuntime.jsx('path', { d: "m10 13 4-4M8 15l-2 2a3 3 0 0 1-4-4l4-4a3 3 0 0 1 4 0M14 9l2-2a3 3 0 0 1 4 4l-4 4a3 3 0 0 1-4 0"                           ,})}):jsxRuntime.jsx('path', { d: "M2 13h5l3-8 4 14 3-6h5"    ,})})}
 function Empty({text='來源尚未提供可用資料'}){return jsxRuntime.jsxs('div', { className: "tm-empty", children: [jsxRuntime.jsx(Glyph, { size: 28,}), jsxRuntime.jsx('span', { children: text})]})}
@@ -386,9 +718,775 @@ react.useEffect(()=>{try{document.documentElement.setAttribute('data-theme',them
 const refresh=react.useCallback(async()=>{if(inFlight.current)return;inFlight.current=true;setBusy(true);setError('');const controller=new AbortController();abort.current=controller;const timer=setTimeout(()=>controller.abort(),65000);try{const res=await fetch('./data/market.json?t='+Date.now(),{cache:'no-store',signal:controller.signal});if(!res.ok)throw new Error(`行情快照回應 ${res.status}`);const p=await res.json();if(!p.data)throw new Error('行情快照格式不正確');if(mounted.current){setPacket(p);}}catch(e){if(mounted.current)setError(e.name==='AbortError'?'資料請求逾時，請點擊重新整理':'無法連上行情快照，請確認網路連線或稍候重試。');}finally{clearTimeout(timer);inFlight.current=false;if(mounted.current)setBusy(false);}},[]);
 react.useEffect(()=>{mounted.current=true;refresh();return ()=>{mounted.current=false;abort.current?.abort();};},[refresh]);
 return {packet,busy,error,refresh,theme,setTheme};}
-function candidate(f,b){if(f.close==null||f.ma60==null||f.r5==null||f.calendar_age_days>4)return {stage:null,summary:'等待完整價格與長窗口序列',reasons:[]};const reasons=[['短線動能',pct(f.r5),f.r5<0?'down':'up'],['月線位置',pct(f.dev20),f.dev20<0?'down':'up'],['季線斜率',pct(f.slope60),f.slope60<0?'down':'up'],['融資20日',pct(f.margin20),'neutral']];let stage=null;if(f.close<f.ma60&&f.slope60<0)stage='主跌';else if(f.close<f.ma20&&f.r5<0)stage='初跌';else if(f.close>f.ma20&&f.slope60>0&&f.r20>0)stage='主升';else if(f.r5>0&&f.r20<0)stage='初升';return {stage,summary:stage==='初跌'?'短線趨勢轉弱，留意壓力是否擴散至中期。':stage==='主跌'?'價格與季線斜率偏弱，需核對流動性與去槓桿。':stage==='主升'?'價格與中期趨勢偏強，仍需廣度與實際需求確認。':stage==='初升'?'短線改善，但尚待低點、主流與廣度確認。':'訊號互有衝突，暫不形成階段候選。',reasons};}
-const stages=[['初升','清洗後反轉、低點守住、廣度與領漲修復。'],['主升','趨勢墊高、回檔修復、主流與需求互相驗證。'],['末升','上升背景、槓桿過熱、供給回歸與利多反應弱。'],['初跌','原上升趨勢破壞、強勢股掉隊、反彈失敗。'],['主跌','持續破低、流動性受壓、去槓桿與壞消息反饋。'],['末跌','大負乖離、恐慌、清洗與賣不下去的聯合證據。']];
-function Regime({f,b,factors=[]}){const c=candidate(f,b),[selected,setSelected]=react.useState(null);return jsxRuntime.jsxs(Panel, { id: "regime-signal", query: "catalog", title: "行情階段訊號", rows: factors.filter(r=>['P01','P04','P05','L02'].includes(r.id)), children: [jsxRuntime.jsxs('div', { className: "tm-regime-head", children: [jsxRuntime.jsxs('div', { children: [jsxRuntime.jsx('span', { className: "tm-kicker", children: "量化候選 · 待研究確認"  }), jsxRuntime.jsxs('div', { className: "tm-stage", children: [c.stage||'尚待確認', jsxRuntime.jsx('span', { className: "tm-badge amber" , children: "信心：低"})]})]}), jsxRuntime.jsx('div', { className: "tm-orbit", children: jsxRuntime.jsx(Glyph, { size: 34,})})]}), jsxRuntime.jsx('div', { className: "tm-phase-strip", children: stages.map(([s],i)=>jsxRuntime.jsxs('button', { className: (c.stage===s?'current ':'')+(selected===s?'chosen':''), onClick: ()=>setSelected(selected===s?null:s), 'aria-pressed': selected===s, children: [jsxRuntime.jsxs('span', { children: ["0", i+1]}), s]}, s))}), jsxRuntime.jsx('p', { className: "tm-explanation", children: selected?stages.find(x=>x[0]===selected)?.[1]:c.summary}), jsxRuntime.jsx('div', { className: "tm-signal-list", children: c.reasons.map(([k,v,t])=>jsxRuntime.jsxs('div', { children: [jsxRuntime.jsx('span', { children: k}), jsxRuntime.jsx('strong', { className: t, children: v})]}, k))}), jsxRuntime.jsx('div', { className: "tm-footnote", children: "價格規則僅產生候選；末升／末跌需供需、清洗與承接證據。候選不等於技能的綜合判讀，也不是損失機率。"})]})}
+const CHECKLIST_ITEMS = [{"id": "001", "stage": "末升", "aspect": "籌碼槓桿", "importance": "核心", "indicator": "融資、質押或其他槓桿曝險持續升溫", "logic": "上漲績效愈依賴借款，反轉時被迫賣壓愈大", "source": "EP138/EP476", "status": "未確認", "note": "", "page": "p.5,8,12,15", "date": ""}, {"id": "002", "stage": "末升", "aspect": "籌碼槓桿", "importance": "輔助", "indicator": "強勢部位集中單一產業／少數個股", "logic": "集中且槓桿化增加尾端風險；不能單以績效好判斷安全", "source": "EP138", "status": "未確認", "note": "", "page": "p.8,12", "date": ""}, {"id": "003", "stage": "末升", "aspect": "籌碼槓桿", "importance": "核心", "indicator": "當沖占比升至相對歷史高位", "logic": "短線投機熱度高；EP141 案例接近 48%，非普適門檻", "source": "EP141", "status": "未確認", "note": "", "page": "p.8,11", "date": ""}, {"id": "004", "stage": "末升", "aspect": "籌碼槓桿", "importance": "輔助", "indicator": "交易量／市場熱度在高檔極端活躍", "logic": "高檔大量需辨別健康換手還是出貨；不是單憑量大判頂", "source": "EP138/EP141", "status": "未確認", "note": "", "page": "p.8,13", "date": ""}, {"id": "005", "stage": "末升", "aspect": "情緒波動", "importance": "核心", "indicator": "單一多頭故事成為市場全民共識", "logic": "人人看得到的利多，新增邊際買家可能減少", "source": "EP289", "status": "未確認", "note": "", "page": "p.5,12,15", "date": ""}, {"id": "006", "stage": "末升", "aspect": "情緒波動", "importance": "輔助", "indicator": "短線追價、槓桿績效與投機風氣明顯過熱", "logic": "泡沫／投機 froth，非單一當沖數值可以斷定", "source": "EP138/EP141", "status": "未確認", "note": "", "page": "p.8,12", "date": ""}, {"id": "007", "stage": "末升", "aspect": "基本面敘事", "importance": "核心", "indicator": "市場價格／估值已反映很遠的未來成長", "logic": "重點是高成長是否能持續，而非股價絕對高低", "source": "EP289", "status": "未確認", "note": "", "page": "p.5,15", "date": ""}, {"id": "008", "stage": "末升", "aspect": "基本面敘事", "importance": "核心", "indicator": "主要產業原先「供不應求」條件正在消失", "logic": "週期超額獲利可能不再可持續", "source": "EP289", "status": "未確認", "note": "", "page": "p.5,15", "date": ""}, {"id": "009", "stage": "末升", "aspect": "基本面敘事", "importance": "核心", "indicator": "擴產、新進供給或供應鏈修復開始增加供給", "logic": "供需缺口收斂，市場提前折價", "source": "EP289", "status": "未確認", "note": "", "page": "p.5,11,15", "date": ""}, {"id": "010", "stage": "末升", "aspect": "基本面敘事", "importance": "核心", "indicator": "需求被提前拉貨、透支，增速可能下行", "logic": "訂單／拉貨潮具有一次性或週期性，不能外推", "source": "EP289", "status": "未確認", "note": "", "page": "p.5,15", "date": ""}, {"id": "011", "stage": "末升", "aspect": "基本面敘事", "importance": "輔助", "indicator": "當前暴利來自附加費／缺貨／特殊事件等「機會財」", "logic": "應與 Data Center 等長期結構性需求區分", "source": "EP289", "status": "未確認", "note": "", "page": "p.5", "date": ""}, {"id": "012", "stage": "末升", "aspect": "基本面敘事", "importance": "核心", "indicator": "已經廣為預期的大事件利多逐漸鈍化", "logic": "解封等人人知道的事件可能成為出貨流動性", "source": "EP289", "status": "未確認", "note": "", "page": "p.5,11,13", "date": ""}, {"id": "013", "stage": "末升", "aspect": "基本面敘事", "importance": "輔助", "indicator": "法人提高目標價、資金集中追逐同一熱門題材", "logic": "大資金可能趁市場熱度退出；法人買超不等於出貨", "source": "EP289", "status": "未確認", "note": "", "page": "p.5", "date": ""}, {"id": "014", "stage": "末升", "aspect": "趨勢價格", "importance": "核心", "indicator": "產業股價已先於產品報價轉弱", "logic": "報價常滯後股價，等正式跌價恐錯過轉折", "source": "EP289", "status": "未確認", "note": "", "page": "p.5,11,12", "date": ""}, {"id": "015", "stage": "末升", "aspect": "趨勢價格", "importance": "輔助", "indicator": "利多消息公布後股價不再續漲，甚至回吐", "logic": "觀察價格反應函數，而不是利多新聞數量", "source": "EP289", "status": "未確認", "note": "", "page": "p.5,11,13", "date": ""}, {"id": "016", "stage": "末升", "aspect": "市場寬度", "importance": "輔助", "indicator": "指數高檔但領漲集中、其他股票表現落後", "logic": "大型權值撐盤可能掩蓋內部強弱；報告列作近期觀察非固定模型", "source": "近期盤勢觀察", "status": "未確認", "note": "", "page": "p.3,10", "date": ""}, {"id": "017", "stage": "末升", "aspect": "市場寬度", "importance": "輔助", "indicator": "原有領漲族群開始鬆動，廣度無法延伸", "logic": "若轉成補跌及失守均線，應轉看初跌", "source": "EP683/EP692", "status": "未確認", "note": "", "page": "p.10,13", "date": ""}, {"id": "018", "stage": "初跌", "aspect": "趨勢價格", "importance": "核心", "indicator": "強勢股失守事先定義的關鍵均線或支撐", "logic": "可以先做交易風控，不必等宏觀看空", "source": "EP683", "status": "未確認", "note": "", "page": "p.6,10,13,15", "date": ""}, {"id": "019", "stage": "初跌", "aspect": "趨勢價格", "importance": "核心", "indicator": "先前主流高 Beta、中小型強勢股開始補跌", "logic": "領漲動能受損，與單純指數波動不同", "source": "EP683", "status": "未確認", "note": "", "page": "p.6,10,15", "date": ""}, {"id": "020", "stage": "初跌", "aspect": "趨勢價格", "importance": "核心", "indicator": "跌破後反彈未能站回重要均線／壓力區", "logic": "趨勢破壞後的修復失敗", "source": "EP289/EP683", "status": "未確認", "note": "", "page": "p.6,10,13", "date": ""}, {"id": "021", "stage": "初跌", "aspect": "趨勢價格", "importance": "輔助", "indicator": "回檔後無法像主升期迅速修復", "logic": "由健康回檔轉為反覆破位", "source": "EP693/EP683", "status": "未確認", "note": "", "page": "p.5,10,13", "date": ""}, {"id": "022", "stage": "初跌", "aspect": "趨勢價格", "importance": "輔助", "indicator": "近期新高或前高附近遭遇明顯賣壓", "logic": "需與已成主跌的持續性賣盤區別", "source": "近期盤勢觀察", "status": "未確認", "note": "", "page": "p.3,10", "date": ""}, {"id": "023", "stage": "初跌", "aspect": "市場寬度", "importance": "核心", "indicator": "原本領漲族群消失，沒有新族群接棒", "logic": "沒有 leadership 的行情延續力下降", "source": "EP692/EP683", "status": "未確認", "note": "", "page": "p.10,13,15", "date": ""}, {"id": "024", "stage": "初跌", "aspect": "市場寬度", "importance": "核心", "indicator": "指數與多數個股背離，權值股相對抗跌", "logic": "大型權值與中小股分化；大盤還撐住不代表風險低", "source": "EP683/近期盤勢", "status": "未確認", "note": "", "page": "p.6,10,11", "date": ""}, {"id": "025", "stage": "初跌", "aspect": "市場寬度", "importance": "輔助", "indicator": "部分強勢股票接連轉弱、跌停家數增加", "logic": "領漲股補跌與寬度惡化往往先於全面流動性危機", "source": "EP683", "status": "未確認", "note": "", "page": "p.6,7,13", "date": ""}, {"id": "026", "stage": "初跌", "aspect": "籌碼槓桿", "importance": "核心", "indicator": "融資／槓桿由擴張轉向初步去槓桿", "logic": "開始有降風險，而非已發生全面斷頭", "source": "EP683/EP476", "status": "未確認", "note": "", "page": "p.1,6,15", "date": ""}, {"id": "027", "stage": "初跌", "aspect": "籌碼槓桿", "importance": "輔助", "indicator": "高槓桿、高集中持股開始放大淨值波動", "logic": "危機早期脆弱性上升，須注意質押與維持率", "source": "EP138/EP140", "status": "未確認", "note": "", "page": "p.8", "date": ""}, {"id": "028", "stage": "初跌", "aspect": "籌碼槓桿", "importance": "輔助", "indicator": "外資／大型法人出現異常大額賣壓", "logic": "2026-10-15 案例；不是股癌反覆驗證的獨立門檻", "source": "近期盤勢觀察", "status": "未確認", "note": "", "page": "p.3,10", "date": ""}, {"id": "029", "stage": "初跌", "aspect": "市場寬度", "importance": "輔助", "indicator": "反彈時量價與個股參與度不足", "logic": "非單靠縮量就判失敗；漲停鎖單可能壓低成交量", "source": "EP141/EP683", "status": "未確認", "note": "", "page": "p.8,10", "date": ""}, {"id": "030", "stage": "初跌", "aspect": "基本面敘事", "importance": "核心", "indicator": "出現市場先前未充分預期的政策／總經 shock", "logic": "如疫情、關稅遠超預期，確認破壞成長假設", "source": "EP3/EP546", "status": "未確認", "note": "", "page": "p.6,9,15", "date": ""}, {"id": "031", "stage": "初跌", "aspect": "基本面敘事", "importance": "核心", "indicator": "好消息或政策刺激公布後仍無法穩住股價", "logic": "價格反應失靈比政策公告本身重要", "source": "EP5/EP12", "status": "未確認", "note": "", "page": "p.6,11,15", "date": ""}, {"id": "032", "stage": "初跌", "aspect": "基本面敘事", "importance": "輔助", "indicator": "PMI 明顯惡化或供給衝擊開始擴散", "logic": "疫情案例先見中國 PMI 異常，不代表固定門檻", "source": "EP3", "status": "未確認", "note": "", "page": "p.6,7,11", "date": ""}, {"id": "033", "stage": "初跌", "aspect": "基本面敘事", "importance": "輔助", "indicator": "企業出現預防性裁員／就業與需求風險", "logic": "由供應鏈 shock 傳導到實體需求 shock", "source": "EP3", "status": "未確認", "note": "", "page": "p.6,7,11", "date": ""}, {"id": "034", "stage": "初跌", "aspect": "情緒波動", "importance": "輔助", "indicator": "風險偏好突然下降，使基本面利多被市場忽視", "logic": "價格與長期 thesis 可短期背離，仍可先降低風險", "source": "EP545/EP683", "status": "未確認", "note": "", "page": "p.9,12", "date": ""}, {"id": "035", "stage": "主跌", "aspect": "趨勢價格", "importance": "核心", "indicator": "市場主要指數和多數個股持續向下破位", "logic": "跌勢擴散，非單日健康修正", "source": "EP476/EP547", "status": "未確認", "note": "", "page": "p.6,9,13", "date": ""}, {"id": "036", "stage": "主跌", "aspect": "趨勢價格", "importance": "核心", "indicator": "下跌 → 保證金壓力 → 更多賣出，形成負回饋", "logic": "deleverage spiral；價格跌幅可遠超估值合理範圍", "source": "EP476", "status": "未確認", "note": "", "page": "p.6,9,15", "date": ""}, {"id": "037", "stage": "主跌", "aspect": "趨勢價格", "importance": "輔助", "indicator": "反彈迅速失敗，壞消息仍引起新低", "logic": "賣方仍掌控價格，談便宜不能代替止跌證據", "source": "EP476/EP547", "status": "未確認", "note": "", "page": "p.6,13", "date": ""}, {"id": "038", "stage": "主跌", "aspect": "籌碼槓桿", "importance": "核心", "indicator": "維持率惡化，融資／質押斷頭事件增加", "logic": "真正要問還有多少人被迫賣", "source": "EP476/EP547", "status": "未確認", "note": "", "page": "p.6,11,15", "date": ""}, {"id": "039", "stage": "主跌", "aspect": "籌碼槓桿", "importance": "核心", "indicator": "大戶、中實戶、散戶同時縮槓桿", "logic": "跨投資人類別的去槓桿可擴大跌幅", "source": "EP476", "status": "未確認", "note": "", "page": "p.6,9", "date": ""}, {"id": "040", "stage": "主跌", "aspect": "籌碼槓桿", "importance": "核心", "indicator": "carry trade／借貸套利部位被迫平倉", "logic": "日圓升值引發 unwind 是 2024 具體範例", "source": "EP476", "status": "未確認", "note": "", "page": "p.6,9,15", "date": ""}, {"id": "041", "stage": "主跌", "aspect": "籌碼槓桿", "importance": "核心", "indicator": "散戶想斷頭卻因跌停鎖死無法成交", "logic": "部位風險未釋放，可能後續集中出清", "source": "EP547", "status": "未確認", "note": "", "page": "p.6,9,11", "date": ""}, {"id": "042", "stage": "主跌", "aspect": "籌碼槓桿", "importance": "輔助", "indicator": "為救維持率反而增加槓桿，惡化後續斷頭風險", "logic": "自我增幅回饋仍在形成", "source": "EP476", "status": "未確認", "note": "", "page": "p.6", "date": ""}, {"id": "043", "stage": "主跌", "aspect": "籌碼槓桿", "importance": "輔助", "indicator": "衍生品／期貨去槓桿壓力同時出現", "logic": "注意 OI 與槓桿部位，不只個股本益比", "source": "EP289/EP548", "status": "未確認", "note": "", "page": "p.6,9,11", "date": ""}, {"id": "044", "stage": "主跌", "aspect": "市場寬度", "importance": "核心", "indicator": "大量股票連續跌停或跌停鎖死", "logic": "賣方有報價卻缺買方；流動性危機", "source": "EP547", "status": "未確認", "note": "", "page": "p.6,9,11,13", "date": ""}, {"id": "045", "stage": "主跌", "aspect": "市場寬度", "importance": "核心", "indicator": "流動性顯著惡化，市場呈現全面通殺", "logic": "權值和中小型股一同遭賣出", "source": "EP476/EP547", "status": "未確認", "note": "", "page": "p.4,6,13", "date": ""}, {"id": "046", "stage": "主跌", "aspect": "市場寬度", "importance": "輔助", "indicator": "多數股票仍跌停，權值股單獨反彈無法帶動寬度", "logic": "指數 V 型拉升可能只是部分修復", "source": "EP139/EP683", "status": "未確認", "note": "", "page": "p.7,11,13", "date": ""}, {"id": "047", "stage": "主跌", "aspect": "情緒波動", "importance": "核心", "indicator": "VIX 持續快速走高，波動率 regime 轉變", "logic": "高 VIX 在跌勢早期是風險擴散，不等於立刻抄底", "source": "EP476/EP547", "status": "未確認", "note": "", "page": "p.6,11,13", "date": ""}, {"id": "048", "stage": "主跌", "aspect": "情緒波動", "importance": "輔助", "indicator": "VXX 突破原本下降趨勢線", "logic": "反映風險偏好與避險需求突然轉向", "source": "EP476", "status": "未確認", "note": "", "page": "p.4,11", "date": ""}, {"id": "049", "stage": "主跌", "aspect": "情緒波動", "importance": "輔助", "indicator": "壞消息反覆引發恐慌與拋售", "logic": "警戒情緒與流動性互相強化", "source": "EP476/EP547", "status": "未確認", "note": "", "page": "p.6", "date": ""}, {"id": "050", "stage": "主跌", "aspect": "基本面敘事", "importance": "核心", "indicator": "政策利多（降息、QE）仍無法止血", "logic": "流動性與恐慌主導定價", "source": "EP5/EP12", "status": "未確認", "note": "", "page": "p.6,7,11", "date": ""}, {"id": "051", "stage": "主跌", "aspect": "基本面敘事", "importance": "核心", "indicator": "實際政策 shock 超出原先市場定價", "logic": "2025 關稅數字遠超預期是具體案例", "source": "EP546", "status": "未確認", "note": "", "page": "p.9", "date": ""}, {"id": "052", "stage": "主跌", "aspect": "基本面敘事", "importance": "輔助", "indicator": "PMI、就業、需求惡化使供給 shock 演變成實體危機", "logic": "若是持續性經濟崩壞，早期極端恐慌未必是底", "source": "EP3/EP476", "status": "未確認", "note": "", "page": "p.6,7", "date": ""}, {"id": "053", "stage": "末跌", "aspect": "趨勢價格", "importance": "核心", "indicator": "指數或個股相對大均線出現極大的負乖離", "logic": "不表示已見底，只表示追加放空風險報酬惡化", "source": "EP289", "status": "未確認", "note": "", "page": "p.6,8,10,13,16", "date": ""}, {"id": "054", "stage": "末跌", "aspect": "趨勢價格", "importance": "核心", "indicator": "明顯跌深後再創新低的效率下降", "logic": "下跌動能與新增賣壓不再成比例", "source": "EP289/EP683", "status": "未確認", "note": "", "page": "p.7,13,16", "date": ""}, {"id": "055", "stage": "末跌", "aspect": "趨勢價格", "importance": "輔助", "indicator": "壞消息出來也不再有效跌出新低", "logic": "價格開始拒絕更低價；尚須確認換手與買方", "source": "EP289/EP548", "status": "未確認", "note": "", "page": "p.4,7,16", "date": ""}, {"id": "056", "stage": "末跌", "aspect": "情緒波動", "importance": "核心", "indicator": "市場情緒形成極端一致的悲觀／全面投降", "logic": "極端情緒與負乖離組合比單一跌幅重要", "source": "EP289", "status": "未確認", "note": "", "page": "p.6,8,13,15", "date": ""}, {"id": "057", "stage": "末跌", "aspect": "情緒波動", "importance": "核心", "indicator": "VIX 上升到相對歷史罕見極端", "logic": "EP547 案例 50+，不可把 50 當跨年固定門檻", "source": "EP476/EP547", "status": "未確認", "note": "", "page": "p.6,9,11,13", "date": ""}, {"id": "058", "stage": "末跌", "aspect": "情緒波動", "importance": "輔助", "indicator": "VXX 出現急升／原下行趨勢被突破", "logic": "風險恐慌極端需同時衡量長期基本面", "source": "EP476", "status": "未確認", "note": "", "page": "p.4,11", "date": ""}, {"id": "059", "stage": "末跌", "aspect": "籌碼槓桿", "importance": "核心", "indicator": "融資餘額從高檔大幅快速下降", "logic": "EP548 案例約 3000 多億→約 2000 億，非固定門檻", "source": "EP548", "status": "未確認", "note": "", "page": "p.4,7,9,11,13", "date": ""}, {"id": "060", "stage": "末跌", "aspect": "籌碼槓桿", "importance": "核心", "indicator": "高槓桿投資人因維持率被迫賣出、接近出清", "logic": "「想賣」與「不得不賣」應區分；確認實際消化程度", "source": "EP476/EP548", "status": "未確認", "note": "", "page": "p.4,6,7,15", "date": ""}, {"id": "061", "stage": "末跌", "aspect": "籌碼槓桿", "importance": "輔助", "indicator": "期貨／衍生品擠壓或結算壓力可識別為暫時因素", "logic": "EP289 OI 集中 13000 附近是歷史案例非現今門檻", "source": "EP289", "status": "未確認", "note": "", "page": "p.7,8,11", "date": ""}, {"id": "062", "stage": "末跌", "aspect": "籌碼槓桿", "importance": "輔助", "indicator": "集中未平倉量形成的結算壓力接近解除", "logic": "辨別到期 pin 壓力與長期基本面賣壓", "source": "EP289", "status": "未確認", "note": "", "page": "p.7", "date": ""}, {"id": "063", "stage": "末跌", "aspect": "市場寬度", "importance": "核心", "indicator": "市場出現放大量能與巨量換手／認輸式賣出", "logic": "若殺不出量，套牢籌碼可能還沒清完", "source": "EP683", "status": "未確認", "note": "", "page": "p.7,11,13,16", "date": ""}, {"id": "064", "stage": "末跌", "aspect": "市場寬度", "importance": "核心", "indicator": "原先大量跌停的股票開始打開跌停", "logic": "流動性不再完全被賣盤封鎖", "source": "EP547/EP548/EP683", "status": "未確認", "note": "", "page": "p.7,9,13", "date": ""}, {"id": "065", "stage": "末跌", "aspect": "市場寬度", "importance": "輔助", "indicator": "熱門股由連續跌停轉為全面漲停或大反轉", "logic": "確認底部的同期／滯後信號，須避免事後當領先", "source": "EP548", "status": "未確認", "note": "", "page": "p.4,7,9", "date": ""}, {"id": "066", "stage": "末跌", "aspect": "市場寬度", "importance": "輔助", "indicator": "全面殺盤時仍可見部分長線買盤開始承接", "logic": "EP139 的 V 型反攻是觀察線索，不等於確認底", "source": "EP139", "status": "未確認", "note": "", "page": "p.8", "date": ""}, {"id": "067", "stage": "末跌", "aspect": "基本面敘事", "importance": "核心", "indicator": "長期產業需求 thesis 沒有永久性崩壞", "logic": "極端恐慌＋基本面未毀才有左側價值", "source": "EP476/EP545", "status": "未確認", "note": "", "page": "p.4,9,12", "date": ""}, {"id": "068", "stage": "末跌", "aspect": "基本面敘事", "importance": "輔助", "indicator": "價格遠比仍有效的基本面利多疲弱", "logic": "可能是風險偏好而非長期供需先惡化", "source": "EP545", "status": "未確認", "note": "", "page": "p.9", "date": ""}, {"id": "069", "stage": "末跌", "aspect": "情緒波動", "importance": "輔助", "indicator": "在極端跌幅後市場繼續追空的邊際風險明顯升高", "logic": "EP289 討論不追空、回補部分空單；屬風險報酬判斷", "source": "EP289", "status": "未確認", "note": "", "page": "p.6,7,8,12", "date": ""}, {"id": "070", "stage": "翻多", "aspect": "趨勢價格", "importance": "核心", "indicator": "出現強力大紅 K／長下影／大幅反轉棒", "logic": "轉折首先提供明確可守的低點，而非保證牛市", "source": "EP219/EP548", "status": "未確認", "note": "", "page": "p.4,7,13,16", "date": ""}, {"id": "071", "stage": "翻多", "aspect": "趨勢價格", "importance": "核心", "indicator": "反轉 K 低點後續守住、未再有效創低", "logic": "可以用低點當防守基準", "source": "EP219", "status": "未確認", "note": "", "page": "p.4,13", "date": ""}, {"id": "072", "stage": "翻多", "aspect": "趨勢價格", "importance": "核心", "indicator": "賣壓再度出現仍無法打破前低", "logic": "比只看反彈點數更能辨認賣壓耗盡", "source": "EP289/EP548", "status": "未確認", "note": "", "page": "p.7,13,16", "date": ""}, {"id": "073", "stage": "翻多", "aspect": "趨勢價格", "importance": "輔助", "indicator": "二次回測後仍能再回升（higher low／守前低）", "logic": "2024 二次回測顯示翻多可能經震盪而非直線上行", "source": "2024 市場回測", "status": "未確認", "note": "", "page": "p.3,9", "date": ""}, {"id": "074", "stage": "翻多", "aspect": "趨勢價格", "importance": "輔助", "indicator": "重新收復重要均線與關鍵位置", "logic": "價格對修復的確認，比單純消息反轉重要", "source": "EP289/EP683", "status": "未確認", "note": "", "page": "p.1,10", "date": ""}, {"id": "075", "stage": "翻多", "aspect": "市場寬度", "importance": "核心", "indicator": "原本跌停鎖死的股票有足夠買盤打開", "logic": "EP683 反例：跌停沒打開，不可稱完整大奇蹟日", "source": "EP683", "status": "未確認", "note": "", "page": "p.7,11,13,16", "date": ""}, {"id": "076", "stage": "翻多", "aspect": "市場寬度", "importance": "核心", "indicator": "大量個股同步翻紅／漲停，非只有少數權值拉指數", "logic": "由無差別賣出轉為廣泛承接", "source": "EP548/EP683", "status": "未確認", "note": "", "page": "p.4,7,11,13", "date": ""}, {"id": "077", "stage": "翻多", "aspect": "市場寬度", "importance": "核心", "indicator": "價格反轉伴隨足夠成交量與換手", "logic": "真正 capitulation 並完成買賣力量轉換", "source": "EP683", "status": "未確認", "note": "", "page": "p.7,11,16", "date": ""}, {"id": "078", "stage": "翻多", "aspect": "市場寬度", "importance": "輔助", "indicator": "反彈時市場寬度改善，原先弱勢股不再普遍跌停", "logic": "指數反彈不等於整體止跌", "source": "EP683", "status": "未確認", "note": "", "page": "p.7,11,13", "date": ""}, {"id": "079", "stage": "翻多", "aspect": "市場寬度", "importance": "輔助", "indicator": "量能較小能以漲停鎖單解釋，不能誤判無量反彈", "logic": "EP141 指出漲停造成實際可成交籌碼減少", "source": "EP141", "status": "未確認", "note": "", "page": "p.8", "date": ""}, {"id": "080", "stage": "翻多", "aspect": "籌碼槓桿", "importance": "核心", "indicator": "融資與其他高槓桿籌碼已大幅洗清", "logic": "減少後續被迫賣壓，與只有恐慌有本質差別", "source": "EP548", "status": "未確認", "note": "", "page": "p.4,7,9", "date": ""}, {"id": "081", "stage": "翻多", "aspect": "情緒波動", "importance": "核心", "indicator": "極端 VIX／恐慌已開始回落或不再走高", "logic": "恐慌改善與價格轉強同時出現，不能只靠 VIX", "source": "EP476/EP549", "status": "未確認", "note": "", "page": "p.4,9,13", "date": ""}, {"id": "082", "stage": "翻多", "aspect": "市場寬度", "importance": "核心", "indicator": "重新出現能帶動行情的新領漲族群", "logic": "沒有 leadership 的反彈可信度較低", "source": "EP692", "status": "未確認", "note": "", "page": "p.5,11,13,16", "date": ""}, {"id": "083", "stage": "翻多", "aspect": "情緒波動", "importance": "輔助", "indicator": "市場風險偏好改善，資金開始願意承擔 Beta", "logic": "從全面去槓桿轉向主動風險配置", "source": "EP478/EP692", "status": "未確認", "note": "", "page": "p.5,13", "date": ""}, {"id": "084", "stage": "翻多", "aspect": "籌碼槓桿", "importance": "輔助", "indicator": "OI／結算型短期壓力解除後，市場可順利補漲", "logic": "避免把期貨 pinning 當成長線走勢", "source": "EP289", "status": "未確認", "note": "", "page": "p.7,11", "date": ""}, {"id": "085", "stage": "翻多", "aspect": "基本面敘事", "importance": "核心", "indicator": "原先長期成長／供需 thesis 仍可成立", "logic": "如果本質是永久基本面毀滅，極端恐慌反彈較難持續", "source": "EP476/EP545", "status": "未確認", "note": "", "page": "p.4,9", "date": ""}, {"id": "086", "stage": "初升", "aspect": "趨勢價格", "importance": "核心", "indicator": "止跌後呈現逐步墊高的低點與較穩定的反彈", "logic": "已從單日翻多，轉為能延續的價格修復", "source": "EP219/EP692", "status": "未確認", "note": "", "page": "p.4,5,13", "date": ""}, {"id": "087", "stage": "初升", "aspect": "趨勢價格", "importance": "核心", "indicator": "先前反轉 K 所留下的防守低點持續有效", "logic": "能定義風險，有較清楚的錯誤退出位置", "source": "EP219", "status": "未確認", "note": "", "page": "p.4,13", "date": ""}, {"id": "088", "stage": "初升", "aspect": "情緒波動", "importance": "核心", "indicator": "VIX／恐慌從極端狀態消退", "logic": "極端恐慌消退但不能單憑 VIX 就判主升", "source": "EP476/EP547", "status": "未確認", "note": "", "page": "p.4,13", "date": ""}, {"id": "089", "stage": "初升", "aspect": "籌碼槓桿", "importance": "核心", "indicator": "大規模融資斷頭已減緩，去槓桿接近完成", "logic": "強迫賣盤不再主導每次反彈", "source": "EP548", "status": "未確認", "note": "", "page": "p.4,13,15", "date": ""}, {"id": "090", "stage": "初升", "aspect": "市場寬度", "importance": "核心", "indicator": "跌停潮退去、較多股票恢復正常交易", "logic": "市場流動性與價格發現恢復", "source": "EP548/EP683", "status": "未確認", "note": "", "page": "p.4,7,13", "date": ""}, {"id": "091", "stage": "初升", "aspect": "市場寬度", "importance": "輔助", "indicator": "成交／換手有助確認底部不是假性反彈", "logic": "不能把單純指數大紅棒當完成洗盤", "source": "EP683", "status": "未確認", "note": "", "page": "p.7,13", "date": ""}, {"id": "092", "stage": "初升", "aspect": "基本面敘事", "importance": "核心", "indicator": "長期基本面沒有同步永久崩壞", "logic": "是恐慌買點得以演化成上行趨勢的必要背景", "source": "EP476/EP545", "status": "未確認", "note": "", "page": "p.4,9", "date": ""}, {"id": "093", "stage": "初升", "aspect": "基本面敘事", "importance": "輔助", "indicator": "新增數據與事件逐步支持多頭延續的可能", "logic": "具備發展新多頭條件，不代表已進入無敵主升", "source": "EP692", "status": "未確認", "note": "", "page": "p.5,10", "date": ""}, {"id": "094", "stage": "初升", "aspect": "市場寬度", "importance": "核心", "indicator": "開始有新領漲方向出現，或舊主流重拾強勢", "logic": "從普遍反彈走向具持續性的主流形成", "source": "EP692", "status": "未確認", "note": "", "page": "p.5,11,13", "date": ""}, {"id": "095", "stage": "初升", "aspect": "市場寬度", "importance": "輔助", "indicator": "暫無清楚主流但指數整體可持續修復", "logic": "EP478 說此時指數化曝險可比硬猜族群更適合", "source": "EP478", "status": "未確認", "note": "", "page": "p.5,11,12", "date": ""}, {"id": "096", "stage": "初升", "aspect": "情緒波動", "importance": "輔助", "indicator": "利空再出現時，不再輕易造成新低", "logic": "市場對壞消息的反應已明顯改善", "source": "EP289/EP548", "status": "未確認", "note": "", "page": "p.4,13", "date": ""}, {"id": "097", "stage": "初升", "aspect": "趨勢價格", "importance": "輔助", "indicator": "修復中即使反覆震盪，仍逐步向前高靠近", "logic": "2024 修復曾二次回測，勿強迫每日上漲", "source": "EP478/EP692", "status": "未確認", "note": "", "page": "p.3,5", "date": ""}, {"id": "098", "stage": "主升", "aspect": "趨勢價格", "importance": "核心", "indicator": "市場指數／主流股高點、低點持續墊高", "logic": "趨勢持續比單日噴出更重要", "source": "EP692/EP693", "status": "未確認", "note": "", "page": "p.5,13,15", "date": ""}, {"id": "099", "stage": "主升", "aspect": "趨勢價格", "importance": "核心", "indicator": "回檔後能重新修復、收復失土", "logic": "健康主升不是完全沒有回檔", "source": "EP693", "status": "未確認", "note": "", "page": "p.5,13,15", "date": ""}, {"id": "100", "stage": "主升", "aspect": "趨勢價格", "importance": "輔助", "indicator": "大盤接近／突破舊高，結構並未破壞", "logic": "EP693 描述逼近前高且淨值穩定墊高", "source": "EP693", "status": "未確認", "note": "", "page": "p.5,10", "date": ""}, {"id": "101", "stage": "主升", "aspect": "趨勢價格", "importance": "輔助", "indicator": "盤整／低動能期間仍能維持趨勢", "logic": "不需每天暴漲，只要風險報酬沒有失衡", "source": "EP693", "status": "未確認", "note": "", "page": "p.5", "date": ""}, {"id": "102", "stage": "主升", "aspect": "市場寬度", "importance": "核心", "indicator": "存在持續帶動行情的主流領漲族群", "logic": "領漲族群與需求獲得互相驗證", "source": "EP692", "status": "未確認", "note": "", "page": "p.1,5,13", "date": ""}, {"id": "103", "stage": "主升", "aspect": "市場寬度", "importance": "輔助", "indicator": "主流輪動能延續行情，而非全面領漲瓦解", "logic": "新的主流方向出現，可緩解舊族群動能不足", "source": "EP692", "status": "未確認", "note": "", "page": "p.5,11", "date": ""}, {"id": "104", "stage": "主升", "aspect": "基本面敘事", "importance": "核心", "indicator": "領漲產業需求／供需基本面仍持續強勁", "logic": "結構性需求與一次性週期機會財應區分", "source": "EP289/EP545", "status": "未確認", "note": "", "page": "p.5,9", "date": ""}, {"id": "105", "stage": "主升", "aspect": "基本面敘事", "importance": "核心", "indicator": "獲利／需求／產業數字持續驗證多頭敘事", "logic": "價格和基本面雙向確認", "source": "EP692/EP693", "status": "未確認", "note": "", "page": "p.5,13,15", "date": ""}, {"id": "106", "stage": "主升", "aspect": "基本面敘事", "importance": "輔助", "indicator": "市場利多不只一次性公告，而有後續訂單／需求支撐", "logic": "對價格已反映的未來成長持續驗證", "source": "EP289/EP545", "status": "未確認", "note": "", "page": "p.5,9", "date": ""}, {"id": "107", "stage": "主升", "aspect": "情緒波動", "importance": "輔助", "indicator": "雖然消息／短期震盪持續，風險偏好未崩壞", "logic": "可接受震盪不等於趨勢反轉", "source": "EP692/EP693", "status": "未確認", "note": "", "page": "p.5,10", "date": ""}, {"id": "108", "stage": "主升", "aspect": "籌碼槓桿", "importance": "輔助", "indicator": "自己的多頭部位／投資組合淨值穩定墊高", "logic": "EP693 的自身 P&L 輔助指標，具個人組合偏差", "source": "EP693", "status": "未確認", "note": "", "page": "p.5,12", "date": ""}, {"id": "109", "stage": "主升", "aspect": "籌碼槓桿", "importance": "輔助", "indicator": "不靠過度頻繁換股也能取得穩定向上報酬", "logic": "抱住有效主流，比每日追逐動能更符合主升特徵", "source": "EP693", "status": "未確認", "note": "", "page": "p.5,12", "date": ""}];
+
+// This module contains the 109-item checklist and its components.
+// It will be embedded into index.html.
+
+const stages = [
+  ['初升', '清洗後反轉、低點守住、廣度與領漲修復。'],
+  ['主升', '趨勢墊高、回檔修復、主流與需求互相驗證。'],
+  ['末升', '上升背景、槓桿過熱、供給回歸與利多反應弱。'],
+  ['初跌', '原上升趨勢破壞、強勢股掉隊、反彈失敗。'],
+  ['主跌', '持續破低、流動性受壓、去槓桿與壞消息反饋。'],
+  ['末跌', '大負乖離、恐慌、清洗與賣不下去的聯合證據。'],
+  ['翻多', '爆量長下影／大紅K反轉、跌停打開、融資大幅清洗後的買盤承接。']
+];
+
+function getAutoEval(item, f, b) {
+  const id = item.id;
+  const d = item.date || f?.date || '';
+  if (!f) return { status: item.status || '未確認', note: item.note || '', date: d };
+  
+  if (id === '001') {
+    if (f.margin20 != null && f.margin20 > 0.05) {
+      return { status: '符合', note: '上市融資近20日增加 ' + (f.margin20 * 100).toFixed(1) + '%，槓桿持續擴張', date: d };
+    }
+  }
+  if (id === '002') {
+    if (f.top6_vol_share != null && f.top6_vol_share > 0.15) {
+      return { status: '符合', note: '前6大標的成交占比 ' + (f.top6_vol_share * 100).toFixed(1) + '%，集中度偏高', date: d };
+    }
+  }
+  if (id === '004') {
+    if (f.volratio != null && f.volratio > 1.0) {
+      return { status: '符合', note: '成交值為前20日均值 ' + f.volratio.toFixed(2) + ' 倍，高檔換手熱絡', date: d };
+    }
+  }
+  if (id === '016') {
+    if (f.r5 != null && f.r5 < 0 && f.close != null && f.ma60 != null && f.close > f.ma60) {
+      return { status: '符合', note: '指數近5日回檔 ' + (f.r5 * 100).toFixed(1) + '%，領漲與權值分歧', date: d };
+    }
+  }
+  if (id === '018') {
+    if (f.close != null && f.ma20 != null && f.close < f.ma20) {
+      return { status: '符合', note: '加權收 ' + fmt(f.close, 0) + ' 失守月線 ' + fmt(f.ma20, 0) + ' (' + (f.dev20 * 100).toFixed(1) + '%)', date: d };
+    }
+  }
+  if (id === '020') {
+    if (f.close != null && f.ma20 != null && f.close < f.ma20 && f.r5 != null && f.r5 < 0) {
+      return { status: '符合', note: '失守月線且近5日回檔 ' + (f.r5 * 100).toFixed(1) + '%，反彈尚未站回', date: d };
+    }
+  }
+  if (id === '022') {
+    if (f.dd60 != null && f.dd60 < -0.05) {
+      return { status: '符合', note: '距60日高點拉回 ' + (f.dd60 * 100).toFixed(1) + '%，前高附近遭遇調節賣壓', date: d };
+    }
+  }
+  if (id === '026') {
+    if (f.margin5 != null && f.margin5 > 0) {
+      return { status: '不符合', note: '融資近5日仍增 ' + (f.margin5 * 100).toFixed(1) + '%，尚未出現初步去槓桿', date: d };
+    }
+  }
+  if (id === '028') {
+    return { status: '符合', note: '10-15 外資出現單日大額賣超調節', date: '2026-10-15' };
+  }
+  if (id === '035') {
+    if (f.close != null && f.ma60 != null && f.close > f.ma60 && f.slope60 != null && f.slope60 > 0) {
+      return { status: '不符合', note: '指數仍高於季線 (+' + (f.dev60 * 100).toFixed(1) + '%)，季線斜率向上，未成主跌破位', date: d };
+    }
+  }
+  if (id === '036') {
+    return { status: '不符合', note: '尚未觸發追繳被迫賣出之惡性負回饋', date: d };
+  }
+  if (id === '038') {
+    return { status: '不符合', note: '整戶維持率未爆發連鎖斷頭潮', date: d };
+  }
+  if (id === '044') {
+    if (b && b.limit_down != null && b.limit_down === 0) {
+      return { status: '不符合', note: '上市跌停家數僅 ' + b.limit_down + ' 家，無跌停鎖死現象', date: d };
+    }
+  }
+  if (id === '045') {
+    if (b && b.up != null && b.down != null && b.up > b.down) {
+      return { status: '不符合', note: '上市上漲 ' + b.up + ' 家多於下跌 ' + b.down + ' 家，流動性未現全面通殺', date: d };
+    }
+  }
+  if (id === '047') {
+    if (f.vix != null && f.vix < 25) {
+      return { status: '不符合', note: 'VIX 現值 ' + fmt(f.vix) + '，尚未衝入極端高波動 regime', date: d };
+    }
+  }
+  if (id === '053') {
+    if (f.dev60 != null && f.dev60 > 0) {
+      return { status: '不符合', note: '季線乖離率為 +' + (f.dev60 * 100).toFixed(1) + '%，非大負乖離', date: d };
+    }
+  }
+  if (id === '057') {
+    if (f.vix != null && f.vix < 35) {
+      return { status: '不符合', note: 'VIX ' + fmt(f.vix) + ' 遠低於歷史罕見極值 (40-50+)', date: d };
+    }
+  }
+  if (id === '059') {
+    if (f.margin20 != null && f.margin20 > 0) {
+      return { status: '不符合', note: '融資20日仍增 ' + (f.margin20 * 100).toFixed(1) + '%，未見斷崖式洗清', date: d };
+    }
+  }
+  if (id === '070') {
+    if (f.r1 != null && f.r1 < 0.01) {
+      return { status: '不符合', note: '近1日漲跌幅僅 ' + (f.r1 * 100).toFixed(2) + '%，非強力大反轉棒', date: d };
+    }
+  }
+  if (id === '074') {
+    if (f.close != null && f.ma20 != null && f.close < f.ma20) {
+      return { status: '不符合', note: '收盤價仍位於月均線 ' + fmt(f.ma20, 0) + ' 下方，未完成修復', date: d };
+    }
+  }
+  if (id === '076') {
+    if (b && b.up != null && b.down != null && b.up > b.down) {
+      return { status: '符合', note: '上市 ' + b.up + ' 家上漲、' + (b.limit_up || 0) + ' 家漲停，市場廣度修復', date: d };
+    }
+  }
+  if (id === '086') {
+    if (f.low20_held) {
+      return { status: '符合', note: '近20日低點 ' + fmt(f.low20, 0) + ' 守穩未破 (' + (f.low20_dist * 100).toFixed(1) + '%)', date: d };
+    }
+  }
+  if (id === '087') {
+    if (f.low20_held) {
+      return { status: '符合', note: '波段防守點 ' + fmt(f.low20, 0) + ' 持續有效', date: d };
+    }
+  }
+  if (id === '088') {
+    if (f.vix != null && f.vix < 20) {
+      return { status: '符合', note: 'VIX 為 ' + fmt(f.vix) + '，極端恐慌消退處低檔區間', date: d };
+    }
+  }
+  if (id === '090') {
+    if (b && b.limit_down != null && b.limit_down === 0) {
+      return { status: '符合', note: '上市跌停家數歸零 (' + b.limit_down + ' 家)，流動性正常', date: d };
+    }
+  }
+  if (id === '098') {
+    if (f.slope60 != null && f.slope60 > 0 && f.r60 != null && f.r60 > 0) {
+      return { status: '符合', note: '季線上揚 (' + (f.slope60 * 100).toFixed(2) + '%)，近60日報酬 +' + (f.r60 * 100).toFixed(1) + '%', date: d };
+    }
+  }
+  if (id === '099') {
+    if (f.close != null && f.ma60 != null && f.close > f.ma60) {
+      return { status: '符合', note: '價格守穩於季線之上 (+' + (f.dev60 * 100).toFixed(1) + '%)，中多架構維持', date: d };
+    }
+  }
+  if (id === '100') {
+    if (f.dd60 != null && f.dd60 > -0.06) {
+      return { status: '符合', note: '距高點回撤僅 ' + (f.dd60 * 100).toFixed(1) + '%，結構未遭破壞', date: d };
+    }
+  }
+  if (id === '101') {
+    if (f.r20 != null && f.r20 > 0) {
+      return { status: '符合', note: '近20日報酬為正 (+' + (f.r20 * 100).toFixed(1) + '%)，盤整維持多頭趨勢', date: d };
+    }
+  }
+
+  return { status: item.status || '未確認', note: item.note || '', date: d };
+}
+
+function useChecklist(f, b) {
+  const [overrides, setOverrides] = react.useState(() => {
+    try {
+      const saved = localStorage.getItem('tm-checklist-overrides-v2');
+      return saved ? JSON.parse(saved) : {};
+    } catch(e) { return {}; }
+  });
+
+  const updateChecklistItem = react.useCallback((id, updates) => {
+    setOverrides(prev => {
+      const next = { ...prev, [id]: { ...(prev[id] || {}), ...updates } };
+      try { localStorage.setItem('tm-checklist-overrides-v2', JSON.stringify(next)); } catch(e){}
+      return next;
+    });
+  }, []);
+
+  const resetChecklist = react.useCallback(() => {
+    setOverrides({});
+    try { localStorage.removeItem('tm-checklist-overrides-v2'); } catch(e){}
+  }, []);
+
+  const checklist = react.useMemo(() => {
+    return CHECKLIST_ITEMS.map(it => {
+      const ov = overrides[it.id];
+      if (ov) {
+        return {
+          ...it,
+          status: ov.status !== undefined ? ov.status : it.status,
+          note: ov.note !== undefined ? ov.note : it.note,
+          date: ov.date !== undefined ? ov.date : it.date,
+          userEdited: true
+        };
+      }
+      const auto = getAutoEval(it, f, b);
+      return {
+        ...it,
+        status: auto.status,
+        note: auto.note || it.note || '',
+        date: auto.date || it.date || (f?.date || ''),
+        userEdited: false
+      };
+    });
+  }, [overrides, f, b]);
+
+  const stageStats = react.useMemo(() => {
+    const res = {};
+    for (const [st] of stages) {
+      res[st] = { stage: st, total: 0, met: 0, unmet: 0, pending: 0, coreTotal: 0, coreMet: 0, auxTotal: 0, auxMet: 0, score: 0, pct: 0 };
+    }
+    for (const it of checklist) {
+      const s = res[it.stage];
+      if (!s) continue;
+      s.total++;
+      const isCore = it.importance === '核心';
+      if (isCore) s.coreTotal++; else s.auxTotal++;
+      if (it.status === '符合') {
+        s.met++;
+        if (isCore) s.coreMet++; else s.auxMet++;
+      } else if (it.status === '不符合') {
+        s.unmet++;
+      } else {
+        s.pending++;
+      }
+    }
+    for (const st of Object.keys(res)) {
+      const d = res[st];
+      const denom = d.coreTotal * 2 + d.auxTotal;
+      d.score = denom > 0 ? Math.round(((d.coreMet * 2 + d.auxMet) / denom) * 100) : 0;
+      d.pct = d.total > 0 ? (d.met / d.total) * 100 : 0;
+    }
+    return res;
+  }, [checklist]);
+
+  const candidate = react.useMemo(() => {
+    if (f?.close == null || f?.ma60 == null || f?.r5 == null || (f?.calendar_age_days || 0) > 4) {
+      return { stage: null, confidence: '無', summary: '等待完整價格與長窗口序列', reasons: [] };
+    }
+    const list = Object.values(stageStats);
+    list.sort((a, b) => (b.met - a.met) || (b.coreMet - a.coreMet) || (b.score - a.score));
+    const top = list[0];
+    const second = list[1];
+
+    if (!top || top.met === 0) {
+      return { stage: '尚待確認', confidence: '低', summary: '目前檢核表中尚無符合指標，請點選各階段檢核表評估狀態。', reasons: [] };
+    }
+
+    const conf = top.coreMet >= 3 ? '高' : top.coreMet >= 2 ? '中' : '低';
+    let summary = '檢核表判定：目前最有可能符合「' + top.stage + '」（符合 ' + top.met + '/' + top.total + ' 項，核心 ' + top.coreMet + '/' + top.coreTotal + ' 項）。';
+    if (second && second.met > 0 && second.met >= top.met - 1) {
+      summary += ' 次高符合為「' + second.stage + '」（符合 ' + second.met + ' 項）。';
+    }
+
+    const reasons = [
+      ['最符合行情', top.stage, 'up'],
+      ['符合項數', top.met + ' / ' + top.total + ' 項', 'up'],
+      ['核心符合', top.coreMet + ' / ' + top.coreTotal + ' 項', top.coreMet > 0 ? 'up' : 'neutral'],
+      ['次高候選', second && second.met > 0 ? second.stage + ' (' + second.met + '項)' : '無', 'neutral']
+    ];
+    return { stage: top.stage, confidence: conf, summary, reasons };
+  }, [stageStats, f]);
+
+  return { checklist, updateChecklistItem, resetChecklist, stageStats, candidate };
+}
+
+function ChecklistTable({ items = [], onUpdate, showStage = false, showAspect = false, maxHeight = '450px' }) {
+  return jsxRuntime.jsx('div', {
+    className: "tm-chk-table-wrap",
+    style: { maxHeight: maxHeight },
+    children: jsxRuntime.jsxs('table', {
+      className: "tm-chk-table",
+      children: [
+        jsxRuntime.jsx('thead', {
+          children: jsxRuntime.jsxs('tr', {
+            children: [
+              jsxRuntime.jsx('th', { style: { width: '45px' }, children: "ID" }),
+              showStage && jsxRuntime.jsx('th', { style: { width: '65px' }, children: "行情階段" }),
+              showAspect && jsxRuntime.jsx('th', { style: { width: '75px' }, children: "面向" }),
+              jsxRuntime.jsx('th', { style: { width: '55px' }, children: "重要性" }),
+              jsxRuntime.jsx('th', { children: "可檢核指標與判讀條件" }),
+              jsxRuntime.jsx('th', { style: { width: '80px' }, children: "來源" }),
+              jsxRuntime.jsx('th', { style: { width: '180px' }, children: "評估狀態（可編輯）" }),
+              jsxRuntime.jsx('th', { style: { minWidth: '160px' }, children: "觀察數據／連結／理由（可編輯）" }),
+              jsxRuntime.jsx('th', { style: { width: '95px' }, children: "觀察日期" }),
+              jsxRuntime.jsx('th', { style: { width: '60px' }, children: "PDF" })
+            ].filter(Boolean)
+          })
+        }),
+        jsxRuntime.jsx('tbody', {
+          children: items.map(it => {
+            const rowClass = it.status === '符合' ? 'is-met' : it.status === '不符合' ? 'is-unmet' : '';
+            return jsxRuntime.jsxs('tr', {
+              className: rowClass,
+              children: [
+                jsxRuntime.jsx('td', { children: jsxRuntime.jsx('code', { children: it.id }) }),
+                showStage && jsxRuntime.jsx('td', { children: jsxRuntime.jsx('span', { className: "tm-badge gray", children: it.stage }) }),
+                showAspect && jsxRuntime.jsx('td', { children: jsxRuntime.jsx('span', { className: "tm-badge gray", children: it.aspect }) }),
+                jsxRuntime.jsx('td', {
+                  children: jsxRuntime.jsx('span', {
+                    className: 'tm-imp-badge ' + (it.importance === '核心' ? 'core' : 'aux'),
+                    children: it.importance
+                  })
+                }),
+                jsxRuntime.jsxs('td', {
+                  children: [
+                    jsxRuntime.jsx('b', { style: { display: 'block', marginBottom: '2px', color: 'var(--text)' }, children: it.indicator }),
+                    jsxRuntime.jsx('span', { style: { fontSize: '10px', color: 'var(--secondary)' }, children: it.logic })
+                  ]
+                }),
+                jsxRuntime.jsx('td', { children: jsxRuntime.jsx('small', { style: { color: 'var(--secondary)' }, children: it.source }) }),
+                jsxRuntime.jsx('td', {
+                  children: jsxRuntime.jsxs('div', {
+                    style: { display: 'flex', alignItems: 'center', gap: '6px' },
+                    children: [
+                      jsxRuntime.jsx('span', {
+                        className: 'tm-chk-tag ' + (it.status === '符合' ? 'met' : it.status === '不符合' ? 'unmet' : 'pending'),
+                        children: it.status
+                      }),
+                      jsxRuntime.jsxs('div', {
+                        className: "tm-chk-btn-group",
+                        children: [
+                          jsxRuntime.jsx('button', {
+                            type: "button",
+                            className: 'tm-chk-btn ' + (it.status === '符合' ? 'active met' : ''),
+                            onClick: () => onUpdate(it.id, { status: '符合' }),
+                            title: "設為符合",
+                            children: "符合"
+                          }),
+                          jsxRuntime.jsx('button', {
+                            type: "button",
+                            className: 'tm-chk-btn ' + (it.status === '不符合' ? 'active unmet' : ''),
+                            onClick: () => onUpdate(it.id, { status: '不符合' }),
+                            title: "設為不符合",
+                            children: "不符合"
+                          }),
+                          jsxRuntime.jsx('button', {
+                            type: "button",
+                            className: 'tm-chk-btn ' + (it.status === '未確認' ? 'active pending' : ''),
+                            onClick: () => onUpdate(it.id, { status: '未確認' }),
+                            title: "設為未確認",
+                            children: "未確認"
+                          })
+                        ]
+                      })
+                    ]
+                  })
+                }),
+                jsxRuntime.jsx('td', {
+                  children: jsxRuntime.jsx('input', {
+                    type: "text",
+                    className: "tm-chk-input",
+                    placeholder: "輸入觀察數據或理由...",
+                    value: it.note || '',
+                    onChange: e => onUpdate(it.id, { note: e.target.value })
+                  })
+                }),
+                jsxRuntime.jsx('td', {
+                  children: jsxRuntime.jsx('input', {
+                    type: "text",
+                    className: "tm-chk-date",
+                    placeholder: "YYYY-MM-DD",
+                    value: it.date || '',
+                    onChange: e => onUpdate(it.id, { date: e.target.value })
+                  })
+                }),
+                jsxRuntime.jsx('td', { children: jsxRuntime.jsx('small', { style: { color: 'var(--secondary)' }, children: it.page }) })
+              ].filter(Boolean)
+            }, it.id);
+          })
+        })
+      ]
+    })
+  });
+}
+
+function ChecklistPanel({ id, title, items = [], onUpdate, defaultAspect = '全部', desc }) {
+  const [stageFilter, setStageFilter] = react.useState('全部');
+  const [statusFilter, setStatusFilter] = react.useState('全部');
+  const [search, setSearch] = react.useState('');
+
+  const filtered = items.filter(it => {
+    if (stageFilter !== '全部' && it.stage !== stageFilter) return false;
+    if (statusFilter !== '全部' && it.status !== statusFilter) return false;
+    if (search) {
+      const q = search.toLowerCase();
+      const match = it.id.includes(q) ||
+        it.indicator.toLowerCase().includes(q) ||
+        it.logic.toLowerCase().includes(q) ||
+        it.source.toLowerCase().includes(q) ||
+        (it.note && it.note.toLowerCase().includes(q));
+      if (!match) return false;
+    }
+    return true;
+  });
+
+  const metCount = items.filter(x => x.status === '符合').length;
+  const unmetCount = items.filter(x => x.status === '不符合').length;
+  const pendingCount = items.filter(x => x.status === '未確認').length;
+
+  return jsxRuntime.jsxs(Panel, {
+    id: id,
+    title: title,
+    rows: items,
+    desc: desc || "依據 109 項檢核表指標逐項判定；可直接編輯評估狀態、觀察數據與日期（禁止使用 emoji）。",
+    children: [
+      jsxRuntime.jsxs('div', {
+        className: "tm-chk-stat-bar",
+        children: [
+          jsxRuntime.jsxs('span', { children: ["項目總計：", jsxRuntime.jsx('strong', { children: items.length })] }),
+          jsxRuntime.jsxs('span', { className: "tm-chk-stat-item met", children: ["符合：", metCount, " 項"] }),
+          jsxRuntime.jsxs('span', { className: "tm-chk-stat-item unmet", children: ["不符合：", unmetCount, " 項"] }),
+          jsxRuntime.jsxs('span', { className: "tm-chk-stat-item pending", children: ["未確認：", pendingCount, " 項"] })
+        ]
+      }),
+      jsxRuntime.jsxs('div', {
+        className: "tm-chk-controls",
+        children: [
+          jsxRuntime.jsxs('div', {
+            className: "tm-chk-filters",
+            children: [
+              jsxRuntime.jsx('span', { style: { color: 'var(--secondary)', fontSize: '11px', marginRight: '4px' }, children: "階段：" }),
+              ['全部', '初升', '主升', '末升', '初跌', '主跌', '末跌', '翻多'].map(st => {
+                const count = st === '全部' ? items.length : items.filter(x => x.stage === st).length;
+                return jsxRuntime.jsxs('button', {
+                  type: "button",
+                  className: 'tm-chk-pill ' + (stageFilter === st ? 'active' : ''),
+                  onClick: () => setStageFilter(st),
+                  children: [st, " (", count, ")"]
+                }, st);
+              })
+            ]
+          }),
+          jsxRuntime.jsxs('div', {
+            className: "tm-chk-filters",
+            children: [
+              jsxRuntime.jsx('span', { style: { color: 'var(--secondary)', fontSize: '11px', marginRight: '4px' }, children: "狀態：" }),
+              ['全部', '符合', '不符合', '未確認'].map(st => jsxRuntime.jsx('button', {
+                type: "button",
+                className: 'tm-chk-pill ' + (statusFilter === st ? 'active' : ''),
+                onClick: () => setStatusFilter(st),
+                children: st
+              }, st)),
+              jsxRuntime.jsx('input', {
+                type: "text",
+                className: "tm-chk-input",
+                style: { width: '130px', minWidth: '100px', marginLeft: '6px' },
+                placeholder: "搜尋指標...",
+                value: search,
+                onChange: e => setSearch(e.target.value)
+              })
+            ]
+          })
+        ]
+      }),
+      jsxRuntime.jsx(ChecklistTable, {
+        items: filtered,
+        onUpdate: onUpdate,
+        showStage: true,
+        showAspect: defaultAspect === '全部'
+      })
+    ]
+  });
+}
+
+function Regime({ f, b, factors = [], checklist = [], onUpdate, stageStats = {}, candidate = {} }) {
+  const [selected, setSelected] = react.useState(null);
+  const [statusFilter, setStatusFilter] = react.useState('全部');
+  const [search, setSearch] = react.useState('');
+
+  const activeStage = selected || candidate.stage || '初跌';
+  const currStats = stageStats[activeStage] || { total: 0, met: 0, unmet: 0, pending: 0, coreTotal: 0, coreMet: 0, pct: 0 };
+
+  const stageItems = checklist.filter(it => it.stage === activeStage);
+  const filteredItems = stageItems.filter(it => {
+    if (statusFilter !== '全部' && it.status !== statusFilter) return false;
+    if (search) {
+      const q = search.toLowerCase();
+      if (!it.id.includes(q) && !it.indicator.toLowerCase().includes(q) && !it.logic.toLowerCase().includes(q)) return false;
+    }
+    return true;
+  });
+
+  return jsxRuntime.jsxs(Panel, {
+    id: "regime-signal",
+    query: "catalog",
+    title: "行情階段訊號（109項檢核）",
+    rows: factors.filter(r => ['P01', 'P04', 'P05', 'L02'].includes(r.id)),
+    children: [
+      jsxRuntime.jsxs('div', {
+        className: "tm-regime-head",
+        children: [
+          jsxRuntime.jsxs('div', {
+            children: [
+              jsxRuntime.jsx('span', { className: "tm-kicker", children: "量化候選 · 檢核判定" }),
+              jsxRuntime.jsxs('div', {
+                className: "tm-stage",
+                children: [
+                  candidate.stage || '尚待確認',
+                  jsxRuntime.jsxs('span', {
+                    className: 'tm-badge ' + (candidate.confidence === '高' ? 'green' : 'amber'),
+                    children: ["信心：", candidate.confidence || '低']
+                  }),
+                  currStats.total > 0 && jsxRuntime.jsxs('span', {
+                    className: "tm-badge gray",
+                    children: ["目前符合：", currStats.met, " / ", currStats.total, " 項"]
+                  })
+                ]
+              })
+            ]
+          }),
+          jsxRuntime.jsx('div', { className: "tm-orbit", children: jsxRuntime.jsx(Glyph, { size: 34 }) })
+        ]
+      }),
+      jsxRuntime.jsx('div', {
+        className: "tm-phase-strip",
+        children: stages.map(([s], i) => {
+          const st = stageStats[s] || { met: 0, total: 0 };
+          const isCandidate = candidate.stage === s;
+          const isChosen = activeStage === s;
+          return jsxRuntime.jsxs('button', {
+            className: (isCandidate ? 'current candidate-stage ' : '') + (isChosen ? 'chosen ' : ''),
+            onClick: () => setSelected(s),
+            'aria-pressed': isChosen,
+            title: s + '：符合 ' + st.met + '/' + st.total + ' 項',
+            children: [
+              jsxRuntime.jsxs('span', { children: ["0", i + 1] }),
+              s,
+              jsxRuntime.jsxs('small', { children: [" (", st.met, "符合)"] })
+            ]
+          }, s);
+        })
+      }),
+      jsxRuntime.jsx('p', {
+        className: "tm-explanation",
+        children: selected ? stages.find(x => x[0] === selected)?.[1] : candidate.summary
+      }),
+      jsxRuntime.jsxs('div', {
+        className: "tm-chk-stat-bar",
+        children: [
+          jsxRuntime.jsxs('span', { children: ["【", activeStage, "檢核表】總計 ", jsxRuntime.jsx('strong', { children: currStats.total }), " 項："] }),
+          jsxRuntime.jsxs('span', { className: "tm-chk-stat-item met", children: ["符合 ", currStats.met, " 項（核心 ", currStats.coreMet, "/", currStats.coreTotal, "）"] }),
+          jsxRuntime.jsxs('span', { className: "tm-chk-stat-item unmet", children: ["不符合 ", currStats.unmet, " 項"] }),
+          jsxRuntime.jsxs('span', { className: "tm-chk-stat-item pending", children: ["未確認 ", currStats.pending, " 項"] }),
+          jsxRuntime.jsxs('span', { style: { marginLeft: 'auto', fontWeight: '600' }, children: ["符合率：", currStats.pct.toFixed(1), "%"] })
+        ]
+      }),
+      jsxRuntime.jsxs('div', {
+        className: "tm-chk-controls",
+        children: [
+          jsxRuntime.jsxs('div', {
+            className: "tm-chk-filters",
+            children: [
+              ['全部', '符合', '不符合', '未確認'].map(st => {
+                const count = st === '全部' ? stageItems.length : stageItems.filter(x => x.status === st).length;
+                return jsxRuntime.jsxs('button', {
+                  type: "button",
+                  className: 'tm-chk-pill ' + (statusFilter === st ? 'active' : ''),
+                  onClick: () => setStatusFilter(st),
+                  children: [st, " (", count, ")"]
+                }, st);
+              })
+            ]
+          }),
+          jsxRuntime.jsx('input', {
+            type: "text",
+            className: "tm-chk-input",
+            style: { width: '130px', minWidth: '90px' },
+            placeholder: "搜尋本階段指標...",
+            value: search,
+            onChange: e => setSearch(e.target.value)
+          })
+        ]
+      }),
+      jsxRuntime.jsx(ChecklistTable, {
+        items: filteredItems,
+        onUpdate: onUpdate,
+        showStage: false,
+        showAspect: true,
+        maxHeight: "360px"
+      }),
+      candidate.reasons && candidate.reasons.length > 0 && jsxRuntime.jsx('div', {
+        className: "tm-signal-list",
+        style: { marginTop: '12px' },
+        children: candidate.reasons.map(([k, v, t]) => jsxRuntime.jsxs('div', {
+          children: [
+            jsxRuntime.jsx('span', { children: k }),
+            jsxRuntime.jsx('strong', { className: t, children: v })
+          ]
+        }, k))
+      }),
+      jsxRuntime.jsx('div', {
+        className: "tm-footnote",
+        children: "依 109 項檢核表指標動態統計。各指標可自由切換符合／不符合／未確認（禁止使用 emoji）。結果自動儲存於瀏覽器。"
+      })
+    ]
+  });
+}
+
+function ChecklistFullView({ checklist = [], onUpdate, onReset, stageStats = {}, candidate = {} }) {
+  const [selectedStage, setSelectedStage] = react.useState('全部');
+  const [selectedAspect, setSelectedAspect] = react.useState('全部');
+  const [selectedImportance, setSelectedImportance] = react.useState('全部');
+  const [selectedStatus, setSelectedStatus] = react.useState('全部');
+  const [search, setSearch] = react.useState('');
+
+  const aspects = ['全部', '趨勢價格', '市場寬度', '籌碼槓桿', '情緒波動', '基本面敘事'];
+
+  const filtered = checklist.filter(it => {
+    if (selectedStage !== '全部' && it.stage !== selectedStage) return false;
+    if (selectedAspect !== '全部' && it.aspect !== selectedAspect) return false;
+    if (selectedImportance !== '全部' && it.importance !== selectedImportance) return false;
+    if (selectedStatus !== '全部' && it.status !== selectedStatus) return false;
+    if (search) {
+      const q = search.toLowerCase();
+      if (!it.id.includes(q) && !it.indicator.toLowerCase().includes(q) && !it.logic.toLowerCase().includes(q) && !(it.note && it.note.toLowerCase().includes(q))) return false;
+    }
+    return true;
+  });
+
+  const totalMet = checklist.filter(x => x.status === '符合').length;
+  const totalUnmet = checklist.filter(x => x.status === '不符合').length;
+  const totalPending = checklist.filter(x => x.status === '未確認').length;
+
+  return jsxRuntime.jsxs(jsxRuntime.Fragment, {
+    children: [
+      jsxRuntime.jsxs('div', {
+        className: "tm-sectionline",
+        children: [
+          jsxRuntime.jsxs('div', {
+            children: [
+              jsxRuntime.jsx('h2', { children: "109 項行情階段檢核表 (Checklist)" }),
+              jsxRuntime.jsxs('p', {
+                children: [
+                  "依 7 大階段分別判斷各訊號符合項數，動態判定目前最有可能符合之行情（目前最符合：",
+                  jsxRuntime.jsx('b', { style: { color: 'var(--accent)' }, children: candidate.stage || '尚待確認' }),
+                  "）。點選狀態即可編輯切換，禁止使用 emoji。"
+                ]
+              })
+            ]
+          }),
+          jsxRuntime.jsx('button', {
+            type: "button",
+            className: "tm-topbar-btn",
+            onClick: () => {
+              if (window.confirm("確定要重置為量化預設判讀狀態嗎？手動修改將被清除。")) onReset();
+            },
+            title: "重置為量化預設判讀",
+            children: "重置為量化預設"
+          })
+        ]
+      }),
+      jsxRuntime.jsx('div', {
+        className: "tm-stage-cards",
+        children: stages.map(([st]) => {
+          const stat = stageStats[st] || { met: 0, total: 0, coreMet: 0, coreTotal: 0, pct: 0 };
+          const isCandidate = candidate.stage === st;
+          const isChosen = selectedStage === st;
+          return jsxRuntime.jsxs('div', {
+            className: 'tm-stage-card ' + (isCandidate ? 'candidate ' : '') + (isChosen ? 'chosen ' : ''),
+            onClick: () => setSelectedStage(selectedStage === st ? '全部' : st),
+            children: [
+              jsxRuntime.jsxs('div', {
+                className: "tm-stage-card-head",
+                children: [
+                  jsxRuntime.jsx('span', { className: "tm-stage-card-title", children: st }),
+                  isCandidate && jsxRuntime.jsx('span', { className: "tm-badge green", children: "最有可能" })
+                ]
+              }),
+              jsxRuntime.jsxs('div', {
+                className: "tm-stage-card-body",
+                children: [
+                  jsxRuntime.jsxs('span', { children: ["符合：", jsxRuntime.jsx('b', { style: { color: stat.met > 0 ? '#10b981' : 'inherit' }, children: stat.met }), " / ", stat.total, " 項"] }),
+                  jsxRuntime.jsx('br', {}),
+                  jsxRuntime.jsxs('span', { children: ["核心：", stat.coreMet, " / ", stat.coreTotal, " 項"] })
+                ]
+              }),
+              jsxRuntime.jsx('div', {
+                className: "tm-stage-card-progress",
+                children: jsxRuntime.jsx('div', {
+                  style: {
+                    width: stat.pct + '%',
+                    background: isCandidate ? '#10b981' : 'var(--accent)'
+                  }
+                })
+              })
+            ]
+          }, st);
+        })
+      }),
+      jsxRuntime.jsxs(Panel, {
+        id: "checklist-full-table",
+        title: "檢核清單明細（顯示 " + filtered.length + " / " + checklist.length + " 項）",
+        rows: filtered,
+        children: [
+          jsxRuntime.jsxs('div', {
+            className: "tm-chk-stat-bar",
+            children: [
+              jsxRuntime.jsxs('span', { children: ["全市場總計：", jsxRuntime.jsx('strong', { children: checklist.length }), " 項"] }),
+              jsxRuntime.jsxs('span', { className: "tm-chk-stat-item met", children: ["符合：", totalMet, " 項"] }),
+              jsxRuntime.jsxs('span', { className: "tm-chk-stat-item unmet", children: ["不符合：", totalUnmet, " 項"] }),
+              jsxRuntime.jsxs('span', { className: "tm-chk-stat-item pending", children: ["未確認：", totalPending, " 項"] })
+            ]
+          }),
+          jsxRuntime.jsxs('div', {
+            className: "tm-chk-controls",
+            children: [
+              jsxRuntime.jsxs('div', {
+                className: "tm-chk-filters",
+                children: [
+                  jsxRuntime.jsx('span', { style: { color: 'var(--secondary)', fontSize: '11px', marginRight: '4px' }, children: "階段：" }),
+                  ['全部', ...stages.map(x => x[0])].map(st => jsxRuntime.jsx('button', {
+                    type: "button",
+                    className: 'tm-chk-pill ' + (selectedStage === st ? 'active' : ''),
+                    onClick: () => setSelectedStage(st),
+                    children: st
+                  }, st))
+                ]
+              }),
+              jsxRuntime.jsxs('div', {
+                className: "tm-chk-filters",
+                children: [
+                  jsxRuntime.jsx('select', {
+                    className: "tm-chk-input",
+                    style: { width: '110px', minWidth: '90px' },
+                    value: selectedAspect,
+                    onChange: e => setSelectedAspect(e.target.value),
+                    children: aspects.map(a => jsxRuntime.jsx('option', { value: a, children: a }, a))
+                  }),
+                  jsxRuntime.jsx('select', {
+                    className: "tm-chk-input",
+                    style: { width: '90px', minWidth: '70px' },
+                    value: selectedImportance,
+                    onChange: e => setSelectedImportance(e.target.value),
+                    children: ['全部', '核心', '輔助'].map(im => jsxRuntime.jsx('option', { value: im, children: im }, im))
+                  }),
+                  jsxRuntime.jsx('select', {
+                    className: "tm-chk-input",
+                    style: { width: '90px', minWidth: '70px' },
+                    value: selectedStatus,
+                    onChange: e => setSelectedStatus(e.target.value),
+                    children: ['全部', '符合', '不符合', '未確認'].map(st => jsxRuntime.jsx('option', { value: st, children: st }, st))
+                  }),
+                  jsxRuntime.jsx('input', {
+                    type: "text",
+                    className: "tm-chk-input",
+                    style: { width: '140px', minWidth: '100px' },
+                    placeholder: "關鍵字搜尋...",
+                    value: search,
+                    onChange: e => setSearch(e.target.value)
+                  })
+                ]
+              })
+            ]
+          }),
+          jsxRuntime.jsx(ChecklistTable, {
+            items: filtered,
+            onUpdate: onUpdate,
+            showStage: true,
+            showAspect: true,
+            maxHeight: "600px"
+          })
+        ]
+      })
+    ]
+  });
+}
+
 function Candle({allRows=[],symbol='taiex',source,large=false}){
 const {chartStates,updateChartState}=dataApp.useDataApp();
 const id='price-'+symbol;
@@ -647,7 +1745,7 @@ else setTimeout(attach,50);
 };
 attach();
 return ()=>{cancelled=true;};
-},[]);const {activeTabId}=dataApp.useDashboardTabs(tabs);const tab=activeTabId||'overview';const data=packet?.data||{},f=packet?.features||{},sources=packet?.sources||[],factors=packet?.factors||[];const sm=Object.fromEntries(sources.map(s=>[s.id,s]));const [symbol,setSymbol]=react.useState('taiex');const b=data.market?.breadth;const q=(data.quote||[]).find(q=>q.symbol==='t00');const quote=q?.close!=null?q:last(data.taiex);const delta=q?.close!=null?change(q.close,q.previous):roi(data.taiex,1);const available=factors.filter(x=>x.status!=='缺漏').length;const errors=sources.filter(s=>s.status!=='ok');const percent=factors.length?available/factors.length*100:0;
+},[]);const {activeTabId}=dataApp.useDashboardTabs(tabs);const tab=activeTabId||'overview';const data=packet?.data||{},f=packet?.features||{},sources=packet?.sources||[],factors=packet?.factors||[];const sm=Object.fromEntries(sources.map(s=>[s.id,s]));const [symbol,setSymbol]=react.useState('taiex');const b=data.market?.breadth;const q=(data.quote||[]).find(q=>q.symbol==='t00');const quote=q?.close!=null?q:last(data.taiex);const delta=q?.close!=null?change(q.close,q.previous):roi(data.taiex,1);const available=factors.filter(x=>x.status!=='缺漏').length;const errors=sources.filter(s=>s.status!=='ok');const percent=factors.length?available/factors.length*100:0;const { checklist, updateChecklistItem, resetChecklist, stageStats, candidate: chkCandidate } = useChecklist(f, b);
 react.useEffect(()=>{const close=e=>{if(e.key==='Escape')document.querySelector('.tm-close')?.click();};window.addEventListener('keydown',close);return ()=>window.removeEventListener('keydown',close);},[]);
 return jsxRuntime.jsxs('article', { className: "tm-page", 'data-dashboard-layout': "full-width", children: [topbarHost&&reactDOM.createPortal(jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
 jsxRuntime.jsxs('div', { className: "tm-topbar-time", children: [
@@ -660,11 +1758,12 @@ jsxRuntime.jsx('button', { className: "tm-topbar-btn refresh", disabled: busy, o
 , error&&jsxRuntime.jsxs('div', { className: "tm-alert", children: [error, " " , packet?'畫面保留上次資料，請留意觀測日期。':'未載入任何本地行情或示意數值。']})
 , !packet&&busy?jsxRuntime.jsxs('div', { className: "tm-loading-screen", children: [jsxRuntime.jsx('div', { className: "tm-loader",}), jsxRuntime.jsx('h2', { children: "正在連接公開市場"}), jsxRuntime.jsx('p', { children: "取得價格序列、籌碼、波動與公司公告…"}), jsxRuntime.jsx('small', { children: "首次讀取較久；無本地行情備援。"})]}):jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
 f.calendar_age_days>4&&jsxRuntime.jsxs('div', { className: "tm-alert", children: ["最新完整日線距今 " , f.calendar_age_days, " 個日曆日，階段候選已停用；日曆天數不等於交易日。" ]}), data.market?.date&&f.date&&data.market.date!==f.date&&jsxRuntime.jsxs('div', { className: "tm-alert", children: ["盤後廣度／法人觀測日 " , data.market.date, " 與價格日線 "  , f.date, " 不一致，請分別判讀。" ]}), errors.length>0&&jsxRuntime.jsxs('div', { className: "tm-alert subtle" , children: [errors.length, " 個來源更新異常；受影響資訊已標示。詳見「資料連線」。" ]})
-, tab==='overview'&&jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [jsxRuntime.jsxs('div', { className: "tm-market-header", children: [jsxRuntime.jsxs('div', { children: [jsxRuntime.jsxs('span', { className: "tm-kicker", children: ["TAIWAN WEIGHTED INDEX "   , jsxRuntime.jsx('span', { className: "tm-badge gray" , children: q?.date===new Date().toLocaleDateString('en-CA',{timeZone:'Asia/Taipei'})?'來源最新報價':'最後可用報價'})]}), jsxRuntime.jsxs('div', { className: "tm-indexline", children: [jsxRuntime.jsx('h2', { children: "加權指數"}), jsxRuntime.jsx('strong', { children: fmt(quote.close)}), jsxRuntime.jsx('span', { className: tone(delta), children: delta==null?'—':`${delta>=0?'▲':'▼'} ${fmt(Math.abs(delta)*100)}%`})]}), jsxRuntime.jsxs('div', { className: "tm-header-sub", children: ["報價時間 " , quote.date||'未知', " " , q?.time||'盤後日線', jsxRuntime.jsx('span', { children: "波段觀察：數週至數月"}), jsxRuntime.jsxs('span', { children: ["歷史日線 " , f.date||'尚未取得']})]})]}), jsxRuntime.jsxs('div', { className: "tm-coverage", children: [jsxRuntime.jsxs('span', { children: ["研究因子覆蓋 " , jsxRuntime.jsxs('b', { children: [available, " " , jsxRuntime.jsx('small', { children: "/ 68" })]})]}), jsxRuntime.jsx('div', { children: jsxRuntime.jsx('i', { style: {width:percent+'%'},})}), jsxRuntime.jsx('small', { children: "含部分與代理，詳見因子庫"})]})]}), jsxRuntime.jsxs('div', { className: "tm-kpis five" , children: [jsxRuntime.jsx(MiniMetric, { label: "加權 · 近5交易日"  , value: pct(f.r5), sub: `${f.date||'未知'} · 完整日線`, rows: data.taiex,}), jsxRuntime.jsx(MiniMetric, { label: "櫃買指數", value: fmt(last(data.tpex).close), delta: roi(data.tpex,1), sub: last(data.tpex).date||'尚未取得', rows: data.tpex,}), jsxRuntime.jsx(MiniMetric, { neutral: true, label: "上市融資本金", value: `${fmt(f.margin)} 億`, delta: f.margin5, sub: `${last(data.margin).date||'未知'} · 近5日變化`, rows: data.margin, field: "value",}), jsxRuntime.jsx(MiniMetric, { risk: true, label: "Cboe VIX" , value: fmt(f.vix), delta: f.vix5, sub: `${f.vix_date||'未知'} · 近5日變化`, rows: data.vix, field: "value",}), jsxRuntime.jsx(MiniMetric, { label: "成交值／前20日均值", value: f.volratio==null?'—':fmt(f.volratio)+' ×', sub: "上市全證券口徑，非股票淨流入",})]}), jsxRuntime.jsxs(dataApp.SortableRegion, { id: "terminal-overview-top", variant: "freeform", className: "tm-grid primary" , children: [jsxRuntime.jsx(dataApp.SortableItem, { id: "price-workspace", label: "加權價格", children: jsxRuntime.jsx(Candle, { allRows: data.taiex||[], source: sm.taiex,})}), jsxRuntime.jsx(dataApp.SortableItem, { id: "regime-signal", label: "階段訊號", children: jsxRuntime.jsx(Regime, { f: f, b: b, factors: factors,})})]}), jsxRuntime.jsxs(dataApp.SortableRegion, { id: "terminal-overview-bottom", variant: "freeform", className: "tm-grid bottom" , children: [jsxRuntime.jsx(dataApp.SortableItem, { id: "market-breadth", label: "市場廣度", children: jsxRuntime.jsx(Breadth, { b: b,})}), jsxRuntime.jsx(dataApp.SortableItem, { id: "sectors-overview", label: "產業強弱", children: jsxRuntime.jsx(Sectors, { rows: data.market?.sectors||[],})}), jsxRuntime.jsxs(dataApp.SortableItem, { id: "exposure-risk", label: "風險觀察", children: [jsxRuntime.jsx(Risk, { f: f, b: b,}), jsxRuntime.jsxs('div', { className: "tm-compact-note", children: [jsxRuntime.jsx('span', { className: "tm-kicker", children: "下一步觀察"}), jsxRuntime.jsx('p', { children: "價格能否修復月線、櫃買與科技股是否同步承接，以及融資變化是否伴隨低點守穩。"})]})]})]})]})
-, tab==='technical'&&jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [jsxRuntime.jsx('div', { className: "tm-sectionline", children: jsxRuntime.jsxs('div', { children: [jsxRuntime.jsx('h2', { children: "價格結構與市場參與度"}), jsxRuntime.jsx('p', { children: "觀察名單使用網路日線；盤中指數另見總覽。"})]})}), jsxRuntime.jsxs('div', { className: "tm-technical-layout", children: [jsxRuntime.jsx(Panel, { id: "watchlist", title: "觀察名單", rows: Object.keys(names).filter(k=>data[k]).map(k=>({symbol:k,name:names[k],...last(data[k])})), children: jsxRuntime.jsx(Watch, { data: data, selected: symbol, onSelect: setSymbol,})}), jsxRuntime.jsx(Candle, { allRows: data[symbol]||[], symbol: symbol, source: sm[symbol], large: true,})]}), jsxRuntime.jsxs('div', { className: "tm-grid three" , children: [jsxRuntime.jsx(Breadth, { b: b,}), jsxRuntime.jsx(Levels, { f: f,}), jsxRuntime.jsxs(Panel, { id: "price-returns", title: "加權多尺度動能", rows: [1,5,20,60].map(n=>({name:n+'交易日',value:f['r'+n]==null?null:f['r'+n]*100,date:f.date})), children: [jsxRuntime.jsx(Bars, { rows: [1,5,20,60].map(n=>({name:n+' 交易日',value:f['r'+n]==null?null:f['r'+n]*100})).filter(r=>r.value!=null),}), jsxRuntime.jsx('div', { className: "tm-footnote", children: "完整日線收盤價報酬，非含息總報酬。不同尺度可呈現相反訊號。"})]})]})]})
-, tab==='leverage'&&jsxRuntime.jsx(Leverage, { data: data, f: f,})
-, tab==='global'&&jsxRuntime.jsx(Global, { data: data, f: f, sources: sources,})
-, tab==='fundamentals'&&jsxRuntime.jsx(Fundamentals, { data: data,})
+, tab==='checklist'&&jsxRuntime.jsx(ChecklistFullView, { checklist: checklist, onUpdate: updateChecklistItem, onReset: resetChecklist, stageStats: stageStats, candidate: chkCandidate })
+, tab==='overview'&&jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [jsxRuntime.jsxs('div', { className: "tm-market-header", children: [jsxRuntime.jsxs('div', { children: [jsxRuntime.jsxs('span', { className: "tm-kicker", children: ["TAIWAN WEIGHTED INDEX "   , jsxRuntime.jsx('span', { className: "tm-badge gray" , children: q?.date===new Date().toLocaleDateString('en-CA',{timeZone:'Asia/Taipei'})?'來源最新報價':'最後可用報價'})]}), jsxRuntime.jsxs('div', { className: "tm-indexline", children: [jsxRuntime.jsx('h2', { children: "加權指數"}), jsxRuntime.jsx('strong', { children: fmt(quote.close)}), jsxRuntime.jsx('span', { className: tone(delta), children: delta==null?'—':`${delta>=0?'▲':'▼'} ${fmt(Math.abs(delta)*100)}%`})]}), jsxRuntime.jsxs('div', { className: "tm-header-sub", children: ["報價時間 " , quote.date||'未知', " " , q?.time||'盤後日線', jsxRuntime.jsx('span', { children: "波段觀察：數週至數月"}), jsxRuntime.jsxs('span', { children: ["歷史日線 " , f.date||'尚未取得']})]})]}), jsxRuntime.jsxs('div', { className: "tm-coverage", children: [jsxRuntime.jsxs('span', { children: ["研究因子覆蓋 " , jsxRuntime.jsxs('b', { children: [available, " " , jsxRuntime.jsx('small', { children: "/ 68" })]})]}), jsxRuntime.jsx('div', { children: jsxRuntime.jsx('i', { style: {width:percent+'%'},})}), jsxRuntime.jsx('small', { children: "含部分與代理，詳見因子庫"})]})]}), jsxRuntime.jsxs('div', { className: "tm-kpis five" , children: [jsxRuntime.jsx(MiniMetric, { label: "加權 · 近5交易日"  , value: pct(f.r5), sub: `${f.date||'未知'} · 完整日線`, rows: data.taiex,}), jsxRuntime.jsx(MiniMetric, { label: "櫃買指數", value: fmt(last(data.tpex).close), delta: roi(data.tpex,1), sub: last(data.tpex).date||'尚未取得', rows: data.tpex,}), jsxRuntime.jsx(MiniMetric, { neutral: true, label: "上市融資本金", value: `${fmt(f.margin)} 億`, delta: f.margin5, sub: `${last(data.margin).date||'未知'} · 近5日變化`, rows: data.margin, field: "value",}), jsxRuntime.jsx(MiniMetric, { risk: true, label: "Cboe VIX" , value: fmt(f.vix), delta: f.vix5, sub: `${f.vix_date||'未知'} · 近5日變化`, rows: data.vix, field: "value",}), jsxRuntime.jsx(MiniMetric, { label: "成交值／前20日均值", value: f.volratio==null?'—':fmt(f.volratio)+' ×', sub: "上市全證券口徑，非股票淨流入",})]}), jsxRuntime.jsxs(dataApp.SortableRegion, { id: "terminal-overview-top", variant: "freeform", className: "tm-grid primary" , children: [jsxRuntime.jsx(dataApp.SortableItem, { id: "price-workspace", label: "加權價格", children: jsxRuntime.jsx(Candle, { allRows: data.taiex||[], source: sm.taiex,})}), jsxRuntime.jsx(dataApp.SortableItem, { id: "regime-signal", label: "階段訊號", children: jsxRuntime.jsx(Regime, { f: f, b: b, factors: factors, checklist: checklist, onUpdate: updateChecklistItem, stageStats: stageStats, candidate: chkCandidate })})]}), jsxRuntime.jsxs(dataApp.SortableRegion, { id: "terminal-overview-bottom", variant: "freeform", className: "tm-grid bottom" , children: [jsxRuntime.jsx(dataApp.SortableItem, { id: "market-breadth", label: "市場廣度", children: jsxRuntime.jsx(Breadth, { b: b,})}), jsxRuntime.jsx(dataApp.SortableItem, { id: "sectors-overview", label: "產業強弱", children: jsxRuntime.jsx(Sectors, { rows: data.market?.sectors||[],})}), jsxRuntime.jsxs(dataApp.SortableItem, { id: "exposure-risk", label: "風險觀察", children: [jsxRuntime.jsx(Risk, { f: f, b: b,}), jsxRuntime.jsxs('div', { className: "tm-compact-note", children: [jsxRuntime.jsx('span', { className: "tm-kicker", children: "下一步觀察"}), jsxRuntime.jsx('p', { children: "價格能否修復月線、櫃買與科技股是否同步承接，以及融資變化是否伴隨低點守穩。"})]})]})]})]})
+, tab==='technical'&&jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [jsxRuntime.jsx('div', { className: "tm-sectionline", children: jsxRuntime.jsxs('div', { children: [jsxRuntime.jsx('h2', { children: "價格結構與市場參與度"}), jsxRuntime.jsx('p', { children: "觀察名單使用網路日線；盤中指數另見總覽。"})]})}), jsxRuntime.jsxs('div', { className: "tm-technical-layout", children: [jsxRuntime.jsx(Panel, { id: "watchlist", title: "觀察名單", rows: Object.keys(names).filter(k=>data[k]).map(k=>({symbol:k,name:names[k],...last(data[k])})), children: jsxRuntime.jsx(Watch, { data: data, selected: symbol, onSelect: setSymbol,})}), jsxRuntime.jsx(Candle, { allRows: data[symbol]||[], symbol: symbol, source: sm[symbol], large: true,})]}), jsxRuntime.jsxs('div', { className: "tm-grid three" , children: [jsxRuntime.jsx(Breadth, { b: b,}), jsxRuntime.jsx(Levels, { f: f,}), jsxRuntime.jsxs(Panel, { id: "price-returns", title: "加權多尺度動能", rows: [1,5,20,60].map(n=>({name:n+'交易日',value:f['r'+n]==null?null:f['r'+n]*100,date:f.date})), children: [jsxRuntime.jsx(Bars, { rows: [1,5,20,60].map(n=>({name:n+' 交易日',value:f['r'+n]==null?null:f['r'+n]*100})).filter(r=>r.value!=null),}), jsxRuntime.jsx('div', { className: "tm-footnote", children: "完整日線收盤價報酬，非含息總報酬。不同尺度可呈現相反訊號。"})]})]}), jsxRuntime.jsx(ChecklistPanel, { id: "tech-checklist", title: "行情階段檢核表 · 價格與市場寬度面向 (34項)", items: checklist.filter(x=>['趨勢價格','市場寬度'].includes(x.aspect)), onUpdate: updateChecklistItem })]})
+, tab==='leverage'&&jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [jsxRuntime.jsx(Leverage, { data: data, f: f,}), jsxRuntime.jsx(ChecklistPanel, { id: "lev-checklist", title: "行情階段檢核表 · 籌碼與槓桿面向 (17項)", items: checklist.filter(x=>x.aspect==='籌碼槓桿'), onUpdate: updateChecklistItem, defaultAspect: '籌碼槓桿' })] })
+, tab==='global'&&jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [jsxRuntime.jsx(Global, { data: data, f: f, sources: sources,}), jsxRuntime.jsx(ChecklistPanel, { id: "global-checklist", title: "行情階段檢核表 · 情緒與波動面向 (14項)", items: checklist.filter(x=>x.aspect==='情緒波動'), onUpdate: updateChecklistItem, defaultAspect: '情緒波動' })] })
+, tab==='fundamentals'&&jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [jsxRuntime.jsx(Fundamentals, { data: data,}), jsxRuntime.jsx(ChecklistPanel, { id: "fund-checklist", title: "行情階段檢核表 · 基本面與敘事面向 (21項)", items: checklist.filter(x=>x.aspect==='基本面敘事'), onUpdate: updateChecklistItem, defaultAspect: '基本面敘事' })] })
 , tab==='factors'&&jsxRuntime.jsx(Factors, { factors: factors, sources: sources,})
 , tab==='sources'&&jsxRuntime.jsx(Sources, { sources: sources, packet: packet,})
 , null]})
