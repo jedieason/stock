@@ -29,6 +29,9 @@ permissions:
 jobs:
   update-market:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -40,24 +43,26 @@ jobs:
 
       - name: Determine Update Mode
         id: determine_mode
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          SCHEDULE: ${{ github.event.schedule }}
+          INPUT_MODE: ${{ inputs.mode || github.event.inputs.mode }}
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "mode=${{ github.event.inputs.mode }}" >> $GITHUB_OUTPUT
+          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+            MODE="${INPUT_MODE:-full}"
           else
-            # Check current hour in UTC
-            HOUR=$(date -u +%H)
-            MINUTE=$(date -u +%M)
-            echo "Current UTC time: ${HOUR}:${MINUTE}"
-            if [ "$HOUR" -ge 1 ] && [ "$HOUR" -le 5 ]; then
-              echo "mode=intraday" >> $GITHUB_OUTPUT
-            elif [ "$HOUR" -eq 7 ] || [ "$HOUR" -eq 8 ]; then
-              echo "mode=daily_close" >> $GITHUB_OUTPUT
-            elif [ "$HOUR" -eq 22 ] || [ "$HOUR" -eq 23 ]; then
-              echo "mode=us_close" >> $GITHUB_OUTPUT
-            else
-              echo "mode=intraday" >> $GITHUB_OUTPUT
-            fi
+            case "$SCHEDULE" in
+              '*/10 1-5 * * 1-5') MODE=intraday ;;
+              '30 7 * * 1-5') MODE=daily_close ;;
+              '0 22 * * 1-5') MODE=us_close ;;
+              *)
+                echo "::error::Unknown schedule: $SCHEDULE"
+                exit 1
+                ;;
+            esac
           fi
+          echo "Selected mode: $MODE"
+          echo "mode=$MODE" >> "$GITHUB_OUTPUT"
 
       - name: Run Market Collector
         run: |
