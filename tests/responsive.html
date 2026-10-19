@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-Hant">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>台股市場 · 手機排版檢查</title>
+<style>body{margin:0;padding:16px;background:#eceef2;font:12px system-ui;display:flex;gap:18px;align-items:flex-start}p{margin:0 0 10px;color:#555}iframe{display:block;border:1px solid #d8dbe2;border-radius:10px;height:620px;background:white}article{flex:none}output{display:block;font-size:10px;margin-top:8px;max-width:320px}</style>
+<article><p>390px · 市場總覽</p><iframe title="390px 市場總覽" width="390" src="../index.html#indices"></iframe></article>
+<article><p>390px · 法人與籌碼</p><iframe title="390px 法人與籌碼" width="390" src="../index.html#flows"></iframe></article>
+<article><p>320px · 營收與估值</p><iframe title="320px 營收與估值" width="320" src="../index.html#companies"></iframe></article>
+<script>
+setInterval(() => {
+  for (const frame of document.querySelectorAll('iframe')) {
+    const d = frame.contentDocument, w = frame.contentWindow;
+    if (!d.querySelectorAll('.market-section').length) continue;
+    let out = frame.parentElement.querySelector('output');
+    if (!out) { out = document.createElement('output'); frame.after(out); }
+    const gaps = [...d.querySelectorAll('.market-section')].slice(1).map(el => Math.round(el.getBoundingClientRect().top - el.previousElementSibling.getBoundingClientRect().bottom));
+    out.textContent = JSON.stringify({width:w.innerWidth,overflow:d.documentElement.scrollWidth > w.innerWidth,sections:d.querySelectorAll('.market-section').length,gaps:gaps.every(gap => gap === 0) ? '0px' : gaps});
+  }
+}, 500);
+</script>
+</html>
