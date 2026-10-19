@@ -1,5 +1,5 @@
 {
-  "asof": "2026-10-19T13:31:24+08:00",
+  "asof": "2026-10-19T19:12:01+08:00",
   "timezone": "Asia/Taipei",
   "mode": "online",
   "update_mode": "intraday",
@@ -7,10 +7,10 @@
     "quote": [
       {
         "date": "2026-10-19",
-        "time": "13:29:55",
+        "time": "13:33:00",
         "symbol": "t00",
         "name": "發行量加權股價指數",
-        "close": 46728.34,
+        "close": 46822.08,
         "previous": 47111.26,
         "open": 46844.64,
         "high": 46844.64,
@@ -18,10 +18,10 @@
       },
       {
         "date": "2026-10-19",
-        "time": "13:30:00",
+        "time": "13:33:00",
         "symbol": "o00",
         "name": "櫃買指數",
-        "close": 394.13,
+        "close": 394.05,
         "previous": 400.26,
         "open": 396.64,
         "high": 396.64,
@@ -57262,8 +57262,8 @@
       "title": "台股盤中指數",
       "url": "https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_t00.tw%7Cotc_o00.tw&json=1&delay=0",
       "observed_at": "2026-10-19",
-      "retrieved_at": "2026-10-19T13:31:24+08:00",
-      "attempted_at": "2026-10-19T13:31:24+08:00",
+      "retrieved_at": "2026-10-19T19:12:01+08:00",
+      "attempted_at": "2026-10-19T19:12:01+08:00",
       "status": "ok",
       "error": null,
       "frequency": "盤中報價（來源時間為準）",
