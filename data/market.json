@@ -1,31 +1,31 @@
 {
-  "asof": "2026-10-17T23:38:25+08:00",
+  "asof": "2026-10-19T13:31:24+08:00",
   "timezone": "Asia/Taipei",
   "mode": "online",
-  "update_mode": "us_close",
+  "update_mode": "intraday",
   "data": {
     "quote": [
       {
-        "date": "2026-10-16",
-        "time": "13:33:00",
+        "date": "2026-10-19",
+        "time": "13:29:55",
         "symbol": "t00",
         "name": "發行量加權股價指數",
-        "close": 47111.26,
-        "previous": 46969.87,
-        "open": 46995.03,
-        "high": 47520.6,
-        "low": 46995.03
+        "close": 46728.34,
+        "previous": 47111.26,
+        "open": 46844.64,
+        "high": 46844.64,
+        "low": 46170.0
       },
       {
-        "date": "2026-10-16",
-        "time": "13:33:00",
+        "date": "2026-10-19",
+        "time": "13:30:00",
         "symbol": "o00",
         "name": "櫃買指數",
-        "close": 400.26,
-        "previous": 396.9,
-        "open": 397.67,
-        "high": 404.96,
-        "low": 396.8
+        "close": 394.13,
+        "previous": 400.26,
+        "open": 396.64,
+        "high": 396.64,
+        "low": 384.5
       }
     ],
     "fmt": [
@@ -55184,7 +55184,7 @@
     "vix_date": "2026-10-16",
     "vix_pct": 0.8214285714285714,
     "vixratio": 0.9751219512195122,
-    "calendar_age_days": 1
+    "calendar_age_days": 3
   },
   "factors": [
     {
@@ -56380,7 +56380,7 @@
       "caveat": "暫時壓盤、長假累積外盤跌幅；不假設每次都是主力壓盤",
       "group": "槓桿與籌碼",
       "status": "可觀測",
-      "value": "距月結算（10/21）倒數 4 天 / 週結算倒數 4 天",
+      "value": "距月結算（10/21）倒數 2 天 / 週結算倒數 2 天",
       "observed_at": "2026-10-15",
       "sources": [
         {
@@ -57261,9 +57261,9 @@
       "id": "quote",
       "title": "台股盤中指數",
       "url": "https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_t00.tw%7Cotc_o00.tw&json=1&delay=0",
-      "observed_at": "2026-10-16",
-      "retrieved_at": "2026-10-17T08:00:02+08:00",
-      "attempted_at": "2026-10-17T08:00:02+08:00",
+      "observed_at": "2026-10-19",
+      "retrieved_at": "2026-10-19T13:31:24+08:00",
+      "attempted_at": "2026-10-19T13:31:24+08:00",
       "status": "ok",
       "error": null,
       "frequency": "盤中報價（來源時間為準）",
