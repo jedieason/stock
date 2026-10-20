@@ -342,8 +342,8 @@ function renderPanelLeverage() {
         ${stat('融資現金償還', `${fmt(i8.cash_repayment)}<span class="unit">億元</span>`, `融券餘額 ${fmt(i8.short_balance, 0)} 張`)}
       </div>
       <div class="chart-block">
-        <h4>融資歷史走勢 <span class="unit">億元</span></h4>
-        ${smallChart(mHist, ['value'], ['融資餘額'], 'margin-chart', `上市融資 20 日變化 ${signed(i8.twse_margin_pct20)} · 浮額流向觀測`)}
+        <h4>融資餘額 <span class="unit">億元</span></h4>
+        ${smallChart(mHist, ['value'], ['融資餘額'], 'margin-chart', `上市融資 20 日變化 ${signed(i8.twse_margin_pct20)}`)}
       </div>
     </div>
 
@@ -438,8 +438,8 @@ function renderPanelSentiment() {
       </div>
       <div class="split-row">
         <article>
-          <h4 class="subheading">臺指 VIX vs 美股 Cboe VIX 走勢對照</h4>
-          ${smallChart(d.vix_trend || [], ['taiwan_vix', 'cboe_vix'], ['臺指 VIX', '美股 VIX'], 'sentiment-vix', `最新臺指 VIX ${fmt(i12.taiwan_vix)} · 美股 Cboe VIX ${fmt(i12.cboe_vix)} · 臺美雙市場恐慌情緒走勢對照`)}
+          <h4 class="subheading">臺指 VIX vs 美股 Cboe VIX</h4>
+          ${smallChart(d.vix_trend || [], ['taiwan_vix', 'cboe_vix'], ['臺指 VIX', '美股 VIX'], 'sentiment-vix', `最新臺指 VIX ${fmt(i12.taiwan_vix)} · 美股 Cboe VIX ${fmt(i12.cboe_vix)}`)}
         </article>
         <article>
           <div class="callout-box ${indicatorTone(i12.status)}" style="margin-top:0">
@@ -464,7 +464,7 @@ function renderPanelSentiment() {
           ${rankRows(fut.map(r => ({ name: r.name, value: r.value })), { unit: ' 口', bars: true, decimals: 0 })}
         </article>
         <article>
-          <h4 class="subheading">選擇權 Put / Call Ratio 趨勢</h4>
+          <h4 class="subheading">選擇權 Put / Call Ratio</h4>
           ${smallChart(d.putcall || [], ['volume', 'oi'], ['成交量比', '未平倉比'], 'sentiment-putcall', `最新 OI 比率 ${fmt(i13.putcall_oi_ratio)}% · 100% 為多空平衡線`)}
         </article>
       </div>
