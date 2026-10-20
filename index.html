@@ -2,11 +2,29 @@
 <html lang="zh-Hant" data-theme="light">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#ffffff">
-  <meta name="description" content="台股市場一覽：指數走勢、產業表現、法人籌碼、全球市場與公司公告。">
-  <title>台股市場一覽 · TW Markets</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#131722" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="description" content="台股 15 大全維度核心指標量化監控儀表板：趨勢、廣度、量價、槓桿、法人、恐慌與基本面估值。">
+  <title>台股 15 大核心指標 · TW Markets</title>
+
+  <!-- PWA & Web App Manifest -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Favicons & App Icons -->
   <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+
+  <!-- iOS Safari Home Screen Meta -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="台股指標">
+
+  <!-- Android / Mobile Browser Meta -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="台股指標">
+
   <link rel="stylesheet" href="assets/market.css">
   <script>try{document.documentElement.dataset.theme=localStorage.getItem('tw-markets-theme')||'light'}catch{}</script>
   <script type="module" src="assets/market.js"></script>
