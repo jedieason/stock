@@ -448,9 +448,17 @@ function renderPanelSentiment() {
         ${stat('美股 Cboe VIX', fmt(i12.cboe_vix), `分位 ${fmt(valid(i12.cboe_vix_pct252) ? i12.cboe_vix_pct252 * 100 : null, 1)}%`)}
         ${stat('VVIX (波動之波動)', fmt(i12.vvix), `VIX/VIX3M ${fmt(i12.vix_ratio)}`)}
       </div>
-      <div class="callout-box ${indicatorTone(i12.status)}">
-        <strong>恐慌診斷：${e(i12.status_label)}</strong>
-        <p>目前臺指 VIX 報 <b>${fmt(i12.taiwan_vix)}</b> 點，處於近一年歷史百分位 <b>${fmt(valid(i12.taiwan_vix_pct252) ? i12.taiwan_vix_pct252 * 100 : null, 1)}%</b>。<br>當 VIX 衝破 30 且百分位超越 80% 時，市場充斥避險與恐慌拋售，短線往往逼近情緒賣壓高潮。</p>
+      <div class="split-row">
+        <article>
+          <h4 class="subheading">臺指 VIX vs 美股 Cboe VIX 走勢對照</h4>
+          ${smallChart(d.vix_trend || [], ['taiwan_vix', 'cboe_vix'], ['臺指 VIX', '美股 VIX'], 'sentiment-vix', `最新臺指 VIX ${fmt(i12.taiwan_vix)} · 美股 Cboe VIX ${fmt(i12.cboe_vix)} · 臺美雙市場恐慌情緒走勢對照`)}
+        </article>
+        <article>
+          <div class="callout-box ${indicatorTone(i12.status)}" style="margin-top:0">
+            <strong>恐慌診斷：${e(i12.status_label)}</strong>
+            <p>目前臺指 VIX 報 <b>${fmt(i12.taiwan_vix)}</b> 點，處於歷史百分位 <b>${fmt(valid(i12.taiwan_vix_pct252) ? i12.taiwan_vix_pct252 * 100 : null, 1)}%</b>。<br>美股 Cboe VIX 報 <b>${fmt(i12.cboe_vix)}</b> 點（歷史分位 <b>${fmt(valid(i12.cboe_vix_pct252) ? i12.cboe_vix_pct252 * 100 : null, 1)}%</b>），跨市場期限比值 VIX/VIX3M 為 <b>${fmt(i12.vix_ratio)}</b>。<br>當 VIX 衝破 30 且百分位超越 80% 時，市場充斥避險與恐慌拋售，短線往往逼近情緒賣壓高潮。</p>
+          </div>
+        </article>
       </div>
     </div>
 

@@ -193,3 +193,15 @@ test('snapshot contains all 15 core indicators with complete required fields', (
   const ind15 = packet.indicators['15'];
   assert.ok(valid(ind15.trailing_pe) && valid(ind15.forward_pe) && valid(ind15.expected_growth));
 });
+
+test('vix_trend contains aligned Taiwan and US VIX daily series without invalid geometry', () => {
+  const trend = packet.data.vix_trend;
+  assert.ok(Array.isArray(trend) && trend.length >= 60, 'vix_trend must contain multi-month aligned data');
+
+  const lastRow = trend[trend.length - 1];
+  assert.ok(valid(lastRow.taiwan_vix), 'latest taiwan_vix in trend must be valid');
+  assert.ok(valid(lastRow.cboe_vix), 'latest cboe_vix in trend must be valid');
+
+  const svg = chartSVG(trend, { fields: ['taiwan_vix', 'cboe_vix'], width: 600, height: 200, id: 'test-vix' });
+  assert.ok(svg.includes('<svg') && !svg.includes('NaN'), 'vix trend SVG must render valid points without NaN');
+});

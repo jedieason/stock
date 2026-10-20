@@ -328,6 +328,34 @@ def valuations(b):
         for r in j(b)
     ]
 
+def taiwan_vix_fetch(existing_rows=None):
+    all_rows = {r['date']: r['value'] for r in (existing_rows or []) if isinstance(r, dict) and r.get('date') and r.get('value') is not None}
+    cur = now().date()
+    for offset in range(4):
+        y = cur.year
+        m = cur.month - offset
+        while m <= 0:
+            m += 12
+            y -= 1
+        url = f'https://www.taifex.com.tw/file/taifex/Dailydownload/vix/log2data/{y}{m:02d}new.txt'
+        try:
+            req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (TW-Market-Dashboard)'})
+            with urllib.request.urlopen(req, timeout=8) as resp:
+                content = resp.read()
+                if b'HTML' in content[:50]:
+                    continue
+                lines = content.decode('big5', 'ignore').strip().splitlines()
+                for l in lines:
+                    parts = l.split()
+                    if parts and parts[0].isdigit() and len(parts[0]) == 8:
+                        d_str = f"{parts[0][:4]}-{parts[0][4:6]}-{parts[0][6:]}"
+                        val = number(parts[2])
+                        if val is not None:
+                            all_rows[d_str] = val
+        except Exception:
+            pass
+    return valid_rows([{'date': d, 'value': all_rows[d]} for d in sorted(all_rows.keys())])
+
 def taiwan_vix_parse(b):
     try:
         lines = b.decode('big5', 'ignore').strip().splitlines()
@@ -676,6 +704,40 @@ def collect(mode='full'):
                 merged_sources_map[s['id']] = s
                 if s['data'] is not None:
                     merged_data[s['id']] = s['data']
+
+    if mode in ['daily_close', 'full']:
+        tw_vix_rows = taiwan_vix_fetch(merged_data.get('taiwan_vix'))
+        if tw_vix_rows:
+            merged_data['taiwan_vix'] = tw_vix_rows
+            if 'taiwan_vix' in merged_sources_map:
+                merged_sources_map['taiwan_vix']['data'] = tw_vix_rows
+                merged_sources_map['taiwan_vix']['observed_at'] = tw_vix_rows[-1]['date']
+                merged_sources_map['taiwan_vix']['status'] = 'ok'
+                merged_sources_map['taiwan_vix']['retrieved_at'] = iso()
+
+    def build_vix_trend(taiwan_vix_list, cboe_vix_list):
+        tw_dict = {r['date']: r.get('value') for r in (taiwan_vix_list or []) if isinstance(r, dict) and r.get('date')}
+        us_dict = {r['date']: r.get('value') for r in (cboe_vix_list or []) if isinstance(r, dict) and r.get('date')}
+        if not tw_dict and not us_dict:
+            return []
+        earliest = min(tw_dict.keys()) if tw_dict else '2026-01-01'
+        all_dates = sorted(set(tw_dict.keys()) | set(d for d in us_dict.keys() if d >= earliest))
+        trend = []
+        last_tw = None
+        last_us = None
+        for d in all_dates:
+            if d in tw_dict and tw_dict[d] is not None:
+                last_tw = tw_dict[d]
+            if d in us_dict and us_dict[d] is not None:
+                last_us = us_dict[d]
+            trend.append({
+                'date': d,
+                'taiwan_vix': last_tw,
+                'cboe_vix': last_us
+            })
+        return trend
+
+    merged_data['vix_trend'] = build_vix_trend(merged_data.get('taiwan_vix'), merged_data.get('vix'))
 
     sources_list = list(merged_sources_map.values())
     f = features(merged_data)

@@ -1,8 +1,8 @@
 {
-  "asof": "2026-10-20T22:42:26+08:00",
+  "asof": "2026-10-21T00:20:56+08:00",
   "timezone": "Asia/Taipei",
   "mode": "online",
-  "update_mode": "full",
+  "update_mode": "daily_close",
   "data": {
     "quote": [
       {
@@ -35153,14 +35153,6 @@
     ],
     "2330": [
       {
-        "date": "2026-04-23",
-        "close": 2080.0,
-        "open": 2090.0,
-        "high": 2135.0,
-        "low": 2055.0,
-        "volume": 114822791851.0
-      },
-      {
         "date": "2026-04-24",
         "close": 2185.0,
         "open": 2110.0,
@@ -36138,14 +36130,6 @@
       }
     ],
     "2317": [
-      {
-        "date": "2026-04-23",
-        "close": 225.0,
-        "open": 229.5,
-        "high": 233.0,
-        "low": 218.0,
-        "volume": 38982831793.0
-      },
       {
         "date": "2026-04-24",
         "close": 221.5,
@@ -37125,14 +37109,6 @@
     ],
     "2454": [
       {
-        "date": "2026-04-23",
-        "close": 2215.0,
-        "open": 2325.0,
-        "high": 2335.0,
-        "low": 2170.0,
-        "volume": 67224124503.0
-      },
-      {
         "date": "2026-04-24",
         "close": 2435.0,
         "open": 2340.0,
@@ -38110,14 +38086,6 @@
       }
     ],
     "2382": [
-      {
-        "date": "2026-04-23",
-        "close": 322.0,
-        "open": 337.5,
-        "high": 339.0,
-        "low": 317.0,
-        "volume": 8890286841.0
-      },
       {
         "date": "2026-04-24",
         "close": 323.0,
@@ -39097,14 +39065,6 @@
     ],
     "2308": [
       {
-        "date": "2026-04-23",
-        "close": 1980.0,
-        "open": 2100.0,
-        "high": 2115.0,
-        "low": 1935.0,
-        "volume": 35017913402.0
-      },
-      {
         "date": "2026-04-24",
         "close": 2075.0,
         "open": 2005.0,
@@ -40082,14 +40042,6 @@
       }
     ],
     "3231": [
-      {
-        "date": "2026-04-23",
-        "close": 139.5,
-        "open": 145.0,
-        "high": 146.0,
-        "low": 135.0,
-        "volume": 8832843810.0
-      },
       {
         "date": "2026-04-24",
         "close": 141.5,
@@ -60516,6 +60468,258 @@
       "sell_share": 42.62
     },
     "taiwan_vix": [
+      {
+        "date": "2026-07-01",
+        "value": 38.12
+      },
+      {
+        "date": "2026-07-02",
+        "value": 37.82
+      },
+      {
+        "date": "2026-07-03",
+        "value": 36.61
+      },
+      {
+        "date": "2026-07-06",
+        "value": 36.89
+      },
+      {
+        "date": "2026-07-07",
+        "value": 38.47
+      },
+      {
+        "date": "2026-07-08",
+        "value": 38.15
+      },
+      {
+        "date": "2026-07-09",
+        "value": 37.09
+      },
+      {
+        "date": "2026-07-13",
+        "value": 36.57
+      },
+      {
+        "date": "2026-07-14",
+        "value": 36.61
+      },
+      {
+        "date": "2026-07-15",
+        "value": 34.46
+      },
+      {
+        "date": "2026-07-16",
+        "value": 34.74
+      },
+      {
+        "date": "2026-07-17",
+        "value": 38.79
+      },
+      {
+        "date": "2026-07-20",
+        "value": 39.49
+      },
+      {
+        "date": "2026-07-21",
+        "value": 36.54
+      },
+      {
+        "date": "2026-07-22",
+        "value": 36.14
+      },
+      {
+        "date": "2026-07-23",
+        "value": 35.74
+      },
+      {
+        "date": "2026-07-24",
+        "value": 38.09
+      },
+      {
+        "date": "2026-07-27",
+        "value": 37.25
+      },
+      {
+        "date": "2026-07-28",
+        "value": 40.38
+      },
+      {
+        "date": "2026-07-29",
+        "value": 42.14
+      },
+      {
+        "date": "2026-07-30",
+        "value": 44.31
+      },
+      {
+        "date": "2026-07-31",
+        "value": 40.77
+      },
+      {
+        "date": "2026-08-03",
+        "value": 39.46
+      },
+      {
+        "date": "2026-08-04",
+        "value": 38.9
+      },
+      {
+        "date": "2026-08-05",
+        "value": 35.36
+      },
+      {
+        "date": "2026-08-06",
+        "value": 36.07
+      },
+      {
+        "date": "2026-08-07",
+        "value": 35.46
+      },
+      {
+        "date": "2026-08-10",
+        "value": 35.19
+      },
+      {
+        "date": "2026-08-11",
+        "value": 33.55
+      },
+      {
+        "date": "2026-08-12",
+        "value": 31.88
+      },
+      {
+        "date": "2026-08-13",
+        "value": 31.09
+      },
+      {
+        "date": "2026-08-14",
+        "value": 30.22
+      },
+      {
+        "date": "2026-08-17",
+        "value": 29.07
+      },
+      {
+        "date": "2026-08-18",
+        "value": 30.45
+      },
+      {
+        "date": "2026-08-19",
+        "value": 30.84
+      },
+      {
+        "date": "2026-08-20",
+        "value": 30.03
+      },
+      {
+        "date": "2026-08-21",
+        "value": 29.21
+      },
+      {
+        "date": "2026-08-24",
+        "value": 29.83
+      },
+      {
+        "date": "2026-08-25",
+        "value": 29.51
+      },
+      {
+        "date": "2026-08-26",
+        "value": 28.67
+      },
+      {
+        "date": "2026-08-27",
+        "value": 27.09
+      },
+      {
+        "date": "2026-08-28",
+        "value": 24.99
+      },
+      {
+        "date": "2026-08-31",
+        "value": 24.45
+      },
+      {
+        "date": "2026-09-01",
+        "value": 24.91
+      },
+      {
+        "date": "2026-09-02",
+        "value": 26.1
+      },
+      {
+        "date": "2026-09-03",
+        "value": 25.65
+      },
+      {
+        "date": "2026-09-04",
+        "value": 24.0
+      },
+      {
+        "date": "2026-09-07",
+        "value": 25.0
+      },
+      {
+        "date": "2026-09-08",
+        "value": 25.8
+      },
+      {
+        "date": "2026-09-09",
+        "value": 26.35
+      },
+      {
+        "date": "2026-09-10",
+        "value": 26.27
+      },
+      {
+        "date": "2026-09-11",
+        "value": 27.52
+      },
+      {
+        "date": "2026-09-14",
+        "value": 27.83
+      },
+      {
+        "date": "2026-09-15",
+        "value": 27.29
+      },
+      {
+        "date": "2026-09-16",
+        "value": 24.45
+      },
+      {
+        "date": "2026-09-17",
+        "value": 24.06
+      },
+      {
+        "date": "2026-09-18",
+        "value": 21.22
+      },
+      {
+        "date": "2026-09-21",
+        "value": 21.79
+      },
+      {
+        "date": "2026-09-22",
+        "value": 22.05
+      },
+      {
+        "date": "2026-09-23",
+        "value": 21.81
+      },
+      {
+        "date": "2026-09-24",
+        "value": 23.12
+      },
+      {
+        "date": "2026-09-29",
+        "value": 24.6
+      },
+      {
+        "date": "2026-09-30",
+        "value": 23.04
+      },
       {
         "date": "2026-10-01",
         "value": 22.43
@@ -330682,6 +330886,408 @@
         "累計營業收入-前期比較增減(%)": "-3.977728989760969",
         "備註": "本期銷貨單價與重量高於前期"
       }
+    ],
+    "vix_trend": [
+      {
+        "date": "2026-07-01",
+        "taiwan_vix": 38.12,
+        "cboe_vix": 16.59
+      },
+      {
+        "date": "2026-07-02",
+        "taiwan_vix": 37.82,
+        "cboe_vix": 16.15
+      },
+      {
+        "date": "2026-07-03",
+        "taiwan_vix": 36.61,
+        "cboe_vix": 15.81
+      },
+      {
+        "date": "2026-07-06",
+        "taiwan_vix": 36.89,
+        "cboe_vix": 15.57
+      },
+      {
+        "date": "2026-07-07",
+        "taiwan_vix": 38.47,
+        "cboe_vix": 16.13
+      },
+      {
+        "date": "2026-07-08",
+        "taiwan_vix": 38.15,
+        "cboe_vix": 16.9
+      },
+      {
+        "date": "2026-07-09",
+        "taiwan_vix": 37.09,
+        "cboe_vix": 15.84
+      },
+      {
+        "date": "2026-07-10",
+        "taiwan_vix": 37.09,
+        "cboe_vix": 15.03
+      },
+      {
+        "date": "2026-07-13",
+        "taiwan_vix": 36.57,
+        "cboe_vix": 17.16
+      },
+      {
+        "date": "2026-07-14",
+        "taiwan_vix": 36.61,
+        "cboe_vix": 16.5
+      },
+      {
+        "date": "2026-07-15",
+        "taiwan_vix": 34.46,
+        "cboe_vix": 15.67
+      },
+      {
+        "date": "2026-07-16",
+        "taiwan_vix": 34.74,
+        "cboe_vix": 16.73
+      },
+      {
+        "date": "2026-07-17",
+        "taiwan_vix": 38.79,
+        "cboe_vix": 18.77
+      },
+      {
+        "date": "2026-07-20",
+        "taiwan_vix": 39.49,
+        "cboe_vix": 18.65
+      },
+      {
+        "date": "2026-07-21",
+        "taiwan_vix": 36.54,
+        "cboe_vix": 17.05
+      },
+      {
+        "date": "2026-07-22",
+        "taiwan_vix": 36.14,
+        "cboe_vix": 16.64
+      },
+      {
+        "date": "2026-07-23",
+        "taiwan_vix": 35.74,
+        "cboe_vix": 18.7
+      },
+      {
+        "date": "2026-07-24",
+        "taiwan_vix": 38.09,
+        "cboe_vix": 18.58
+      },
+      {
+        "date": "2026-07-27",
+        "taiwan_vix": 37.25,
+        "cboe_vix": 18.67
+      },
+      {
+        "date": "2026-07-28",
+        "taiwan_vix": 40.38,
+        "cboe_vix": 18.21
+      },
+      {
+        "date": "2026-07-29",
+        "taiwan_vix": 42.14,
+        "cboe_vix": 20.66
+      },
+      {
+        "date": "2026-07-30",
+        "taiwan_vix": 44.31,
+        "cboe_vix": 17.09
+      },
+      {
+        "date": "2026-07-31",
+        "taiwan_vix": 40.77,
+        "cboe_vix": 15.99
+      },
+      {
+        "date": "2026-08-03",
+        "taiwan_vix": 39.46,
+        "cboe_vix": 15.86
+      },
+      {
+        "date": "2026-08-04",
+        "taiwan_vix": 38.9,
+        "cboe_vix": 16.5
+      },
+      {
+        "date": "2026-08-05",
+        "taiwan_vix": 35.36,
+        "cboe_vix": 15.81
+      },
+      {
+        "date": "2026-08-06",
+        "taiwan_vix": 36.07,
+        "cboe_vix": 15.15
+      },
+      {
+        "date": "2026-08-07",
+        "taiwan_vix": 35.46,
+        "cboe_vix": 14.9
+      },
+      {
+        "date": "2026-08-10",
+        "taiwan_vix": 35.19,
+        "cboe_vix": 15.46
+      },
+      {
+        "date": "2026-08-11",
+        "taiwan_vix": 33.55,
+        "cboe_vix": 15.28
+      },
+      {
+        "date": "2026-08-12",
+        "taiwan_vix": 31.88,
+        "cboe_vix": 14.55
+      },
+      {
+        "date": "2026-08-13",
+        "taiwan_vix": 31.09,
+        "cboe_vix": 14.63
+      },
+      {
+        "date": "2026-08-14",
+        "taiwan_vix": 30.22,
+        "cboe_vix": 14.25
+      },
+      {
+        "date": "2026-08-17",
+        "taiwan_vix": 29.07,
+        "cboe_vix": 15.19
+      },
+      {
+        "date": "2026-08-18",
+        "taiwan_vix": 30.45,
+        "cboe_vix": 15.84
+      },
+      {
+        "date": "2026-08-19",
+        "taiwan_vix": 30.84,
+        "cboe_vix": 14.89
+      },
+      {
+        "date": "2026-08-20",
+        "taiwan_vix": 30.03,
+        "cboe_vix": 16.01
+      },
+      {
+        "date": "2026-08-21",
+        "taiwan_vix": 29.21,
+        "cboe_vix": 15.13
+      },
+      {
+        "date": "2026-08-24",
+        "taiwan_vix": 29.83,
+        "cboe_vix": 15.85
+      },
+      {
+        "date": "2026-08-25",
+        "taiwan_vix": 29.51,
+        "cboe_vix": 15.45
+      },
+      {
+        "date": "2026-08-26",
+        "taiwan_vix": 28.67,
+        "cboe_vix": 15.21
+      },
+      {
+        "date": "2026-08-27",
+        "taiwan_vix": 27.09,
+        "cboe_vix": 14.51
+      },
+      {
+        "date": "2026-08-28",
+        "taiwan_vix": 24.99,
+        "cboe_vix": 14.43
+      },
+      {
+        "date": "2026-08-31",
+        "taiwan_vix": 24.45,
+        "cboe_vix": 14.92
+      },
+      {
+        "date": "2026-09-01",
+        "taiwan_vix": 24.91,
+        "cboe_vix": 16.34
+      },
+      {
+        "date": "2026-09-02",
+        "taiwan_vix": 26.1,
+        "cboe_vix": 15.2
+      },
+      {
+        "date": "2026-09-03",
+        "taiwan_vix": 25.65,
+        "cboe_vix": 14.32
+      },
+      {
+        "date": "2026-09-04",
+        "taiwan_vix": 24.0,
+        "cboe_vix": 14.53
+      },
+      {
+        "date": "2026-09-07",
+        "taiwan_vix": 25.0,
+        "cboe_vix": 15.3
+      },
+      {
+        "date": "2026-09-08",
+        "taiwan_vix": 25.8,
+        "cboe_vix": 15.72
+      },
+      {
+        "date": "2026-09-09",
+        "taiwan_vix": 26.35,
+        "cboe_vix": 16.46
+      },
+      {
+        "date": "2026-09-10",
+        "taiwan_vix": 26.27,
+        "cboe_vix": 17.84
+      },
+      {
+        "date": "2026-09-11",
+        "taiwan_vix": 27.52,
+        "cboe_vix": 15.84
+      },
+      {
+        "date": "2026-09-14",
+        "taiwan_vix": 27.83,
+        "cboe_vix": 17.1
+      },
+      {
+        "date": "2026-09-15",
+        "taiwan_vix": 27.29,
+        "cboe_vix": 17.2
+      },
+      {
+        "date": "2026-09-16",
+        "taiwan_vix": 24.45,
+        "cboe_vix": 17.71
+      },
+      {
+        "date": "2026-09-17",
+        "taiwan_vix": 24.06,
+        "cboe_vix": 15.44
+      },
+      {
+        "date": "2026-09-18",
+        "taiwan_vix": 21.22,
+        "cboe_vix": 14.81
+      },
+      {
+        "date": "2026-09-21",
+        "taiwan_vix": 21.79,
+        "cboe_vix": 14.87
+      },
+      {
+        "date": "2026-09-22",
+        "taiwan_vix": 22.05,
+        "cboe_vix": 14.21
+      },
+      {
+        "date": "2026-09-23",
+        "taiwan_vix": 21.81,
+        "cboe_vix": 15.18
+      },
+      {
+        "date": "2026-09-24",
+        "taiwan_vix": 23.12,
+        "cboe_vix": 15.67
+      },
+      {
+        "date": "2026-09-25",
+        "taiwan_vix": 23.12,
+        "cboe_vix": 14.87
+      },
+      {
+        "date": "2026-09-28",
+        "taiwan_vix": 23.12,
+        "cboe_vix": 16.07
+      },
+      {
+        "date": "2026-09-29",
+        "taiwan_vix": 24.6,
+        "cboe_vix": 16.04
+      },
+      {
+        "date": "2026-09-30",
+        "taiwan_vix": 23.04,
+        "cboe_vix": 16.34
+      },
+      {
+        "date": "2026-10-01",
+        "taiwan_vix": 22.43,
+        "cboe_vix": 16.39
+      },
+      {
+        "date": "2026-10-02",
+        "taiwan_vix": 21.89,
+        "cboe_vix": 15.31
+      },
+      {
+        "date": "2026-10-05",
+        "taiwan_vix": 23.45,
+        "cboe_vix": 15.52
+      },
+      {
+        "date": "2026-10-06",
+        "taiwan_vix": 23.53,
+        "cboe_vix": 15.01
+      },
+      {
+        "date": "2026-10-07",
+        "taiwan_vix": 23.29,
+        "cboe_vix": 15.08
+      },
+      {
+        "date": "2026-10-08",
+        "taiwan_vix": 24.55,
+        "cboe_vix": 15.41
+      },
+      {
+        "date": "2026-10-09",
+        "taiwan_vix": 24.55,
+        "cboe_vix": 14.84
+      },
+      {
+        "date": "2026-10-12",
+        "taiwan_vix": 25.15,
+        "cboe_vix": 15.21
+      },
+      {
+        "date": "2026-10-13",
+        "taiwan_vix": 26.72,
+        "cboe_vix": 15.27
+      },
+      {
+        "date": "2026-10-14",
+        "taiwan_vix": 26.08,
+        "cboe_vix": 16.87
+      },
+      {
+        "date": "2026-10-15",
+        "taiwan_vix": 30.61,
+        "cboe_vix": 16.46
+      },
+      {
+        "date": "2026-10-16",
+        "taiwan_vix": 26.37,
+        "cboe_vix": 19.99
+      },
+      {
+        "date": "2026-10-19",
+        "taiwan_vix": 29.69,
+        "cboe_vix": 18.44
+      },
+      {
+        "date": "2026-10-20",
+        "taiwan_vix": 30.79,
+        "cboe_vix": 18.44
+      }
     ]
   },
   "features": {
@@ -330729,7 +331335,7 @@
     "vix_date": "2026-10-19",
     "vix_pct": 0.6904761904761905,
     "vixratio": 0.9408163265306122,
-    "calendar_age_days": 0
+    "calendar_age_days": 1
   },
   "indicators": {
     "1": {
@@ -330820,7 +331426,7 @@
       "ratio": 0.5078125,
       "up_share": 30.1080802882141,
       "net_advances": -567,
-      "ad_line": 366,
+      "ad_line": -1335,
       "twse": {
         "up": 269,
         "down": 701,
@@ -331078,12 +331684,12 @@
       "id": "12",
       "key": "fear_vix",
       "name": "恐慌程度",
-      "status": "high_fear",
-      "status_label": "恐慌情緒高昂",
-      "summary": "臺指 VIX 30.79 (歷史百分位 100.0%) · 美股 VIX 18.44 · 恐慌情緒高昂",
+      "status": "calm",
+      "status_label": "市場情緒平穩",
+      "summary": "臺指 VIX 30.79 (歷史百分位 57.9%) · 美股 VIX 18.44 · 市場情緒平穩",
       "taiwan_vix": 30.79,
       "taiwan_vix_chg5": 0.15232035928143706,
-      "taiwan_vix_pct252": 1.0,
+      "taiwan_vix_pct252": 0.5789473684210527,
       "cboe_vix": 18.44,
       "cboe_vix_pct252": 0.6904761904761905,
       "vix_ratio": 0.9408163265306122,
@@ -331149,9 +331755,9 @@
         {
           "id": "taiex",
           "title": "FinMind 加權歷史",
-          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-11&end_date=2026-10-20&data_id=TAIEX",
+          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-12&end_date=2026-10-21&data_id=TAIEX",
           "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-20T22:42:10+08:00",
+          "retrieved_at": "2026-10-21T00:20:54+08:00",
           "status": "ok",
           "error": null
         }
@@ -331159,9 +331765,9 @@
       "missing_reason": null,
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
       "source_url": [
-        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-11&end_date=2026-10-20&data_id=TAIEX"
+        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-12&end_date=2026-10-21&data_id=TAIEX"
       ],
       "unit": "依來源：點／%／家／億元",
       "universe": "台股為主；美股與全球風險為背景",
@@ -331182,9 +331788,9 @@
         {
           "id": "tpex",
           "title": "FinMind 櫃買歷史",
-          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-11&end_date=2026-10-20&data_id=TPEx",
+          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-12&end_date=2026-10-21&data_id=TPEx",
           "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-20T22:42:10+08:00",
+          "retrieved_at": "2026-10-21T00:20:54+08:00",
           "status": "ok",
           "error": null
         }
@@ -331192,9 +331798,9 @@
       "missing_reason": "櫃買公開端點僅短窗；未建立長期序列。",
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
       "source_url": [
-        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-11&end_date=2026-10-20&data_id=TPEx"
+        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-12&end_date=2026-10-21&data_id=TPEx"
       ],
       "unit": "依來源：點／%／家／億元",
       "universe": "台股為主；美股與全球風險為背景",
@@ -331215,27 +331821,27 @@
         {
           "id": "SPY",
           "title": "SPY ETF歷史",
-          "url": "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-07&end_date=2026-10-20&data_id=SPY",
+          "url": "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-08&end_date=2026-10-21&data_id=SPY",
           "observed_at": "2026-10-19",
-          "retrieved_at": "2026-10-20T22:42:11+08:00",
+          "retrieved_at": "2026-10-21T00:20:49+08:00",
           "status": "ok",
           "error": null
         },
         {
           "id": "QQQ",
           "title": "QQQ ETF歷史",
-          "url": "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-07&end_date=2026-10-20&data_id=QQQ",
+          "url": "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-08&end_date=2026-10-21&data_id=QQQ",
           "observed_at": "2026-10-19",
-          "retrieved_at": "2026-10-20T22:42:11+08:00",
+          "retrieved_at": "2026-10-21T00:20:49+08:00",
           "status": "ok",
           "error": null
         },
         {
           "id": "SOXX",
           "title": "SOXX ETF歷史",
-          "url": "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-07&end_date=2026-10-20&data_id=SOXX",
+          "url": "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-08&end_date=2026-10-21&data_id=SOXX",
           "observed_at": "2026-10-19",
-          "retrieved_at": "2026-10-20T22:42:11+08:00",
+          "retrieved_at": "2026-10-21T00:20:49+08:00",
           "status": "ok",
           "error": null
         }
@@ -331243,11 +331849,11 @@
       "missing_reason": "ETF代理，不是SPX／NDX／SOX指數。",
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:11+08:00",
+      "retrieved_at": "2026-10-21T00:20:49+08:00",
       "source_url": [
-        "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-07&end_date=2026-10-20&data_id=SPY",
-        "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-07&end_date=2026-10-20&data_id=QQQ",
-        "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-07&end_date=2026-10-20&data_id=SOXX"
+        "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-08&end_date=2026-10-21&data_id=SPY",
+        "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-08&end_date=2026-10-21&data_id=QQQ",
+        "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-08&end_date=2026-10-21&data_id=SOXX"
       ],
       "unit": "依來源：點／%／家／億元",
       "universe": "台股為主；美股與全球風險為背景",
@@ -331268,9 +331874,9 @@
         {
           "id": "taiex",
           "title": "FinMind 加權歷史",
-          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-11&end_date=2026-10-20&data_id=TAIEX",
+          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-12&end_date=2026-10-21&data_id=TAIEX",
           "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-20T22:42:10+08:00",
+          "retrieved_at": "2026-10-21T00:20:54+08:00",
           "status": "ok",
           "error": null
         }
@@ -331278,9 +331884,9 @@
       "missing_reason": null,
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
       "source_url": [
-        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-11&end_date=2026-10-20&data_id=TAIEX"
+        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-12&end_date=2026-10-21&data_id=TAIEX"
       ],
       "unit": "依來源：點／%／家／億元",
       "universe": "台股為主；美股與全球風險為背景",
@@ -331301,9 +331907,9 @@
         {
           "id": "taiex",
           "title": "FinMind 加權歷史",
-          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-11&end_date=2026-10-20&data_id=TAIEX",
+          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-12&end_date=2026-10-21&data_id=TAIEX",
           "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-20T22:42:10+08:00",
+          "retrieved_at": "2026-10-21T00:20:54+08:00",
           "status": "ok",
           "error": null
         }
@@ -331311,9 +331917,9 @@
       "missing_reason": "僅量化代理；反彈失敗、分位與後續承接需另外確認。",
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
       "source_url": [
-        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-11&end_date=2026-10-20&data_id=TAIEX"
+        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-12&end_date=2026-10-21&data_id=TAIEX"
       ],
       "unit": "依來源：點／%／家／億元",
       "universe": "台股為主；美股與全球風險為背景",
@@ -331334,9 +331940,9 @@
         {
           "id": "taiex",
           "title": "FinMind 加權歷史",
-          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-11&end_date=2026-10-20&data_id=TAIEX",
+          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-12&end_date=2026-10-21&data_id=TAIEX",
           "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-20T22:42:10+08:00",
+          "retrieved_at": "2026-10-21T00:20:54+08:00",
           "status": "ok",
           "error": null
         }
@@ -331344,9 +331950,9 @@
       "missing_reason": "僅量化代理；反彈失敗、分位與後續承接需另外確認。",
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
       "source_url": [
-        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-11&end_date=2026-10-20&data_id=TAIEX"
+        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-12&end_date=2026-10-21&data_id=TAIEX"
       ],
       "unit": "依來源：點／%／家／億元",
       "universe": "台股為主；美股與全球風險為背景",
@@ -331367,9 +331973,9 @@
         {
           "id": "taiex",
           "title": "FinMind 加權歷史",
-          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-11&end_date=2026-10-20&data_id=TAIEX",
+          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-12&end_date=2026-10-21&data_id=TAIEX",
           "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-20T22:42:10+08:00",
+          "retrieved_at": "2026-10-21T00:20:54+08:00",
           "status": "ok",
           "error": null
         }
@@ -331377,9 +331983,9 @@
       "missing_reason": null,
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
       "source_url": [
-        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-11&end_date=2026-10-20&data_id=TAIEX"
+        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-12&end_date=2026-10-21&data_id=TAIEX"
       ],
       "unit": "依來源：點／%／家／億元",
       "universe": "台股為主；美股與全球風險為背景",
@@ -331400,9 +332006,9 @@
         {
           "id": "taiex",
           "title": "FinMind 加權歷史",
-          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-11&end_date=2026-10-20&data_id=TAIEX",
+          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-12&end_date=2026-10-21&data_id=TAIEX",
           "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-20T22:42:10+08:00",
+          "retrieved_at": "2026-10-21T00:20:54+08:00",
           "status": "ok",
           "error": null
         }
@@ -331410,9 +332016,9 @@
       "missing_reason": null,
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
       "source_url": [
-        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-11&end_date=2026-10-20&data_id=TAIEX"
+        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-12&end_date=2026-10-21&data_id=TAIEX"
       ],
       "unit": "依來源：點／%／家／億元",
       "universe": "台股為主；美股與全球風險為背景",
@@ -331433,9 +332039,9 @@
         {
           "id": "taiex",
           "title": "FinMind 加權歷史",
-          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-11&end_date=2026-10-20&data_id=TAIEX",
+          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-12&end_date=2026-10-21&data_id=TAIEX",
           "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-20T22:42:10+08:00",
+          "retrieved_at": "2026-10-21T00:20:54+08:00",
           "status": "ok",
           "error": null
         }
@@ -331443,9 +332049,9 @@
       "missing_reason": "僅量化代理；反彈失敗、分位與後續承接需另外確認。",
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
       "source_url": [
-        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-11&end_date=2026-10-20&data_id=TAIEX"
+        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-12&end_date=2026-10-21&data_id=TAIEX"
       ],
       "unit": "依來源：點／%／家／億元",
       "universe": "台股為主；美股與全球風險為背景",
@@ -331466,9 +332072,9 @@
         {
           "id": "taiex",
           "title": "FinMind 加權歷史",
-          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-11&end_date=2026-10-20&data_id=TAIEX",
+          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-12&end_date=2026-10-21&data_id=TAIEX",
           "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-20T22:42:10+08:00",
+          "retrieved_at": "2026-10-21T00:20:54+08:00",
           "status": "ok",
           "error": null
         }
@@ -331476,9 +332082,9 @@
       "missing_reason": "以加權指數近20日低點防守與第二隻腳回測判定。",
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
       "source_url": [
-        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-11&end_date=2026-10-20&data_id=TAIEX"
+        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-12&end_date=2026-10-21&data_id=TAIEX"
       ],
       "unit": "依來源：點／%／家／億元",
       "universe": "台股為主；美股與全球風險為背景",
@@ -331499,9 +332105,9 @@
         {
           "id": "taiex",
           "title": "FinMind 加權歷史",
-          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-11&end_date=2026-10-20&data_id=TAIEX",
+          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-12&end_date=2026-10-21&data_id=TAIEX",
           "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-20T22:42:10+08:00",
+          "retrieved_at": "2026-10-21T00:20:54+08:00",
           "status": "ok",
           "error": null
         }
@@ -331509,9 +332115,9 @@
       "missing_reason": "報酬代理，回測修復品質需完整情境。",
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
       "source_url": [
-        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-11&end_date=2026-10-20&data_id=TAIEX"
+        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-12&end_date=2026-10-21&data_id=TAIEX"
       ],
       "unit": "依來源：點／%／家／億元",
       "universe": "台股為主；美股與全球風險為背景",
@@ -331532,54 +332138,54 @@
         {
           "id": "2330",
           "title": "2330 台股歷史",
-          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-23&end_date=2026-10-20&data_id=2330",
+          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-24&end_date=2026-10-21&data_id=2330",
           "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-20T22:42:10+08:00",
+          "retrieved_at": "2026-10-21T00:20:55+08:00",
           "status": "ok",
           "error": null
         },
         {
           "id": "2317",
           "title": "2317 台股歷史",
-          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-23&end_date=2026-10-20&data_id=2317",
+          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-24&end_date=2026-10-21&data_id=2317",
           "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-20T22:42:10+08:00",
+          "retrieved_at": "2026-10-21T00:20:54+08:00",
           "status": "ok",
           "error": null
         },
         {
           "id": "2454",
           "title": "2454 台股歷史",
-          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-23&end_date=2026-10-20&data_id=2454",
+          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-24&end_date=2026-10-21&data_id=2454",
           "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-20T22:42:11+08:00",
+          "retrieved_at": "2026-10-21T00:20:54+08:00",
           "status": "ok",
           "error": null
         },
         {
           "id": "2382",
           "title": "2382 台股歷史",
-          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-23&end_date=2026-10-20&data_id=2382",
+          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-24&end_date=2026-10-21&data_id=2382",
           "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-20T22:42:11+08:00",
+          "retrieved_at": "2026-10-21T00:20:54+08:00",
           "status": "ok",
           "error": null
         },
         {
           "id": "2308",
           "title": "2308 台股歷史",
-          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-23&end_date=2026-10-20&data_id=2308",
+          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-24&end_date=2026-10-21&data_id=2308",
           "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-20T22:42:11+08:00",
+          "retrieved_at": "2026-10-21T00:20:54+08:00",
           "status": "ok",
           "error": null
         },
         {
           "id": "3231",
           "title": "3231 台股歷史",
-          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-23&end_date=2026-10-20&data_id=3231",
+          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-24&end_date=2026-10-21&data_id=3231",
           "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-20T22:42:11+08:00",
+          "retrieved_at": "2026-10-21T00:20:54+08:00",
           "status": "ok",
           "error": null
         }
@@ -331587,14 +332193,14 @@
       "missing_reason": "觀察樣本不是完整產業等權指數。",
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:11+08:00",
+      "retrieved_at": "2026-10-21T00:20:55+08:00",
       "source_url": [
-        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-23&end_date=2026-10-20&data_id=2330",
-        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-23&end_date=2026-10-20&data_id=2317",
-        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-23&end_date=2026-10-20&data_id=2454",
-        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-23&end_date=2026-10-20&data_id=2382",
-        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-23&end_date=2026-10-20&data_id=2308",
-        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-23&end_date=2026-10-20&data_id=3231"
+        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-24&end_date=2026-10-21&data_id=2330",
+        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-24&end_date=2026-10-21&data_id=2317",
+        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-24&end_date=2026-10-21&data_id=2454",
+        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-24&end_date=2026-10-21&data_id=2382",
+        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-24&end_date=2026-10-21&data_id=2308",
+        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-24&end_date=2026-10-21&data_id=3231"
       ],
       "unit": "依來源：點／%／家／億元",
       "universe": "台股為主；美股與全球風險為背景",
@@ -331615,18 +332221,18 @@
         {
           "id": "taiex",
           "title": "FinMind 加權歷史",
-          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-11&end_date=2026-10-20&data_id=TAIEX",
+          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-12&end_date=2026-10-21&data_id=TAIEX",
           "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-20T22:42:10+08:00",
+          "retrieved_at": "2026-10-21T00:20:54+08:00",
           "status": "ok",
           "error": null
         },
         {
           "id": "tpex",
           "title": "FinMind 櫃買歷史",
-          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-11&end_date=2026-10-20&data_id=TPEx",
+          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-12&end_date=2026-10-21&data_id=TPEx",
           "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-20T22:42:10+08:00",
+          "retrieved_at": "2026-10-21T00:20:54+08:00",
           "status": "ok",
           "error": null
         }
@@ -331634,10 +332240,10 @@
       "missing_reason": "未取得歷史成分等權指數。",
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
       "source_url": [
-        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-11&end_date=2026-10-20&data_id=TAIEX",
-        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-11&end_date=2026-10-20&data_id=TPEx"
+        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-12&end_date=2026-10-21&data_id=TAIEX",
+        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-12&end_date=2026-10-21&data_id=TPEx"
       ],
       "unit": "依來源：點／%／家／億元",
       "universe": "台股為主；美股與全球風險為背景",
@@ -331660,7 +332266,7 @@
           "title": "證交所股票廣度與產業",
           "url": "https://www.twse.com.tw/exchangeReport/MI_INDEX?response=json&date=20261020&type=ALLBUT0999",
           "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-20T22:42:26+08:00",
+          "retrieved_at": "2026-10-21T00:20:55+08:00",
           "status": "ok",
           "error": null
         }
@@ -331668,7 +332274,7 @@
       "missing_reason": "僅最新盤後廣度，未建連續AD。",
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:26+08:00",
+      "retrieved_at": "2026-10-21T00:20:55+08:00",
       "source_url": [
         "https://www.twse.com.tw/exchangeReport/MI_INDEX?response=json&date=20261020&type=ALLBUT0999"
       ],
@@ -331735,7 +332341,7 @@
           "title": "證交所股票廣度與產業",
           "url": "https://www.twse.com.tw/exchangeReport/MI_INDEX?response=json&date=20261020&type=ALLBUT0999",
           "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-20T22:42:26+08:00",
+          "retrieved_at": "2026-10-21T00:20:55+08:00",
           "status": "ok",
           "error": null
         }
@@ -331743,7 +332349,7 @@
       "missing_reason": "收盤跌停不代表全天鎖死。",
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:26+08:00",
+      "retrieved_at": "2026-10-21T00:20:55+08:00",
       "source_url": [
         "https://www.twse.com.tw/exchangeReport/MI_INDEX?response=json&date=20261020&type=ALLBUT0999"
       ],
@@ -331808,9 +332414,9 @@
         {
           "id": "taiex",
           "title": "FinMind 加權歷史",
-          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-11&end_date=2026-10-20&data_id=TAIEX",
+          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-12&end_date=2026-10-21&data_id=TAIEX",
           "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-20T22:42:10+08:00",
+          "retrieved_at": "2026-10-21T00:20:54+08:00",
           "status": "ok",
           "error": null
         }
@@ -331818,9 +332424,9 @@
       "missing_reason": null,
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
       "source_url": [
-        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-11&end_date=2026-10-20&data_id=TAIEX"
+        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-12&end_date=2026-10-21&data_id=TAIEX"
       ],
       "unit": "依來源：點／%／家／億元",
       "universe": "台股為主；美股與全球風險為背景",
@@ -331843,7 +332449,7 @@
           "title": "證交所當沖統計",
           "url": "https://www.twse.com.tw/exchangeReport/TWTB4U?response=json&date=20261020&selectType=All",
           "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-20T22:42:26+08:00",
+          "retrieved_at": "2026-10-21T00:20:55+08:00",
           "status": "ok",
           "error": null
         }
@@ -331851,7 +332457,7 @@
       "missing_reason": "證交所全市場當日沖銷交易統計。",
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:26+08:00",
+      "retrieved_at": "2026-10-21T00:20:55+08:00",
       "source_url": [
         "https://www.twse.com.tw/exchangeReport/TWTB4U?response=json&date=20261020&selectType=All"
       ],
@@ -331874,63 +332480,63 @@
         {
           "id": "2330",
           "title": "2330 台股歷史",
-          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-23&end_date=2026-10-20&data_id=2330",
+          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-24&end_date=2026-10-21&data_id=2330",
           "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-20T22:42:10+08:00",
+          "retrieved_at": "2026-10-21T00:20:55+08:00",
           "status": "ok",
           "error": null
         },
         {
           "id": "2317",
           "title": "2317 台股歷史",
-          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-23&end_date=2026-10-20&data_id=2317",
+          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-24&end_date=2026-10-21&data_id=2317",
           "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-20T22:42:10+08:00",
+          "retrieved_at": "2026-10-21T00:20:54+08:00",
           "status": "ok",
           "error": null
         },
         {
           "id": "2454",
           "title": "2454 台股歷史",
-          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-23&end_date=2026-10-20&data_id=2454",
+          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-24&end_date=2026-10-21&data_id=2454",
           "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-20T22:42:11+08:00",
+          "retrieved_at": "2026-10-21T00:20:54+08:00",
           "status": "ok",
           "error": null
         },
         {
           "id": "2382",
           "title": "2382 台股歷史",
-          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-23&end_date=2026-10-20&data_id=2382",
+          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-24&end_date=2026-10-21&data_id=2382",
           "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-20T22:42:11+08:00",
+          "retrieved_at": "2026-10-21T00:20:54+08:00",
           "status": "ok",
           "error": null
         },
         {
           "id": "2308",
           "title": "2308 台股歷史",
-          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-23&end_date=2026-10-20&data_id=2308",
+          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-24&end_date=2026-10-21&data_id=2308",
           "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-20T22:42:11+08:00",
+          "retrieved_at": "2026-10-21T00:20:54+08:00",
           "status": "ok",
           "error": null
         },
         {
           "id": "3231",
           "title": "3231 台股歷史",
-          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-23&end_date=2026-10-20&data_id=3231",
+          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-24&end_date=2026-10-21&data_id=3231",
           "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-20T22:42:11+08:00",
+          "retrieved_at": "2026-10-21T00:20:54+08:00",
           "status": "ok",
           "error": null
         },
         {
           "id": "taiex",
           "title": "FinMind 加權歷史",
-          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-11&end_date=2026-10-20&data_id=TAIEX",
+          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-12&end_date=2026-10-21&data_id=TAIEX",
           "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-20T22:42:10+08:00",
+          "retrieved_at": "2026-10-21T00:20:54+08:00",
           "status": "ok",
           "error": null
         }
@@ -331938,15 +332544,15 @@
       "missing_reason": "權值股資金集中度代理；前6大科技權值成交佔比。",
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:11+08:00",
+      "retrieved_at": "2026-10-21T00:20:55+08:00",
       "source_url": [
-        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-23&end_date=2026-10-20&data_id=2330",
-        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-23&end_date=2026-10-20&data_id=2317",
-        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-23&end_date=2026-10-20&data_id=2454",
-        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-23&end_date=2026-10-20&data_id=2382",
-        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-23&end_date=2026-10-20&data_id=2308",
-        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-23&end_date=2026-10-20&data_id=3231",
-        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-11&end_date=2026-10-20&data_id=TAIEX"
+        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-24&end_date=2026-10-21&data_id=2330",
+        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-24&end_date=2026-10-21&data_id=2317",
+        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-24&end_date=2026-10-21&data_id=2454",
+        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-24&end_date=2026-10-21&data_id=2382",
+        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-24&end_date=2026-10-21&data_id=2308",
+        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-24&end_date=2026-10-21&data_id=3231",
+        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-12&end_date=2026-10-21&data_id=TAIEX"
       ],
       "unit": "依來源：點／%／家／億元",
       "universe": "台股為主；美股與全球風險為背景",
@@ -331969,16 +332575,16 @@
           "title": "證交所融資本金",
           "url": "https://www.twse.com.tw/exchangeReport/MI_MARGN?response=json&date=20261020&selectType=ALL",
           "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-20T22:42:26+08:00",
+          "retrieved_at": "2026-10-21T00:20:55+08:00",
           "status": "ok",
           "error": null
         },
         {
           "id": "margin",
           "title": "FinMind 融資歷史",
-          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockTotalMarginPurchaseShortSale&start_date=2024-08-11&end_date=2026-10-20",
+          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockTotalMarginPurchaseShortSale&start_date=2024-08-12&end_date=2026-10-21",
           "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-20T22:42:10+08:00",
+          "retrieved_at": "2026-10-21T00:20:54+08:00",
           "status": "ok",
           "error": null
         }
@@ -331986,10 +332592,10 @@
       "missing_reason": null,
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:26+08:00",
+      "retrieved_at": "2026-10-21T00:20:55+08:00",
       "source_url": [
         "https://www.twse.com.tw/exchangeReport/MI_MARGN?response=json&date=20261020&selectType=ALL",
-        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockTotalMarginPurchaseShortSale&start_date=2024-08-11&end_date=2026-10-20"
+        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockTotalMarginPurchaseShortSale&start_date=2024-08-12&end_date=2026-10-21"
       ],
       "unit": "依來源：億元／口／%",
       "universe": "台股為主；美股與全球風險為背景",
@@ -332010,9 +332616,9 @@
         {
           "id": "margin",
           "title": "FinMind 融資歷史",
-          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockTotalMarginPurchaseShortSale&start_date=2024-08-11&end_date=2026-10-20",
+          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockTotalMarginPurchaseShortSale&start_date=2024-08-12&end_date=2026-10-21",
           "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-20T22:42:10+08:00",
+          "retrieved_at": "2026-10-21T00:20:54+08:00",
           "status": "ok",
           "error": null
         }
@@ -332020,9 +332626,9 @@
       "missing_reason": null,
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
       "source_url": [
-        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockTotalMarginPurchaseShortSale&start_date=2024-08-11&end_date=2026-10-20"
+        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockTotalMarginPurchaseShortSale&start_date=2024-08-12&end_date=2026-10-21"
       ],
       "unit": "依來源：億元／口／%",
       "universe": "台股為主；美股與全球風險為背景",
@@ -332108,7 +332714,7 @@
           "title": "證交所融資本金",
           "url": "https://www.twse.com.tw/exchangeReport/MI_MARGN?response=json&date=20261020&selectType=ALL",
           "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-20T22:42:26+08:00",
+          "retrieved_at": "2026-10-21T00:20:55+08:00",
           "status": "ok",
           "error": null
         }
@@ -332116,7 +332722,7 @@
       "missing_reason": "證交所信用交易每日融資現金償還本金。",
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:26+08:00",
+      "retrieved_at": "2026-10-21T00:20:55+08:00",
       "source_url": [
         "https://www.twse.com.tw/exchangeReport/MI_MARGN?response=json&date=20261020&selectType=ALL"
       ],
@@ -332141,7 +332747,7 @@
           "title": "證交所融資本金",
           "url": "https://www.twse.com.tw/exchangeReport/MI_MARGN?response=json&date=20261020&selectType=ALL",
           "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-20T22:42:26+08:00",
+          "retrieved_at": "2026-10-21T00:20:55+08:00",
           "status": "ok",
           "error": null
         }
@@ -332149,7 +332755,7 @@
       "missing_reason": "證交所信用交易每日融券餘額與回補張數。",
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:26+08:00",
+      "retrieved_at": "2026-10-21T00:20:55+08:00",
       "source_url": [
         "https://www.twse.com.tw/exchangeReport/MI_MARGN?response=json&date=20261020&selectType=ALL"
       ],
@@ -332195,7 +332801,7 @@
           "title": "證交所三大法人",
           "url": "https://www.twse.com.tw/fund/BFI82U?response=json&dayDate=20261020&type=day",
           "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-20T22:42:26+08:00",
+          "retrieved_at": "2026-10-21T00:20:55+08:00",
           "status": "ok",
           "error": null
         }
@@ -332203,7 +332809,7 @@
       "missing_reason": null,
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:26+08:00",
+      "retrieved_at": "2026-10-21T00:20:55+08:00",
       "source_url": [
         "https://www.twse.com.tw/fund/BFI82U?response=json&dayDate=20261020&type=day"
       ],
@@ -332228,7 +332834,7 @@
           "title": "法人期貨淨部位",
           "url": "https://openapi.taifex.com.tw/v1/MarketDataOfMajorInstitutionalTradersDetailsOfFuturesContractsBytheDate",
           "observed_at": "2026-10-19",
-          "retrieved_at": "2026-10-20T22:42:10+08:00",
+          "retrieved_at": "2026-10-21T00:20:54+08:00",
           "status": "ok",
           "error": null
         }
@@ -332236,7 +332842,7 @@
       "missing_reason": "截至來源實際日期，規模不同不得加總。",
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
       "source_url": [
         "https://openapi.taifex.com.tw/v1/MarketDataOfMajorInstitutionalTradersDetailsOfFuturesContractsBytheDate"
       ],
@@ -332282,7 +332888,7 @@
           "title": "期交所 Put/Call",
           "url": "https://openapi.taifex.com.tw/v1/PutCallRatio",
           "observed_at": "2026-10-19",
-          "retrieved_at": "2026-10-20T22:42:10+08:00",
+          "retrieved_at": "2026-10-21T00:20:54+08:00",
           "status": "ok",
           "error": null
         }
@@ -332290,7 +332896,7 @@
       "missing_reason": null,
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
       "source_url": [
         "https://openapi.taifex.com.tw/v1/PutCallRatio"
       ],
@@ -332328,7 +332934,7 @@
       "caveat": "暫時壓盤、長假累積外盤跌幅；不假設每次都是主力壓盤",
       "group": "槓桿與籌碼",
       "status": "可觀測",
-      "value": "距月結算（10/21）倒數 1 天 / 週結算倒數 1 天",
+      "value": "距月結算（10/21）倒數 0 天 / 週結算倒數 0 天",
       "observed_at": "2026-10-19",
       "sources": [
         {
@@ -332336,7 +332942,7 @@
           "title": "法人期貨淨部位",
           "url": "https://openapi.taifex.com.tw/v1/MarketDataOfMajorInstitutionalTradersDetailsOfFuturesContractsBytheDate",
           "observed_at": "2026-10-19",
-          "retrieved_at": "2026-10-20T22:42:10+08:00",
+          "retrieved_at": "2026-10-21T00:20:54+08:00",
           "status": "ok",
           "error": null
         }
@@ -332344,7 +332950,7 @@
       "missing_reason": "台指期每月第三個星期三月結算，每週三週選擇權結算倒數。",
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
       "source_url": [
         "https://openapi.taifex.com.tw/v1/MarketDataOfMajorInstitutionalTradersDetailsOfFuturesContractsBytheDate"
       ],
@@ -332369,7 +332975,7 @@
           "title": "期交所參考匯率",
           "url": "https://openapi.taifex.com.tw/v1/DailyForeignExchangeRates",
           "observed_at": "2026-10-19",
-          "retrieved_at": "2026-10-20T22:42:10+08:00",
+          "retrieved_at": "2026-10-21T00:20:54+08:00",
           "status": "ok",
           "error": null
         }
@@ -332377,7 +332983,7 @@
       "missing_reason": "匯率不能證明carry unwind；無CFTC部位與私人槓桿。",
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
       "source_url": [
         "https://openapi.taifex.com.tw/v1/DailyForeignExchangeRates"
       ],
@@ -332486,7 +333092,7 @@
           "title": "Cboe VIX",
           "url": "https://cdn-api.cboe.com/api/global/us_indices/daily_prices/VIX_History.csv",
           "observed_at": "2026-10-19",
-          "retrieved_at": "2026-10-20T22:42:11+08:00",
+          "retrieved_at": "2026-10-21T00:20:49+08:00",
           "status": "ok",
           "error": null
         }
@@ -332494,7 +333100,7 @@
       "missing_reason": null,
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:11+08:00",
+      "retrieved_at": "2026-10-21T00:20:49+08:00",
       "source_url": [
         "https://cdn-api.cboe.com/api/global/us_indices/daily_prices/VIX_History.csv"
       ],
@@ -332519,7 +333125,7 @@
           "title": "Cboe VIX",
           "url": "https://cdn-api.cboe.com/api/global/us_indices/daily_prices/VIX_History.csv",
           "observed_at": "2026-10-19",
-          "retrieved_at": "2026-10-20T22:42:11+08:00",
+          "retrieved_at": "2026-10-21T00:20:49+08:00",
           "status": "ok",
           "error": null
         }
@@ -332527,7 +333133,7 @@
       "missing_reason": null,
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:11+08:00",
+      "retrieved_at": "2026-10-21T00:20:49+08:00",
       "source_url": [
         "https://cdn-api.cboe.com/api/global/us_indices/daily_prices/VIX_History.csv"
       ],
@@ -332552,7 +333158,7 @@
           "title": "Cboe VIX3M",
           "url": "https://cdn-api.cboe.com/api/global/us_indices/daily_prices/VIX3M_History.csv",
           "observed_at": "2026-10-19",
-          "retrieved_at": "2026-10-20T22:42:11+08:00",
+          "retrieved_at": "2026-10-21T00:20:49+08:00",
           "status": "ok",
           "error": null
         }
@@ -332560,7 +333166,7 @@
       "missing_reason": null,
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:11+08:00",
+      "retrieved_at": "2026-10-21T00:20:49+08:00",
       "source_url": [
         "https://cdn-api.cboe.com/api/global/us_indices/daily_prices/VIX3M_History.csv"
       ],
@@ -332585,7 +333191,7 @@
           "title": "Cboe VVIX",
           "url": "https://cdn-api.cboe.com/api/global/us_indices/daily_prices/VVIX_History.csv",
           "observed_at": "2026-10-19",
-          "retrieved_at": "2026-10-20T22:42:11+08:00",
+          "retrieved_at": "2026-10-21T00:20:49+08:00",
           "status": "ok",
           "error": null
         }
@@ -332593,7 +333199,7 @@
       "missing_reason": "VVIX已接通，VIX9D未接通。",
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:11+08:00",
+      "retrieved_at": "2026-10-21T00:20:49+08:00",
       "source_url": [
         "https://cdn-api.cboe.com/api/global/us_indices/daily_prices/VVIX_History.csv"
       ],
@@ -332637,9 +333243,9 @@
         {
           "id": "taiex",
           "title": "FinMind 加權歷史",
-          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-11&end_date=2026-10-20&data_id=TAIEX",
+          "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-12&end_date=2026-10-21&data_id=TAIEX",
           "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-20T22:42:10+08:00",
+          "retrieved_at": "2026-10-21T00:20:54+08:00",
           "status": "ok",
           "error": null
         }
@@ -332647,9 +333253,9 @@
       "missing_reason": null,
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
       "source_url": [
-        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-11&end_date=2026-10-20&data_id=TAIEX"
+        "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-12&end_date=2026-10-21&data_id=TAIEX"
       ],
       "unit": "指數點／比率／%",
       "universe": "台股為主；美股與全球風險為背景",
@@ -332756,7 +333362,7 @@
           "title": "上市月營收",
           "url": "https://openapi.twse.com.tw/v1/opendata/t187ap05_L",
           "observed_at": "2026-10-17",
-          "retrieved_at": "2026-10-20T22:42:10+08:00",
+          "retrieved_at": "2026-10-21T00:20:54+08:00",
           "status": "ok",
           "error": null
         }
@@ -332764,7 +333370,7 @@
       "missing_reason": "原始營收單位仟元；本次不做跨月持續性推論。",
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
       "source_url": [
         "https://openapi.twse.com.tw/v1/opendata/t187ap05_L"
       ],
@@ -332810,7 +333416,7 @@
           "title": "上市重大訊息",
           "url": "https://openapi.twse.com.tw/v1/opendata/t187ap04_L",
           "observed_at": "2026-10-19",
-          "retrieved_at": "2026-10-20T22:42:10+08:00",
+          "retrieved_at": "2026-10-21T00:20:54+08:00",
           "status": "ok",
           "error": null
         }
@@ -332818,7 +333424,7 @@
       "missing_reason": "原文公告可查；未做擴產投產時程與供給量結構化。",
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
       "source_url": [
         "https://openapi.twse.com.tw/v1/opendata/t187ap04_L"
       ],
@@ -332927,7 +333533,7 @@
           "title": "上市估值",
           "url": "https://openapi.twse.com.tw/v1/exchangeReport/BWIBBU_ALL",
           "observed_at": "2026-10-19",
-          "retrieved_at": "2026-10-20T22:42:10+08:00",
+          "retrieved_at": "2026-10-21T00:20:54+08:00",
           "status": "ok",
           "error": null
         }
@@ -332935,7 +333541,7 @@
       "missing_reason": "本益比為歷史口徑；無forward EPS與券商共識。",
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
       "source_url": [
         "https://openapi.twse.com.tw/v1/exchangeReport/BWIBBU_ALL"
       ],
@@ -332960,7 +333566,7 @@
           "title": "上市重大訊息",
           "url": "https://openapi.twse.com.tw/v1/opendata/t187ap04_L",
           "observed_at": "2026-10-19",
-          "retrieved_at": "2026-10-20T22:42:10+08:00",
+          "retrieved_at": "2026-10-21T00:20:54+08:00",
           "status": "ok",
           "error": null
         }
@@ -332968,7 +333574,7 @@
       "missing_reason": "原文不等於AI需求已驗證，需人工閱讀。",
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
       "source_url": [
         "https://openapi.twse.com.tw/v1/opendata/t187ap04_L"
       ],
@@ -332993,7 +333599,7 @@
           "title": "上市重大訊息",
           "url": "https://openapi.twse.com.tw/v1/opendata/t187ap04_L",
           "observed_at": "2026-10-19",
-          "retrieved_at": "2026-10-20T22:42:10+08:00",
+          "retrieved_at": "2026-10-21T00:20:54+08:00",
           "status": "ok",
           "error": null
         }
@@ -333001,7 +333607,7 @@
       "missing_reason": "尚無全球政府政策完整事件庫。",
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
       "source_url": [
         "https://openapi.twse.com.tw/v1/opendata/t187ap04_L"
       ],
@@ -333047,7 +333653,7 @@
           "title": "美國財政部殖利率",
           "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?data=daily_treasury_yield_curve&field_tdr_date_value=2026",
           "observed_at": "2026-10-19",
-          "retrieved_at": "2026-10-20T22:42:12+08:00",
+          "retrieved_at": "2026-10-21T00:20:49+08:00",
           "status": "ok",
           "error": null
         }
@@ -333055,7 +333661,7 @@
       "missing_reason": "未接Fed政策利率與修訂版本。",
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:12+08:00",
+      "retrieved_at": "2026-10-21T00:20:49+08:00",
       "source_url": [
         "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?data=daily_treasury_yield_curve&field_tdr_date_value=2026"
       ],
@@ -333101,7 +333707,7 @@
           "title": "期交所參考匯率",
           "url": "https://openapi.taifex.com.tw/v1/DailyForeignExchangeRates",
           "observed_at": "2026-10-19",
-          "retrieved_at": "2026-10-20T22:42:10+08:00",
+          "retrieved_at": "2026-10-21T00:20:54+08:00",
           "status": "ok",
           "error": null
         }
@@ -333109,7 +333715,7 @@
       "missing_reason": null,
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
       "source_url": [
         "https://openapi.taifex.com.tw/v1/DailyForeignExchangeRates"
       ],
@@ -333132,9 +333738,9 @@
         {
           "id": "SPY",
           "title": "SPY ETF歷史",
-          "url": "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-07&end_date=2026-10-20&data_id=SPY",
+          "url": "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-08&end_date=2026-10-21&data_id=SPY",
           "observed_at": "2026-10-19",
-          "retrieved_at": "2026-10-20T22:42:11+08:00",
+          "retrieved_at": "2026-10-21T00:20:49+08:00",
           "status": "ok",
           "error": null
         },
@@ -333143,7 +333749,7 @@
           "title": "美國財政部殖利率",
           "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?data=daily_treasury_yield_curve&field_tdr_date_value=2026",
           "observed_at": "2026-10-19",
-          "retrieved_at": "2026-10-20T22:42:12+08:00",
+          "retrieved_at": "2026-10-21T00:20:49+08:00",
           "status": "ok",
           "error": null
         }
@@ -333151,9 +333757,9 @@
       "missing_reason": "以美股SPY與10年期美債殖利率同向變化判定跨資產變現與流動性壓力。",
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-20T22:42:12+08:00",
+      "retrieved_at": "2026-10-21T00:20:49+08:00",
       "source_url": [
-        "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-07&end_date=2026-10-20&data_id=SPY",
+        "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-08&end_date=2026-10-21&data_id=SPY",
         "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?data=daily_treasury_yield_curve&field_tdr_date_value=2026"
       ],
       "unit": "依來源：仟元／倍／%／匯率",
@@ -333210,10 +333816,10 @@
       "title": "台股盤中指數",
       "url": "https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_t00.tw%7Cotc_o00.tw&json=1&delay=0",
       "observed_at": "2026-10-20",
-      "retrieved_at": "2026-10-20T20:55:46+08:00",
-      "attempted_at": "2026-10-20T22:42:26+08:00",
-      "status": "error",
-      "error": "TimeoutError: The read operation timed out",
+      "retrieved_at": "2026-10-21T00:20:34+08:00",
+      "attempted_at": "2026-10-21T00:20:34+08:00",
+      "status": "ok",
+      "error": null,
       "frequency": "盤中報價（來源時間為準）",
       "interval": "交易日 09:00–13:30 每 10 分鐘"
     },
@@ -333222,8 +333828,8 @@
       "title": "證交所日成交",
       "url": "https://openapi.twse.com.tw/v1/exchangeReport/FMTQIK",
       "observed_at": "2026-10-19",
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
-      "attempted_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:53+08:00",
+      "attempted_at": "2026-10-21T00:20:53+08:00",
       "status": "ok",
       "error": null,
       "frequency": "盤後日頻",
@@ -333232,10 +333838,10 @@
     {
       "id": "taiex",
       "title": "FinMind 加權歷史",
-      "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-11&end_date=2026-10-20&data_id=TAIEX",
+      "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-12&end_date=2026-10-21&data_id=TAIEX",
       "observed_at": "2026-10-20",
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
-      "attempted_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
+      "attempted_at": "2026-10-21T00:20:54+08:00",
       "status": "ok",
       "error": null,
       "frequency": "盤後日頻",
@@ -333244,10 +333850,10 @@
     {
       "id": "margin",
       "title": "FinMind 融資歷史",
-      "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockTotalMarginPurchaseShortSale&start_date=2024-08-11&end_date=2026-10-20",
+      "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockTotalMarginPurchaseShortSale&start_date=2024-08-12&end_date=2026-10-21",
       "observed_at": "2026-10-20",
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
-      "attempted_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
+      "attempted_at": "2026-10-21T00:20:54+08:00",
       "status": "ok",
       "error": null,
       "frequency": "盤後日頻",
@@ -333256,10 +333862,10 @@
     {
       "id": "tpex",
       "title": "FinMind 櫃買歷史",
-      "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-11&end_date=2026-10-20&data_id=TPEx",
+      "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2024-08-12&end_date=2026-10-21&data_id=TPEx",
       "observed_at": "2026-10-20",
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
-      "attempted_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
+      "attempted_at": "2026-10-21T00:20:54+08:00",
       "status": "ok",
       "error": null,
       "frequency": "盤後日頻",
@@ -333270,8 +333876,8 @@
       "title": "期交所 Put/Call",
       "url": "https://openapi.taifex.com.tw/v1/PutCallRatio",
       "observed_at": "2026-10-19",
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
-      "attempted_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
+      "attempted_at": "2026-10-21T00:20:54+08:00",
       "status": "ok",
       "error": null,
       "frequency": "盤後日頻",
@@ -333282,8 +333888,8 @@
       "title": "期交所參考匯率",
       "url": "https://openapi.taifex.com.tw/v1/DailyForeignExchangeRates",
       "observed_at": "2026-10-19",
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
-      "attempted_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
+      "attempted_at": "2026-10-21T00:20:54+08:00",
       "status": "ok",
       "error": null,
       "frequency": "日參考匯率",
@@ -333294,8 +333900,8 @@
       "title": "法人期貨淨部位",
       "url": "https://openapi.taifex.com.tw/v1/MarketDataOfMajorInstitutionalTradersDetailsOfFuturesContractsBytheDate",
       "observed_at": "2026-10-19",
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
-      "attempted_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
+      "attempted_at": "2026-10-21T00:20:54+08:00",
       "status": "ok",
       "error": null,
       "frequency": "盤後日頻",
@@ -333306,8 +333912,8 @@
       "title": "上市估值",
       "url": "https://openapi.twse.com.tw/v1/exchangeReport/BWIBBU_ALL",
       "observed_at": "2026-10-19",
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
-      "attempted_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
+      "attempted_at": "2026-10-21T00:20:54+08:00",
       "status": "ok",
       "error": null,
       "frequency": "盤後日頻",
@@ -333318,8 +333924,8 @@
       "title": "上市月營收",
       "url": "https://openapi.twse.com.tw/v1/opendata/t187ap05_L",
       "observed_at": "2026-10-17",
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
-      "attempted_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
+      "attempted_at": "2026-10-21T00:20:54+08:00",
       "status": "ok",
       "error": null,
       "frequency": "每月發布",
@@ -333330,8 +333936,8 @@
       "title": "上市重大訊息",
       "url": "https://openapi.twse.com.tw/v1/opendata/t187ap04_L",
       "observed_at": "2026-10-19",
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
-      "attempted_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
+      "attempted_at": "2026-10-21T00:20:54+08:00",
       "status": "ok",
       "error": null,
       "frequency": "公告發布時更新",
@@ -333340,10 +333946,10 @@
     {
       "id": "2330",
       "title": "2330 台股歷史",
-      "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-23&end_date=2026-10-20&data_id=2330",
+      "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-24&end_date=2026-10-21&data_id=2330",
       "observed_at": "2026-10-20",
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
-      "attempted_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:55+08:00",
+      "attempted_at": "2026-10-21T00:20:55+08:00",
       "status": "ok",
       "error": null,
       "frequency": "盤後日頻",
@@ -333352,10 +333958,10 @@
     {
       "id": "2317",
       "title": "2317 台股歷史",
-      "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-23&end_date=2026-10-20&data_id=2317",
+      "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-24&end_date=2026-10-21&data_id=2317",
       "observed_at": "2026-10-20",
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
-      "attempted_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
+      "attempted_at": "2026-10-21T00:20:54+08:00",
       "status": "ok",
       "error": null,
       "frequency": "盤後日頻",
@@ -333364,10 +333970,10 @@
     {
       "id": "2454",
       "title": "2454 台股歷史",
-      "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-23&end_date=2026-10-20&data_id=2454",
+      "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-24&end_date=2026-10-21&data_id=2454",
       "observed_at": "2026-10-20",
-      "retrieved_at": "2026-10-20T22:42:11+08:00",
-      "attempted_at": "2026-10-20T22:42:11+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
+      "attempted_at": "2026-10-21T00:20:54+08:00",
       "status": "ok",
       "error": null,
       "frequency": "盤後日頻",
@@ -333376,10 +333982,10 @@
     {
       "id": "2382",
       "title": "2382 台股歷史",
-      "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-23&end_date=2026-10-20&data_id=2382",
+      "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-24&end_date=2026-10-21&data_id=2382",
       "observed_at": "2026-10-20",
-      "retrieved_at": "2026-10-20T22:42:11+08:00",
-      "attempted_at": "2026-10-20T22:42:11+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
+      "attempted_at": "2026-10-21T00:20:54+08:00",
       "status": "ok",
       "error": null,
       "frequency": "盤後日頻",
@@ -333388,10 +333994,10 @@
     {
       "id": "2308",
       "title": "2308 台股歷史",
-      "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-23&end_date=2026-10-20&data_id=2308",
+      "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-24&end_date=2026-10-21&data_id=2308",
       "observed_at": "2026-10-20",
-      "retrieved_at": "2026-10-20T22:42:11+08:00",
-      "attempted_at": "2026-10-20T22:42:11+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
+      "attempted_at": "2026-10-21T00:20:54+08:00",
       "status": "ok",
       "error": null,
       "frequency": "盤後日頻",
@@ -333400,10 +334006,10 @@
     {
       "id": "3231",
       "title": "3231 台股歷史",
-      "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-23&end_date=2026-10-20&data_id=3231",
+      "url": "https://api.finmindtrade.com/api/v4/data?dataset=TaiwanStockPrice&start_date=2026-04-24&end_date=2026-10-21&data_id=3231",
       "observed_at": "2026-10-20",
-      "retrieved_at": "2026-10-20T22:42:11+08:00",
-      "attempted_at": "2026-10-20T22:42:11+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
+      "attempted_at": "2026-10-21T00:20:54+08:00",
       "status": "ok",
       "error": null,
       "frequency": "盤後日頻",
@@ -333414,8 +334020,8 @@
       "title": "Cboe VIX",
       "url": "https://cdn-api.cboe.com/api/global/us_indices/daily_prices/VIX_History.csv",
       "observed_at": "2026-10-19",
-      "retrieved_at": "2026-10-20T22:42:11+08:00",
-      "attempted_at": "2026-10-20T22:42:11+08:00",
+      "retrieved_at": "2026-10-21T00:20:49+08:00",
+      "attempted_at": "2026-10-21T00:20:49+08:00",
       "status": "ok",
       "error": null,
       "frequency": "美國盤後日頻",
@@ -333426,8 +334032,8 @@
       "title": "Cboe VIX3M",
       "url": "https://cdn-api.cboe.com/api/global/us_indices/daily_prices/VIX3M_History.csv",
       "observed_at": "2026-10-19",
-      "retrieved_at": "2026-10-20T22:42:11+08:00",
-      "attempted_at": "2026-10-20T22:42:11+08:00",
+      "retrieved_at": "2026-10-21T00:20:49+08:00",
+      "attempted_at": "2026-10-21T00:20:49+08:00",
       "status": "ok",
       "error": null,
       "frequency": "美國盤後日頻",
@@ -333438,8 +334044,8 @@
       "title": "Cboe VVIX",
       "url": "https://cdn-api.cboe.com/api/global/us_indices/daily_prices/VVIX_History.csv",
       "observed_at": "2026-10-19",
-      "retrieved_at": "2026-10-20T22:42:11+08:00",
-      "attempted_at": "2026-10-20T22:42:11+08:00",
+      "retrieved_at": "2026-10-21T00:20:49+08:00",
+      "attempted_at": "2026-10-21T00:20:49+08:00",
       "status": "ok",
       "error": null,
       "frequency": "美國盤後日頻",
@@ -333448,10 +334054,10 @@
     {
       "id": "SPY",
       "title": "SPY ETF歷史",
-      "url": "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-07&end_date=2026-10-20&data_id=SPY",
+      "url": "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-08&end_date=2026-10-21&data_id=SPY",
       "observed_at": "2026-10-19",
-      "retrieved_at": "2026-10-20T22:42:11+08:00",
-      "attempted_at": "2026-10-20T22:42:11+08:00",
+      "retrieved_at": "2026-10-21T00:20:49+08:00",
+      "attempted_at": "2026-10-21T00:20:49+08:00",
       "status": "ok",
       "error": null,
       "frequency": "美國盤後日頻",
@@ -333460,10 +334066,10 @@
     {
       "id": "QQQ",
       "title": "QQQ ETF歷史",
-      "url": "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-07&end_date=2026-10-20&data_id=QQQ",
+      "url": "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-08&end_date=2026-10-21&data_id=QQQ",
       "observed_at": "2026-10-19",
-      "retrieved_at": "2026-10-20T22:42:11+08:00",
-      "attempted_at": "2026-10-20T22:42:11+08:00",
+      "retrieved_at": "2026-10-21T00:20:49+08:00",
+      "attempted_at": "2026-10-21T00:20:49+08:00",
       "status": "ok",
       "error": null,
       "frequency": "美國盤後日頻",
@@ -333472,10 +334078,10 @@
     {
       "id": "SOXX",
       "title": "SOXX ETF歷史",
-      "url": "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-07&end_date=2026-10-20&data_id=SOXX",
+      "url": "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-08&end_date=2026-10-21&data_id=SOXX",
       "observed_at": "2026-10-19",
-      "retrieved_at": "2026-10-20T22:42:11+08:00",
-      "attempted_at": "2026-10-20T22:42:11+08:00",
+      "retrieved_at": "2026-10-21T00:20:49+08:00",
+      "attempted_at": "2026-10-21T00:20:49+08:00",
       "status": "ok",
       "error": null,
       "frequency": "美國盤後日頻",
@@ -333486,8 +334092,8 @@
       "title": "美國財政部殖利率",
       "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?data=daily_treasury_yield_curve&field_tdr_date_value=2026",
       "observed_at": "2026-10-19",
-      "retrieved_at": "2026-10-20T22:42:12+08:00",
-      "attempted_at": "2026-10-20T22:42:12+08:00",
+      "retrieved_at": "2026-10-21T00:20:49+08:00",
+      "attempted_at": "2026-10-21T00:20:49+08:00",
       "status": "ok",
       "error": null,
       "frequency": "美國盤後日頻",
@@ -333498,8 +334104,8 @@
       "title": "證交所股票廣度與產業",
       "url": "https://www.twse.com.tw/exchangeReport/MI_INDEX?response=json&date=20261020&type=ALLBUT0999",
       "observed_at": "2026-10-20",
-      "retrieved_at": "2026-10-20T22:42:26+08:00",
-      "attempted_at": "2026-10-20T22:42:26+08:00",
+      "retrieved_at": "2026-10-21T00:20:55+08:00",
+      "attempted_at": "2026-10-21T00:20:55+08:00",
       "status": "ok",
       "error": null,
       "frequency": "盤後日頻",
@@ -333510,8 +334116,8 @@
       "title": "證交所融資本金",
       "url": "https://www.twse.com.tw/exchangeReport/MI_MARGN?response=json&date=20261020&selectType=ALL",
       "observed_at": "2026-10-20",
-      "retrieved_at": "2026-10-20T22:42:26+08:00",
-      "attempted_at": "2026-10-20T22:42:26+08:00",
+      "retrieved_at": "2026-10-21T00:20:55+08:00",
+      "attempted_at": "2026-10-21T00:20:55+08:00",
       "status": "ok",
       "error": null,
       "frequency": "盤後日頻",
@@ -333522,8 +334128,8 @@
       "title": "證交所三大法人",
       "url": "https://www.twse.com.tw/fund/BFI82U?response=json&dayDate=20261020&type=day",
       "observed_at": "2026-10-20",
-      "retrieved_at": "2026-10-20T22:42:26+08:00",
-      "attempted_at": "2026-10-20T22:42:26+08:00",
+      "retrieved_at": "2026-10-21T00:20:55+08:00",
+      "attempted_at": "2026-10-21T00:20:55+08:00",
       "status": "ok",
       "error": null,
       "frequency": "盤後日頻",
@@ -333534,8 +334140,8 @@
       "title": "證交所當沖統計",
       "url": "https://www.twse.com.tw/exchangeReport/TWTB4U?response=json&date=20261020&selectType=All",
       "observed_at": "2026-10-20",
-      "retrieved_at": "2026-10-20T22:42:26+08:00",
-      "attempted_at": "2026-10-20T22:42:26+08:00",
+      "retrieved_at": "2026-10-21T00:20:55+08:00",
+      "attempted_at": "2026-10-21T00:20:55+08:00",
       "status": "ok",
       "error": null,
       "frequency": "盤後日頻",
@@ -333546,8 +334152,8 @@
       "title": "期交所臺指 VIX",
       "url": "https://www.taifex.com.tw/file/taifex/Dailydownload/vix/log2data/202610new.txt",
       "observed_at": "2026-10-20",
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
-      "attempted_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:56+08:00",
+      "attempted_at": "2026-10-21T00:20:53+08:00",
       "status": "ok",
       "error": null,
       "frequency": "盤後日頻",
@@ -333558,8 +334164,8 @@
       "title": "櫃買個股行情",
       "url": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_quotes",
       "observed_at": null,
-      "retrieved_at": "2026-10-20T22:42:11+08:00",
-      "attempted_at": "2026-10-20T22:42:11+08:00",
+      "retrieved_at": "2026-10-21T00:20:53+08:00",
+      "attempted_at": "2026-10-21T00:20:53+08:00",
       "status": "ok",
       "error": null,
       "frequency": "盤後日頻",
@@ -333570,8 +334176,8 @@
       "title": "櫃買成交統計",
       "url": "https://www.tpex.org.tw/openapi/v1/tpex_daily_trading_index",
       "observed_at": "2026-10-20",
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
-      "attempted_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:53+08:00",
+      "attempted_at": "2026-10-21T00:20:53+08:00",
       "status": "ok",
       "error": null,
       "frequency": "盤後日頻",
@@ -333582,8 +334188,8 @@
       "title": "櫃買三大法人",
       "url": "https://www.tpex.org.tw/openapi/v1/tpex_3insti_summary",
       "observed_at": null,
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
-      "attempted_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:53+08:00",
+      "attempted_at": "2026-10-21T00:20:53+08:00",
       "status": "ok",
       "error": null,
       "frequency": "盤後日頻",
@@ -333594,8 +334200,8 @@
       "title": "證交所均價廣度",
       "url": "https://openapi.twse.com.tw/v1/exchangeReport/STOCK_DAY_AVG_ALL",
       "observed_at": null,
-      "retrieved_at": "2026-10-20T22:42:10+08:00",
-      "attempted_at": "2026-10-20T22:42:10+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
+      "attempted_at": "2026-10-21T00:20:54+08:00",
       "status": "ok",
       "error": null,
       "frequency": "盤後日頻",
@@ -333606,8 +334212,8 @@
       "title": "櫃買估值",
       "url": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_peratio_analysis",
       "observed_at": null,
-      "retrieved_at": "2026-10-20T22:42:11+08:00",
-      "attempted_at": "2026-10-20T22:42:11+08:00",
+      "retrieved_at": "2026-10-21T00:20:53+08:00",
+      "attempted_at": "2026-10-21T00:20:53+08:00",
       "status": "ok",
       "error": null,
       "frequency": "盤後日頻",
@@ -333618,8 +334224,8 @@
       "title": "櫃買月營收",
       "url": "https://www.tpex.org.tw/openapi/v1/mopsfin_t187ap05_OA",
       "observed_at": null,
-      "retrieved_at": "2026-10-20T22:42:11+08:00",
-      "attempted_at": "2026-10-20T22:42:11+08:00",
+      "retrieved_at": "2026-10-21T00:20:54+08:00",
+      "attempted_at": "2026-10-21T00:20:54+08:00",
       "status": "ok",
       "error": null,
       "frequency": "每月發布",
