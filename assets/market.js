@@ -98,8 +98,8 @@ function renderOverviewMatrix() {
     return `<button class="matrix-card" data-jump="${targetMap[id]}" data-ind="${id}" aria-label="查看指標 ${id} ${e(item.name)} 詳情"><div class="matrix-top"><span class="indicator-pill">${id.padStart(2, '0')}</span><span class="matrix-title">${e(item.name || `指標 ${id}`)}</span>${indicatorBadge(item.status, item.status_label)}</div><div class="matrix-value numeric">${valHTML}</div><div class="matrix-summary">${e(item.summary || '資料計算中…')}</div></button>`;
   }).join('');
 
-  const body = `<div class="indicator-matrix">${cards}</div><p class="section-bottom">15 項核心指標每日由 GitHub Actions 盤後與盤中排程更新 · 點選任一指標卡片直達該項詳細分析面板。</p>`;
-  return section('overview', '15 大核心指標監控總覽', '全市場多空結構、資金槓桿、量價與基本面全維度量化診斷。', body, '<span class="section-tag">15 項全維度指標</span>');
+  const body = `<div class="indicator-matrix">${cards}</div>`;
+  return section('overview', '15 大核心指標監控總覽', '', body, '<span class="section-tag">15 項全維度指標</span>');
 }
 
 // --------------------------------------------------------------------------
@@ -120,7 +120,6 @@ function renderPanelTrend() {
   const body = `
     <div class="indicator-block">
       ${indicatorHeading('1', '市場趨勢', i1.status, i1.status_label)}
-      <div class="indicator-summary-bar"><span>加權指數與櫃買指數 OHLC、20／60／120 日均線、波段前高前低防守</span></div>
       <div id="quote-strip">${quoteStrip()}</div>
       <div id="main-chart-content"></div>
       <div class="split-row" style="margin-top:22px">
@@ -147,7 +146,6 @@ function renderPanelTrend() {
 
     <div class="indicator-block">
       ${indicatorHeading('2', '趨勢偏離程度', i2.status, i2.status_label)}
-      <div class="indicator-summary-bar"><span>加權與櫃買 20／60 日均線乖離率、近期最大回撤幅度</span></div>
       <div class="stats-strip">
         ${stat('加權 MA20 乖離率', signed(valid(t2.dev20) ? t2.dev20 * 100 : null), '月線偏離', tone(t2.dev20))}
         ${stat('加權 MA60 乖離率', signed(valid(t2.dev60) ? t2.dev60 * 100 : null), '季線偏離', tone(t2.dev60))}
@@ -176,7 +174,7 @@ function renderPanelTrend() {
       </div>
     </div>
   `;
-  return section('panel-trend', '01 趨勢與偏離', '大盤與櫃買核心走勢、均線架構、高低點防守與偏離回撤。', body, '<span class="section-tag">指標 1 & 2</span>');
+  return section('panel-trend', '01 趨勢與偏離', '', body, '<span class="section-tag">指標 1 & 2</span>');
 }
 
 function mainChart() {
@@ -185,7 +183,7 @@ function mainChart() {
   const unit = symbol === 'taiex' || symbol === 'tpex' ? '點' : 'TWD';
   const periods = [['22', '1M'], ['66', '3M'], ['132', '6M'], ['264', '1Y'], ['all', '全部']];
   if (!$('#main-chart-content')) return;
-  $('#main-chart-content').innerHTML = `<div class="chart-summary"><div><strong class="chart-price numeric">${fmt(q.close)}<span class="unit">${unit}</span></strong><span class="chart-change ${tone(q.delta)} numeric"> ${signed(q.delta)}</span><p class="chart-caption">${e(names[symbol])} · ${date(q.date)} ${e(q.time || '盤後日線')} · ${sourceMeta(symbol)}${q.previous != null ? ' · 含來源最新報價' : ''}</p></div><div id="chart-readout" class="chart-readout">日線 · 拖曳量測區間報酬</div></div><div class="hero-chart" id="main-chart">${chartSVG(rows, { fields: state.ma ? ['close', 'ma20', 'ma60'] : ['close'], width: chartWidth, height: chartHeight, candle: state.candle, area: !state.candle && !state.ma, id: 'main', label: `${names[symbol]}歷史日線` })}<div class="chart-hover" id="chart-hover"></div></div><div class="volume-chart">${volumeSVG(rows, chartWidth)}</div><div class="chart-controls"><div class="pills" role="group" aria-label="走勢期間">${periods.map(([value, label]) => `<button data-period="${value}" class="${state.period === value ? 'active' : ''}" aria-pressed="${state.period === value}">${label}</button>`).join('')}</div>${state.ma ? chartKey(['收盤', 'MA20', 'MA60']) : ''}<div class="chart-options" role="group" aria-label="圖表設定"><button data-chart="area" aria-pressed="${!state.candle}" class="${!state.candle ? 'active' : ''}">走勢</button><button data-chart="candle" aria-pressed="${state.candle}" class="${state.candle ? 'active' : ''}">K 線</button><button data-chart="ma" aria-pressed="${state.ma}" class="${state.ma ? 'active' : ''}">均線</button></div></div><p class="section-bottom">${rows.length} 筆日線 · ${date(rows[0]?.date)} — ${date(last(rows).date)} · 上漲紅／下跌綠</p>`;
+  $('#main-chart-content').innerHTML = `<div class="chart-summary"><div><strong class="chart-price numeric">${fmt(q.close)}<span class="unit">${unit}</span></strong><span class="chart-change ${tone(q.delta)} numeric"> ${signed(q.delta)}</span><p class="chart-caption">${e(names[symbol])} · ${date(q.date)} ${e(q.time || '盤後日線')} · ${sourceMeta(symbol)}${q.previous != null ? ' · 含來源最新報價' : ''}</p></div><div id="chart-readout" class="chart-readout"></div></div><div class="hero-chart" id="main-chart">${chartSVG(rows, { fields: state.ma ? ['close', 'ma20', 'ma60'] : ['close'], width: chartWidth, height: chartHeight, candle: state.candle, area: !state.candle && !state.ma, id: 'main', label: `${names[symbol]}歷史日線` })}<div class="chart-hover" id="chart-hover"></div></div><div class="volume-chart">${volumeSVG(rows, chartWidth)}</div><div class="chart-controls"><div class="pills" role="group" aria-label="走勢期間">${periods.map(([value, label]) => `<button data-period="${value}" class="${state.period === value ? 'active' : ''}" aria-pressed="${state.period === value}">${label}</button>`).join('')}</div>${state.ma ? chartKey(['收盤', 'MA20', 'MA60']) : ''}<div class="chart-options" role="group" aria-label="圖表設定"><button data-chart="area" aria-pressed="${!state.candle}" class="${!state.candle ? 'active' : ''}">走勢</button><button data-chart="candle" aria-pressed="${state.candle}" class="${state.candle ? 'active' : ''}">K 線</button><button data-chart="ma" aria-pressed="${state.ma}" class="${state.ma ? 'active' : ''}">均線</button></div></div>`;
   wireChart(rows);
 }
 
@@ -223,7 +221,6 @@ function renderPanelBreadth() {
   const body = `
     <div class="indicator-block">
       ${indicatorHeading('3', '漲跌家數與累積 A/D Line', i3.status, i3.status_label)}
-      <div class="indicator-summary-bar"><span>全市場上漲／下跌家數比、漲停跌停家數與累積騰落指標 (Advance-Decline Line)</span></div>
       <div class="breadth-head">
         <div><strong class="up numeric">${fmt(i3.up_share, 1)}<span class="unit">%</span></strong><small>全市場上漲家數占比 · 漲跌比 ${fmt(i3.ratio)}</small></div>
         <span class="muted">${total ? fmt(total, 0) + ' 家參與交易' : '—'}</span>
@@ -248,7 +245,6 @@ function renderPanelBreadth() {
 
     <div class="indicator-block">
       ${indicatorHeading('4', '均線廣度', i4.status, i4.status_label)}
-      <div class="indicator-summary-bar"><span>上市＋上櫃全市場股票站上 20／60／120 日均線的真實比例</span></div>
       <div class="grid-3">
         <div class="mini-card">
           <span class="eyebrow">SHORT TERM BREADTH</span>
@@ -273,7 +269,6 @@ function renderPanelBreadth() {
 
     <div class="indicator-block">
       ${indicatorHeading('5', '新高／新低廣度', i5.status, i5.status_label)}
-      <div class="indicator-summary-bar"><span>全市場創 52 週新高、新低家數及其 5 日擴張／收縮變化</span></div>
       <div class="stats-strip" style="border-bottom:0;padding-bottom:0">
         ${stat('創 52 週新高', `${fmt(i5.high52, 0)}<span class="unit">家</span>`, '領先衝刺', 'up')}
         ${stat('創 52 週新低', `${fmt(i5.low52, 0)}<span class="unit">家</span>`, '破底弱勢', 'down')}
@@ -282,7 +277,7 @@ function renderPanelBreadth() {
       </div>
     </div>
   `;
-  return section('panel-breadth', '02 市場廣度與動能', '市場多數股票是否跟隨指數、均線支撐力與新高新低推力。', body, '<span class="section-tag">指標 3、4、5</span>');
+  return section('panel-breadth', '02 市場廣度與動能', '', body, '<span class="section-tag">指標 3、4、5</span>');
 }
 
 // --------------------------------------------------------------------------
@@ -294,7 +289,6 @@ function renderPanelVolume() {
   const body = `
     <div class="indicator-block">
       ${indicatorHeading('6', '市場成交值', i6.status, i6.status_label)}
-      <div class="indicator-summary-bar"><span>上市、上櫃股票每日成交金額及相對 20 日均量倍數</span></div>
       <div class="stats-strip">
         ${stat('全市場總成交值', `${fmt(i6.total_volume)}<span class="unit">億元</span>`, `相對 20MA 的 ${fmt(i6.total_ratio)}×`, tone(i6.total_ratio - 1))}
         ${stat('上市成交值', `${fmt(i6.twse_volume)}<span class="unit">億元</span>`, `20MA ${fmt(i6.twse_ma20)} 億 (${fmt(i6.twse_ratio)}×)`)}
@@ -305,7 +299,6 @@ function renderPanelVolume() {
 
     <div class="indicator-block">
       ${indicatorHeading('7', '量價反應', i7.status, i7.status_label)}
-      <div class="indicator-summary-bar"><span>四大量價反應情境診斷：放量突破、放量不漲、放量下跌、跌深後放量止跌</span></div>
       <div class="callout-box ${indicatorTone(i7.status)}">
         <strong>當前量價診斷：${e(i7.active_pattern)}</strong>
         <p>${e(i7.detail)}</p>
@@ -329,7 +322,7 @@ function renderPanelVolume() {
       </div>
     </div>
   `;
-  return section('panel-volume', '03 成交值與量價反應', '成交金額變化、量能均線倍數與突破／出貨／止跌行為診斷。', body, '<span class="section-tag">指標 6 & 7</span>');
+  return section('panel-volume', '03 成交值與量價反應', '', body, '<span class="section-tag">指標 6 & 7</span>');
 }
 
 // --------------------------------------------------------------------------
@@ -342,7 +335,6 @@ function renderPanelLeverage() {
   const body = `
     <div class="indicator-block">
       ${indicatorHeading('8', '融資餘額', i8.status, i8.status_label)}
-      <div class="indicator-summary-bar"><span>上市、上櫃融資餘額及 5／20 日增減額、增減率、融券餘額與現金償還</span></div>
       <div class="stats-strip">
         ${stat('上市＋上櫃融資總額', `${fmt(i8.total_margin)}<span class="unit">億元</span>`, `5日 ${signed(i8.total_margin_pct5)}`, tone(-i8.total_margin_pct5))}
         ${stat('上市融資餘額', `${fmt(i8.twse_margin)}<span class="unit">億元</span>`, `5日 ${signed(i8.twse_margin_chg5)} 億 (${signed(i8.twse_margin_pct5)})`)}
@@ -357,7 +349,6 @@ function renderPanelLeverage() {
 
     <div class="indicator-block">
       ${indicatorHeading('9', '槓桿清洗程度', i9.status, i9.status_label)}
-      <div class="indicator-summary-bar"><span>融資從近期波段高點回落幅度、融資變化與股價變化的關係 (去槓桿差額)</span></div>
       <div class="split-row">
         <article>
           <h4 class="subheading">融資回落 vs 指數拉回</h4>
@@ -378,7 +369,7 @@ function renderPanelLeverage() {
       </div>
     </div>
   `;
-  return section('panel-leverage', '04 融資與槓桿清洗', '市場槓桿籌碼規模、融資去化速度與高點回落之浮額清洗品質。', body, '<span class="section-tag">指標 8 & 9</span>');
+  return section('panel-leverage', '04 融資與槓桿清洗', '', body, '<span class="section-tag">指標 8 & 9</span>');
 }
 
 // --------------------------------------------------------------------------
@@ -393,7 +384,6 @@ function renderPanelSectors() {
   const body = `
     <div class="indicator-block">
       ${indicatorHeading('10', '領漲族群', i10.status, i10.status_label)}
-      <div class="indicator-summary-bar"><span>各產業相對大盤強度 (Alpha vs TAIEX)、漲幅貢獻與領漲族群數量</span></div>
       <div class="split-row">
         <article>
           <h4 class="subheading">相對強勢領先類股 <small>Alpha 超額強度</small></h4>
@@ -409,7 +399,6 @@ function renderPanelSectors() {
 
     <div class="indicator-block">
       ${indicatorHeading('11', '強勢股健康程度', i11.status, i11.status_label)}
-      <div class="indicator-summary-bar"><span>原先領漲股的相對強弱、跌破關鍵均線 (MA20/MA60) 或補跌的比例</span></div>
       <div class="stats-strip">
         ${stat('強勢股健康綜合分數', `${i11.health_score ?? '—'}<span class="unit">/ 100</span>`, '姿態評級', tone(i11.health_score - 50))}
         ${stat('跌破 20MA (月線) 比例', `${fmt(i11.below_ma20_pct, 0)}<span class="unit">%</span>`, '短線轉弱', tone(-i11.below_ma20_pct))}
@@ -428,7 +417,7 @@ function renderPanelSectors() {
       </div>
     </div>
   `;
-  return section('panel-sectors', '05 產業族群與強勢股', '產業輪動、相對大盤超額回報與領頭羊個股破線補跌風險。', body, '<span class="section-tag">指標 10 & 11</span>');
+  return section('panel-sectors', '05 產業族群與強勢股', '', body, '<span class="section-tag">指標 10 & 11</span>');
 }
 
 // --------------------------------------------------------------------------
@@ -441,7 +430,6 @@ function renderPanelSentiment() {
   const body = `
     <div class="indicator-block">
       ${indicatorHeading('12', '恐慌程度', i12.status, i12.status_label)}
-      <div class="indicator-summary-bar"><span>臺指選擇權波動率指數（臺指 VIX）及歷史百分位、跨市場波動率對照</span></div>
       <div class="stats-strip">
         ${stat('臺指選擇權 VIX', fmt(i12.taiwan_vix), `5日變化 ${signed(valid(i12.taiwan_vix_chg5) ? i12.taiwan_vix_chg5 * 100 : null)}`, tone(i12.taiwan_vix - 25))}
         ${stat('臺指 VIX 252日分位', `${fmt(valid(i12.taiwan_vix_pct252) ? i12.taiwan_vix_pct252 * 100 : null, 1)}<span class="unit">%</span>`, '歷史情緒位階', tone(i12.taiwan_vix_pct252 - 0.5))}
@@ -464,7 +452,6 @@ function renderPanelSentiment() {
 
     <div class="indicator-block">
       ${indicatorHeading('13', '法人與資金動向', i13.status, i13.status_label)}
-      <div class="indicator-summary-bar"><span>外資現貨買賣超、臺股期貨外資淨未平倉部位與 Put/Call Ratio</span></div>
       <div class="stats-strip">
         ${stat('外資現貨單日買賣超', `${signed(i13.foreign_net_today)}<span class="unit">億元</span>`, `上市 ${signed(i13.foreign_twse)} 億 / 櫃買 ${signed(i13.foreign_tpex)} 億`, tone(i13.foreign_net_today))}
         ${stat('臺指期外資淨未平倉', `${fmt(i13.futures_foreign_oi, 0)}<span class="unit">口</span>`, '避險留倉淨部位', tone(i13.futures_foreign_oi))}
@@ -483,7 +470,7 @@ function renderPanelSentiment() {
       </div>
     </div>
   `;
-  return section('panel-sentiment', '06 恐慌與法人動向', '選擇權恐慌波動率指數、外資現貨與台指期多空淨留倉。', body, '<span class="section-tag">指標 12 & 13</span>');
+  return section('panel-sentiment', '06 恐慌與法人動向', '', body, '<span class="section-tag">指標 12 & 13</span>');
 }
 
 // --------------------------------------------------------------------------
@@ -495,7 +482,6 @@ function renderPanelFundamentals() {
   const body = `
     <div class="indicator-block">
       ${indicatorHeading('14', '基本面變化', i14.status, i14.status_label)}
-      <div class="indicator-summary-bar"><span>上市櫃月營收趨勢、主要產業 EPS 預期及修正方向</span></div>
       <div class="stats-strip">
         ${stat('上市櫃全市場營收中位 YoY', signed(i14.revenue_yoy), '營收年增率動能', tone(i14.revenue_yoy))}
         ${stat('營收中位 MoM', signed(i14.revenue_mom), '營收月增率', tone(i14.revenue_mom))}
@@ -510,7 +496,6 @@ function renderPanelFundamentals() {
 
     <div class="indicator-block">
       ${indicatorHeading('15', '估值與預期', i15.status, i15.status_label)}
-      <div class="indicator-summary-bar"><span>全市場 Forward P/E、歷史估值百分位、預期獲利成長率與 PEG 吸引力</span></div>
       <div class="stats-strip">
         ${stat('歷史本益比 (Trailing P/E)', `${fmt(i15.trailing_pe, 1)}<span class="unit">倍</span>`, '全市場中位數')}
         ${stat('預估本益比 (Forward P/E)', `${fmt(i15.forward_pe, 1)}<span class="unit">倍</span>`, '獲利年化推估', 'up')}
@@ -536,14 +521,14 @@ function renderPanelFundamentals() {
       </div>
     </div>
   `;
-  return section('panel-fundamentals', '07 基本面與估值預期', '營收成長率、主要產業獲利 EPS 修正方向與 Forward P/E 估值位階。', body, '<span class="section-tag">指標 14 & 15</span>');
+  return section('panel-fundamentals', '07 基本面與估值預期', '', body, '<span class="section-tag">指標 14 & 15</span>');
 }
 
 // --------------------------------------------------------------------------
 // 資料來源與排程
 // --------------------------------------------------------------------------
 function renderSources() {
-  return section('sources', '資料來源與更新', '抓取成功不代表即時；每項資料皆保留原始觀測時間。', `<div class="table-toolbar"><div id="source-summary" class="source-summary"></div><select id="source-filter" aria-label="來源連線狀態">${['全部', '抓取成功', '更新異常'].map(value => `<option ${state.sourceFilter === value ? 'selected' : ''}>${value}</option>`).join('')}</select></div><div id="source-results"></div><div class="schedule-grid"><div><b>台股盤中 · 每 10 分鐘</b><p>交易日 09:00–13:30 排程取得指數報價。網頁每分鐘檢查快照，資料發布與部署可能延遲。</p></div><div><b>台股盤後 · 15:30</b><p>價格、廣度、法人、融資、營收與公告依各來源發布節奏更新。</p></div><div><b>海外收盤 · 06:00</b><p>美股、VIX 與美債排程更新。週末、休市或抓取失敗時顯示最後可用資料。</p></div></div>`);
+  return section('sources', '資料來源與更新', '', `<div class="table-toolbar"><div id="source-summary" class="source-summary"></div><select id="source-filter" aria-label="來源連線狀態">${['全部', '抓取成功', '更新異常'].map(value => `<option ${state.sourceFilter === value ? 'selected' : ''}>${value}</option>`).join('')}</select></div><div id="source-results"></div>`);
 }
 
 function sourcesContent() {
