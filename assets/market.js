@@ -22,7 +22,7 @@ function sourceMeta(id) {
 }
 
 function section(id, title, description, body, trailing = '') {
-  return `<section id="${id}" class="market-section" aria-labelledby="${id}-heading"><div class="section-heading"><div><h2 id="${id}-heading">${e(title)} <span class="chevron" aria-hidden="true">›</span></h2>${description ? `<p>${e(description)}</p>` : ''}</div>${trailing}</div>${body}</section>`;
+  return `<section id="${id}" class="market-section" aria-labelledby="${id}-heading"><div class="section-heading"><div><h2 id="${id}-heading">${e(title)}</h2>${description ? `<p>${e(description)}</p>` : ''}</div>${trailing}</div>${body}</section>`;
 }
 
 function stat(label, value, note = '', className = '') {
