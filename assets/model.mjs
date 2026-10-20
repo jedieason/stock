@@ -71,3 +71,21 @@ export function snapshotAgeDays(date, now = Date.now()) {
   const parsed = Date.parse(`${String(date).slice(0, 10)}T00:00:00+08:00`);
   return Number.isFinite(parsed) ? Math.floor((now - parsed) / 86400000) : null;
 }
+export function getIndicator(packet, id) {
+  if (!packet || !packet.indicators) return {};
+  return packet.indicators[String(id)] || {};
+}
+export function indicatorTone(status) {
+  if (!status) return '';
+  const s = String(status).toLowerCase();
+  if (['bullish', 'bullish_hold', 'expanding', 'up_leading', 'solid_growth', 'healthy', 'thorough'].includes(s)) return 'up';
+  if (['bearish', 'below_ma20', 'contracting', 'down_leading', 'high_fear', 'foreign_selling', 'breakdown', 'high_leverage'].includes(s)) return 'down';
+  if (['overbought', 'oversold', 'warning', 'volume_churn', 'elevated_fear', 'cleansing'].includes(s)) return 'warn';
+  return 'muted';
+}
+export function indicatorBadge(status, label) {
+  const t = indicatorTone(status);
+  const cls = t === 'up' ? 'tag ok' : t === 'warn' || t === 'down' ? 'tag warn' : 'tag';
+  return `<span class="${cls}">${escapeHTML(label || status || '觀測中')}</span>`;
+}
+

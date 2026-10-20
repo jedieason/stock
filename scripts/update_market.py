@@ -14,6 +14,9 @@ import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 from zoneinfo import ZoneInfo
+import sys
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from indicators import compute_15_indicators
 
 TPE = ZoneInfo('Asia/Taipei')
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -325,6 +328,67 @@ def valuations(b):
         for r in j(b)
     ]
 
+def taiwan_vix_parse(b):
+    try:
+        lines = b.decode('big5', 'ignore').strip().splitlines()
+        rows = []
+        for l in lines:
+            parts = l.split()
+            if parts and parts[0].isdigit() and len(parts[0]) == 8:
+                rows.append({
+                    'date': f"{parts[0][:4]}-{parts[0][4:6]}-{parts[0][6:]}",
+                    'value': number(parts[2])
+                })
+        return valid_rows(rows)
+    except Exception:
+        return []
+
+def tpex_quotes_parse(b):
+    try:
+        return j(b)
+    except Exception:
+        return []
+
+def tpex_trading_parse(b):
+    try:
+        rows = j(b)
+        return valid_rows([
+            {
+                'date': day(r.get('Date')),
+                'volume': number(r.get('TradeVolume')),
+                'amount': number(r.get('TradeAmount')),
+                'close': number(r.get('TPExIndex')),
+                'change': number(r.get('Change'))
+            }
+            for r in rows
+        ])
+    except Exception:
+        return []
+
+def tpex_institutions_parse(b):
+    try:
+        return j(b)
+    except Exception:
+        return []
+
+def stock_day_avg_parse(b):
+    try:
+        return j(b)
+    except Exception:
+        return []
+
+def tpex_valuations_parse(b):
+    try:
+        return j(b)
+    except Exception:
+        return []
+
+def tpex_revenue_parse(b):
+    try:
+        return j(b)
+    except Exception:
+        return []
+
 def ret(rows, n, key='close'):
     return rows[-1][key] / rows[-n-1][key] - 1 if len(rows) > n and rows[-1].get(key) is not None and rows[-n-1].get(key) not in [None, 0] else None
 
@@ -542,7 +606,14 @@ def collect(mode='full'):
             ('fmt', '證交所日成交', 'https://openapi.twse.com.tw/v1/exchangeReport/FMTQIK', fmt, '盤後日頻'),
             ('taiex', 'FinMind 加權歷史', fm('TaiwanStockPrice', 'TAIEX'), fin_prices, '盤後日頻'),
             ('margin', 'FinMind 融資歷史', fm('TaiwanStockTotalMarginPurchaseShortSale'), margin_parse, '盤後日頻'),
-            ('tpex', '櫃買指數', 'https://www.tpex.org.tw/openapi/v1/tpex_index', tpex, '盤後日頻'),
+            ('tpex', 'FinMind 櫃買歷史', fm('TaiwanStockPrice', 'TPEx'), fin_prices, '盤後日頻'),
+            ('taiwan_vix', '期交所臺指 VIX', f'https://www.taifex.com.tw/file/taifex/Dailydownload/vix/log2data/{year}{now().month:02d}new.txt', taiwan_vix_parse, '盤後日頻'),
+            ('tpex_quotes', '櫃買個股行情', 'https://www.tpex.org.tw/openapi/v1/tpex_mainboard_quotes', tpex_quotes_parse, '盤後日頻'),
+            ('tpex_trading', '櫃買成交統計', 'https://www.tpex.org.tw/openapi/v1/tpex_daily_trading_index', tpex_trading_parse, '盤後日頻'),
+            ('tpex_institutions', '櫃買三大法人', 'https://www.tpex.org.tw/openapi/v1/tpex_3insti_summary', tpex_institutions_parse, '盤後日頻'),
+            ('stock_day_avg', '證交所均價廣度', 'https://openapi.twse.com.tw/v1/exchangeReport/STOCK_DAY_AVG_ALL', stock_day_avg_parse, '盤後日頻'),
+            ('tpex_valuations', '櫃買估值', 'https://www.tpex.org.tw/openapi/v1/tpex_mainboard_peratio_analysis', tpex_valuations_parse, '盤後日頻'),
+            ('tpex_revenue', '櫃買月營收', 'https://www.tpex.org.tw/openapi/v1/mopsfin_t187ap05_OA', tpex_revenue_parse, '每月發布'),
             ('putcall', '期交所 Put/Call', 'https://openapi.taifex.com.tw/v1/PutCallRatio', putcall, '盤後日頻'),
             ('fx', '期交所參考匯率', 'https://openapi.taifex.com.tw/v1/DailyForeignExchangeRates', fx, '日參考匯率'),
             ('futures', '法人期貨淨部位', 'https://openapi.taifex.com.tw/v1/MarketDataOfMajorInstitutionalTradersDetailsOfFuturesContractsBytheDate', futures, '盤後日頻'),
@@ -610,6 +681,7 @@ def collect(mode='full'):
     f = features(merged_data)
     f['calendar_age_days'] = (now().date() - dt.date.fromisoformat(f['date'])).days if f.get('date') else None
     factors = factor_rows(merged_data, sources_list, f)
+    indicators = compute_15_indicators(merged_data, existing_snap.get('indicators'))
 
     for factor in factors:
         fs = factor.get('sources', [])
@@ -632,6 +704,7 @@ def collect(mode='full'):
         'update_mode': mode,
         'data': merged_data,
         'features': f,
+        'indicators': indicators,
         'factors': factors,
         'sources': meta,
         'refresh_seconds': 60
