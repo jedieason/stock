@@ -1,31 +1,31 @@
 {
-  "asof": "2026-10-21T08:12:25+08:00",
+  "asof": "2026-10-21T13:34:44+08:00",
   "timezone": "Asia/Taipei",
   "mode": "online",
-  "update_mode": "us_close",
+  "update_mode": "intraday",
   "data": {
     "quote": [
       {
-        "date": "2026-10-20",
+        "date": "2026-10-21",
         "time": "13:33:00",
         "symbol": "t00",
         "name": "發行量加權股價指數",
-        "close": 46292.93,
-        "previous": 46822.08,
-        "open": 46712.57,
-        "high": 46967.91,
-        "low": 46163.03
+        "close": 46887.77,
+        "previous": 46292.93,
+        "open": 46454.33,
+        "high": 47254.93,
+        "low": 46454.33
       },
       {
-        "date": "2026-10-20",
+        "date": "2026-10-21",
         "time": "13:33:00",
         "symbol": "o00",
         "name": "櫃買指數",
-        "close": 387.88,
-        "previous": 394.05,
-        "open": 393.73,
-        "high": 398.31,
-        "low": 387.2
+        "close": 395.42,
+        "previous": 387.88,
+        "open": 390.75,
+        "high": 399.21,
+        "low": 390.75
       }
     ],
     "fmt": [
@@ -331455,7 +331455,7 @@
       "ratio": 0.5078125,
       "up_share": 30.1080802882141,
       "net_advances": -567,
-      "ad_line": -1902,
+      "ad_line": -2469,
       "twse": {
         "up": 269,
         "down": 701,
@@ -333844,9 +333844,9 @@
       "id": "quote",
       "title": "台股盤中指數",
       "url": "https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_t00.tw%7Cotc_o00.tw&json=1&delay=0",
-      "observed_at": "2026-10-20",
-      "retrieved_at": "2026-10-21T00:20:34+08:00",
-      "attempted_at": "2026-10-21T00:20:34+08:00",
+      "observed_at": "2026-10-21",
+      "retrieved_at": "2026-10-21T13:34:44+08:00",
+      "attempted_at": "2026-10-21T13:34:44+08:00",
       "status": "ok",
       "error": null,
       "frequency": "盤中報價（來源時間為準）",
