@@ -1,8 +1,8 @@
 {
-  "asof": "2026-10-21T21:03:50+08:00",
+  "asof": "2026-10-22T08:17:08+08:00",
   "timezone": "Asia/Taipei",
   "mode": "online",
-  "update_mode": "daily_close",
+  "update_mode": "us_close",
   "data": {
     "quote": [
       {
@@ -41642,10 +41642,6 @@
     ],
     "vix": [
       {
-        "date": "2023-09-13",
-        "value": 13.48
-      },
-      {
         "date": "2023-09-14",
         "value": 12.82
       },
@@ -44840,13 +44836,13 @@
       {
         "date": "2026-10-19",
         "value": 18.44
+      },
+      {
+        "date": "2026-10-20",
+        "value": 17.31
       }
     ],
     "vix3m": [
-      {
-        "date": "2023-08-14",
-        "value": 17.41
-      },
       {
         "date": "2023-08-15",
         "value": 18.59
@@ -48042,13 +48038,13 @@
       {
         "date": "2026-10-20",
         "value": 18.99
+      },
+      {
+        "date": "2026-10-21",
+        "value": 18.72
       }
     ],
     "vvix": [
-      {
-        "date": "2023-08-14",
-        "value": 95.33
-      },
       {
         "date": "2023-08-15",
         "value": 103.28
@@ -51244,6 +51240,10 @@
       {
         "date": "2026-10-20",
         "value": 97.15
+      },
+      {
+        "date": "2026-10-21",
+        "value": 94.55
       }
     ],
     "SPY": [
@@ -53995,9 +53995,17 @@
         "date": "2026-10-20",
         "close": 769.05,
         "open": 765.86,
-        "high": 772.28,
-        "low": 764.26,
-        "volume": 34504254.0
+        "high": 772.29,
+        "low": 764.25,
+        "volume": 35048400.0
+      },
+      {
+        "date": "2026-10-21",
+        "close": 773.09,
+        "open": 771.17,
+        "high": 774.43,
+        "low": 768.4,
+        "volume": 31623572.0
       }
     ],
     "QQQ": [
@@ -56751,7 +56759,15 @@
         "open": 715.25,
         "high": 722.75,
         "low": 710.39,
-        "volume": 29494120.0
+        "volume": 30518500.0
+      },
+      {
+        "date": "2026-10-21",
+        "close": 725.2,
+        "open": 722.22,
+        "high": 727.95,
+        "low": 719.72,
+        "volume": 31534625.0
       }
     ],
     "SOXX": [
@@ -59503,9 +59519,17 @@
         "date": "2026-10-20",
         "close": 500.01,
         "open": 494.99,
-        "high": 508.88,
+        "high": 508.89,
         "low": 489.7,
-        "volume": 9917687.0
+        "volume": 10225500.0
+      },
+      {
+        "date": "2026-10-21",
+        "close": 510.36,
+        "open": 509.74,
+        "high": 513.08,
+        "low": 503.4,
+        "volume": 8198989.0
       }
     ],
     "treasury": [
@@ -60713,6 +60737,12 @@
         "date": "2026-10-20",
         "y2": 4.79,
         "y10": 5.12,
+        "y30": 5.42
+      },
+      {
+        "date": "2026-10-21",
+        "y2": 4.81,
+        "y10": 5.13,
         "y30": 5.42
       }
     ],
@@ -335165,12 +335195,12 @@
       {
         "date": "2026-10-20",
         "taiwan_vix": 30.79,
-        "cboe_vix": 18.44
+        "cboe_vix": 17.31
       },
       {
         "date": "2026-10-21",
         "taiwan_vix": 28.4,
-        "cboe_vix": 18.44
+        "cboe_vix": 17.31
       }
     ]
   },
@@ -335205,8 +335235,8 @@
     "low20_held": true,
     "tsmc_vol_share": 0.07490829526750141,
     "top6_vol_share": 0.17834092233162055,
-    "spy_r5": -0.011516561483785548,
-    "tr10_chg5": -0.08999999999999986,
+    "spy_r5": 0.004534823284823242,
+    "tr10_chg5": -0.0600000000000005,
     "margin": 6381.00111,
     "margin5": -0.010664716214432657,
     "margin20": 0.08263160813061599,
@@ -335214,11 +335244,11 @@
     "margin_repay": 3.74767,
     "short_balance": 192598.0,
     "short_buy": 41174.0,
-    "vix": 18.44,
-    "vix5": 0.21236028928336625,
-    "vix_date": "2026-10-19",
-    "vix_pct": 0.6904761904761905,
-    "calendar_age_days": 0
+    "vix": 17.31,
+    "vix5": 0.13359528487229855,
+    "vix_date": "2026-10-20",
+    "vix_pct": 0.5476190476190477,
+    "calendar_age_days": 1
   },
   "indicators": {
     "1": {
@@ -335309,7 +335339,7 @@
       "ratio": 1.7693522906793049,
       "up_share": 57.43589743589743,
       "net_advances": 487,
-      "ad_line": -2549,
+      "ad_line": -2062,
       "twse": {
         "up": 600,
         "down": 380,
@@ -335344,11 +335374,11 @@
       "name": "新高／新低廣度",
       "status": "expanding",
       "status_label": "新高擴張",
-      "summary": "創 52 週新高 44 家 · 創新低 5 家 · 淨新高 +39 家 (+63)",
+      "summary": "創 52 週新高 44 家 · 創新低 5 家 · 淨新高 +39 家 (+0)",
       "high52": 44,
       "low52": 5,
       "net_high52": 39,
-      "net_change5": 63
+      "net_change5": 0
     },
     "6": {
       "id": "6",
@@ -335569,14 +335599,14 @@
       "name": "恐慌程度",
       "status": "calm",
       "status_label": "極度過熱自滿",
-      "summary": "臺指 VIX 28.40 (歷史百分位 24.6%) · 美股 VIX 18.44 · 極度過熱自滿",
+      "summary": "臺指 VIX 28.40 (歷史百分位 24.6%) · 美股 VIX 17.31 · 極度過熱自滿",
       "taiwan_vix": 28.4,
       "taiwan_vix_chg5": 0.08895705521472386,
       "taiwan_vix_pct252": 0.24561403508771928,
-      "cboe_vix": 18.44,
-      "cboe_vix_pct252": 0.6904761904761905,
-      "vix_ratio": 0.9710373880989996,
-      "vvix": 97.15
+      "cboe_vix": 17.31,
+      "cboe_vix_pct252": 0.5476190476190477,
+      "vix_ratio": 0.9246794871794871,
+      "vvix": 94.55
     },
     "13": {
       "id": "13",
@@ -335699,32 +335729,32 @@
       "group": "價格與廣度",
       "status": "代理",
       "value": "SPY / QQQ / SOXX 調整後日價",
-      "observed_at": "2026-10-20",
+      "observed_at": "2026-10-21",
       "sources": [
         {
           "id": "SPY",
           "title": "SPY ETF歷史",
-          "url": "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-08&end_date=2026-10-21&data_id=SPY",
-          "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-21T08:12:24+08:00",
+          "url": "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-09&end_date=2026-10-22&data_id=SPY",
+          "observed_at": "2026-10-21",
+          "retrieved_at": "2026-10-22T08:17:08+08:00",
           "status": "ok",
           "error": null
         },
         {
           "id": "QQQ",
           "title": "QQQ ETF歷史",
-          "url": "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-08&end_date=2026-10-21&data_id=QQQ",
-          "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-21T08:12:25+08:00",
+          "url": "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-09&end_date=2026-10-22&data_id=QQQ",
+          "observed_at": "2026-10-21",
+          "retrieved_at": "2026-10-22T08:17:08+08:00",
           "status": "ok",
           "error": null
         },
         {
           "id": "SOXX",
           "title": "SOXX ETF歷史",
-          "url": "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-08&end_date=2026-10-21&data_id=SOXX",
-          "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-21T08:12:24+08:00",
+          "url": "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-09&end_date=2026-10-22&data_id=SOXX",
+          "observed_at": "2026-10-21",
+          "retrieved_at": "2026-10-22T08:17:08+08:00",
           "status": "ok",
           "error": null
         }
@@ -335732,11 +335762,11 @@
       "missing_reason": "ETF代理，不是SPX／NDX／SOX指數。",
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-21T08:12:25+08:00",
+      "retrieved_at": "2026-10-22T08:17:08+08:00",
       "source_url": [
-        "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-08&end_date=2026-10-21&data_id=SPY",
-        "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-08&end_date=2026-10-21&data_id=QQQ",
-        "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-08&end_date=2026-10-21&data_id=SOXX"
+        "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-09&end_date=2026-10-22&data_id=SPY",
+        "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-09&end_date=2026-10-22&data_id=QQQ",
+        "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-09&end_date=2026-10-22&data_id=SOXX"
       ],
       "unit": "依來源：點／%／家／億元",
       "universe": "台股為主；美股與全球風險為背景",
@@ -336817,7 +336847,7 @@
       "caveat": "暫時壓盤、長假累積外盤跌幅；不假設每次都是主力壓盤",
       "group": "槓桿與籌碼",
       "status": "可觀測",
-      "value": "距月結算（10/21）倒數 0 天 / 週結算倒數 0 天",
+      "value": "距月結算（11/18）倒數 27 天 / 週結算倒數 6 天",
       "observed_at": "2026-10-20",
       "sources": [
         {
@@ -336967,15 +336997,15 @@
       "caveat": "美國SPX未來30日隱含波動，不是台股本地VIX；盤中50與收盤不能混比較",
       "group": "波動與敘事",
       "status": "可觀測",
-      "value": "18.44",
-      "observed_at": "2026-10-19",
+      "value": "17.31",
+      "observed_at": "2026-10-20",
       "sources": [
         {
           "id": "vix",
           "title": "Cboe VIX",
           "url": "https://cdn-api.cboe.com/api/global/us_indices/daily_prices/VIX_History.csv",
-          "observed_at": "2026-10-19",
-          "retrieved_at": "2026-10-21T08:12:24+08:00",
+          "observed_at": "2026-10-20",
+          "retrieved_at": "2026-10-22T08:17:08+08:00",
           "status": "ok",
           "error": null
         }
@@ -336983,7 +337013,7 @@
       "missing_reason": null,
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-21T08:12:24+08:00",
+      "retrieved_at": "2026-10-22T08:17:08+08:00",
       "source_url": [
         "https://cdn-api.cboe.com/api/global/us_indices/daily_prices/VIX_History.csv"
       ],
@@ -337000,15 +337030,15 @@
       "caveat": "不用單一35/50門檻跨年代斷言末跌；高VIX不是買入開關",
       "group": "波動與敘事",
       "status": "可觀測",
-      "value": "252日分位 69.05%",
-      "observed_at": "2026-10-19",
+      "value": "252日分位 54.76%",
+      "observed_at": "2026-10-20",
       "sources": [
         {
           "id": "vix",
           "title": "Cboe VIX",
           "url": "https://cdn-api.cboe.com/api/global/us_indices/daily_prices/VIX_History.csv",
-          "observed_at": "2026-10-19",
-          "retrieved_at": "2026-10-21T08:12:24+08:00",
+          "observed_at": "2026-10-20",
+          "retrieved_at": "2026-10-22T08:17:08+08:00",
           "status": "ok",
           "error": null
         }
@@ -337016,7 +337046,7 @@
       "missing_reason": null,
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-21T08:12:24+08:00",
+      "retrieved_at": "2026-10-22T08:17:08+08:00",
       "source_url": [
         "https://cdn-api.cboe.com/api/global/us_indices/daily_prices/VIX_History.csv"
       ],
@@ -337034,14 +337064,14 @@
       "group": "波動與敘事",
       "status": "可觀測",
       "value": "VIX/VIX3M —",
-      "observed_at": "2026-10-20",
+      "observed_at": "2026-10-21",
       "sources": [
         {
           "id": "vix3m",
           "title": "Cboe VIX3M",
           "url": "https://cdn-api.cboe.com/api/global/us_indices/daily_prices/VIX3M_History.csv",
-          "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-21T08:12:24+08:00",
+          "observed_at": "2026-10-21",
+          "retrieved_at": "2026-10-22T08:17:08+08:00",
           "status": "ok",
           "error": null
         }
@@ -337049,7 +337079,7 @@
       "missing_reason": null,
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-21T08:12:24+08:00",
+      "retrieved_at": "2026-10-22T08:17:08+08:00",
       "source_url": [
         "https://cdn-api.cboe.com/api/global/us_indices/daily_prices/VIX3M_History.csv"
       ],
@@ -337066,15 +337096,15 @@
       "caveat": "波動風險集中；與VIX高度相關，不能各自當獨立投票",
       "group": "波動與敘事",
       "status": "部分",
-      "value": "VVIX 97.15",
-      "observed_at": "2026-10-20",
+      "value": "VVIX 94.55",
+      "observed_at": "2026-10-21",
       "sources": [
         {
           "id": "vvix",
           "title": "Cboe VVIX",
           "url": "https://cdn-api.cboe.com/api/global/us_indices/daily_prices/VVIX_History.csv",
-          "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-21T08:12:24+08:00",
+          "observed_at": "2026-10-21",
+          "retrieved_at": "2026-10-22T08:17:08+08:00",
           "status": "ok",
           "error": null
         }
@@ -337082,7 +337112,7 @@
       "missing_reason": "VVIX已接通，VIX9D未接通。",
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-21T08:12:24+08:00",
+      "retrieved_at": "2026-10-22T08:17:08+08:00",
       "source_url": [
         "https://cdn-api.cboe.com/api/global/us_indices/daily_prices/VVIX_History.csv"
       ],
@@ -337529,14 +337559,14 @@
       "group": "產業與總體",
       "status": "部分",
       "value": "美債2 / 10 / 30年殖利率",
-      "observed_at": "2026-10-20",
+      "observed_at": "2026-10-21",
       "sources": [
         {
           "id": "treasury",
           "title": "美國財政部殖利率",
           "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?data=daily_treasury_yield_curve&field_tdr_date_value=2026",
-          "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-21T08:12:24+08:00",
+          "observed_at": "2026-10-21",
+          "retrieved_at": "2026-10-22T08:17:08+08:00",
           "status": "ok",
           "error": null
         }
@@ -337544,7 +337574,7 @@
       "missing_reason": "未接Fed政策利率與修訂版本。",
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-21T08:12:24+08:00",
+      "retrieved_at": "2026-10-22T08:17:08+08:00",
       "source_url": [
         "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?data=daily_treasury_yield_curve&field_tdr_date_value=2026"
       ],
@@ -337615,15 +337645,15 @@
       "caveat": "可能為補繳賣出防守資產；相關不證因果，不採陰謀論代替資料",
       "group": "產業與總體",
       "status": "代理",
-      "value": "SPY 5日 -1.15% / 10Y殖利率 -9 bps（未見共跌變現潮）",
-      "observed_at": "2026-10-20",
+      "value": "SPY 5日 +0.45% / 10Y殖利率 -6 bps（跨資產流動性平穩）",
+      "observed_at": "2026-10-21",
       "sources": [
         {
           "id": "SPY",
           "title": "SPY ETF歷史",
-          "url": "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-08&end_date=2026-10-21&data_id=SPY",
-          "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-21T08:12:24+08:00",
+          "url": "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-09&end_date=2026-10-22&data_id=SPY",
+          "observed_at": "2026-10-21",
+          "retrieved_at": "2026-10-22T08:17:08+08:00",
           "status": "ok",
           "error": null
         },
@@ -337631,8 +337661,8 @@
           "id": "treasury",
           "title": "美國財政部殖利率",
           "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?data=daily_treasury_yield_curve&field_tdr_date_value=2026",
-          "observed_at": "2026-10-20",
-          "retrieved_at": "2026-10-21T08:12:24+08:00",
+          "observed_at": "2026-10-21",
+          "retrieved_at": "2026-10-22T08:17:08+08:00",
           "status": "ok",
           "error": null
         }
@@ -337640,9 +337670,9 @@
       "missing_reason": "以美股SPY與10年期美債殖利率同向變化判定跨資產變現與流動性壓力。",
       "published_at": null,
       "known_at": null,
-      "retrieved_at": "2026-10-21T08:12:24+08:00",
+      "retrieved_at": "2026-10-22T08:17:08+08:00",
       "source_url": [
-        "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-08&end_date=2026-10-21&data_id=SPY",
+        "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-09&end_date=2026-10-22&data_id=SPY",
         "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?data=daily_treasury_yield_curve&field_tdr_date_value=2026"
       ],
       "unit": "依來源：仟元／倍／%／匯率",
@@ -337902,9 +337932,9 @@
       "id": "vix",
       "title": "Cboe VIX",
       "url": "https://cdn-api.cboe.com/api/global/us_indices/daily_prices/VIX_History.csv",
-      "observed_at": "2026-10-19",
-      "retrieved_at": "2026-10-21T08:12:24+08:00",
-      "attempted_at": "2026-10-21T08:12:24+08:00",
+      "observed_at": "2026-10-20",
+      "retrieved_at": "2026-10-22T08:17:08+08:00",
+      "attempted_at": "2026-10-22T08:17:08+08:00",
       "status": "ok",
       "error": null,
       "frequency": "美國盤後日頻",
@@ -337914,9 +337944,9 @@
       "id": "vix3m",
       "title": "Cboe VIX3M",
       "url": "https://cdn-api.cboe.com/api/global/us_indices/daily_prices/VIX3M_History.csv",
-      "observed_at": "2026-10-20",
-      "retrieved_at": "2026-10-21T08:12:24+08:00",
-      "attempted_at": "2026-10-21T08:12:24+08:00",
+      "observed_at": "2026-10-21",
+      "retrieved_at": "2026-10-22T08:17:08+08:00",
+      "attempted_at": "2026-10-22T08:17:08+08:00",
       "status": "ok",
       "error": null,
       "frequency": "美國盤後日頻",
@@ -337926,9 +337956,9 @@
       "id": "vvix",
       "title": "Cboe VVIX",
       "url": "https://cdn-api.cboe.com/api/global/us_indices/daily_prices/VVIX_History.csv",
-      "observed_at": "2026-10-20",
-      "retrieved_at": "2026-10-21T08:12:24+08:00",
-      "attempted_at": "2026-10-21T08:12:24+08:00",
+      "observed_at": "2026-10-21",
+      "retrieved_at": "2026-10-22T08:17:08+08:00",
+      "attempted_at": "2026-10-22T08:17:08+08:00",
       "status": "ok",
       "error": null,
       "frequency": "美國盤後日頻",
@@ -337937,10 +337967,10 @@
     {
       "id": "SPY",
       "title": "SPY ETF歷史",
-      "url": "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-08&end_date=2026-10-21&data_id=SPY",
-      "observed_at": "2026-10-20",
-      "retrieved_at": "2026-10-21T08:12:24+08:00",
-      "attempted_at": "2026-10-21T08:12:24+08:00",
+      "url": "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-09&end_date=2026-10-22&data_id=SPY",
+      "observed_at": "2026-10-21",
+      "retrieved_at": "2026-10-22T08:17:08+08:00",
+      "attempted_at": "2026-10-22T08:17:08+08:00",
       "status": "ok",
       "error": null,
       "frequency": "美國盤後日頻",
@@ -337949,10 +337979,10 @@
     {
       "id": "QQQ",
       "title": "QQQ ETF歷史",
-      "url": "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-08&end_date=2026-10-21&data_id=QQQ",
-      "observed_at": "2026-10-20",
-      "retrieved_at": "2026-10-21T08:12:25+08:00",
-      "attempted_at": "2026-10-21T08:12:25+08:00",
+      "url": "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-09&end_date=2026-10-22&data_id=QQQ",
+      "observed_at": "2026-10-21",
+      "retrieved_at": "2026-10-22T08:17:08+08:00",
+      "attempted_at": "2026-10-22T08:17:08+08:00",
       "status": "ok",
       "error": null,
       "frequency": "美國盤後日頻",
@@ -337961,10 +337991,10 @@
     {
       "id": "SOXX",
       "title": "SOXX ETF歷史",
-      "url": "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-08&end_date=2026-10-21&data_id=SOXX",
-      "observed_at": "2026-10-20",
-      "retrieved_at": "2026-10-21T08:12:24+08:00",
-      "attempted_at": "2026-10-21T08:12:24+08:00",
+      "url": "https://api.finmindtrade.com/api/v4/data?dataset=USStockPrice&start_date=2025-06-09&end_date=2026-10-22&data_id=SOXX",
+      "observed_at": "2026-10-21",
+      "retrieved_at": "2026-10-22T08:17:08+08:00",
+      "attempted_at": "2026-10-22T08:17:08+08:00",
       "status": "ok",
       "error": null,
       "frequency": "美國盤後日頻",
@@ -337974,9 +338004,9 @@
       "id": "treasury",
       "title": "美國財政部殖利率",
       "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?data=daily_treasury_yield_curve&field_tdr_date_value=2026",
-      "observed_at": "2026-10-20",
-      "retrieved_at": "2026-10-21T08:12:24+08:00",
-      "attempted_at": "2026-10-21T08:12:24+08:00",
+      "observed_at": "2026-10-21",
+      "retrieved_at": "2026-10-22T08:17:08+08:00",
+      "attempted_at": "2026-10-22T08:17:08+08:00",
       "status": "ok",
       "error": null,
       "frequency": "美國盤後日頻",
