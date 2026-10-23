@@ -1,8 +1,8 @@
 {
-  "asof": "2026-10-23T08:13:41+08:00",
+  "asof": "2026-10-23T13:35:43+08:00",
   "timezone": "Asia/Taipei",
   "mode": "online",
-  "update_mode": "us_close",
+  "update_mode": "intraday",
   "data": {
     "quote": [
       {
@@ -338953,7 +338953,7 @@
       "ratio": 0.2781316348195329,
       "up_share": 20.226453937210497,
       "net_advances": -1020,
-      "ad_line": -3128,
+      "ad_line": -4148,
       "twse": {
         "up": 247,
         "down": 756,
@@ -341343,8 +341343,8 @@
       "title": "台股盤中指數",
       "url": "https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_t00.tw%7Cotc_o00.tw&json=1&delay=0",
       "observed_at": "2026-10-22",
-      "retrieved_at": "2026-10-22T18:36:44+08:00",
-      "attempted_at": "2026-10-22T18:36:44+08:00",
+      "retrieved_at": "2026-10-23T13:35:43+08:00",
+      "attempted_at": "2026-10-23T13:35:43+08:00",
       "status": "ok",
       "error": null,
       "frequency": "盤中報價（來源時間為準）",
