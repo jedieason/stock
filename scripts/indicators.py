@@ -2,6 +2,7 @@
 """Computation engine for the 15 core Taiwan stock market indicators."""
 import math
 import statistics
+from rotation import rotation_indicator
 
 def num(v):
     if v is None:
@@ -548,53 +549,7 @@ def compute_15_indicators(data, existing_indicators=None):
     # 10. 領漲族群 (Leading Sectors & Breadth)
     # 各產業相對大盤強度、漲幅貢獻、領漲族群數量
     # -------------------------------------------------------------
-    sectors_raw = mkt.get('sectors') or []
-    taiex_r1 = ind1['taiex'].get('change_pct', 0)
-    top_sectors = []
-    lag_sectors = []
-    leading_count = 0
-
-    if sectors_raw:
-        for s in sectors_raw:
-            s_val = num(s.get('value'))
-            if s_val is not None:
-                alpha = s_val - taiex_r1
-                item = {
-                    'name': s.get('name'),
-                    'close': num(s.get('close')),
-                    'return': s_val,
-                    'alpha': alpha
-                }
-                if alpha > 0 and s_val > 0:
-                    leading_count += 1
-                top_sectors.append(item)
-        top_sectors.sort(key=lambda x: x['alpha'], reverse=True)
-        lag_sectors = sorted(top_sectors, key=lambda x: x['alpha'])[:5]
-        top_5 = top_sectors[:5]
-    else:
-        top_5 = [
-            {'name': '電子零組件', 'return': 1.85, 'alpha': 2.37, 'close': 245.5},
-            {'name': '電腦及週邊', 'return': 1.20, 'alpha': 1.72, 'close': 312.0},
-            {'name': '通信網路', 'return': 0.85, 'alpha': 1.37, 'close': 185.2}
-        ]
-        lag_sectors = [
-            {'name': '生技醫療', 'return': -2.10, 'alpha': -1.58, 'close': 98.4},
-            {'name': '航運業', 'return': -1.80, 'alpha': -1.28, 'close': 164.0}
-        ]
-        leading_count = 8
-
-    ind10 = {
-        'id': '10',
-        'key': 'leading_sectors',
-        'name': '領漲族群',
-        'status': 'broad_rotation' if leading_count >= 6 else 'narrow_leadership',
-        'status_label': '輪動廣泛' if leading_count >= 6 else '族群集中度高',
-        'summary': f"領漲族群 {leading_count} 群 · 領先群：{top_5[0]['name']} ({top_5[0]['return']:+.2f}%)、{top_5[1]['name']} ({top_5[1]['return']:+.2f}%)" if len(top_5) > 1 else f"領漲族群 {leading_count} 群",
-        'leading_count': leading_count,
-        'total_sectors': len(sectors_raw) or 31,
-        'top_sectors': top_5,
-        'lagging_sectors': lag_sectors
-    }
+    ind10 = rotation_indicator(data.get('theme_rotation'))
     out['10'] = ind10
 
     # -------------------------------------------------------------

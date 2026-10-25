@@ -1,0 +1,7 @@
+<!doctype html>
+<html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>輪動圖手機檢查</title>
+<style>body{margin:0;padding:16px;background:#eceef2;display:flex;gap:18px;font:12px system-ui}article{flex:none}iframe{display:block;border:1px solid #ccd0d6;border-radius:10px;height:850px;background:white}output{display:block;max-width:390px;font-size:11px;margin-top:8px}</style>
+<article><p>390px · 產業輪動</p><iframe title="390px 輪動圖" width="390" src="../index.html#panel-sectors"></iframe><output></output></article>
+<article><p>320px · 產業輪動</p><iframe title="320px 輪動圖" width="320" src="../index.html#panel-sectors"></iframe><output></output></article>
+<script>setInterval(()=>{for(const f of document.querySelectorAll('iframe')){const d=f.contentDocument,w=f.contentWindow;f.nextElementSibling.textContent=JSON.stringify({width:w.innerWidth,overflow:d.documentElement.scrollWidth>w.innerWidth,charts:d.querySelectorAll('.rotation-chart svg').length,points:d.querySelectorAll('.rotation-point').length});}},1000)</script>
+</html>

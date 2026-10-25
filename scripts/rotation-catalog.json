@@ -1,0 +1,895 @@
+{
+  "version": 1,
+  "reviewed_at": "2026-10-25",
+  "description": "人工維護的投資研究觀察籃子，非全市場分類，非營收純度認證；調整需附業務證據，不依近期漲幅選股。",
+  "markets": {
+    "tw": {
+      "name": "台股",
+      "benchmark": "006204.TW",
+      "benchmark_name": "006204 台灣加權 ETF",
+      "timezone": "Asia/Taipei",
+      "currency": "TWD",
+      "min_turnover": 20000000,
+      "groups": [
+        {
+          "id": "cyber",
+          "name": "資安供應鏈",
+          "members": [
+            {
+              "symbol": "6690.TWO",
+              "name": "安碁資訊",
+              "exposure": "資安服務"
+            },
+            {
+              "symbol": "6752.TWO",
+              "name": "叡揚",
+              "exposure": "軟體／資安"
+            },
+            {
+              "symbol": "6214.TW",
+              "name": "精誠",
+              "exposure": "整合／資安"
+            },
+            {
+              "symbol": "3029.TW",
+              "name": "零壹",
+              "exposure": "代理／資安"
+            },
+            {
+              "symbol": "2471.TW",
+              "name": "資通",
+              "exposure": "軟體／資安"
+            },
+            {
+              "symbol": "6112.TW",
+              "name": "邁達特",
+              "exposure": "代理／資安服務"
+            },
+            {
+              "symbol": "6245.TWO",
+              "name": "立端",
+              "exposure": "網安硬體／邊緣運算"
+            }
+          ],
+          "sources": [
+            "https://www.acercsi.com/tw/aboutus/25",
+            "https://www.gss.com.tw/sca",
+            "https://event.systex.com/governance/cyber-center",
+            "https://www.zerone.com.tw/",
+            "https://www.ares.com.tw/",
+            "https://www.metaage.com.tw/security_service",
+            "https://www.lannerinc.com/ko/network-security-appliances"
+          ],
+          "note": "含軟體整合、代理與網安硬體，多角化業務不等於純資安營收；可檢查每檔關聯。"
+        },
+        {
+          "id": "optical",
+          "name": "光通訊／CPO",
+          "members": [
+            {
+              "symbol": "3363.TWO",
+              "name": "上詮",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "3081.TWO",
+              "name": "聯亞",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "4979.TWO",
+              "name": "華星光",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "3163.TWO",
+              "name": "波若威",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "6442.TW",
+              "name": "光聖",
+              "exposure": "題材相關業務"
+            }
+          ],
+          "sources": [
+            "https://www.foci.com.tw/",
+            "https://www.hl.com.tw/"
+          ],
+          "note": "光通訊供應鏈；不代表每家公司均已量產 CPO。"
+        },
+        {
+          "id": "cooling",
+          "name": "散熱／液冷",
+          "members": [
+            {
+              "symbol": "3017.TW",
+              "name": "奇鋐",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "3324.TWO",
+              "name": "雙鴻",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "3653.TW",
+              "name": "健策",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "2421.TW",
+              "name": "建準",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "3013.TW",
+              "name": "晟銘電",
+              "exposure": "題材相關業務"
+            }
+          ],
+          "sources": [
+            "https://www.avc.co/",
+            "https://www.auras.com.tw/"
+          ],
+          "note": ""
+        },
+        {
+          "id": "memory",
+          "name": "記憶體／儲存",
+          "members": [
+            {
+              "symbol": "2408.TW",
+              "name": "南亞科",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "2344.TW",
+              "name": "華邦電",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "2337.TW",
+              "name": "旺宏",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "8299.TWO",
+              "name": "群聯",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "3260.TWO",
+              "name": "威剛",
+              "exposure": "題材相關業務"
+            }
+          ],
+          "sources": [
+            "https://www.nanya.com/",
+            "https://www.phison.com/"
+          ],
+          "note": ""
+        },
+        {
+          "id": "equipment",
+          "name": "半導體設備",
+          "members": [
+            {
+              "symbol": "3131.TWO",
+              "name": "弘塑",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "3583.TW",
+              "name": "辛耘",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "6187.TWO",
+              "name": "萬潤",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "6640.TWO",
+              "name": "均華",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "2467.TW",
+              "name": "志聖",
+              "exposure": "題材相關業務"
+            }
+          ],
+          "sources": [
+            "https://www.gptc.com.tw/",
+            "https://www.scientech.com.tw/"
+          ],
+          "note": ""
+        },
+        {
+          "id": "ai",
+          "name": "AI 伺服器",
+          "members": [
+            {
+              "symbol": "2382.TW",
+              "name": "廣達",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "3231.TW",
+              "name": "緯創",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "6669.TW",
+              "name": "緯穎",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "2356.TW",
+              "name": "英業達",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "2317.TW",
+              "name": "鴻海",
+              "exposure": "題材相關業務"
+            }
+          ],
+          "sources": [
+            "https://www.quantatw.com/",
+            "https://www.wiwynn.com/"
+          ],
+          "note": "同題材美股為運算／網通上游，非相同營收結構。"
+        },
+        {
+          "id": "packaging",
+          "name": "先進封裝／測試",
+          "members": [
+            {
+              "symbol": "3711.TW",
+              "name": "日月光投控",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "2449.TW",
+              "name": "京元電子",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "6239.TW",
+              "name": "力成",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "3374.TWO",
+              "name": "精材",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "6257.TW",
+              "name": "矽格",
+              "exposure": "題材相關業務"
+            }
+          ],
+          "sources": [
+            "https://www.aseglobal.com/",
+            "https://www.kyec.com.tw/"
+          ],
+          "note": ""
+        },
+        {
+          "id": "grid",
+          "name": "電力／重電",
+          "members": [
+            {
+              "symbol": "1513.TW",
+              "name": "中興電",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "1519.TW",
+              "name": "華城",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "1503.TW",
+              "name": "士電",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "1504.TW",
+              "name": "東元",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "1514.TW",
+              "name": "亞力",
+              "exposure": "題材相關業務"
+            }
+          ],
+          "sources": [
+            "https://www.fortune.com.tw/",
+            "https://www.seec.com.tw/"
+          ],
+          "note": "與美股電力組合僅屬供應鏈題材對照。"
+        },
+        {
+          "id": "defense",
+          "name": "航太／國防",
+          "members": [
+            {
+              "symbol": "2634.TW",
+              "name": "漢翔",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "2208.TW",
+              "name": "台船",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "4572.TW",
+              "name": "駐龍",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "6829.TWO",
+              "name": "千附精密",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "4541.TWO",
+              "name": "晟田",
+              "exposure": "題材相關業務"
+            }
+          ],
+          "sources": [
+            "https://www.aidc.com.tw/",
+            "https://www.csbcnet.com.tw/"
+          ],
+          "note": "含民用航太與造船業務。"
+        },
+        {
+          "id": "finance",
+          "name": "金融",
+          "members": [
+            {
+              "symbol": "2881.TW",
+              "name": "富邦金",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "2882.TW",
+              "name": "國泰金",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "2891.TW",
+              "name": "中信金",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "2886.TW",
+              "name": "兆豐金",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "2892.TW",
+              "name": "第一金",
+              "exposure": "題材相關業務"
+            }
+          ],
+          "sources": [
+            "https://www.fubon.com/financialholdings/"
+          ],
+          "note": ""
+        },
+        {
+          "id": "shipping",
+          "name": "航運",
+          "members": [
+            {
+              "symbol": "2603.TW",
+              "name": "長榮",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "2609.TW",
+              "name": "陽明",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "2615.TW",
+              "name": "萬海",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "2606.TW",
+              "name": "裕民",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "2637.TW",
+              "name": "慧洋-KY",
+              "exposure": "題材相關業務"
+            }
+          ],
+          "sources": [
+            "https://www.evergreen-marine.com/",
+            "https://www.ymtc.com.tw/"
+          ],
+          "note": "含貨櫃與散裝，個別運價循環可能不同。"
+        },
+        {
+          "id": "biotech",
+          "name": "生技製藥",
+          "members": [
+            {
+              "symbol": "6446.TW",
+              "name": "藥華藥",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "6472.TW",
+              "name": "保瑞",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "1795.TW",
+              "name": "美時",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "4743.TWO",
+              "name": "合一",
+              "exposure": "題材相關業務"
+            }
+          ],
+          "sources": [
+            "https://www.pharmaessentia.com/",
+            "https://www.bora-corp.com/"
+          ],
+          "note": "臨床與法規事件可能導致單股跳空。"
+        }
+      ]
+    },
+    "us": {
+      "name": "美股",
+      "benchmark": "SPY",
+      "benchmark_name": "SPY S&P 500 ETF",
+      "timezone": "America/New_York",
+      "currency": "USD",
+      "min_turnover": 5000000,
+      "groups": [
+        {
+          "id": "cyber",
+          "name": "資安",
+          "members": [
+            {
+              "symbol": "CRWD",
+              "name": "CrowdStrike",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "PANW",
+              "name": "Palo Alto",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "FTNT",
+              "name": "Fortinet",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "ZS",
+              "name": "Zscaler",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "OKTA",
+              "name": "Okta",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "QLYS",
+              "name": "Qualys",
+              "exposure": "題材相關業務"
+            }
+          ],
+          "sources": [
+            "https://www.crowdstrike.com/",
+            "https://www.paloaltonetworks.com/",
+            "https://indexes.nasdaqomx.com/docs/Methodology_NQCYBR.pdf"
+          ],
+          "note": ""
+        },
+        {
+          "id": "optical",
+          "name": "光通訊",
+          "members": [
+            {
+              "symbol": "LITE",
+              "name": "Lumentum",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "COHR",
+              "name": "Coherent",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "AAOI",
+              "name": "Applied Opto",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "CIEN",
+              "name": "Ciena",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "FN",
+              "name": "Fabrinet",
+              "exposure": "題材相關業務"
+            }
+          ],
+          "sources": [
+            "https://www.lumentum.com/",
+            "https://www.coherent.com/"
+          ],
+          "note": ""
+        },
+        {
+          "id": "cooling",
+          "name": "資料中心基建",
+          "members": [
+            {
+              "symbol": "VRT",
+              "name": "Vertiv",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "ETN",
+              "name": "Eaton",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "NVT",
+              "name": "nVent",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "MOD",
+              "name": "Modine",
+              "exposure": "題材相關業務"
+            }
+          ],
+          "sources": [
+            "https://www.vertiv.com/",
+            "https://www.modine.com/"
+          ],
+          "note": "含供電與冷卻；非台股散熱的完全對等組合。"
+        },
+        {
+          "id": "memory",
+          "name": "記憶體／儲存",
+          "members": [
+            {
+              "symbol": "MU",
+              "name": "Micron",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "SNDK",
+              "name": "Sandisk",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "STX",
+              "name": "Seagate",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "WDC",
+              "name": "Western Digital",
+              "exposure": "題材相關業務"
+            }
+          ],
+          "sources": [
+            "https://www.micron.com/",
+            "https://www.sandisk.com/"
+          ],
+          "note": "含 DRAM、NAND 與 HDD。"
+        },
+        {
+          "id": "equipment",
+          "name": "半導體設備",
+          "members": [
+            {
+              "symbol": "AMAT",
+              "name": "Applied Materials",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "LRCX",
+              "name": "Lam Research",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "KLAC",
+              "name": "KLA",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "ASML",
+              "name": "ASML",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "TER",
+              "name": "Teradyne",
+              "exposure": "題材相關業務"
+            }
+          ],
+          "sources": [
+            "https://www.appliedmaterials.com/",
+            "https://www.lamresearch.com/"
+          ],
+          "note": ""
+        },
+        {
+          "id": "ai",
+          "name": "AI 運算／網通",
+          "members": [
+            {
+              "symbol": "NVDA",
+              "name": "NVIDIA",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "AMD",
+              "name": "AMD",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "AVGO",
+              "name": "Broadcom",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "MRVL",
+              "name": "Marvell",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "ANET",
+              "name": "Arista",
+              "exposure": "題材相關業務"
+            }
+          ],
+          "sources": [
+            "https://www.nvidia.com/",
+            "https://www.arista.com/"
+          ],
+          "note": "與台股 AI 伺服器為上下游對照。"
+        },
+        {
+          "id": "software",
+          "name": "雲端軟體",
+          "members": [
+            {
+              "symbol": "MSFT",
+              "name": "Microsoft",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "NOW",
+              "name": "ServiceNow",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "DDOG",
+              "name": "Datadog",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "SNOW",
+              "name": "Snowflake",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "NET",
+              "name": "Cloudflare",
+              "exposure": "題材相關業務"
+            }
+          ],
+          "sources": [
+            "https://www.servicenow.com/",
+            "https://www.datadoghq.com/"
+          ],
+          "note": "部分公司同時有資安業務；各籃子不加總。"
+        },
+        {
+          "id": "grid",
+          "name": "電力／能源基建",
+          "members": [
+            {
+              "symbol": "VST",
+              "name": "Vistra",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "CEG",
+              "name": "Constellation",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "NRG",
+              "name": "NRG",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "TLN",
+              "name": "Talen",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "GEV",
+              "name": "GE Vernova",
+              "exposure": "題材相關業務"
+            }
+          ],
+          "sources": [
+            "https://www.vistracorp.com/",
+            "https://www.gevernova.com/"
+          ],
+          "note": "含發電與電力設備，與台灣重電非完全對等。"
+        },
+        {
+          "id": "defense",
+          "name": "航太／國防",
+          "members": [
+            {
+              "symbol": "LMT",
+              "name": "Lockheed Martin",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "RTX",
+              "name": "RTX",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "NOC",
+              "name": "Northrop Grumman",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "GD",
+              "name": "General Dynamics",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "HII",
+              "name": "Huntington Ingalls",
+              "exposure": "題材相關業務"
+            }
+          ],
+          "sources": [
+            "https://www.lockheedmartin.com/",
+            "https://www.northropgrumman.com/"
+          ],
+          "note": ""
+        },
+        {
+          "id": "finance",
+          "name": "金融",
+          "members": [
+            {
+              "symbol": "JPM",
+              "name": "JPMorgan",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "BAC",
+              "name": "Bank of America",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "GS",
+              "name": "Goldman Sachs",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "MS",
+              "name": "Morgan Stanley",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "WFC",
+              "name": "Wells Fargo",
+              "exposure": "題材相關業務"
+            }
+          ],
+          "sources": [
+            "https://www.jpmorganchase.com/"
+          ],
+          "note": ""
+        },
+        {
+          "id": "shipping",
+          "name": "航運",
+          "members": [
+            {
+              "symbol": "ZIM",
+              "name": "ZIM",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "MATX",
+              "name": "Matson",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "DAC",
+              "name": "Danaos",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "SBLK",
+              "name": "Star Bulk",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "GNK",
+              "name": "Genco",
+              "exposure": "題材相關業務"
+            }
+          ],
+          "sources": [
+            "https://www.zim.com/",
+            "https://www.matson.com/"
+          ],
+          "note": "含貨櫃與散裝，個別運價循環可能不同。"
+        },
+        {
+          "id": "biotech",
+          "name": "生技製藥",
+          "members": [
+            {
+              "symbol": "VRTX",
+              "name": "Vertex",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "REGN",
+              "name": "Regeneron",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "AMGN",
+              "name": "Amgen",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "GILD",
+              "name": "Gilead",
+              "exposure": "題材相關業務"
+            },
+            {
+              "symbol": "BIIB",
+              "name": "Biogen",
+              "exposure": "題材相關業務"
+            }
+          ],
+          "sources": [
+            "https://www.vrtx.com/",
+            "https://www.regeneron.com/"
+          ],
+          "note": ""
+        }
+      ]
+    }
+  }
+}

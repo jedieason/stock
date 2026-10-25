@@ -17,6 +17,8 @@ from zoneinfo import ZoneInfo
 import sys
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from indicators import compute_15_indicators
+from rotation import collect_rotation, rotation_indicator
+from rotation_universe import read_json, write_json
 
 TPE = ZoneInfo('Asia/Taipei')
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -613,8 +615,13 @@ def collect(mode='full'):
         except Exception:
             existing_snap = {}
 
-    existing_data = existing_snap.get('data', {})
-    existing_sources_dict = {s['id']: s for s in existing_snap.get('sources', [])}
+    existing_data = dict(existing_snap.get('data', {}))
+    if (existing_data.get('theme_rotation') or {}).get('snapshot_url'):
+        try:
+            existing_data['theme_rotation'] = read_json(ROOT / 'data/rotation.json.gz')
+        except (FileNotFoundError, ValueError, OSError):
+            existing_data['theme_rotation'] = None
+    existing_sources_dict = {s['id']: dict(s) for s in existing_snap.get('sources', [])}
 
     tasks = []
     # Mode: intraday (盤中即時報價，每 10 分鐘，09:00-13:30)
@@ -737,15 +744,40 @@ def collect(mode='full'):
             })
         return trend
 
-    merged_data['vix_trend'] = build_vix_trend(merged_data.get('taiwan_vix'), merged_data.get('vix'))
+    if mode != 'rotation':
+        merged_data['vix_trend'] = build_vix_trend(merged_data.get('taiwan_vix'), merged_data.get('vix'))
+
+    if mode in ['daily_close', 'us_close', 'full', 'rotation']:
+        merged_data['theme_rotation'] = collect_rotation(mode, existing_data.get('theme_rotation'), now())
+        for market_id, market_data in (merged_data.get('theme_rotation') or {}).get('markets', {}).items():
+            merged_sources_map['rotation_' + market_id] = {
+                'id': 'rotation_' + market_id, 'title': market_data['name'] + '題材成分股還原日線',
+                'url': 'https://finance.yahoo.com/quote/' + market_data['benchmark'] + '/history/',
+                'status': 'ok' if market_data['status'] == 'ok' else 'stale',
+                'observed_at': market_data.get('observed_at'), 'retrieved_at': market_data.get('retrieved_at'),
+                'attempted_at': merged_data['theme_rotation'].get('attempted_at'),
+                'frequency': '盤後日頻・還原股價',
+                'interval': '台股 15:30、美股 06:00 台北更新；各市場收盤日獨立',
+                'error': market_data.get('error'),
+                'coverage': str(market_data.get('eligible_stocks', 0)) + '/' + str(market_data.get('total_stocks', 0)),
+            }
 
     sources_list = list(merged_sources_map.values())
-    f = features(merged_data)
-    f['calendar_age_days'] = (now().date() - dt.date.fromisoformat(f['date'])).days if f.get('date') else None
-    factors = factor_rows(merged_data, sources_list, f)
-    indicators = compute_15_indicators(merged_data, existing_snap.get('indicators'))
+    preserve_market = mode == 'rotation' and all(key in existing_snap for key in ['features', 'factors', 'indicators'])
+    if preserve_market:
+        # A rotation-only refresh must not recalculate unrelated Taiwan indicators.
+        f = existing_snap['features']
+        factors = existing_snap['factors']
+        indicators = dict(existing_snap['indicators'])
+        if mode == 'rotation':
+            indicators['10'] = rotation_indicator(merged_data.get('theme_rotation'))
+    else:
+        f = features(merged_data)
+        f['calendar_age_days'] = (now().date() - dt.date.fromisoformat(f['date'])).days if f.get('date') else None
+        factors = factor_rows(merged_data, sources_list, f)
+        indicators = compute_15_indicators(merged_data, existing_snap.get('indicators'))
 
-    for factor in factors:
+    for factor in ([] if preserve_market else factors):
         fs = factor.get('sources', [])
         factor.update(
             published_at=None,
@@ -773,13 +805,17 @@ def collect(mode='full'):
     }
 
     OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
+    if merged_data.get('theme_rotation'):
+        rotation = merged_data['theme_rotation']
+        write_json(ROOT / 'data/rotation.json.gz', rotation)
+        snap['data'] = {**merged_data, 'theme_rotation': {'snapshot_url':'data/rotation.json.gz', 'attempted_at':rotation.get('attempted_at'), 'version':rotation.get('version')}}
     OUTPUT_FILE.write_text(json.dumps(snap, ensure_ascii=False, indent=2), encoding='utf-8')
     print(f"[{now().isoformat()}] Snapshot successfully written to {OUTPUT_FILE} ({len(json.dumps(snap))} bytes)")
     return snap
 
 def main():
     p = argparse.ArgumentParser(description="TW Market Snapshot Collector")
-    p.add_argument('--mode', choices=['intraday', 'daily_close', 'us_close', 'full'], default='full', help='Update mode')
+    p.add_argument('--mode', choices=['intraday', 'daily_close', 'us_close', 'rotation', 'full'], default='full', help='Update mode')
     args = p.parse_args()
     collect(mode=args.mode)
 

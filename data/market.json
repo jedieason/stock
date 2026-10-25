@@ -1,8 +1,8 @@
 {
-  "asof": "2026-10-24T08:06:00+08:00",
+  "asof": "2026-10-25T12:51:29+08:00",
   "timezone": "Asia/Taipei",
   "mode": "online",
-  "update_mode": "us_close",
+  "update_mode": "rotation",
   "data": {
     "quote": [
       {
@@ -341326,7 +341326,12 @@
         "taiwan_vix": 30.31,
         "cboe_vix": 19.03
       }
-    ]
+    ],
+    "theme_rotation": {
+      "snapshot_url": "data/rotation.json.gz",
+      "attempted_at": "2026-10-25T12:49:36.550397+08:00",
+      "version": 1
+    }
   },
   "features": {
     "close": 46041.43,
@@ -341578,74 +341583,65 @@
     "10": {
       "id": "10",
       "key": "leading_sectors",
-      "name": "領漲族群",
-      "status": "broad_rotation",
-      "status_label": "輪動廣泛",
-      "summary": "領漲族群 14 群 · 領先群：水泥類指數 (+2.83%)、電子類反向指數 (+2.11%)",
-      "leading_count": 14,
-      "total_sectors": 56,
+      "name": "題材輪動",
+      "status": "observing",
+      "status_label": "價格訊號",
+      "summary": "趨勢候選：台 16 群／美 21 群 · 另列防禦輪動與反彈修復",
+      "leading_count": 16,
+      "us_leading_count": 21,
+      "total_sectors": 334,
       "top_sectors": [
         {
-          "name": "水泥類指數",
-          "close": 135.37,
-          "return": 2.83,
-          "alpha": 4.635033594048078
+          "name": "電子商務／資訊聚合",
+          "alpha": 34.9204,
+          "return": 31.8945
         },
         {
-          "name": "電子類反向指數",
-          "close": 773.5,
-          "return": 2.11,
-          "alpha": 3.915033594048078
+          "name": "人工智慧／自然語言處理",
+          "alpha": 27.1672,
+          "return": 24.1414
         },
         {
-          "name": "臺指反向一倍指數",
-          "close": 1237.5,
-          "return": 1.8,
-          "alpha": 3.605033594048078
+          "name": "電子商務／資訊系統建置服務",
+          "alpha": 26.3244,
+          "return": 23.2985
         },
         {
-          "name": "水泥窯製類指數",
-          "close": 697.38,
-          "return": 1.72,
-          "alpha": 3.525033594048078
+          "name": "電子商務／資料分析處理服務",
+          "alpha": 26.3244,
+          "return": 23.2985
         },
         {
-          "name": "資訊服務類指數",
-          "close": 250.62,
-          "return": 1.49,
-          "alpha": 3.2950335940480784
+          "name": "印刷電路板／銅箔基板",
+          "alpha": 21.944,
+          "return": 18.9181
         }
       ],
       "lagging_sectors": [
         {
-          "name": "塑膠類指數",
-          "close": 472.15,
-          "return": -5.39,
-          "alpha": -3.5849664059519215
+          "name": "通信網路／記憶體",
+          "alpha": -16.0288,
+          "return": -19.0547
         },
         {
-          "name": "電子類兩倍槓桿指數",
-          "close": 348785.69,
-          "return": -4.22,
-          "alpha": -2.4149664059519216
+          "name": "光通訊／CPO",
+          "alpha": -14.7234,
+          "return": -17.7493
         },
         {
-          "name": "塑膠化工類指數",
-          "close": 1279.4,
-          "return": -4.08,
-          "alpha": -2.274966405951922
+          "name": "電機機械／五金元件及零配件",
+          "alpha": -11.532,
+          "return": -14.5579
         },
         {
-          "name": "電子零組件類指數",
-          "close": 883.7,
-          "return": -3.64,
-          "alpha": -1.834966405951922
+          "name": "記憶體／儲存",
+          "alpha": -11.088,
+          "return": -14.1139
         },
         {
-          "name": "臺指日報酬兩倍指數",
-          "close": 220870.69,
-          "return": -3.61,
-          "alpha": -1.8049664059519217
+          "name": "雲端運算／電力設備",
+          "alpha": -10.9651,
+          "return": -13.991
         }
       ]
     },
@@ -344267,6 +344263,32 @@
       "error": null,
       "frequency": "每月發布",
       "interval": "交易日 15:30 盤後"
+    },
+    {
+      "id": "rotation_tw",
+      "title": "台股題材成分股還原日線",
+      "url": "https://finance.yahoo.com/quote/006204.TW/history/",
+      "status": "ok",
+      "observed_at": "2026-10-23",
+      "retrieved_at": "2026-10-25T12:49:36.550397+08:00",
+      "attempted_at": "2026-10-25T12:49:36.550397+08:00",
+      "frequency": "盤後日頻・還原股價",
+      "interval": "台股 15:30、美股 06:00 台北更新；各市場收盤日獨立",
+      "error": null,
+      "coverage": "843/1985"
+    },
+    {
+      "id": "rotation_us",
+      "title": "美股題材成分股還原日線",
+      "url": "https://finance.yahoo.com/quote/SPY/history/",
+      "status": "ok",
+      "observed_at": "2026-10-23",
+      "retrieved_at": "2026-10-25T12:49:36.550397+08:00",
+      "attempted_at": "2026-10-25T12:49:36.550397+08:00",
+      "frequency": "盤後日頻・還原股價",
+      "interval": "台股 15:30、美股 06:00 台北更新；各市場收盤日獨立",
+      "error": null,
+      "coverage": "2644/2748"
     }
   ],
   "refresh_seconds": 60

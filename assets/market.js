@@ -1,16 +1,17 @@
 import { valid, last, fmt, signed, tone, escapeHTML as e, safeURL, change, returns, seriesFor, latestQuote, periodRows, paginate, sortNumeric, breadthPercent, monthLabel, timeLabel, snapshotAgeDays, getIndicator, indicatorTone, indicatorBadge } from './model.mjs';
 import { spark, chartSVG, chartKey, volumeSVG } from './charts.mjs';
+import { renderRotation, rotationOverview, rotationSVG, rotationDomains, rotationSelection, rotationHistorySVG } from './rotation.mjs';
 
 const $ = selector => document.querySelector(selector);
 const names = { taiex: '加權指數', tpex: '櫃買指數', '2330': '台積電', '2317': '鴻海', '2454': '聯發科', '2382': '廣達', '2308': '台達電', '3231': '緯創', SPY: 'S&P 500', QQQ: 'Nasdaq 100', SOXX: '半導體 ETF' };
 const stockSymbols = ['2330', '2317', '2454', '2382', '2308', '3231'];
 const colors = { taiex: '#2962ff', tpex: '#8064b4', '2330': '#ba4655', '2317': '#245d9a', '2454': '#ce932d', '2382': '#517b99', '2308': '#398b84', '3231': '#6c7597' };
-const state = { packet: null, symbol: 'taiex', period: '66', candle: false, ma: true, sourceFilter: '全部', sectorSort: 'desc', sectorAll: false, refreshing: false };
+const state = { packet: null, symbol: 'taiex', period: '66', candle: false, ma: true, sourceFilter: '全部', sectorSort: 'desc', sectorAll: false, refreshing: false, rotationMarket: 'tw', rotationTheme: null, rotationFocus: 'all', rotationSearch: '' };
 let refreshTimer, resizeTimer, scrollFrame, initialAnchorHandled = false;
 const chartJobs = new Map();
 const data = () => state.packet?.data || {};
 const indicators = () => state.packet?.indicators || {};
-const ind = id => getIndicator(state.packet, id);
+const ind = id => String(id) === '10' && (data().theme_rotation || state.packet?.rotation_error) ? { ...getIndicator(state.packet, id), ...rotationOverview(data().theme_rotation) } : getIndicator(state.packet, id);
 const date = value => e(value || '尚未取得');
 const deltaHTML = value => `<span class="${tone(value)} numeric">${signed(value)}</span>`;
 const external = (url, text, className = '') => `<a href="${safeURL(url)}" target="_blank" rel="noopener noreferrer" class="${className}">${e(text)} ↗</a>`;
@@ -36,10 +37,42 @@ function smallChart(rows, fields, labels, id, caption = '') {
 }
 
 function resizeSmallCharts() {
+  resizeRotationCharts();
   document.querySelectorAll('[data-plot]').forEach(host => {
     const job = chartJobs.get(host.dataset.plot);
     if (job && host.clientWidth) host.innerHTML = chartSVG(job.rows, { fields: job.fields, width: Math.max(240, host.clientWidth), height: host.clientHeight, id: host.dataset.plot, label: job.labels.join('／') });
   });
+}
+
+function resizeRotationCharts() {
+  const rotation = data().theme_rotation;
+  if (!rotation) return;
+  const selection = rotationSelection(rotation, state), domains = rotationDomains(rotation, selection, state.rotationFocus);
+  document.querySelectorAll('[data-rotation-chart]').forEach(host => {
+    const id = host.dataset.rotationChart;
+    if (host.clientWidth) host.innerHTML = rotationSVG(rotation.markets?.[id], { marketId: id, selected: selection.id === id ? selection.group?.id : null, focus: state.rotationFocus, domains, width: host.clientWidth });
+  });
+  const history = $('[data-rotation-history]');
+  if (history?.clientWidth) history.innerHTML = rotationHistorySVG(selection.group, history.clientWidth);
+}
+
+function updateRotation(target) {
+  const cursor = target.id === 'rotation-search' ? target.selectionStart : null;
+  if (target.id === 'rotation-search') state.rotationSearch = target.value;
+  else if (target.dataset.rotationFocus) state.rotationFocus = target.dataset.rotationFocus;
+  else { state.rotationMarket = target.dataset.rotationMarket; state.rotationTheme = target.dataset.rotationTheme; }
+  const host = $('#rotation-content');
+  const open = [...host.querySelectorAll('details[open]')].map(d => d.closest('[data-rotation-card]')?.dataset.rotationCard || (d.classList.contains('rotation-method') ? 'method' : ''));
+  host.innerHTML = renderRotation(data().theme_rotation, state);
+  open.forEach(key => {
+    const detail = host.querySelector(key === 'method' ? '.rotation-method' : `[data-rotation-card="${key}"] details`);
+    if (detail) detail.open = true;
+  });
+  resizeRotationCharts();
+  // Keep keyboard selection anchored when local markup is replaced.
+  const selector = target.id === 'rotation-search' ? '#rotation-search' : target.dataset.rotationFocus ? `[data-rotation-focus="${state.rotationFocus}"]` : `${target.classList.contains('rotation-point') ? 'g' : 'button'}[data-rotation-market="${state.rotationMarket}"][data-rotation-theme="${state.rotationTheme}"]`;
+  host.querySelector(selector)?.focus({ preventScroll: true });
+  if (cursor !== null) host.querySelector(selector)?.setSelectionRange(cursor, cursor);
 }
 
 function rankRows(rows, { unit = '%', numbered = false, bars = false, decimals = 2, subtitle = false } = {}) {
@@ -77,7 +110,7 @@ function renderOverviewMatrix() {
 
   const cards = Array.from({ length: 15 }, (_, i) => {
     const id = String(i + 1);
-    const item = inds[id] || {};
+    const item = id === '10' ? ind(id) : inds[id] || {};
     let valHTML = '—';
     if (id === '1') valHTML = `${fmt(item.taiex?.close)} <span class="unit">點</span>`;
     else if (id === '2') valHTML = `MA20 ${signed(item.taiex?.dev20 != null ? item.taiex.dev20 * 100 : null)}`;
@@ -88,7 +121,7 @@ function renderOverviewMatrix() {
     else if (id === '7') valHTML = `${e(item.active_pattern || '常態量價')}`;
     else if (id === '8') valHTML = `${fmt(item.total_margin)} <span class="unit">億</span> <small class="${tone(item.total_margin_pct5)}">${signed(item.total_margin_pct5)}</small>`;
     else if (id === '9') valHTML = `回落 ${fmt(item.margin_drop_pct)}<span class="unit">%</span>`;
-    else if (id === '10') valHTML = `領漲 ${item.leading_count ?? '—'} <span class="unit">群</span>`;
+    else if (id === '10') valHTML = `台 ${item.leading_count ?? '—'}／美 ${item.us_leading_count ?? '—'} <span class="unit">候選群</span>`;
     else if (id === '11') valHTML = `健康分 ${item.health_score ?? '—'} <span class="unit">/ 100</span>`;
     else if (id === '12') valHTML = `臺指 VIX ${fmt(item.taiwan_vix)} <small class="muted">(${fmt((item.taiwan_vix_pct252 || 0) * 100, 0)}%)</small>`;
     else if (id === '13') valHTML = `外資現貨 ${signed(item.foreign_net_today)} <span class="unit">億</span>`;
@@ -377,24 +410,12 @@ function renderPanelLeverage() {
 // --------------------------------------------------------------------------
 function renderPanelSectors() {
   const i10 = ind('10'), i11 = ind('11');
-  const topSectors = (i10.top_sectors || []).slice(0, 5);
-  const lagSectors = (i10.lagging_sectors || []).slice(0, 5);
   const leaders = i11.leaders || [];
 
   const body = `
     <div class="indicator-block">
-      ${indicatorHeading('10', '領漲族群', i10.status, i10.status_label)}
-      <div class="split-row">
-        <article>
-          <h4 class="subheading">相對強勢領先類股 <small>Alpha 超額強度</small></h4>
-          ${rankRows(topSectors.map(s => ({ name: s.name, value: s.alpha, close: s.close })), { unit: '%', numbered: true, bars: true })}
-        </article>
-        <article>
-          <h4 class="subheading">相對落後弱勢類股 <small>Alpha 超額強度</small></h4>
-          ${rankRows(lagSectors.map(s => ({ name: s.name, value: s.alpha, close: s.close })), { unit: '%', numbered: true, bars: true })}
-        </article>
-      </div>
-      <p class="small-caption" style="margin-top:14px">全市場目前有 <b>${i10.leading_count}</b> 個產業超越大盤且維持多頭，族群輪動廣泛度：<b>${e(i10.status_label)}</b>。</p>
+      ${indicatorHeading('10', '題材輪動雷達', i10.status, i10.status_label)}
+      <div id="rotation-content">${state.packet?.rotation_error ? `<p class="rotation-warning">${e(state.packet.rotation_error)}</p>` : ''}${renderRotation(data().theme_rotation, state)}</div>
     </div>
 
     <div class="indicator-block">
@@ -417,7 +438,7 @@ function renderPanelSectors() {
       </div>
     </div>
   `;
-  return section('panel-sectors', '05 產業族群與強勢股', '', body, '<span class="section-tag">指標 10 & 11</span>');
+  return section('panel-sectors', '05 產業輪動與強勢股', '', body, '<span class="section-tag">指標 10 & 11</span>');
 }
 
 // --------------------------------------------------------------------------
@@ -612,6 +633,23 @@ async function refresh(manual = false) {
     if (!response.ok) throw new Error(`資料回應 ${response.status}`);
     const packet = await response.json();
     if (!packet || !packet.data || !Array.isArray(packet.sources)) throw new Error('市場快照格式不完整');
+    const rotationRef = packet.data.theme_rotation;
+    if (rotationRef?.snapshot_url) {
+      try {
+        // A separate compressed artifact keeps thousands of source rows out of the
+        // main snapshot. Conditional requests avoid downloading unchanged data.
+        const response = await fetch('data/rotation.json.gz', { cache: 'no-cache', signal: AbortSignal.timeout(20000) });
+        if (!response.ok) throw new Error('輪動快照未取得');
+        const rotation = await new Response(response.body.pipeThrough(new DecompressionStream('gzip'))).json();
+        if (rotation.version !== rotationRef.version || rotation.attempted_at !== rotationRef.attempted_at || !rotation.markets) throw new Error('輪動快照版本不一致');
+        packet.data.theme_rotation = rotation;
+      } catch (error) {
+        const previous = state.packet?.data?.theme_rotation;
+        packet.data.theme_rotation = previous?.markets ? { ...previous, markets: Object.fromEntries(Object.entries(previous.markets).map(([key, value]) => [key, { ...value, status: 'stale', error: '輪動快照讀取異常，保留上一版歷史。' }])) } : null;
+        packet.rotation_error = '輪動快照暫時無法讀取，請重新整理；當期訊號暫停。';
+      }
+    }
+
     const changed = !state.packet || JSON.stringify(packet) !== JSON.stringify(state.packet);
     state.packet = packet;
     if (changed) render();
@@ -639,6 +677,8 @@ async function refresh(manual = false) {
 // 事件監聽器
 // --------------------------------------------------------------------------
 document.addEventListener('click', event => {
+  const rotationTarget = event.target.closest('[data-rotation-theme], [data-rotation-focus]');
+  if (rotationTarget && state.packet) { updateRotation(rotationTarget); return; }
   const button = event.target.closest('button');
   if (!button || !state.packet) return;
 
@@ -666,6 +706,15 @@ document.addEventListener('click', event => {
     else state.candle = button.dataset.chart === 'candle';
     mainChart();
   }
+});
+
+document.addEventListener('keydown', event => {
+  const point = event.target.closest('.rotation-point');
+  if (point && (event.key === 'Enter' || event.key === ' ')) { event.preventDefault(); updateRotation(point); }
+});
+
+document.addEventListener('input', event => {
+  if (event.target.id === 'rotation-search') updateRotation(event.target);
 });
 
 document.addEventListener('change', event => {
