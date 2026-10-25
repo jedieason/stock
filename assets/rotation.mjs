@@ -41,13 +41,13 @@ export function diverseGroups(groups, limit = 12) {
   return chosen;
 }
 
-export function plottedGroups(market, selected, focus = 'all') {
+export function plottedGroups(market, selected, focus = 'all', limit = 12) {
   const groups = rankedGroups(market).filter(g => g.status === 'ok');
-  const strong = diverseGroups(groups.filter(g => g.opportunity !== 'unconfirmed'), 8);
-  const weak = diverseGroups([...groups].sort((a, b) => a.rs20 - b.rs20), 3);
-  const improving = diverseGroups([...groups].sort((a, b) => b.acceleration - a.acceleration), 3);
+  const strong = diverseGroups(groups.filter(g => g.opportunity !== 'unconfirmed'), limit < 12 ? 4 : 8);
+  const weak = diverseGroups([...groups].sort((a, b) => a.rs20 - b.rs20), limit < 12 ? 1 : 3);
+  const improving = diverseGroups([...groups].sort((a, b) => b.acceleration - a.acceleration), limit < 12 ? 1 : 3);
   const focused = focus === 'all' ? [] : groups.filter(g => matchesFocus(g, focus));
-  const plotted = diverseGroups([...focused, ...strong, ...improving, ...weak, ...groups], 12);
+  const plotted = diverseGroups([...focused, ...strong, ...improving, ...weak, ...groups], limit);
   const active = groups.find(g => g.id === selected);
   if (active && !plotted.some(g => g.id === selected)) plotted.push(active);
   return plotted;
@@ -85,7 +85,7 @@ export function rotationDomains(rotation, selection = {}, focus = 'all') {
 export function rotationSVG(market, { marketId = 'tw', selected, focus = 'all', domains, width = 560 } = {}) {
   width = Math.max(270, width);
   const height = 330, left = 42, right = width - 20, top = 28, bottom = height - 50;
-  const groups = plottedGroups(market, selected, focus).filter(g => valid(g.rs20) && valid(g.acceleration));
+  const groups = plottedGroups(market, selected, focus, width < 420 ? 6 : 12).filter(g => valid(g.rs20) && valid(g.acceleration));
   if (!groups.length) return '<p class="empty">尚無足夠的共同交易日資料</p>';
   const range = domains || rotationDomains({ markets: { market } });
   const x = v => left + (v + range.x) / (2 * range.x) * (right - left);
@@ -176,7 +176,7 @@ export function renderRotation(rotation, state = {}, now = Date.now()) {
   return `<div class="rotation-intro"><p><strong>找正在轉強、跌不下去的族群</strong><span>向右＝跑贏大盤 · 向上＝近期加速 · 選取軌跡＝近 4 週 · 外圈＝抗跌確認</span></p><div class="rotation-filters" role="group" aria-label="研究候選篩選">${[['all', '全部線索'], ['trend', '趨勢候選'], ['defensive', '防禦輪動'], ['rebound', '反彈修復'], ['early', '初現動能']].map(([v, label]) => `<button data-rotation-focus="${v}" class="${focus === v ? 'active' : ''}" aria-pressed="${focus === v}">${label}</button>`).join('')}</div></div>
     <label class="rotation-search">找產業或股票 <input id="rotation-search" type="search" value="${e(state.rotationSearch || '')}" placeholder="例如：被動元件、資安、2327" autocomplete="off"></label>
     <div class="rotation-markets">${['tw', 'us'].map(id => marketCard(id, rotation.markets[id], selection, focus, domains, now, state.rotationSearch || '')).join('')}</div>
-    <p class="rotation-reading">點選題材查看成分股。散點自動選取最多 12 個具結構訊號、加速或落後的不同成分群，點選其他族群可加到圖上；全部外部分類均可搜尋檢視。台美共用刻度。價格型態是研究線索，無法確認資金動機或保證下一波行情。</p>
+    <p class="rotation-reading">點選題材查看成分股。散點自動選取最多 12 個（窄螢幕 6 個）具結構訊號、加速或落後的不同成分群，點選其他族群可加到圖上；全部外部分類均可搜尋檢視。台美共用刻度。價格型態是研究線索，無法確認資金動機或保證下一波行情。</p>
     ${detail(rotation, selection, now)}
     <details class="rotation-method"><summary>資料範圍與訊號怎麼算</summary><div><p>RS＝各成分股區間報酬的等權平均－同期間基準報酬。橫軸採 20 日 RS；縱軸採本期 5 日 RS－前一期 5 日 RS（單位皆為百分點 pp）。這是透明的自訂輪動圖，非 JdK RRG 指標。</p><p>加速轉強：5 日 RS、加速度與個股 RS 中位數均大於零，至少 60% 個股跑贏、60% 站上月線，最近 5 次觀測至少 3 次 RS 為正。強勢延續採相同廣度門檻，並要求 20 日 RS 與中位數為正、5 日 RS 為正及 20 日 RS 持續性。抗跌蓄勢要求 20 日 RS、中位數為正、相同廣度與月線門檻，且近 20 日至少 3 個基準下跌日，平均超額 ≥ 0.25 pp、勝率 ≥ 2/3。初現動能符合短線價格、廣度與月線條件，但尚未同時通過較高優先的趨勢、防守或修復結構條件，獨立列示。抗跌不等於絕對上漲。</p><p>趨勢候選另需：20 日絕對報酬與 RS 為正、跑贏及季線廣度 ≥ 60%、近 60 日高點 5% 內家數 ≥ 40%、近 5 日曾突破前 20 日高點的廣度 ≥ 20%、20 日 RS 最近 5 次至少 3 次為正、基準上漲日平均超額 > 0。防禦輪動特徵需弱市、下跌日相對支撐，且族群 20 日絕對報酬不正，或上漲日超額不正且近期突破廣度不足 20%。反彈修復指 5 日回升加速，但 60 日報酬負且多數未收復季線。這些是自訂研究規則，不是股癌公式，也不是資金流向鑑識。</p><p>以 Yahoo Finance 完整收盤還原股價計算，調整拆股與股息；台股對 006204 加權 ETF，美股對 SPY，均為含息 ETF 價格代理，仍有費用與追蹤誤差。量能僅作確認線索，不宣稱量測資金流。下跌日平均與勝率均採基準下跌的相同日期。</p><p>每檔需 90 個連續共同交易日、近 20 日至少 18 日有成交；20 日均成交額台股 ≥ 2,000 萬 TWD、美股 ≥ 500 萬 USD。還原日報酬絕對值 > 40% 暫排除待核對；真實事件跳空也可能被排除。每群至少 3 檔、品質覆蓋 ≥ 70%（外部分類先扣除已確認低流動性成分；失敗、缺日與異常仍算品質缺口），所有期間使用同一組有效成分股；缺漏不補零，抓取異常的股票不參與確認。基準失敗或超過 7 日保留歷史並停止當期訊號。</p><p>台股以 TWSE／TPEx 全體普通股為母體，納入櫃買中心價值鏈子分類與交易所分類。美股使用 Nasdaq Screener 產業：普通股／ADR、市值 ≥ 3 億 USD、價格 ≥ 2 USD、分類更新當日成交額 ≥ 500 萬 USD；這會排除微型與低流動性股，不是所有美股。分類每 7 日刷新，兩地另保留自訂補充題材；業務關聯不等於營收純度，組合可有多角化公司。跨市場同名題材的產業結構也可能不同。名單檢視日 ${e(rotation.catalog_reviewed_at)}；目前成分回算歷史，有存活者與選樣偏差，不能用來聲稱回測績效或預測下一波行情。</p><p>${external('https://in.help.yahoo.com/kb/adjusted-close-sln28256.html', '還原價說明')} · ${external('https://www.twse.com.tw/en/ETFortune-institute/etfInfo/006204', '台股基準')} · ${external('https://help.stockcharts.com/charts-and-tools/other-charting-tools/rrg-charts', '輪動圖概念')} · 最近嘗試 ${e(rotation.attempted_at || '未知')}</p></div></details>`;
 }

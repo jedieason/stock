@@ -42,6 +42,7 @@ test('narrow and wide SVGs preserve valid geometry, keyboard access and units', 
     const html = rotationSVG(m, { width, domains: rotationDomains(snapshot) });
     assert.match(html, /tabindex="0"/);
     assert.match(html, /20 日超額報酬（pp）/);
+    if (width < 420) assert.ok((html.match(/class="rotation-point /g) || []).length <= 7);
     assert.doesNotMatch(html, /NaN|Infinity|undefined/);
   }
   assert.match(rotationSVG({ groups: [] }), /尚無足夠/);
