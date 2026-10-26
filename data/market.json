@@ -1,8 +1,8 @@
 {
-  "asof": "2026-10-25T12:51:29+08:00",
+  "asof": "2026-10-26T13:37:51+08:00",
   "timezone": "Asia/Taipei",
   "mode": "online",
-  "update_mode": "rotation",
+  "update_mode": "intraday",
   "data": {
     "quote": [
       {
@@ -341377,7 +341377,7 @@
     "vix5": 0.15613608748481167,
     "vix_date": "2026-10-22",
     "vix_pct": 0.7579365079365079,
-    "calendar_age_days": 2
+    "calendar_age_days": 4
   },
   "indicators": {
     "1": {
@@ -341468,7 +341468,7 @@
       "ratio": 0.2781316348195329,
       "up_share": 20.226453937210497,
       "net_advances": -1020,
-      "ad_line": -7208,
+      "ad_line": -8228,
       "twse": {
         "up": 247,
         "down": 756,
@@ -342967,7 +342967,7 @@
       "caveat": "暫時壓盤、長假累積外盤跌幅；不假設每次都是主力壓盤",
       "group": "槓桿與籌碼",
       "status": "可觀測",
-      "value": "距月結算（11/18）倒數 25 天 / 週結算倒數 4 天",
+      "value": "距月結算（11/18）倒數 23 天 / 週結算倒數 2 天",
       "observed_at": "2026-10-22",
       "sources": [
         {
@@ -343849,8 +343849,8 @@
       "title": "台股盤中指數",
       "url": "https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_t00.tw%7Cotc_o00.tw&json=1&delay=0",
       "observed_at": "2026-10-22",
-      "retrieved_at": "2026-10-23T18:28:29+08:00",
-      "attempted_at": "2026-10-23T18:28:29+08:00",
+      "retrieved_at": "2026-10-26T13:37:51+08:00",
+      "attempted_at": "2026-10-26T13:37:51+08:00",
       "status": "ok",
       "error": null,
       "frequency": "盤中報價（來源時間為準）",
