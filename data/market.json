@@ -1,31 +1,31 @@
 {
-  "asof": "2026-11-07T09:22:21+08:00",
+  "asof": "2026-11-09T15:29:08+08:00",
   "timezone": "Asia/Taipei",
   "mode": "online",
-  "update_mode": "us_close",
+  "update_mode": "intraday",
   "data": {
     "quote": [
       {
-        "date": "2026-11-06",
-        "time": "13:19:50",
+        "date": "2026-11-09",
+        "time": "13:33:00",
         "symbol": "t00",
         "name": "發行量加權股價指數",
-        "close": 39690.74,
-        "previous": 41574.72,
-        "open": 38915.76,
-        "high": 40435.83,
-        "low": 37837.05
+        "close": 41661.7,
+        "previous": 39701.64,
+        "open": 40347.28,
+        "high": 42349.36,
+        "low": 40347.28
       },
       {
-        "date": "2026-11-06",
-        "time": "13:19:50",
+        "date": "2026-11-09",
+        "time": "13:33:00",
         "symbol": "o00",
         "name": "櫃買指數",
-        "close": 303.78,
-        "previous": 321.47,
-        "open": 313.77,
-        "high": 313.77,
-        "low": 294.18
+        "close": 321.97,
+        "previous": 304.02,
+        "open": 305.51,
+        "high": 323.84,
+        "low": 305.51
       }
     ],
     "fmt": [
@@ -290649,7 +290649,7 @@
     "vix5": 0.6383720930232559,
     "vix_date": "2026-11-05",
     "vix_pct": 0.9880952380952381,
-    "calendar_age_days": 1
+    "calendar_age_days": 3
   },
   "indicators": {
     "1": {
@@ -290740,7 +290740,7 @@
       "ratio": 0.12403560830860534,
       "up_share": 10.668708524757529,
       "net_advances": -1476,
-      "ad_line": -29498,
+      "ad_line": -30974,
       "twse": {
         "up": 105,
         "down": 952,
@@ -292239,7 +292239,7 @@
       "caveat": "暫時壓盤、長假累積外盤跌幅；不假設每次都是主力壓盤",
       "group": "槓桿與籌碼",
       "status": "可觀測",
-      "value": "距月結算（11/18）倒數 11 天 / 週結算倒數 4 天",
+      "value": "距月結算（11/18）倒數 9 天 / 週結算倒數 2 天",
       "observed_at": "2026-11-05",
       "sources": [
         {
@@ -293120,9 +293120,9 @@
       "id": "quote",
       "title": "台股盤中指數",
       "url": "https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_t00.tw%7Cotc_o00.tw&json=1&delay=0",
-      "observed_at": "2026-11-06",
-      "retrieved_at": "2026-11-06T15:31:18+08:00",
-      "attempted_at": "2026-11-06T15:31:18+08:00",
+      "observed_at": "2026-11-09",
+      "retrieved_at": "2026-11-09T15:29:08+08:00",
+      "attempted_at": "2026-11-09T15:29:08+08:00",
       "status": "ok",
       "error": null,
       "frequency": "盤中報價（來源時間為準）",
