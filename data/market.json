@@ -1,31 +1,31 @@
 {
-  "asof": "2026-11-21T10:54:50+08:00",
+  "asof": "2026-11-23T16:27:19+08:00",
   "timezone": "Asia/Taipei",
   "mode": "online",
-  "update_mode": "us_close",
+  "update_mode": "intraday",
   "data": {
     "quote": [
       {
-        "date": "2026-11-20",
+        "date": "2026-11-23",
         "time": "13:33:00",
         "symbol": "t00",
         "name": "發行量加權股價指數",
-        "close": 36033.29,
-        "previous": 38426.89,
-        "open": 37646.13,
-        "high": 37646.13,
-        "low": 35738.68
+        "close": 36811.89,
+        "previous": 36033.29,
+        "open": 35899.48,
+        "high": 37108.2,
+        "low": 35442.41
       },
       {
-        "date": "2026-11-20",
+        "date": "2026-11-23",
         "time": "13:33:00",
         "symbol": "o00",
         "name": "櫃買指數",
-        "close": 263.31,
-        "previous": 285.33,
-        "open": 280.79,
-        "high": 280.79,
-        "low": 262.77
+        "close": 270.9,
+        "previous": 263.31,
+        "open": 260.79,
+        "high": 272.66,
+        "low": 253.74
       }
     ],
     "fmt": [
@@ -346723,7 +346723,7 @@
     "vix_date": "2026-11-20",
     "vix_pct": 1.0,
     "vixratio": 1.1599870717517775,
-    "calendar_age_days": 1
+    "calendar_age_days": 3
   },
   "indicators": {
     "1": {
@@ -346814,7 +346814,7 @@
       "ratio": 0.034703683929524824,
       "up_share": 3.3028455284552845,
       "net_advances": -1808,
-      "ad_line": -41619,
+      "ad_line": -43427,
       "twse": {
         "up": 16,
         "down": 1058,
@@ -348313,7 +348313,7 @@
       "caveat": "暫時壓盤、長假累積外盤跌幅；不假設每次都是主力壓盤",
       "group": "槓桿與籌碼",
       "status": "可觀測",
-      "value": "距月結算（12/16）倒數 25 天 / 週結算倒數 4 天",
+      "value": "距月結算（12/16）倒數 23 天 / 週結算倒數 2 天",
       "observed_at": "2026-11-19",
       "sources": [
         {
@@ -349194,9 +349194,9 @@
       "id": "quote",
       "title": "台股盤中指數",
       "url": "https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_t00.tw%7Cotc_o00.tw&json=1&delay=0",
-      "observed_at": "2026-11-20",
-      "retrieved_at": "2026-11-20T15:54:38+08:00",
-      "attempted_at": "2026-11-20T15:54:38+08:00",
+      "observed_at": "2026-11-23",
+      "retrieved_at": "2026-11-23T16:27:18+08:00",
+      "attempted_at": "2026-11-23T16:27:18+08:00",
       "status": "ok",
       "error": null,
       "frequency": "盤中報價（來源時間為準）",
